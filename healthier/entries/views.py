@@ -35,13 +35,15 @@ class FoodSuggestionView(APIView):
         keyword = request.query_params.get("q").strip()
 
         history = Entry.objects.filter(what__contains=keyword)
-        history = [{"name": i.what, "ndbno": json.loads(i.extra)["ndbno"]}
+        history = [{"name": i.what, "ndbno": i.extra["ndbno"]}
                    for i in history]
 
         # recipes = Recipe.objects.filter(title__contains=keyword)
         # recipes = [RecipeSerializer(i).data for i in recipes]
-
-        foods = FCD.find(keyword)
+        try:
+            foods = FCD.find(keyword)
+        except KeyError:
+            foods = []
 
         return Response(history + foods)
         # return Response(foods)

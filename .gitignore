@@ -98,3 +98,5 @@ healtier/.idea/*
 
 *.sqlite3
 healthier/.idea/*
+
+healthier/.idea/workspace.xml

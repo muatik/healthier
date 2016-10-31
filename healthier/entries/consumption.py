@@ -1,3 +1,5 @@
+import json
+
 from entries.fcd import FCD
 from entries.models import Nutrient, Recipe
 
@@ -18,6 +20,8 @@ def calculate_consumption(ndbno, measure, quantity):
 
 
 def insert_food_consumption(entry, data):
+    entry.extra = json.dumps({"ndbno": data["ndbno"]})
+    entry.save()
     nutrients = calculate_consumption(
         data["ndbno"], entry.measure, entry.quantity)
 
