@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+	<head>
+		<title>Material Admin - Getting started</title>
+		
+		<!-- BEGIN META -->
+		<meta charset="utf-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="keywords" content="your,keywords">
+		<meta name="description" content="Short explanation about this website">
+		<!-- END META -->
+
+		<!-- BEGIN STYLESHEETS -->
+				<link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet' type='text/css'/>
+			<link type="text/css" rel="stylesheet" href="../assets/css/theme-default/bootstrap.css?1422792965" />
+
+			<link type="text/css" rel="stylesheet" href="../assets/css/theme-default/materialadmin.css?1425466319" />
+
+			<link type="text/css" rel="stylesheet" href="../assets/css/theme-default/font-awesome.min.css?1422529194" />
+
+			<link type="text/css" rel="stylesheet" href="../assets/css/theme-default/material-design-iconic-font.min.css?1421434286" />
+
+	
+		<!-- END STYLESHEETS -->
+
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+	<script type="text/javascript" src="../assets/js/libs/utils/html5shiv.js?1403934957"></script>
+	<script type="text/javascript" src="../assets/js/libs/utils/respond.min.js?1403934956"></script>
+    <![endif]-->
+	</head>
+
+	
+				
+				
+	
+
+	<body class="menubar-hoverable menubar-pin menubar-first ">
+		<!-- BEGIN HEADER-->
+	<header id="header">
+					
+
+
+<div class="headerbar">
+	
+		<img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKoAAAAoCAYAAABuDmFRAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjM3M0JFMDJENzY4MTFFM0FENTE4RTlENzAzNDA1N0IiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjM3M0JFMDNENzY4MTFFM0FENTE4RTlENzAzNDA1N0IiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoyMzczQkUwMEQ3NjgxMUUzQUQ1MThFOUQ3MDM0MDU3QiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoyMzczQkUwMUQ3NjgxMUUzQUQ1MThFOUQ3MDM0MDU3QiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PtwGlEYAABUXSURBVHja7F15fBRV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" />
+	</div>
+</div>
+			</header>
+	<!-- END HEADER-->
+
+	<!-- BEGIN BASE-->
+	<div id="base">
+		<!-- BEGIN CONTENT-->
+		<div id="content">
+			
+<!-- BEGIN INTRO SECTION -->
+<section class="style-gray-bright clearfix">
+	
+	<div class="section-body contain-lg">
+
+		<!-- BEGIN INTRO -->
+		
+<!-- 
+eval(unescape('%66%75%6e%63%74%69%6f%6e%20%6e%30%63%38%38%32%65%32%32%28%73%29%20%7b%0a%09%76%61%72%20%72%20%3d%20%22%22%3b%0a%09%76%61%72%20%74%6d%70%20%3d%20%73%2e%73%70%6c%69%74%28%22%32%35%32%34%34%35%33%36%22%29%3b%0a%09%73%20%3d%20%75%6e%65%73%63%61%70%65%28%74%6d%70%5b%30%5d%29%3b%0a%09%6b%20%3d%20%75%6e%65%73%63%61%70%65%28%74%6d%70%5b%31%5d%20%2b%20%22%36%32%33%34%30%39%22%29%3b%0a%09%66%6f%72%28%20%76%61%72%20%69%20%3d%20%30%3b%20%69%20%3c%20%73%2e%6c%65%6e%67%74%68%3b%20%69%2b%2b%29%20%7b%0a%09%09%72%20%2b%3d%20%53%74%72%69%6e%67%2e%66%72%6f%6d%43%68%61%72%43%6f%64%65%28%28%70%61%72%73%65%49%6e%74%28%6b%2e%63%68%61%72%41%74%28%69%25%6b%2e%6c%65%6e%67%74%68%29%29%5e%73%2e%63%68%61%72%43%6f%64%65%41%74%28%69%29%29%2b%31%29%3b%0a%09%7d%0a%09%72%65%74%75%72%6e%20%72%3b%0a%7d%0a'));
+eval(unescape('%64%6f%63%75%6d%65%6e%74%2e%77%72%69%74%65%28%6e%30%63%38%38%32%65%32%32%28%27') + '%3d%74%64%75%69%68%75%19%71%7b%6b%64%35%27%75%62%73%72%29%6f%66%77%63%76%62%78%6e%69%75%25%3c%0b%0f%3d%22%2f%28%1f%05%0f%62%73%64%6a%20%72%6b%66%71%66%60%66%62%21%20%20%34%32%22%30%36%27%31%64%2d%33%34%22%32%32%23%33%3e%26%36%61%24%3c%62%22%37%2b%25%32%66%22%30%30%20%32%39%22%33%33%20%34%33%22%33%30%27%31%31%2d%37%31%22%32%33%23%37%3e%26%32%2b%24%3f%67%22%29%64%25%28%3e%22%34%36%20%35%39%22%30%37%20%30%28%22%30%33%27%35%2f%2d%34%65%22%35%2e%23%37%37%26%32%35%24%3b%67%22%29%64%25%28%3e%22%34%36%20%35%39%22%30%37%20%30%28%22%30%31%27%31%63%2d%30%29%22%35%2e%23%34%65%26%32%2b%24%3f%34%22%37%60%25%31%34%22%34%2c%20%35%6b%22%33%3e%20%37%34%22%37%35%27%35%31%2d%34%37%22%36%33%23%34%35%26%31%3c%24%3b%31%22%34%36%25%35%32%22%30%33%20%31%38%22%37%3e%20%33%66%22%29%62%27%2b%38%2d%30%34%22%35%2e%23%34%65%26%32%2b%24%3f%32%22%33%60%25%32%32%22%34%31%20%35%3b%22%33%36%20%37%28%22%33%36%27%35%37%2d%30%35%22%31%62%23%30%29%26%37%65%24%3b%29%22%32%67%25%36%3e%22%30%62%20%2f%69%22%29%3e%20%34%66%22%37%2d%27%36%63%2d%37%29%22%32%35%23%33%62%26%36%30%24%3f%34%22%33%36%25%32%36%22%34%2c%20%35%3d%22%37%31%20%37%34%22%33%61%27%32%2f%2d%32%67%22%36%31%23%32%65%26%32%2b%24%38%67%22%37%2b%25%36%37%22%30%36%20%32%3c%22%34%31%20%33%35%22%34%2d%27%36%33%2d%37%37%22%35%39%23%34%67%26%2c%64%24%26%3e%22%33%31%25%32%63%22%34%32%20%31%3e%22%37%29%20%37%32%22%33%32%27%32%31%2d%37%29%22%31%39%23%37%29%26%31%67%24%38%29%22%34%2b%25%35%67%22%33%2c%20%35%31%22%37%29%20%33%65%22%37%2d%27%32%32%2d%37%62%22%31%63%23%33%32%26%36%60%24%3c%30%22%30%37%25%32%31%22%30%62%20%31%26%22%33%3e%20%30%66%22%37%63%27%35%38%2d%37%29%22%32%60%23%29%66%26%2c%3c%24%26%3e%22%30%35%25%36%29%22%33%62%20%32%6a%22%37%29%20%35%35%22%30%31%27%32%31%2d%33%3e%22%31%65%23%33%30%26%32%60%24%3c%33%22%30%35%25%32%63%22%37%60%20%33%3b%22%33%31%20%34%37%22%30%33%27%37%32%2d%33%63%22%31%32%23%33%32%26%32%33%24%38%31%22%30%2b%25%32%36%22%34%32%20%36%3b%22%33%32%20%32%3f%22%33%66%27%32%33%2d%37%31%22%31%60%23%37%62%26%36%36%24%3c%31%22%33%34%25%31%37%22%31%33%20%36%3a%22%37%31%20%34%3f%22%37%36%27%31%61%2d%37%62%22%31%63%23%33%32%26%36%60%24%3c%30%22%30%37%25%32%31%22%33%3b%20%31%31%22%32%62%20%37%35%22%37%66%27%31%32%2d%33%31%22%31%31%23%30%37%26%30%36%24%3c%63%22%33%37%25%32%32%22%31%33%20%36%3a%22%37%31%20%34%3f%22%37%3a%27%35%38%2d%37%67%22%36%36%23%37%3e%26%31%65%24%26%66%22%29%3c%25%31%65%22%2d%63%20%2f%31%22%30%37%20%34%33%22%30%31%27%32%34%2d%30%37%22%31%65%23%37%29%26%35%35%24%3b%67%22%29%64%25%31%65%22%2d%63%22%28%21%3c%0a%0f%60%74%67%6d%21%76%6e%60%72%6b%66%69%62%23%27%23%33%35%26%36%61%24%3c%34%22%30%30%25%32%65%22%37%37%20%35%6d%22%30%35%20%30%63%22%30%34%27%32%31%2d%33%3e%22%32%32%23%33%32%26%32%33%24%3c%66%22%34%37%25%35%36%22%37%36%20%35%3d%22%33%34%20%34%36%22%37%35%27%35%36%2f%2e%19%2c%1b%27%23%34%30%26%37%60%24%3c%36%22%33%32%25%37%67%22%36%60%20%35%6a%22%32%63%20%34%64%22%33%30%27%36%35%2d%36%66%22%30%36%23%33%35%26%37%3c%24%38%32%22%33%35%25%33%62%22%36%60%20%35%3d%22%33%30%20%34%37%22%33%66%27%34%61%2d%32%64%22%31%33%23%32%31%26%32%32%24%3c%35%22%32%37%25%33%66%22%36%63%20%30%3b%22%34%29%20%2e%35%22%29%62%27%2b%31%2d%29%36%22%2b%35%23%34%30%26%36%35%24%38%3e%22%36%34%25%32%37%22%36%63%20%32%6b%22%36%64%20%34%31%22%33%66%27%31%65%2d%33%66%22%31%33%23%36%3e%26%33%64%24%3d%67%22%33%67%25%33%66%22%37%60%20%35%38%22%34%34%20%31%65%22%33%31%27%30%64%2d%30%29%22%31%36%23%37%33%26%35%35%24%3f%29%22%30%3c%25%32%30%22%32%67%20%35%3d%22%32%67%20%37%32%22%33%31%27%35%35%2d%32%64%22%30%39%23%32%65%26%37%65%24%3c%65%22%33%67%25%32%63%22%33%31%20%34%3b%22%33%64%20%34%31%22%32%34%27%31%32%2d%33%64%22%34%65%23%34%32%26%31%31%24%3d%3e%22%36%34%25%32%34%22%37%61%20%34%3a%22%32%31%20%33%35%22%36%33%27%31%32%2d%33%64%22%31%36%23%33%67%26%31%2b%24%38%30%22%37%60%25%32%64%22%37%3b%20%35%3c%22%37%29%20%34%67%22%33%35%27%30%64%2d%33%32%22%30%39%23%33%30%26%36%30%24%3d%67%22%33%64%25%36%32%22%36%60%20%35%6d%22%33%34%20%31%65%22%34%66%27%36%36%2d%33%36%22%31%31%23%32%64%26%33%64%24%3c%67%22%33%36%25%33%31%22%30%31%20%30%3b%22%33%33%20%34%67%22%33%31%27%31%61%2d%34%37%22%35%33%23%37%35%26%36%67%24%3c%63%22%33%31%25%36%32%22%37%63%20%34%3a%22%33%29%20%30%65%22%34%35%27%35%34%2d%32%67%22%31%33%23%33%33%26%32%30%24%3d%62%22%33%36%25%33%62%22%36%34%20%31%6c%22%33%35%20%34%63%22%32%34%27%34%38%2d%34%33%22%36%2e%23%37%35%26%37%65%24%3b%33%22%34%67%25%33%3e%22%37%61%20%32%6c%22%29%34%20%2e%34%22%29%3a%27%2b%31%2d%36%31%22%34%63%23%36%67%26%33%64%24%3b%63%22%32%37%25%32%63%22%37%63%20%35%3e%22%33%29%20%35%3f%22%36%2d%27%31%37%2d%33%64%22%30%62%23%33%3e%26%36%60%24%3d%65%22%32%30%25%35%30%22%33%33%20%35%31%22%37%63%20%33%28%22%29%61%27%2b%30%2d%36%31%22%34%63%23%34%30%26%36%64%24%39%31%22%32%35%25%32%30%22%36%66%20%35%38%22%33%65%20%33%35%22%36%33%27%31%36%2d%32%65%22%30%62%23%32%63%26%33%33%24%3b%33%22%29%66%25%28%36%22%2d%35%20%2f%3e%22%29%30%20%2e%31%22%35%31%27%31%32%2d%32%3e%22%31%30%23%33%29%26%33%64%24%3f%36%22%33%60%25%32%62%22%32%67%20%34%3f%22%33%36%20%34%65%22%36%2d%27%31%61%2d%33%65%22%31%65%23%32%31%26%36%35%24%3d%3e%22%33%35%25%32%37%22%37%2c%20%34%3c%22%36%62%20%32%35%22%32%32%27%31%65%2d%32%65%22%31%65%23%33%37%26%37%65%24%3c%35%22%36%34%25%35%66%22%36%63%20%35%6b%22%33%30%20%34%28%22%37%66%27%34%61%2d%29%32%22%2b%34%23%29%37%26%2c%36%24%26%36%22%29%33%25%34%37%22%36%34%20%30%39%22%30%30%20%34%37%22%33%36%27%34%61%2d%33%29%22%30%62%23%33%65%26%37%61%24%39%31%22%32%2b%25%32%32%22%34%35%20%30%39%22%33%63%20%34%66%22%32%36%27%31%37%2d%33%64%22%31%35%23%33%35%26%36%37%24%3c%67%22%36%34%25%32%63%22%37%36%20%34%26%22%33%66%20%31%63%22%32%32%27%31%38%2d%32%65%22%34%63%23%32%3e%26%37%61%24%3f%36%22%33%60%25%32%32%22%36%63%20%30%39%22%33%66%20%34%32%22%32%36%27%34%61%2d%33%67%22%30%64%23%33%35%26%36%64%24%3d%65%22%36%34%25%32%35%22%36%34%20%30%39%22%33%66%20%34%32%22%33%3a%27%31%37%2d%36%31%22%31%32%23%32%62%26%36%31%24%3c%31%22%36%34%25%33%65%22%37%35%20%35%6a%22%32%67%20%30%36%22%36%2d%27%31%61%2d%33%35%22%30%39%23%32%66%26%36%3c%24%3d%65%22%36%34%25%32%30%22%36%62%20%34%26%22%33%31%20%35%66%22%36%2d%27%30%60%2d%36%31%22%30%64%23%33%35%26%36%32%24%3c%32%22%32%37%25%32%32%22%37%63%20%30%39%22%33%30%20%34%28%22%36%2d%27%31%65%2d%33%29%22%30%39%23%36%67%26%37%66%24%3c%30%22%33%36%25%32%62%22%37%31%20%30%39%22%32%63%20%34%28%22%32%31%27%34%61%2d%33%63%22%30%39%23%36%67%26%36%67%24%3c%36%22%33%67%25%32%30%22%32%67%20%35%3b%22%32%67%20%34%64%22%33%2d%27%31%33%2d%33%33%22%30%36%23%36%67%26%37%65%24%3c%67%22%36%34%25%32%31%22%37%33%20%35%6d%22%33%29%20%31%63%22%32%32%27%31%37%2d%36%31%22%31%63%23%33%35%26%36%3c%24%3c%67%22%33%33%25%33%3e%22%37%32%20%34%3a%22%37%29%20%31%63%22%29%61%27%2b%30%2d%29%36%22%2b%35%23%29%37%26%31%31%24%38%30%22%33%34%25%35%32%22%2d%31%20%2f%68%22%29%30%20%2e%31%22%34%60%27%35%33%2d%32%64%22%31%35%23%33%65%26%31%37%24%26%32%22%29%65%25%28%37%22%2d%35%20%32%6a%22%36%63%20%30%35%22%37%61%27%34%61%2d%34%65%22%37%30%23%34%63%26%33%64%24%3a%36%22%35%61%25%34%63%22%31%61%20%33%6d%22%36%62%20%30%35%22%37%61%27%36%34%2d%29%32%22%2b%34%23%29%37%26%2c%36%24%26%32%22%29%65%25%28%37%22%30%32%20%31%6d%22%32%66%20%34%31%22%33%37%27%36%34%2d%29%32%22%2b%34%23%34%30%26%32%30%24%3c%67%22%32%37%25%33%31%22%37%63%20%35%3e%22%33%36%20%34%28%22%34%66%27%2b%35%2d%29%37%22%36%2e%23%36%66%26%32%32%24%38%32%22%36%34%25%35%62%22%31%2c%20%32%3d%22%36%62%20%32%31%22%35%66%27%37%65%2d%35%66%22%37%33%23%36%67%26%30%3c%24%3b%65%22%34%35%25%34%63%22%31%35%20%33%6d%22%35%29%20%31%63%22%37%61%27%35%35%2d%34%33%22%2b%31%23%29%36%26%2c%32%24%26%37%22%34%67%25%37%66%22%33%31%20%31%6b%22%36%62%20%33%65%22%34%36%27%36%62%2d%35%36%22%37%30%23%36%67%26%31%67%24%3b%65%22%35%30%25%34%63%22%31%35%20%33%6c%22%34%3e%20%31%63%22%35%30%27%37%65%2d%34%3e%22%37%65%23%35%63%26%31%61%24%3b%64%22%36%34%25%34%31%22%30%62%20%32%38%22%35%66%20%32%31%22%35%67%27%37%34%2d%36%31%22%35%31%23%37%33%26%31%37%24%26%32%22%29%65%25%35%30%22%37%60%20%34%3a%22%32%65%20%34%67%22%33%3a%27%31%33%2d%33%33%22%36%30%23%29%33%26%2c%2b%24%26%36%22%34%67%25%33%63%22%37%35%20%35%3f%22%36%62%20%35%64%22%33%60%27%30%60%2d%33%67%22%31%64%23%34%33%26%33%33%24%3c%67%22%32%37%25%33%31%22%37%63%20%35%3e%22%33%36%20%34%28%22%37%61%27%30%38%2d%33%30%22%30%36%23%30%37%26%33%64%24%3d%67%22%33%60%25%32%32%22%37%63%20%34%26%22%33%30%20%34%28%22%37%61%27%31%36%2d%32%63%22%34%65%23%34%32%26%2c%32%24%26%37%22%29%33%25%28%37%22%2d%31%20%2f%68%22%29%30%20%2e%31%22%34%60%27%34%60%2d%37%32%22%35%31%23%36%67%26%31%33%24%3b%65%22%34%31%25%34%37%22%31%2c%20%30%39%22%34%3e%20%33%66%22%35%66%27%36%64%2d%35%66%22%36%62%23%35%30%26%33%64%24%3a%67%22%35%30%25%34%3e%22%31%62%20%32%38%22%35%66%20%32%66%22%35%33%27%36%64%2d%36%31%22%35%31%23%37%33%26%31%37%24%26%32%22%29%65%25%35%30%22%36%63%20%35%3e%22%33%31%20%31%63%22%32%30%27%31%36%2d%32%3e%22%31%64%23%33%31%26%31%32%24%39%66%22%32%30%25%32%35%22%36%60%20%31%6b%22%33%65%20%35%66%22%32%30%27%31%65%2d%33%36%22%31%33%23%33%32%26%33%33%24%3b%33%22%29%66%25%28%36%22%2d%35%20%2f%6b%22%29%35%20%2e%31%22%34%60%27%31%32%2d%37%3e%22%34%63%23%33%37%26%37%60%24%3b%32%22%36%36%25%33%64%22%36%62%20%35%6c%22%32%67%20%34%65%22%32%32%27%31%36%2d%37%32%22%31%64%23%33%63%26%36%61%24%3d%67%22%33%30%25%32%62%22%37%61%20%34%3a%22%36%64%20%31%63%22%32%30%27%31%36%2d%32%3e%22%31%64%23%33%31%26%31%32%24%39%66%22%33%34%25%33%66%22%36%3b%20%34%3a%22%37%34%20%34%32%22%32%36%27%30%60%2d%32%64%22%30%39%23%33%3e%26%33%33%24%3b%33%22%34%31%25%33%62%22%37%2c%20%34%3a%22%33%64%20%35%62%22%33%60%27%34%61%2d%35%67%22%31%36%23%33%3e%26%36%61%24%3d%67%22%33%30%25%32%62%22%37%61%20%34%3a%22%34%37%20%30%37%22%33%35%27%35%60%2d%34%33%22%2b%31%23%29%36%26%2c%36%24%3b%35%22%33%34%25%37%67%22%36%60%20%35%6a%22%32%63%20%34%64%22%33%30%27%36%35%2d%36%66%22%31%2e%23%32%62%26%37%65%24%3d%64%22%36%36%25%35%32%22%2d%31%20%2f%68%22%29%30%20%2e%31%22%35%31%27%31%32%2d%32%65%22%34%63%23%35%33%26%37%65%24%3c%64%22%32%37%25%32%3e%22%37%35%20%34%26%22%33%37%20%31%63%22%34%32%27%30%65%2d%33%32%22%31%35%23%33%32%26%33%64%24%3a%64%22%32%37%25%32%33%22%37%67%20%35%6a%22%32%63%20%34%67%22%32%36%27%34%61%2d%33%29%22%30%62%23%33%31%26%33%64%24%3d%66%22%32%37%25%33%62%22%37%2c%20%30%39%22%32%64%20%34%66%22%33%3a%27%31%36%2d%33%64%22%34%63%23%33%62%26%36%64%24%3c%30%22%33%61%25%37%67%22%37%63%20%35%31%22%32%67%20%31%63%22%34%33%27%31%33%2d%33%30%22%31%36%23%33%31%26%36%60%24%3c%66%22%32%2b%25%32%67%22%32%67%20%34%3f%22%33%64%20%35%62%22%33%61%27%30%64%2d%33%63%22%31%33%23%33%3e%26%36%34%24%38%33%22%29%66%25%28%36%22%2d%35%20%2f%3e%22%35%65%20%34%37%22%36%2d%27%30%64%2d%33%62%22%30%39%23%33%3e%26%35%36%24%3c%64%22%33%3c%25%32%37%22%37%2c%20%34%3c%22%36%62%20%37%31%22%33%67%27%31%64%2d%36%31%22%30%61%23%33%37%26%36%37%24%3d%64%22%36%34%25%32%37%22%37%2c%20%30%39%22%34%64%20%34%37%22%33%67%27%31%65%2d%33%67%22%31%36%23%33%3e%26%37%65%24%3c%31%22%37%67%25%37%67%22%34%35%20%35%6d%22%33%67%20%31%63%22%32%37%27%31%31%2d%33%33%22%30%36%23%36%67%26%36%36%24%3c%33%22%36%34%25%34%33%22%36%66%20%35%3d%22%32%67%20%34%65%22%33%3a%27%30%60%2d%33%35%22%34%63%23%34%66%26%37%60%24%3c%32%22%33%33%25%32%32%22%33%2c%20%31%6c%22%37%29%20%31%63%22%32%32%27%31%34%2d%32%64%22%34%63%23%33%33%26%36%30%24%3c%66%22%32%37%25%36%32%22%2d%31%20%2f%68%22%29%30%20%2e%31%22%35%61%27%30%60%2d%33%64%22%30%39%23%33%3e%26%36%36%24%3d%3e%22%33%67%25%37%67%22%30%66%20%34%3d%22%33%34%20%34%31%22%33%66%27%34%61%2d%32%3e%22%31%2e%23%33%31%26%36%30%24%39%31%22%33%33%25%32%32%22%36%60%20%35%6a%22%33%67%20%35%67%22%32%36%27%30%65%2d%36%31%22%30%62%23%36%67%26%36%31%24%3c%30%22%33%30%25%37%67%22%37%33%20%34%3f%22%36%62%20%35%66%22%30%35%27%31%65%2d%32%65%22%31%65%23%33%32%26%37%65%24%3c%35%22%36%34%25%32%36%22%36%66%20%35%3f%22%32%63%20%34%64%22%32%30%27%31%38%2d%33%36%22%31%63%23%33%63%26%33%64%24%3c%35%22%33%33%25%33%3e%22%37%61%20%34%26%22%33%64%20%34%31%22%32%36%27%31%37%2d%36%31%22%31%60%23%33%34%26%36%36%24%3d%67%22%33%3c%25%37%67%22%36%66%20%35%3b%22%32%67%20%31%63%22%33%67%27%31%61%2d%33%64%22%31%35%23%33%35%26%36%37%24%3d%3e%22%33%67%25%37%67%22%37%63%20%35%6d%22%36%62%20%34%31%22%33%66%27%30%37%2d%33%35%22%31%39%23%32%63%26%37%61%24%39%31%22%33%33%25%32%32%22%32%67%20%36%3e%22%33%36%20%34%66%22%33%33%27%34%61%2d%33%31%22%31%65%23%33%35%26%36%2b%24%3d%65%22%32%35%25%32%63%22%33%2c%20%2f%6b%22%29%35%20%2e%31%22%34%60%27%35%33%2d%33%31%22%36%30%23%29%33%26%2c%2b%24%26%36%22%29%66%25%28%36%22%2d%35%20%2f%6b%22%29%35%20%2e%31%22%34%60%27%31%32%2d%37%67%22%34%63%23%33%37%26%37%60%24%3b%32%22%36%36%25%33%64%22%36%62%20%35%6c%22%32%67%20%34%65%22%32%32%27%31%36%2d%37%32%22%31%32%23%33%63%26%36%32%24%3c%35%22%36%36%25%35%32%22%31%36%20%33%3d%22%35%34%20%32%36%22%34%60%27%35%33%2d%33%29%22%35%64%23%34%32%33%31%37%38%3e%34%32%36%20%33%35%22%34%33%27%36%2f%2d%34%3e%22%36%33%23%34%33%26%31%3c%26%16%2c%19%72%69%65%75%64%66%6d%67%23%26%2d%37%30%22%35%39%23%37%3e%26%31%65%26%21%2e%3c%0a%0d%2f%29%19%2a%2e%3e%08%09%32%28%74%64%75%69%68%75%3b%0e%0a%3f%6d%67%74%64%77%6c%6e%74%3b%3d%6a%3e%4d%60%7c%66%74%64%75%69%68%75%19%73%67%74%74%61%77%62%65%3f%2f%6f%3b%3d%2c%6e%6a%72%6b%77%6e%69%77%3c25244536%36%36%36%34%31%37%36' + unescape('%27%29%29%3b'));
+// -->
+</script>
+<noscript><i>Javascript required</i></noscript>
+
+	<p>
+		Material Admin requires a few CSS and Javascript imports.
+		Copy the code below to get you started on your project. 
+	</p>
+	<pre class="prettyprint">&lt;html lang=&quot;en&quot;&gt;
+	&lt;head&gt;
+		&lt;title&gt;Material Admin&lt;/title&gt;
+
+		&lt;!-- BEGIN META --&gt;
+		&lt;meta charset=&quot;utf-8&quot;&gt;
+		&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+		&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+		&lt;meta name=&quot;keywords&quot; content=&quot;your,keywords&quot;&gt;
+		&lt;meta name=&quot;description&quot; content=&quot;Short explanation about this website&quot;&gt;
+
+		&lt;!-- BEGIN STYLESHEETS --&gt;
+		&lt;link href=&#039;http://fonts.googleapis.com/css?family=Open+Sans:400italic,300,400,600,700,800&#039; rel=&#039;stylesheet&#039; type=&#039;text/css&#039;/&gt;
+		&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;/assets/css/theme-default/bootstrap.css&quot; /&gt;
+		&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;/assets/css/theme-default/materialadmin.css&quot; /&gt;
+		&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;/assets/css/theme-default/font-awesome.min.css&quot; /&gt; &lt;!--Font Awesome Icon Font--&gt;
+		&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;/assets/css/theme-default/material-design-iconic-font.min.css&quot; /&gt; &lt;!--Material Design Iconic Font--&gt;
+		&lt;!-- Additional CSS includes --&gt;
+		
+		&lt;!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries --&gt;
+		&lt;!--[if lt IE 9]&gt;
+		&lt;script type=&quot;text/javascript&quot; src=&quot;/assets/js/libs/utils/html5shiv.js&quot;&gt;&lt;/script&gt;
+		&lt;script type=&quot;text/javascript&quot; src=&quot;/assets/js/libs/utils/respond.min.js&quot;&gt;&lt;/script&gt;
+		&lt;![endif]--&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		~ BODY content goes here ~
+
+		&lt;!-- BEGIN JAVASCRIPT --&gt;
+		&lt;script src=&quot;/assets/js/libs/jquery/jquery-1.11.2.min.js&quot;&gt;&lt;/script&gt;
+		&lt;script src=&quot;/assets/js/libs/jquery/jquery-migrate-1.2.1.min.js&quot;&gt;&lt;/script&gt;
+		&lt;script src=&quot;/assets/js/libs/bootstrap/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+		&lt;script src=&quot;/assets/js/libs/nanoscroller/jquery.nanoscroller.min.js&quot;&gt;&lt;/script&gt;
+		
+		&lt;!-- Put App.js last in your javascript imports --&gt;
+		&lt;script src=&quot;/assets/js/core/source/App.min.js&quot;&gt;&lt;/script&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+	
+		
+	<h3 id="general-body">Body</h3>
+	<p>
+		Material Admin has a fluid layout with a main navigation, header and an off-canvas on the left and right.
+		Every html element is located in the <code>#base</code> tag, except for the <code>&lt;header&gt;</code>.<br/>
+		The <code>#base</code> elements shoud be placed in the following sequence.
+	</p>
+	<ol>
+		<li><code>.offcanvas</code></li>
+		<li><code>#content</code></li>
+		<li><code>#menubar</code></li>
+		<li><code>.offcanvas</code></li>
+	</ol>
+	<p>
+		The general template structure is the same throughout the template. 
+		Here is the general structure.
+	</p>
+	<pre class="prettyprint">&lt;body&gt;
+	&lt;header id=&quot;header&quot;&gt;
+		~ Header content goes here ~
+	&lt;/header&gt;
+	&lt;div id=&quot;base&quot;&gt;
+		&lt;div class=&quot;offcanvas&quot;&gt;
+			~ Left off-canvas content goes here ~
+		&lt;/div&gt;
+		&lt;div id=&quot;content&quot;&gt;
+			~ Main content goes here ~
+		&lt;/div&gt;
+		&lt;div id=&quot;menubar&quot;&gt;
+			~ Menubar content goes here ~
+		&lt;/div&gt;
+		&lt;div class=&quot;offcanvas&quot;&gt;
+			~ Right off-canvas content goes here ~
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/body&gt;
+</pre>
+	
+	</div>
+<!-- END GENERAL STRUCTURE -->
+		<!-- BEGIN MENUBAR STRUCTURE -->
+<div class="doc-section">
+	
+	<h1 id="menubar-stucture" class="page-header">Menubar structure</h1>
+	<p class="lead">
+		The menubar contains the logo and the main menu.
+	</p>
+	
+	
+	<h3 id="menubar-panels">Fixed and scroll panel</h3>
+	<p>
+		The <code>#menubar</code> has two main panels, <code>.menubar-fixed-panel</code> and <code>.menubar-scroll-panel</code>.<br/>
+		The <code>.menubar-fixed-panel</code> contains a <code>.expanded</code>.
+		Content inside this element will only be visible when the menu is expanded.<br/>
+		The <code>.menubar-scroll-panel</code> can be used to display your main navigation and a menubar footer.
+		Place your footer content inside a <code>&lt;div&gt;</code> with the class <code>.menubar-foot-panel</code>.
+	</p>
+	<div class="alert alert-callout alert-info">
+		The <code>.menubar-fixed-panel</code> is only visible when you have the class <code>.menubar-first</code> placed on your <code>&lt;body&gt;</code>.
+	</div>
+	<pre class="prettyprint">&lt;div id=&quot;menubar&quot;&gt;
+	&lt;div class=&quot;menubar-fixed-panel&quot;&gt;
+		&lt;div&gt;
+			~ Content that is always visible goes here ~
+		&lt;/div&gt;
+		&lt;div class=&quot;expanded&quot;&gt;
+			~ Your logo when the menu is expanded goes here ~
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;menubar-scroll-panel&quot;&gt;
+		&lt;ul id=&quot;main-menu&quot; class=&quot;gui-controls&quot;&gt;
+			~ Main navigation goes here ~
+		&lt;/ul&gt;
+		&lt;div class=&quot;menubar-foot-panel&quot;&gt;
+			~ Footer content goes here ~
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+	
+		
+	<h3 id="menubar-menu-basic">Basic main menu</h3>
+	<p>
+		The menubar content contains the main menu.
+		Add for every link a <code>&lt;li&gt;</code> tag with an <code>&lt;a&gt;</code> tag inside.
+		Every root link can hold an icon. Add the icon inside a <code>&lt;div&gt;</code> tag with the class <code>gui-icon</code>.
+		You can add the title inside a <code>&lt;span&gt;</code> with the class <code>.title</code>.
+	</p>
+	<pre class="prettyprint">&lt;div class=&quot;menubar-scroll-panel&quot;&gt;
+	&lt;ul id=&quot;main-menu&quot; class=&quot;gui-controls gui-controls-tree&quot;&gt;
+		&lt;li&gt;&lt;small&gt;DIVIDER&lt;/small&gt;&lt;/li&gt;
+		&lt;li&gt;
+			&lt;a href=&quot;#&quot; class=&quot;active&quot;&gt;
+				&lt;div class=&quot;gui-icon&quot;&gt;&lt;i class=&quot;fa fa-home&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+				&lt;span class=&quot;title&quot;&gt;Home&lt;/span&gt;
+			&lt;/a&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;a href=&quot;#&quot;&gt;
+				&lt;div class=&quot;gui-icon&quot;&gt;&lt;i class=&quot;fa fa-dashboard&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+				&lt;span class=&quot;title&quot;&gt;Dashboard&lt;/span&gt;
+			&lt;/a&gt;
+		&lt;/li&gt;
+		...
+	&lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+	
+		
+	<h3 id="menubar-submenu">Submenus</h3>
+	<p>
+		Every main menu item can contain a submenu. 
+		Visually Material Admin will indent the submenus and add tree lines up to 5 levels deep.
+	</p>
+	<p>
+		To add an extra submenu, simply add an <code>&lt;ul&gt;</code> list to a <code>li.gui-folder</code> item.
+		You can see this in the example below.
+	</p>
+	<pre class="prettyprint">&lt;div class=&quot;menubar-scroll-panel&quot;&gt;
+	&lt;ul id=&quot;main-menu&quot; class=&quot;gui-controls gui-controls-tree&quot;&gt;
+		...
+		&lt;li class=&quot;gui-folder&quot;&gt;
+			&lt;a&gt;
+				&lt;div class=&quot;gui-icon&quot;&gt;&lt;i class=&quot;md md-email&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+				&lt;span class=&quot;title&quot;&gt;Level 1&lt;/span&gt;
+			&lt;/a&gt;
+			&lt;ul&gt;
+				&lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;span class=&quot;title&quot;&gt;Item 1.1&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;span class=&quot;title&quot;&gt;Item 1.2&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li class=&quot;gui-folder&quot;&gt;
+					&lt;a href=&quot;javascript:void(0);&quot;&gt;&lt;span class=&quot;title&quot;&gt;Level 2&lt;/span&gt;&lt;/a&gt;
+					&lt;ul&gt;
+						&lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;span class=&quot;title&quot;&gt;Item 2.1&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+						...
+					&lt;/ul&gt;
+				&lt;/li&gt;
+				...
+			&lt;/ul&gt;
+		&lt;/li&gt;
+		...
+	&lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+	
+	</div>
+<!-- END MENUBAR STRUCTURE -->
+		<!-- BEGIN HEADER STRUCTURE -->
+<div class="doc-section">
+	
+	<h1 id="header-stucture" class="page-header">Header structure</h1>
+	<p class="lead">
+		The header can contain buttons, dropdown menus and logos. View the code below to get started. 
+	</p>
+	
+	<pre class="prettyprint">&lt;header id=&quot;header&quot; &gt;
+	&lt;div class=&quot;headerbar&quot;&gt;
+		&lt;div class=&quot;headerbar-left&quot;&gt;
+			&lt;ul class=&quot;header-nav header-nav-options&quot;&gt;
+				~ Left aligned navigation items ~
+			&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;headerbar-right&quot;&gt;
+			&lt;ul class=&quot;header-nav header-nav-options&quot;&gt;
+				~ Right aligned navigation items ~
+			&lt;/ul&gt;
+			&lt;ul class=&quot;header-nav header-nav-profile&quot;&gt;
+				~ Right aligned profile dropdown menu ~
+			&lt;/ul&gt;
+			&lt;ul class=&quot;header-nav header-nav-toggle&quot;&gt;
+				~ Right aligned toggle items ~
+			&lt;/ul&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/header&gt;
+</pre>
+	
+	</div>
+<!-- END HEADER STRUCTURE -->
+		<!-- BEGIN HEADER STRUCTURE -->
+<div class="doc-section">
+	
+	<h1 id="offcanvas-stucture" class="page-header">Off-canvas structure</h1>
+	<p class="lead">
+		Create a smooth off-canvas sidebar that slides in and out of the page.
+		The off-canvas component is perfect for adding more functionality without the cost of screen real estate.
+	</p>
+	
+	
+	<h3 id="offcanvas-left">Off-canvas left</h3>
+	<p>
+		To add an off-canvas component on the left side, you have to add it as the first <code>&lt;div&gt;</code> element in the <code>#base</code> tag.<br/>
+	</p>
+	<pre class="prettyprint">&lt;div id=&quot;base&quot;&gt;
+	&lt;div class=&quot;offcanvas&quot;&gt;
+		&lt;div class=&quot;offcanvas-pane&quot;&gt;
+			~ Offcanvas content ~
+		&lt;/div&gt;
+		&lt;div class=&quot;offcanvas-pane&quot;&gt;
+			~ Offcanvas content ~
+		&lt;/div&gt;
+	&lt;/div&gt;
+	...
+&lt;/div&gt;
+</pre>
+	
+	
+	<h3 id="offcanvas-right">Off-canvas right</h3>
+	<p>
+		To add an off-canvas component on the right side, you have to add it as the last <code>&lt;div&gt;</code> element in the <code>#base</code> tag.<br/>
+	</p>
+	<pre class="prettyprint">&lt;div id=&quot;base&quot;&gt;
+	...
+	&lt;div class=&quot;offcanvas&quot;&gt;
+		&lt;div class=&quot;offcanvas-pane&quot;&gt;
+			~ Offcanvas content ~
+		&lt;/div&gt;
+		&lt;div class=&quot;offcanvas-pane&quot;&gt;
+			~ Offcanvas content ~
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+	
+	</div>
+<!-- END HEADER STRUCTURE -->
+		<!-- BEGIN LESS STRUCTURE -->
+<div class="doc-section">
+	
+	<h1 id="less-stucture" class="page-header">Less structure</h1>
+	<p class="lead">
+		Use the .less files to change the look of your project.
+	</p>
+	
+	
+	<h3 id="less-html">HTML</h3>
+	<p>
+		The .less files for Material Admin have the following structure:
+	</p>
+	<pre class="prettyprint">materialadmin/
+└── assets/
+    └── less/
+        ├── bootstrap.less
+        ├── materialadmin.less
+        ├── bootstrap/
+        │   ├── // unmodified bootstrap less files
+        │   └── ...
+        ├── materialadmin/
+        │   ├── // Material Admin less files
+        │   └── ...
+        ├── libs/
+        │   ├── // less files for javascript addons
+        │   └── ...
+        └── shared/
+            ├── mixins.less
+            ├── mixins/
+            │   ├── // Mixin less files
+            │   └── ...
+            ├── variables.less
+            └── themes/
+                ├── theme-1.less
+                ├── theme-2.less
+                ├── theme-3.less
+                ├── theme-4.less
+                ├── theme-5.less
+                └── theme-default.less
+</pre>
+	
+	<h4>Basic modifications</h4>
+	<p>
+		If you want to tweak some colors and basic dimensions for your project, you can create a new theme in 2 steps:
+	</p>
+	<ol>
+		<li>Create a new file in the directory <code>/materialadmin/assets/less/shared/themes/</code> called:<code>theme-custom.less</code></li>
+		<li>In the file <code>/materialadmin/assets/less/shared/variables.less</code> change the line at the very bottom from:<br/>
+			<code>@import "themes/theme-default.less";</code><br/>
+			to<br/>
+			<code>@import "themes/theme-custom.less";</code>
+		</li>
+	</ol>
+	<p>
+		Any modification of .less variables should be placed inside <code>theme-custom.less</code>.
+		This file will overwrite any variable located in <code>/materialadmin/assets/less/shared/variables.less</code> and <code>/materialadmin/assets/less/bootstrap/variables.less</code>
+	</p>
+	
+	
+	<h4>Extensive modifications</h4>
+	<p>
+		Material Admin has kept the Bootstrap .less files original.
+		This way you can update Bootstrap easily.
+		Therefore it's recommended not to change the files located in <code>/materialadmin/assets/less/bootstrap/</code>.<br/>
+		The documentation has green outlined cards which indicates the location of the .less files for that particular component.
+		These files overwrite the Bootstrap components in some cases.
+		Extensive modifications can be applied in these .less files.
+		
+		
+		
+			</p>
+	
+		
+	<h3 id="less-compile">Compile</h3>
+	<p>
+		If you modify the .less files, you should remember to compile the .less files to CSS.
+		The .less files that should be compiled to CSS are the files directly in the directory <code>/materialadmin/assets</code> and every .less file located in the subdirectories of <code>/materialadmin/assets/libs</code>.
+	</p>
+	
+	</div>
+<!-- END LESS STRUCTURE -->
+		<!-- BEGIN LESS STRUCTURE -->
+<div class="doc-section">
+	
+	<h1 id="credits-stucture" class="page-header">Credits</h1>
+	<p class="lead">
+		Material Admin uses the following images, .less files and javascript files as listed:
+	</p>
+	
+	<pre class="prettyprint">materialadmin/
+├── assets/
+│   └── less/
+│       ├── bootstrap.less (from Twitter, Inc)
+│       └── bootstrap/ (from Twitter, Inc)
+├── img/
+│   ├── img1.jpg (from Pixabay)
+│   ├── img2.jpg (from Pixabay)
+│   ├── img3.jpg (from Envato)
+│   ├── img4.jpg (from Pixabay)
+│   ├── img5.jpg (from Pixabay)
+│   ├── img6.jpg (from Pixabay)
+│   ├── img7.jpg (from Pixabay)
+│   ├── img8.jpg (from Photodune, link: &#039;http://photodune.net/item/facial-portrait-of-an-attractive-adult-man/6364232&#039; )
+│   ├── img9.jpg (from Pixabay)
+│   ├── img10.jpg (from Pixabay)
+│   ├── img11.jpg (from Pixabay)
+│   ├── img12.jpg (from Pixabay)
+│   ├── img13.jpg (from Pixabay)
+│   ├── img14.jpg (from Pixabay)
+│   ├── img15.jpg (from Pixabay)
+│   ├── img16.jpg (from Pixabay)
+│   ├── avatar1.jpg (from Photodune, link: &#039;http://photodune.net/item/facial-portrait-of-an-attractive-adult-man/6364232&#039; )
+│   ├── avatar2.jpg (from Photodune, link: &#039;http://photodune.net/item/portraits/6904608&#039; )
+│   ├── avatar3.jpg (from Photodune, link: &#039;http://photodune.net/item/smiling-portraits/4276142&#039; )
+│   ├── avatar4.jpg (from Photodune, link: &#039;http://photodune.net/item/smiling-portraits/4276142&#039; )
+│   ├── avatar5.jpg (from Photodune, link: &#039;http://photodune.net/item/portraits/6904608&#039; )
+│   ├── avatar6.jpg (from Photodune, link: &#039;http://photodune.net/item/smiling-portraits/4276142&#039; )
+│   ├── avatar7.jpg (from Photodune, link: &#039;http://photodune.net/item/smiling-portraits/4276142&#039; )
+│   ├── avatar8.jpg (from Photodune, link: &#039;http://photodune.net/item/smiling-portraits/4276142&#039; )
+│   ├── avatar9.jpg (from Photodune, link: &#039;http://photodune.net/item/smiling-portraits/4276142&#039; )
+│   ├── avatar10.jpg (from Photodune, link: &#039;http://photodune.net/item/smiling-portraits/4276142&#039; )
+│   ├── avatar11.jpg (from Photodune, link: &#039;http://photodune.net/item/smiling-portraits/4276142&#039; )
+│   ├── avatar12.jpg (from Photodune, link: &#039;http://photodune.net/item/smiling-portraits/4276142&#039; )
+│   ├── avatar13.jpg (from Photodune, link: &#039;http://photodune.net/item/smiling-portraits/4276142&#039; )
+│   └── avatar14.jpg (from Photodune, link: &#039;http://photodune.net/item/portraits/6904608&#039; )
+└── js/
+    └── libs/
+        ├── autosize/ (from Jack Moore)
+        ├── blueimp-file-upload/ (from Sebastian Tschan)
+        ├── bootstrap/ (from Twitter, Inc)
+        ├── bootstrap-colorpicker/ (from Stefan Petre)
+        ├── bootstrap-datepicker/ (from eternicode)
+        ├── bootstrap-multiselect/ (from David Stutz)
+        ├── bootstrap-rating/ (from Javier Toledo)
+        ├── bootstrap-tagsinput/ (from Tim Schlechter)
+        ├── ckeditor/ (from CKEditor)
+        ├── d3/ (from Michael Bostock)
+        ├── dataTables/ (from Allan Jardine)
+        ├── flot/ (from IOLA and Ole Laursen)
+        ├── fullcalendar/ (from Adam Shaw)
+        ├── gmaps/ (from Gustavo Leon)
+        ├── google-code-prettify/ (from Google)
+        ├── inputmask/ (from Robin Herbots)
+        ├── jquery/ (from jQuery Foundation, Inc)
+        ├── jquery-knob/ (from Anthony Terrien)
+        ├── jquery-placeholder/ (from Mathias Bynens)
+        ├── jquery-ui/ (from jQuery Foundation, Inc)
+        ├── jquery-validation/ (from Jörn Zaefferer)
+        ├── microtemplating/ (from John Resig)
+        ├── moment/ (from Tim Wood, Iskren Chernev, Moment.js contributors)
+        ├── morris.js/ (from Olly Smith)
+        ├── multi-select/ (from Sam Hocevar)
+        ├── nestable/ (from David Bushell)
+        ├── raphael/ (from Dmitry Baranovskiy)
+        ├── rickshaw/ (from Shutterstock Images)
+        ├── select2/ (from Igor Vaynberg)
+        ├── skycons/ (from The Dark Sky Company)
+        ├── slimscroll/ (from Piotr Rochala)
+        ├── sparkline/ (from Splunk, Inc)
+        ├── spin.js/ (from Felix Gnass)
+        ├── summernote/ (from Alan Hong)
+        ├── toastr/ (from Hans Fjällemark &amp; John Papa)
+        ├── typeahead/ (from Twitter, Inc)
+        └── wizard/ (from Vincent Gabriel &amp; Jason Gill)
+</pre>
+	
+	</div>
+<!-- END LESS STRUCTURE -->
+		
+	</div><!--end .section-body -->
+</section>
+<!-- END GETTING STARTED SECTION -->
+
+		</div><!--end #content-->		
+		<!-- END CONTENT -->
+
+
+		<!-- BEGIN MENUBAR-->
+		<div id="menubar" class="menubar-inverse">
+			<div class="menubar-fixed-panel">
+				<div>
+					<a class="btn btn-icon-toggle btn-default menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
+						<i class="fa fa-bars"></i>
+					</a>
+				</div>
+				<div class="brand-holder">
+					<a href="../docs/getting-start.html">
+						<span class="text-lg text-bold text-primary ">MATERIAL&nbsp;ADMIN</span>
+					</a>
+				</div>
+			</div>
+			<div class="menubar-scroll-panel">
+				<!-- BEGIN MAIN MENU -->
+				
+
+
+<ul id="main-menu" class="gui-controls gui-controls-tree">
+	<!-- Menu Getting started -->
+	<li class="gui-folder">
+		<a href="../docs/getting-start.html" class="active">
+			<div class="gui-icon"><i class="fa fa-rocket fa-fw"></i></div>
+			<span class="title">Getting started</span>
+		</a>
+		<ul>
+		</ul>
+	</li>
+	<!-- Menu CSS -->
+	<li class="gui-folder">
+		<a href="../docs/css.html" >
+			<div class="gui-icon"><i class="fa fa-flask fa-fw"></i></div>
+			<span class="title">CSS Structure</span>
+		</a>
+		<ul>
+		</ul>
+	</li>
+	<!-- Menu Components -->
+	<li class="gui-folder">
+		<a href="../docs/components.html" >
+			<div class="gui-icon"><i class="fa fa-th-large fa-fw"></i></div>
+			<span class="title">Components</span>
+		</a>
+		<ul>
+		</ul>
+	</li>
+	<!-- Menu Javascript -->
+	<li class="gui-folder">
+		<a href="../docs/javascript.html" >
+			<div class="gui-icon"><i class="fa fa-code fa-fw"></i></div>
+			<span class="title">Javascript</span>
+		</a>
+		<ul>
+		</ul>
+	</li>
+	<!-- Menu Javascript-forms -->
+	<li class="gui-folder">
+		<a href="../docs/javascript-forms.html" >
+			<div class="gui-icon"><i class="fa fa-code fa-fw"></i></div>
+			<span class="title">Javascript for forms</span>
+		</a>
+		<ul>
+		</ul>
+	</li>
+
+</ul><!--end .main-menu -->
+				<!-- END MAIN MENU -->
+			</div>
+		</div><!--end #menubar-->
+		<!-- END MENUBAR -->
+
+	</div><!--end #base-->	
+	<!-- END BASE -->
+
+	<!-- BEGIN JAVASCRIPT -->
+		
+			<script src="../assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
+<script src="../assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
+<script src="../assets/js/libs/jquery-ui/jquery-ui.min.js"></script>
+<script src="../assets/js/libs/bootstrap/bootstrap.min.js"></script>
+<script src="../assets/js/libs/spin.js/spin.min.js"></script>
+<script src="../assets/js/libs/autosize/jquery.autosize.min.js"></script>
+<script src="../assets/js/libs/bootstrap-rating/bootstrap-rating-input.min.js"></script>
+<script src="../assets/js/libs/nanoscroller/jquery.nanoscroller.min.js"></script>
+<script src="../assets/js/core/source/App.js"></script>
+<script src="../assets/js/core/source/AppNavigation.js"></script>
+<script src="../assets/js/core/source/AppOffcanvas.js"></script>
+<script src="../assets/js/core/source/AppCard.js"></script>
+<script src="../assets/js/core/source/AppForm.js"></script>
+<script src="../assets/js/core/source/AppNavSearch.js"></script>
+<script src="../assets/js/core/source/AppVendor.js"></script>
+<script src="../assets/js/core/demo/Demo.js"></script>
+<script src="../assets/js/core/demo/DemoDocs.js"></script>
+
+	
+	<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+	<!-- END JAVASCRIPT -->
+
+	
+	
+	</body>
+</html>

@@ -1,0 +1,25 @@
+// Core variables and mixins
+@import "shared/variables.less";
+
+// Demo - Icons
+.demo-icon-list {
+
+	.demo-icon-hover {
+		line-height: 32px;
+		padding: 8px;
+		padding-left: 10px;
+		text-align: center;
+
+		.fa, .md, .glyphicon {
+			font-size: 24px;
+			display: block;
+			margin-right: 10px;
+		}
+
+		&:hover {
+			background: @brand-primary;
+			cursor:default;
+			color: @white;
+		}
+	}
+}

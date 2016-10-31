@@ -1,0 +1,267 @@
+//
+// Typography
+// --------------------------------------------------
+
+
+// Weights
+// -------------------------
+
+.text-light				{ font-weight: @weight-light; }
+.text-normal			{ font-weight: @weight-normal; }
+.text-medium, strong	{ font-weight: @weight-medium; }
+.text-bold				{ font-weight: @weight-bold; }
+.text-ultra-bold		{ font-weight: @weight-ultra-bold; }
+
+h1 > strong, h2 > strong, h3 > strong, h4 > strong, h5 > strong, h6 > strong {
+	font-weight: @weight-bold;
+}
+
+h3, h4, h5, h6 {
+	font-weight: @weight-medium;
+}
+
+.text-display-lines {
+	line-height: 1.1;
+
+
+	span, p, h1, h2, h3, h4, h5, h6 {
+		position: relative;
+		&:before,
+			&:after {
+			content: '';
+			position: absolute;
+			display: block;
+			height: 1px;
+			width: 100%;
+			background: #ff00cc;
+		}
+		&:before {
+			top: 0;
+		}
+		&:after {
+			bottom: 0;
+		}
+	}
+}
+
+
+// Sizes
+// -------------------------
+
+.text-xs {		font-size: 75%; }
+.text-sm {		font-size: 85%; }
+.text-lg {		font-size: 125%; }
+.text-xl {		font-size: 180%; }
+.text-xxl {		font-size: 225%; }
+.text-xxxl {	font-size: 330%; }
+.text-xxxxl {	font-size: 500%; }
+
+
+// Body text
+// -------------------------
+
+p {
+	letter-spacing: 0.1px;
+}
+
+
+// Text columns
+// -------------------------
+
+.text-columns-2 {
+	.content-columns(2);
+}
+.text-columns-3 {
+	.content-columns(3);
+}
+.text-columns-4 {
+	.content-columns(4);
+}
+
+.text-columns-sm {	.content-columns(4); }
+.text-columns {		.content-columns(3); }
+.text-columns-lg {	.content-columns(2); }
+
+@media (max-width: @screen-md-min) {
+	.text-columns-sm {	.content-columns(3); }
+	.text-columns {		.content-columns(2); }
+	.text-columns-lg {	.content-columns(1); }
+}
+@media (max-width: @screen-sm-min) {
+	.text-columns-sm {	.content-columns(2); }
+	.text-columns {		.content-columns(1); }
+	.text-columns-lg {	.content-columns(1); }
+}
+@media (max-width: @screen-xs-min) {
+	.text-columns-sm {	.content-columns(1); }
+	.text-columns {		.content-columns(1); }
+	.text-columns-lg {	.content-columns(1); }
+}
+
+
+// Line heights
+// -------------------------
+
+.line-height-normal { line-height: @line-height-base; }
+.line-height-lg { line-height: (@line-height-base + 0.3); }
+.line-height-xl { line-height: (@line-height-base + 0.55); }
+.line-height-xxl { line-height: (@line-height-base + 0.9); }
+
+
+// Caption
+// -------------------------
+
+.text-caption {
+	display: block;
+	margin-bottom: @grid-gutter-width + 5px;
+	font-size: @caption-size;
+}
+.card ~ .text-caption,
+.panel-group ~ .text-caption {
+	margin-top: -15px;
+}
+
+// Misc
+// -------------------------
+
+.no-linebreak { white-space: nowrap; }
+
+.text-shadow {
+	text-shadow: 0 1px 2px #000000;
+}
+
+
+// Blockquote override
+// -------------------------
+
+blockquote small { 
+	color: inherit;
+	opacity: .7;
+}
+
+
+// Article
+// -------------------------
+
+article,
+p {
+	img.pull-right { 
+		margin-left: 10px;
+		margin-bottom: 2px;
+	}
+	img.pull-left { 
+		margin-right: 10px;
+		margin-bottom: 2px;
+	}
+}
+
+
+// List
+// -------------------------
+
+ul, ol {
+	padding-left: 16px;
+
+	&.list-divided  {
+		li {
+			margin-top: 16px;
+
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+	}
+}
+ol {
+	list-style-position: inside;
+	padding-left: 0;
+}
+
+
+// Pageheader
+// -------------------------
+
+.page-header {
+	border-bottom-color: rgba(0,0,0,.3);
+}
+.page-header.no-border {
+	border: none;
+	margin-bottom: 10px;
+	padding-bottom: 0;
+}
+
+
+// Text divider
+// -------------------------
+
+.text-divider {
+	display: table;
+	width: 100%;
+	margin: 13px 0 20px 0;
+	opacity: 0.5;
+
+	span {
+		display: table-cell;
+		padding: 0 10px;
+		position: relative;
+		bottom: -7px;
+		white-space: nowrap;
+	}
+	&:before,
+		&:after {
+		content: '';
+		width: 50%;
+		display: table-cell;
+		border-bottom: 1px solid fade(@black, 30);
+	}
+}
+
+
+// Horizontal description lists
+// -------------------------
+
+.dl-horizontal.dl-icon {
+	dd {
+		margin-bottom: 15px;
+	}
+	@media (min-width: @grid-float-breakpoint) {
+		dt {
+			width: 30px;
+			text-align: left;
+			padding-top: 5px;
+		}
+		dd {
+			margin-left: 35px;
+		}
+	}
+}
+.dl-horizontal {
+	dd.full-width {
+		margin-left: 0;
+	}
+}
+
+
+// Variants
+// -------------------------
+
+// Contextual emphasis
+.text-default-bright	{ .text-emphasis-variant(@brand-default-bright); }
+.text-default-light		{ .text-emphasis-variant(@gray-light); }
+.text-default			{ .text-emphasis-variant(@text-color); }
+.text-default-dark		{ .text-emphasis-variant(@brand-default-dark); }
+
+.text-primary-bright	{ .text-emphasis-variant(@brand-primary-bright); }
+.text-primary-light		{ .text-emphasis-variant(@brand-primary-light); }
+.text-primary			{ .text-emphasis-variant(@brand-primary); }
+.text-primary-dark		{ .text-emphasis-variant(@brand-primary-dark); }
+
+.text-accent-bright		{ .text-emphasis-variant(@brand-accent-bright); }
+.text-accent-light		{ .text-emphasis-variant(@brand-accent-light); }
+.text-accent			{ .text-emphasis-variant(@brand-accent); }
+.text-accent-dark		{ .text-emphasis-variant(@brand-accent-dark); }
+
+.text-info				{ .text-emphasis-variant(@brand-info); }
+.text-warning			{ .text-emphasis-variant(@brand-warning); }
+.text-danger			{ .text-emphasis-variant(@brand-danger); }
+.text-success			{ .text-emphasis-variant(@brand-success); }

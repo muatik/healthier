@@ -1,0 +1,298 @@
+//
+// Tabbar
+// --------------------------------------------------
+
+
+// Tabs
+// -------------------------
+
+// Give the tabs something to sit on
+.nav-tabs {
+	> li {
+
+		// Actual tabs (as links)
+		> a {
+			margin-right: 2px;
+			//padding: @nav-link-padding;
+			line-height: @line-height-base;
+			border: none;
+			border-bottom: 2px solid transparent;
+			border-radius: none;
+			opacity: 0.55;
+			font-weight: @weight-medium;
+			text-transform: uppercase;
+
+			&:hover {
+				border-color: @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color @nav-tabs-border-color;
+			}
+		}
+
+		// Active state, and its :hover to override normal :hover
+		&.active > a {
+
+			&, &:hover, &:focus {
+				border: none;
+				border-bottom: 2px solid @brand-primary;
+				color: @nav-tabs-active-color;
+				background-color: transparent;
+				cursor: default;
+				opacity: 1;
+			}
+		}
+	}
+}
+
+
+// Card header tabs
+// -------------------------
+
+.card-head {
+	&.nav-tabs,
+	> .nav-tabs {
+		padding: 0 @grid-gutter-width;
+
+		> li {
+			> a {
+				line-height: @card-header - 2px;
+				padding-top: 0;
+				padding-bottom: 0;
+			}
+		}
+
+	}
+
+	&.card-head-xs {
+		&.nav-tabs,
+		> .nav-tabs {
+			> li {
+				> a {
+					line-height: @card-header-xs - 2px;
+				}
+			}
+		}
+	}
+	&.card-head-sm {
+		&.nav-tabs,
+		> .nav-tabs {
+			> li {
+				> a {
+					line-height: @card-header-sm - 2px;
+				}
+			}
+		}
+	}
+	&.card-head-lg {
+		&.nav-tabs,
+		> .nav-tabs {
+			> li {
+				> a {
+					line-height: @card-header-lg - 2px;
+				}
+			}
+		}
+	}
+}
+
+
+// Tabs justified
+// -------------------------
+
+.nav-tabs.nav-justified {
+	padding: 0;
+
+	> .active > a, 
+	> .active > a:hover,
+		> .active > a:focus {
+		border: none;
+		border-bottom: 2px solid @brand-primary;
+	}
+}
+
+
+// Tabs center
+// -------------------------
+
+.nav-tabs.tabs-center > li {
+	float:none;
+	display:inline-block;
+
+}
+
+.nav-tabs.tabs-center {
+    text-align:center;
+}
+
+
+// Colored background 
+// -------------------------
+
+.tabs-text-contrast {
+	border-bottom-color: fade(@white, 15%);
+
+	> li {
+		> a {
+			&:hover, &:focus {
+				background-color: fade(@white, 35%);
+			}
+		}
+
+		// Active state, and its :hover to override normal :hover
+		&.active > a {
+			&, &:hover, &:focus {
+				color: inherit !important;
+			}
+		}
+	}
+}
+
+
+// Small tab text 
+// -------------------------
+
+.card-underline .card-head {
+	.nav-tabs {
+		border-bottom: none;
+	}
+}
+
+
+// Small tab text 
+// -------------------------
+
+.nav-tabs a small {
+	color: inherit;
+	text-transform: initial;
+}
+
+
+// Tabs Left, Right and 
+// -------------------------
+
+.tabs-below > .nav-tabs,
+.tabs-right > .nav-tabs,
+.tabs-left > .nav-tabs {
+	border: none;
+}
+
+.tab-content > .tab-pane,
+.pill-content > .pill-pane {
+	display: none;
+}
+
+.tab-content > .active,
+.pill-content > .active {
+	display: block;
+}
+
+// Tab below only
+.tabs-below > .nav-tabs {
+	border-top: 1px solid #dddddd;
+}
+
+.tabs-below > .nav-tabs > li {
+	margin-bottom: 0;
+}
+.tabs-below > .nav-tabs > li > a {
+	border-bottom: none;
+}
+
+.tabs-below > .nav-tabs > li > a:hover,
+.tabs-below > .nav-tabs > li > a:focus {
+	border-top-color: @nav-tabs-border-color;
+	border-bottom-color: transparent;
+}
+
+.tabs-below > .nav-tabs > .active > a {
+	&, &:hover, &:focus {
+		border-bottom: none;
+		line-height: 50px;
+		border-top: 2px solid @brand-primary;
+	}
+}
+
+// Tab left/right
+.tabs-left > .tab-content,
+.tabs-right > .tab-content {
+	overflow: auto;
+}
+
+.tabs-left > .nav-tabs,
+.tabs-right > .nav-tabs {
+	padding-left: 0;
+	padding-right: 0;
+}
+.tabs-left > .nav-tabs > li,
+.tabs-right > .nav-tabs > li {
+	float: none;
+}
+
+.tabs-left > .nav-tabs > li > a,
+.tabs-right > .nav-tabs > li > a {
+	min-width: 74px;
+	margin-right: 0;
+}
+
+// Tab right only
+.tabs-left > .nav-tabs {
+	float: left;
+}
+.tabs-left > .nav-tabs > li > a {
+	border-bottom: none;
+	border-right: 2px solid transparent;
+}
+.tabs-left > .nav-tabs > li > a:hover,
+.tabs-left > .nav-tabs > li > a:focus {
+	border-color: transparent;
+	border-right-color: @nav-tabs-border-color;
+}
+.tabs-left > .nav-tabs .active > a {
+	&, &:hover, &:focus {
+		border-bottom: none;
+		border-right: 2px solid @brand-primary;
+	}
+}
+
+// Tab right only
+.tabs-right > .nav-tabs {
+	float: right;
+	border-left: 1px solid #ddd;
+}
+.tabs-right > .nav-tabs > li > a {
+	border-bottom: none;
+	border-left: 2px solid transparent;
+}
+.tabs-right > .nav-tabs > li > a:hover,
+.tabs-right > .nav-tabs > li > a:focus {
+	border-color: transparent;
+	border-left-color: @nav-tabs-border-color;
+}
+.tabs-right > .nav-tabs .active > a {
+	&, &:hover, &:focus {
+		border-bottom: none;
+		border-left: 2px solid @brand-primary;
+	}
+}
+
+
+// Tab colors
+// -------------------------
+
+.tab-variant(tabs-default-dark,		@brand-default-dark);
+.tab-variant(tabs-default,			@brand-default);
+.tab-variant(tabs-default-light,	@brand-default-light);
+.tab-variant(tabs-default-bright,	@brand-default-bright);
+
+.tab-variant(tabs-primary-dark,		@brand-primary-dark);
+.tab-variant(tabs-primary,			@brand-primary);
+.tab-variant(tabs-primary-light,	@brand-primary-light);
+.tab-variant(tabs-primary-bright,	@brand-primary-bright);
+
+.tab-variant(tabs-accent-dark,		@brand-accent-dark);
+.tab-variant(tabs-accent,			@brand-accent);
+.tab-variant(tabs-accent-light,		@brand-accent-light);
+.tab-variant(tabs-accent-bright,	@brand-accent-bright);
+
+.tab-variant(tabs-success,			@brand-success);
+.tab-variant(tabs-warning,			@brand-warning);
+.tab-variant(tabs-danger,			@brand-danger);
+.tab-variant(tabs-info,				@brand-info);

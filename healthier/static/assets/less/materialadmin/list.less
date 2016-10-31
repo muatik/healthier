@@ -1,0 +1,475 @@
+//
+// Lists
+// --------------------------------------------------
+
+// Base
+// -------------------------
+
+.list {
+	margin: 0;
+	padding-left: 0;
+	list-style: none;
+	line-height: @line-height-computed;
+
+	.tile {
+		position: relative;
+		display: table;
+		width: 100%;
+		min-height: 48px;
+
+		// Common styles
+		// ----------
+
+		> a {
+			text-decoration: none;
+
+			&:hover {
+				color: @brand-primary;
+			}
+		}
+
+		// Tile content
+		// ----------
+
+		.tile-content {
+			display: table-cell;
+			padding-left: 16px;
+
+			&:last-child {
+				padding-right: 16px;
+			}
+
+			> div {
+				display: table-cell;
+				vertical-align: middle;
+			}
+		}
+
+		// Tile buttons
+		// ----------
+
+		> .btn {
+			display: table-cell;
+			vertical-align: middle;
+			min-width: 56px;
+			width: 56px;
+			text-align: center;
+
+			.fa,
+			.md,
+			.glyphicon {
+				width: 24px;
+				font-size: 20px;
+				text-align: center;
+			}
+		}
+
+
+		// Icon
+		// ----------
+		.tile-icon {
+			min-width: 56px;
+			width: 56px;
+			padding: 8px 0;
+			text-align: right;
+
+
+			&:first-child {
+				text-align: left;
+			}
+
+			img {
+				width: @menubar-icon-width;
+				height: @menubar-icon-width;
+				border-radius: @menubar-icon-width;
+			}
+
+			.fa,
+			.md,
+			.glyphicon {
+				width: 24px;
+				margin-top: 4px;
+				font-size: 20px;
+				text-align: center;
+			}
+		}
+
+		// Icon
+		// ----------
+		.tile-text {
+			padding: 12px 0;
+			font-size: 16px;
+			width: 100%;
+
+			small {
+				display: block;
+				font-size: 14px;
+				opacity: 0.6;
+
+				span {
+					opacity: 1;
+				}
+			}
+		}
+
+
+
+		// Checkbox
+		// ----------
+
+		.checkbox-styled:not(ie8), .radio-styled:not(ie8) {
+			display: table-cell;
+			padding: 0;
+
+			label {
+				display: block;
+				padding-left: 16px;
+				padding-top: 12px;
+				padding-bottom: 12px;
+			}
+
+			&:last-child label {
+				padding-right: 16px;
+			}
+
+
+			input ~ span {
+				padding-left: 54px;
+			}
+		}
+
+		// Ink reaction
+		// ----------
+
+		.ink-reaction {
+			.ink {
+				width: 600px;
+				height: 600px;
+				margin-left: -300px;
+				margin-top: -300px;
+				background-color: fade(@gray, 15);
+			}
+		}
+	}
+}
+
+
+
+// List dividers
+// -------------------------
+
+.list li.divider-full-bleed,
+.list li.divider-inset {
+	position: relative;
+}
+
+.list li.divider-full-bleed:after,
+.list li.divider-inset:after,
+.list.divider-full-bleed li:after,
+.list.divider-inset li:after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	display: block;
+	height: 1px;
+	background: fade(@gray-light, 30);
+}
+
+.list li.divider-full-bleed:after,
+.list.divider-full-bleed li:after {
+	left: 0;
+}
+
+.list li.divider-inset:after,
+.list.divider-inset li:after {
+	left: 72px;
+}
+
+
+
+
+// Custom content options
+// -------------------------
+
+.list-group {
+	.fa,
+	.md,
+	.glyphicon {
+		margin-right: 5px;
+	}
+	.btn {
+		&[class^="btn-radio"],
+		&[class^="btn-checkbox"],
+		&[class*=" btn-radio"],
+		&[class*=" btn-checkbox"] {
+			padding: 0;
+		}
+	}
+}
+.list-group-item {
+	color: @text-color;
+	// Active class on item itself, not parent
+	&.focus,
+	&.focus:hover,
+		&.focus:focus {
+		background-color: @brand-default-light;
+
+		// Force color to inherit for custom content
+		.list-group-item-heading {
+			color: inherit;
+		}
+		.list-group-item-text {
+			opacity: .75;
+		}
+	}
+}
+
+.card-body {
+	// We dont want any bottom margin when its the only element in a box-body
+	.list-group:first-child:nth-last-child(1) {
+		margin-bottom: 0;
+	}
+}
+
+
+// Email list
+// -------------------------
+
+.list-email {
+	margin-bottom: 20px !important;
+
+	a {
+		border-left: none;
+		border-right: none;
+		padding: 20px 20px 20px 40px;
+
+		&:first-child {
+			border-top: none;
+		}
+	}
+
+	h2, h3, h4, h5, h6 {
+		margin-top: 0;
+		margin-bottom: 5px;
+	}
+
+	p {
+		color: lighten(@text-color, 45%);
+		margin-bottom: 0;
+		line-height: 1.3;
+	}
+}
+
+
+// Tags list
+// -------------------------
+
+.list-tags {
+	.btn {
+		margin-bottom: 3px;
+	}
+}
+
+// Comments list
+// -------------------------
+
+.list-comments {
+	padding-left: 0;
+	list-style: none;
+
+	// Comment container
+	> li {
+		margin-bottom: 20px;
+
+		// Reply list
+		ul {
+			padding-top: 10px;
+			padding-left: 60px;
+			list-style: none;
+			border-left: 1px solid lighten(#000, 85%);
+
+			li {
+				padding-top: 10px;
+			}
+		}
+	}
+
+	// Comment markup
+	.card {
+		margin: 0;
+	}
+	.comment-title {
+		margin: 0 50px 7px 0;
+		small { 
+			font-size: 11px;
+			margin-left: 7px;
+		}
+	}
+	.comment-avatar {
+		position: relative;
+		float: left; 
+		width: 60px;
+		height: 60px;
+		margin: 20px 0 0 20px;
+		text-align: center;
+		border: 1px solid lighten(#000, 85%);
+		border-radius: 999px;
+
+		img {
+			width: 100%;
+		}
+		.fa,
+		.md {
+			line-height: 60px;
+			font-size: 28px;
+		}
+		.glyphicon {
+			line-height: 52px;
+			font-size: 20px;
+		}
+	}
+
+	.card-body {
+		margin-left: 80px;
+	}
+}
+
+
+// Chat list
+// -------------------------
+
+.list-chats {
+	padding-left: 0;
+	list-style: none;
+
+	// Chat markup
+	.chat {
+		position: relative;
+		min-height: 40px;
+		margin: 16px 0 0 0;
+		padding: 0 52px;
+		text-align: right;
+		.clearfix();
+	}
+	
+	// Chat avatar
+	.chat-avatar {
+		position: absolute;
+		right: 0;
+		width: 40px;
+		height: 40px;
+		margin: 0;
+		text-align: center;
+		border-radius: 999px;
+
+		img {
+			width: 100%;
+		}
+		.fa,
+		.md {
+			line-height: 40px;
+			font-size: 18px;
+		}
+		.glyphicon {
+			line-height: 32px;
+			font-size: 16px;
+		}
+	}
+	
+	// Chat body
+	.chat-body {
+		position: relative;
+		display: inline-block;
+		float: right;
+		clear: both;
+		padding: 12px;
+		margin-bottom: 2px;
+		text-align: left;
+		color: @text-color;
+		background: @white;
+
+		small {
+			display: block;
+			margin-bottom: -4px;
+			opacity: 0.7;
+		}
+	}
+
+	// Chat arrow
+	.chat-avatar + .chat-body:after {
+		position: absolute;
+		content: '';
+		z-index: 0;
+		width: 0;
+		height: 0;
+		border-style: solid;
+
+		top: 0; right: -12px;
+		border-width: 0 0 12px 12px;
+		border-color: transparent transparent transparent @white;
+	}
+	
+	// Left Chat markup
+	.chat-left {
+		.chat {
+			text-align: left;
+		}
+		.chat-avatar {
+			left: 0;
+			right: auto;
+		}
+		.chat-body {
+			float: left;
+			background-color: @brand-primary;
+			color: @brand-default-bright;
+		}
+		.chat-avatar + .chat-body:after {
+			top: 0; left: -12px;
+			border-width: 0 12px 12px 0;
+			border-color: transparent @brand-primary transparent transparent;
+		}
+	}
+}
+
+
+
+// Results list
+// -------------------------
+
+.list-results {
+	margin-bottom: @grid-gutter-width;
+	margin-top: 1px;
+	border-left: 1px solid @gray-lightest;
+	.clearfix();
+
+	> div {
+		padding: 20px 10px;
+		margin-top: -1px;
+		border-top: 1px solid @gray-lightest;
+		border-right: 1px solid @gray-lightest;
+		border-bottom: 1px solid @gray-lightest;
+		background: inherit;
+		color: inherit;
+		text-decoration: none;
+
+		&:hover {
+			background: @gray-lightest;
+			//color: @white;
+		}
+
+		img {
+			margin-right: 10px;
+		}
+	}
+
+	&.list-results-underlined {
+		border-left: none;
+
+		> div {
+			padding: 20px 0;
+			border-right: none;
+			border-top: none;
+		}
+	}
+}

@@ -1,0 +1,2325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+	<head>
+		<title>Material Admin - Components</title>
+		
+		<!-- BEGIN META -->
+		<meta charset="utf-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="keywords" content="your,keywords">
+		<meta name="description" content="Short explanation about this website">
+		<!-- END META -->
+
+		<!-- BEGIN STYLESHEETS -->
+				<link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet' type='text/css'/>
+			<link type="text/css" rel="stylesheet" href="../assets/css/theme-default/bootstrap.css?1422792965" />
+
+			<link type="text/css" rel="stylesheet" href="../assets/css/theme-default/materialadmin.css?1425466319" />
+
+			<link type="text/css" rel="stylesheet" href="../assets/css/theme-default/font-awesome.min.css?1422529194" />
+
+			<link type="text/css" rel="stylesheet" href="../assets/css/theme-default/material-design-iconic-font.min.css?1421434286" />
+
+	
+		<!-- END STYLESHEETS -->
+
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+	<script type="text/javascript" src="../assets/js/libs/utils/html5shiv.js?1403934957"></script>
+	<script type="text/javascript" src="../assets/js/libs/utils/respond.min.js?1403934956"></script>
+    <![endif]-->
+	</head>
+
+	
+				
+				
+	
+
+	<body class="menubar-hoverable menubar-pin menubar-first ">
+		<!-- BEGIN HEADER-->
+	<header id="header">
+					
+
+
+<div class="headerbar">
+	<div class="headerbar-right small-padding">
+		<img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKoAAAAoCAYAAABuDmFRAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjM3M0JFMDJENzY4MTFFM0FENTE4RTlENzAzNDA1N0IiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjM3M0JFMDNENzY4MTFFM0FENTE4RTlENzAzNDA1N0IiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoyMzczQkUwMEQ3NjgxMUUzQUQ1MThFOUQ3MDM0MDU3QiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoyMzczQkUwMUQ3NjgxMUUzQUQ1MThFOUQ3MDM0MDU3QiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PtwGlEYAABUXSURBVHja7F15fBRV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" />
+	</div>
+</div>
+			</header>
+	<!-- END HEADER-->
+
+	<!-- BEGIN BASE-->
+	<div id="base">
+		<!-- BEGIN CONTENT-->
+		<div id="content">
+			
+<!-- BEGIN INTRO SECTION -->
+<section class="style-gray-bright clearfix">
+	
+	<div class="section-body contain-lg">
+
+		<!-- BEGIN CSS SECTION -->
+		<div class="doc-section doc-lead">
+			<h1 id="header-stucture" class="text-xxxl text-default-bright">Components</h1>
+			<p class="lead">
+				Over a dozen reusable components built to provide iconography, dropdowns, input groups, navigation, alerts, and much more.
+			</p>
+		</div>
+		<!-- END CSS SECTION -->
+	
+	</div>
+</section>
+<!-- END INTRO SECTION -->
+
+<!-- BEGIN CSS SECTION -->
+<section>
+	<div class="section-body contain-lg">
+
+		<!-- BEGIN DROPDOWN -->
+<div class="doc-section">
+	
+	<h1 id="menubar-main" class="page-header">Menubar</h1>
+	
+	<div class="card card-outlined style-support1">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Additional styles and behavior for this component are located in the following files</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<dl class="dl-horizontal">
+				<dt>Component styles</dt>
+				<dd><code>materialadmin/assets/less/materialadmin/menubar.less</code></dd>
+				<dt>&nbsp;</dt><dd>&nbsp;</dd>
+				<dt>Component variables</dt>
+				<dd><code>materialadmin/assets/less/shared/variables.less</code><pre class="prettyprint">@menubar-bg:
+@menubar-color:
+@menubar-folder-color:
+@menubar-font-size:
+@menubar-gap:
+@menubar-link-hover:
+@menubar-link-hover-color:
+@menubar-link-active:
+@menubar-link-active-color:
+@menubar-icon-width:
+@menubar-icon-bg:
+@menubar-icon-bg-active:
+@menubar-icon-bg-hover:
+@menubar-icon-color:
+@menubar-icon-color-active:
+@menubar-icon-border:
+@menubar-width:
+@menubar-width-collapsed:
+@menubar-collapse-speed:
+@menubar-collapse-ease:
+
+// Menubar tree variables
+@menubar-tree-border-color:
+@menubar-tree-width:
+@menubar-tree-indent:
+@menubar-tree-indent-level1:
+@menubar-tree-indent-level2:
+@menubar-tree-indent-level3:
+@menubar-tree-indent-level4:
+@menubar-tree-indent-level5:
+</pre></dd>
+			</dl>
+		</div>
+	</div>
+	
+	
+	<h3 id="menubar-pin">Pinned menubar</h3>
+	<p>
+		Add <code>.menubar-pin</code> to <code>#base</code> to expand the menubar.
+	</p>
+		<pre class="prettyprint">&lt;div id=&quot;base&quot; class=&quot;menubar-pin&quot;&gt;
+	...
+&lt;/div&gt;
+</pre>
+	
+	
+	<h3 id="menubar-hoverable">Hoverable menubar</h3>
+	<p>
+		If you add <code>.menubar-hoverable</code> to <code>#base</code>, the menubar opens on hover.
+		Without this class, you have to click on a menubar item to open it.
+	</p>
+		<pre class="prettyprint">&lt;div id=&quot;base&quot; class=&quot;menubar-hoverable&quot;&gt;
+	...
+&lt;/div&gt;
+</pre>
+	
+	</div>
+<!-- END DROPDOWN -->		<!-- BEGIN DROPDOWN -->
+<div class="doc-section">
+	
+	<h1 id="offcanvas" class="page-header">Off-canvas</h1>
+	
+	<div class="card card-outlined style-support1">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Additional styles and behavior for this component are located in the following files</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<dl class="dl-horizontal">
+				<dt>Component styles</dt>
+				<dd><code>materialadmin/assets/less/materialadmin/offcanvas.less</code></dd>
+				<dt>&nbsp;</dt><dd>&nbsp;</dd>
+				<dt>Component variables</dt>
+				<dd><code>materialadmin/assets/less/shared/variables.less</code><pre class="prettyprint">@offcanvas-width:
+@offcanvas-bg:
+@offcanvas-color:
+@offcanvas-animation-speed:
+@offcanvas-animation-ease:
+@offcanvaspane-animation-speed:
+@offcanvaspane-animation-ease:
+</pre></dd>
+			</dl>
+		</div>
+	</div>
+	
+	
+	<h3 id="offcanvas-basics">Basics</h3>
+	<p>
+		To add a new off-canvas, you have to add an <code>.offcanvas-pane</code> tag to the <code>.offcanvas</code>.<br/>
+		You have to give an <code>.offcanvas-pane</code> class a fixed width.
+		You can do this by using one of the <code>.width-*</code> classes or by setting the width in a style attribute.
+	</p>
+	<pre class="prettyprint">&lt;div class=&quot;offcanvas&quot;&gt;
+	&lt;div class=&quot;offcanvas-pane width-6&quot; id=&quot;offcanvas1&quot;&gt;
+		~ Offcanvas content ~
+
+	&lt;/div&gt;
+	&lt;div class=&quot;offcanvas-pane width-6&quot; id=&quot;offcanvas2&quot;&gt;
+		~ Offcanvas content ~
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+	
+	
+	<h3 id="offcanvas-elements">Elements</h3>
+	<p>
+		You can add any content you want in the <code>.offcanvas-pane</code>.
+		If you want to use the basic padding, you can use the <code>.offcanvas-head</code> and <code>offcanvas-body</code>.
+		To close an off-canvas, add a button in the off-canvas with a <code>data-dismiss="offcanvas"</code> attribute.
+	</p>
+	<pre class="prettyprint">&lt;div class=&quot;offcanvas-pane&quot; id=&quot;offcanvas-chat&quot;&gt;
+	&lt;div class=&quot;offcanvas-head&quot;&gt;
+		&lt;header&gt;Off-canvas title&lt;/header&gt;
+		&lt;div class=&quot;offcanvas-tools&quot;&gt;
+			&lt;a class=&quot;btn btn-icon-toggle pull-right&quot; data-dismiss=&quot;offcanvas&quot;&gt;
+				&lt;i class=&quot;md md-close&quot;&gt;&lt;/i&gt;
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;offcanvas-body&quot;&gt;
+		~ Offcanvas body content ~
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>	
+	
+	
+	<h3 id="offcanvas-controls">Controls</h3>
+	<p>
+		To open an off-canvas, you need to give an off-canvas an <code>id</code>.
+		You can then add this <code>id</code> in the <code>href</code> of an anchor.
+		Then you need to add a <code>data-toggle="offcanvas"</code> attribute.
+	</p>
+	<pre class="prettyprint">&lt;a href=&quot;#offcanvas-id&quot; data-toggle=&quot;offcanvas&quot;&gt;Open off-canvas&lt;/a&gt;
+</pre>
+	
+	
+	<h3 id="offcanvas-backdrop">Backdrop</h3>
+	<p>
+		When you open an off-canvas, a backdrop will be added on top of the content.
+		The backdrop is partially transparent.
+		When you click on the backdrop, the opened off-canvas will be closed.<br/>
+		You can disable the backdrop by setting the data attribute <code>data-backdrop="false"</code> on the link.
+	</p>
+	<pre class="prettyprint">&lt;a href=&quot;#offcanvas-id&quot; data-toggle=&quot;offcanvas&quot; data-backdrop=&quot;false&quot;&gt;Open off-canvas without backdrop&lt;/a&gt;
+</pre>
+	
+	
+	<h3 id="offcanvas-top">Colors</h3>
+	<p>
+		Every color that is available for a card, is also available for an off-canvas.
+	</p>
+	
+	</div>
+<!-- END DROPDOWN -->				<!-- BEGIN ICON -->
+<div class="doc-section">
+	
+	<h1 id="icon" class="page-header">Icons</h1>
+	<p class="lead">
+		In addition to the standard <a class="btn-link" href="http://getbootstrap.com/components/#glyphicons" target="blank">Bootstrap icons <span class="glyphicon glyphicon-link"></span></a>, Material Admin has several additional options.
+	</p>
+	
+	<div class="card card-outlined style-support1">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Additional styles and behavior for this component are located in the following files</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<dl class="dl-horizontal">
+				<dt>Component styles</dt>
+				<dd><code>materialadmin/assets/less/materialadmin/icons.less</code></dd>
+			</dl>
+		</div>
+	</div>
+	
+	
+	<h3 id="icon-rotation">Icons rotation</h3>
+	<p>
+		To rotate an icon you can use one of the following classes.
+	</p>
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<i class="fa fa-bell fa-5x icon-tilt-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<i class="fa fa-bell fa-5x"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<i class="fa fa-bell fa-5x icon-tilt"></i>
+		</div>
+		<pre class="prettyprint">&lt;i class=&quot;fa fa-bell icon-tilt-alt&quot;&gt;&lt;/i&gt; &lt;!-- 10 degrees --&gt;
+&lt;i class=&quot;fa fa-bell&quot;&gt;&lt;/i&gt;
+&lt;i class=&quot;fa fa-bell icon-tilt&quot;&gt;&lt;/i&gt; &lt;!-- 350 degrees --&gt;
+</pre>
+	</div>
+	
+	</div>
+<!-- END ICON -->		<!-- BEGIN DROPDOWN -->
+<div class="doc-section">
+	
+	<h1 id="dropdown" class="page-header">Dropdowns</h1>
+	<p class="lead">
+		In addition to the standard <a class="btn-link" href="http://getbootstrap.com/components/#dropdowns" target="blank">Bootstrap dropdowns <span class="glyphicon glyphicon-link"></span></a>, Material Admin has several additional options.
+	</p>
+	
+	<div class="card card-outlined style-support1">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Additional styles and behavior for this component are located in the following files</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<dl class="dl-horizontal">
+				<dt>Component styles</dt>
+				<dd><code>materialadmin/assets/less/materialadmin/dropdowns.less</code></dd>
+			</dl>
+		</div>
+	</div>
+	
+	
+	<h3 id="dropdown-animation">Dropdowns animations</h3>
+	<p>
+		You can add animation to your dropdowns by adding <code>.animation-expand</code>, <code>.animation-zoom</code>, <code>.animation-slide</code> or <code>.animation-dock</code>.
+		If you put these classes on a menu that 'drops up', it will adjust the animation.
+	</p>
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<div class="btn-group">
+				<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+					Expand <i class="fa fa-caret-down"></i>
+				</button>
+				<ul class="dropdown-menu animation-expand">
+					<li><a href="#">Item 1</a></li>
+					<li><a href="#">Item 2</a></li>
+					<li><a href="#">Item 3</a></li>
+					<li><a href="#">Item 4</a></li>
+				</ul>
+			</div>
+			<div class="btn-group dropup">
+				<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+					Expand up <i class="fa fa-caret-up"></i>
+				</button>
+				<ul class="dropdown-menu animation-expand">
+					<li><a href="#">Item 1</a></li>
+					<li><a href="#">Item 2</a></li>
+					<li><a href="#">Item 3</a></li>
+					<li><a href="#">Item 4</a></li>
+				</ul>
+			</div>
+			<div class="btn-group">
+				<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+					Slide <i class="fa fa-caret-down"></i>
+				</button>
+				<ul class="dropdown-menu animation-slide">
+					<li><a href="#">Item 1</a></li>
+					<li><a href="#">Item 2</a></li>
+					<li><a href="#">Item 3</a></li>
+					<li><a href="#">Item 4</a></li>
+				</ul>
+			</div>
+			<div class="btn-group dropup">
+				<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+					Slide up <i class="fa fa-caret-up"></i>
+				</button>
+				<ul class="dropdown-menu animation-slide">
+					<li><a href="#">Item 1</a></li>
+					<li><a href="#">Item 2</a></li>
+					<li><a href="#">Item 3</a></li>
+					<li><a href="#">Item 4</a></li>
+				</ul>
+			</div>
+			<div class="btn-group">
+				<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+					Zoom <i class="fa fa-caret-down"></i>
+				</button>
+				<ul class="dropdown-menu animation-zoom">
+					<li><a href="#">Item 1</a></li>
+					<li><a href="#">Item 2</a></li>
+					<li><a href="#">Item 3</a></li>
+					<li><a href="#">Item 4</a></li>
+				</ul>
+			</div>
+			<div class="btn-group dropup">
+				<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+					Zoom up <i class="fa fa-caret-up"></i>
+				</button>
+				<ul class="dropdown-menu animation-zoom">
+					<li><a href="#">Item 1</a></li>
+					<li><a href="#">Item 2</a></li>
+					<li><a href="#">Item 3</a></li>
+					<li><a href="#">Item 4</a></li>
+				</ul>
+			</div>
+			<div class="btn-group">
+				<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+					Dock <i class="fa fa-caret-down"></i>
+				</button>
+				<ul class="dropdown-menu animation-dock">
+					<li><a href="#">Item 1</a></li>
+					<li><a href="#">Item 2</a></li>
+					<li><a href="#">Item 3</a></li>
+					<li><a href="#">Item 4</a></li>
+				</ul>
+			</div>
+			<div class="btn-group dropup">
+				<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+					Dock up <i class="fa fa-caret-up"></i>
+				</button>
+				<ul class="dropdown-menu animation-dock">
+					<li><a href="#">Item 1</a></li>
+					<li><a href="#">Item 2</a></li>
+					<li><a href="#">Item 3</a></li>
+					<li><a href="#">Item 4</a></li>
+				</ul>
+			</div>
+		</div>
+		<pre class="prettyprint">&lt;ul class=&quot;dropdown-menu animation-expand&quot;&gt;
+	...
+&lt;/ul&gt;
+&lt;ul class=&quot;dropdown-menu animation-slide&quot;&gt;
+	...
+&lt;/ul&gt;
+&lt;ul class=&quot;dropdown-menu animation-zoom&quot;&gt;
+	...
+&lt;/ul&gt;
+&lt;ul class=&quot;dropdown-menu animation-dock&quot;&gt;
+	...
+&lt;/ul&gt;
+</pre>
+	</div>
+	
+	
+	<h3 id="dropdown-progress">Dropdown progress bar</h3>
+	<p>
+		To create a progressbar in your menu, add <code>.dropdown-progress</code> to the <code>&lt;li&gt;</code> element.
+		Add text in the <code>.dropdown-label</code> and put your <code>.progress</code> bar beneath.
+	</p>
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<div class="dropdown open">
+				<ul class="dropdown-menu animation-dock">
+					<li class="dropdown-header">SERVER LOAD</li>
+					<li class="dropdown-progress">
+						<a href="javascript:void(0);">
+							<div class="dropdown-label">
+								<span class="text-light">Server load <strong>Today</strong></span>
+								<strong class="pull-right">93%</strong>
+							</div>
+							<div class="progress"><div class="progress-bar progress-bar-danger" style="width: 93%"></div></div>
+						</a>
+					</li>
+					<li class="dropdown-progress">
+						<a href="javascript:void(0);">
+							<div class="dropdown-label">
+								<span class="text-light">Server load <strong>Yesterday</strong></span>
+								<strong class="pull-right">30%</strong>
+							</div>
+							<div class="progress"><div class="progress-bar progress-bar-success" style="width: 30%"></div></div>
+						</a>
+					</li>
+					<li class="dropdown-progress">
+						<a href="javascript:void(0);">
+							<div class="dropdown-label">
+								<span class="text-light">Server load <strong>Lastweek</strong></span>
+								<strong class="pull-right">74%</strong>
+							</div>
+							<div class="progress"><div class="progress-bar progress-bar-warning" style="width: 74%"></div></div>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		</div>
+		<pre class="prettyprint">&lt;li class=&quot;dropdown-progress&quot;&gt;
+	&lt;a href=&quot;#&quot;&gt;
+		&lt;div class=&quot;dropdown-label&quot;&gt;Label&lt;/div&gt;
+		&lt;div class=&quot;progress&quot;&gt;&lt;div class=&quot;progress-bar progress-bar-success&quot; style=&quot;width: 30%&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+	&lt;/a&gt;
+&lt;/li&gt;
+</pre>
+	</div>
+	
+	</div>
+<!-- END DROPDOWN -->		<!-- BEGIN BUTTONS -->
+<div class="doc-section">
+	
+	<h1 id="buttons" class="page-header">Buttons</h1>
+	<p class="lead">
+		In addition to the standard <a class="btn-link" href="http://getbootstrap.com/css/#buttons" target="blank">Bootstrap buttons <span class="glyphicon glyphicon-link"></span></a>, Material Admin has several additional options.
+	</p>
+	
+	<div class="card card-outlined style-support1">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Additional styles and behavior for this component are located in the following files</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<dl class="dl-horizontal">
+				<dt>Component styles</dt>
+				<dd><code>materialadmin/assets/less/materialadmin/buttons.less</code></dd>
+			</dl>
+		</div>
+	</div>
+	
+	
+	<h3 id="buttons-check-styles" class="text-danger-alt">Styling Checkboxes</h3>
+	<p>
+		To style a checkbox, you can use the default code from bootstrap by adding a <code>.checkbox</code> around your label.
+		Then add the class <code>.checkbox-styled</code> to the <code>.checkbox</code> class and you have a styled checkbox.
+		You can give it several styles.
+	</p>
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<div class="checkbox checkbox-styled">
+				<label>
+					<input type="checkbox" checked="checked">
+					<span>Checkbox 1</span>
+				</label>
+			</div>
+			<div class="checkbox checkbox-styled checkbox-danger">
+				<label>
+					<input type="checkbox">
+					<span>Checkbox 2</span>
+				</label>
+			</div>
+		</div>
+		<pre class="prettyprint">&lt;div class=&quot;checkbox checkbox-styled&quot;&gt;
+	&lt;label&gt;
+		&lt;input type=&quot;checkbox&quot; checked&gt;
+		&lt;span&gt;Checkbox 1&lt;/span&gt;
+	&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class=&quot;checkbox checkbox-styled checkbox-danger&quot;&gt;
+	&lt;label&gt;
+		&lt;input type=&quot;checkbox&quot;&gt;
+		&lt;span&gt;Checkbox 2&lt;/span&gt;
+	&lt;/label&gt;
+&lt;/div&gt;
+</pre>
+	</div>
+	
+	
+	<h3 id="buttons-check-colors">Checkbox colors</h3>
+	<p>
+		There are several colors for you to choose from.
+	</p>
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-3">
+					<label class="checkbox-inline checkbox-styled checkbox-primary-dark">
+						<input type="checkbox" checked>
+						<span>Primary dark</span>
+					</label><br/>
+					<label class="checkbox-inline checkbox-styled">
+						<input type="checkbox" checked>
+						<span>Primary</span>
+					</label><br/>
+					<label class="checkbox-inline checkbox-styled checkbox-primary-light">
+						<input type="checkbox" checked>
+						<span>Primary light</span>
+					</label><br/>
+					<label class="checkbox-inline checkbox-styled checkbox-primary-bright">
+						<input type="checkbox" checked>
+						<span>Primary bright</span>
+					</label>
+				</div>
+				<div class="col-md-3">
+					<label class="checkbox-inline checkbox-styled checkbox-accent-dark">
+						<input type="checkbox" checked>
+						<span>Accent dark</span>
+					</label><br/>
+					<label class="checkbox-inline checkbox-styled checkbox-accent">
+						<input type="checkbox" checked>
+						<span>Accent</span>
+					</label><br/>
+					<label class="checkbox-inline checkbox-styled checkbox-accent-light">
+						<input type="checkbox" checked>
+						<span>Accent light</span>
+					</label><br/>
+					<label class="checkbox-inline checkbox-styled checkbox-accent-bright">
+						<input type="checkbox" checked>
+						<span>Accent bright</span>
+					</label>
+				</div>
+				<div class="col-md-3">
+					<label class="checkbox-inline checkbox-styled checkbox-default-dark">
+						<input type="checkbox" checked>
+						<span>Default dark</span>
+					</label><br/>
+					<label class="checkbox-inline checkbox-styled checkbox-default">
+						<input type="checkbox" checked>
+						<span>Default</span>
+					</label><br/>
+					<label class="checkbox-inline checkbox-styled checkbox-default-light">
+						<input type="checkbox" checked>
+						<span>Default light</span>
+					</label><br/>
+					<label class="checkbox-inline checkbox-styled checkbox-default-bright">
+						<input type="checkbox" checked>
+						<span>Default bright</span>
+					</label>
+				</div>
+				<div class="col-md-3">
+					<label class="checkbox-inline checkbox-styled checkbox-success">
+						<input type="checkbox" checked>
+						<span>Success</span>
+					</label><br/>
+					<label class="checkbox-inline checkbox-styled checkbox-warning">
+						<input type="checkbox" checked>
+						<span>Warning</span>
+					</label><br/>
+					<label class="checkbox-inline checkbox-styled checkbox-danger">
+						<input type="checkbox" checked>
+						<span>Danger</span>
+					</label><br/>
+					<label class="checkbox-inline checkbox-styled checkbox-info">
+						<input type="checkbox" checked>
+						<span>Info</span>
+					</label>
+				</div>
+			</div>
+		</div>
+		<pre class="prettyprint">&lt;label class=&quot;checkbox-inline checkbox-styled checkbox-primary-dark&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;checkbox-inline checkbox-styled&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;checkbox-inline checkbox-styled checkbox-primary-light&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;checkbox-inline checkbox-styled checkbox-primary-bright&quot;&gt;...&lt;/label&gt;
+
+&lt;label class=&quot;checkbox-inline checkbox-styled checkbox-accent-dark&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;checkbox-inline checkbox-styled checkbox-accent&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;checkbox-inline checkbox-styled checkbox-accent-light&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;checkbox-inline checkbox-styled checkbox-accent-bright&quot;&gt;...&lt;/label&gt;
+
+&lt;label class=&quot;checkbox-inline checkbox-styled checkbox-default-dark&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;checkbox-inline checkbox-styled checkbox-default&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;checkbox-inline checkbox-styled checkbox-default-light&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;checkbox-inline checkbox-styled checkbox-default-bright&quot;&gt;...&lt;/label&gt;
+
+&lt;label class=&quot;checkbox-inline checkbox-styled checkbox-success&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;checkbox-inline checkbox-styled checkbox-warning&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;checkbox-inline checkbox-styled checkbox-danger&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;checkbox-inline checkbox-styled checkbox-info&quot;&gt;...&lt;/label&gt;
+</pre>
+	</div>
+	
+	
+	<h3 id="buttons-radio-styles" class="text-danger-alt">Styling Radio buttons</h3>
+	<p>
+		To style a radio button, you can use the default code from bootstrap by adding a <code>.radio</code> around your label.
+		Then add the class <code>.radio-styled</code> to the <code>.radio</code> class and you have a styled radio button.
+	</p>
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<div class="radio radio-styled">
+				<label>
+					<input type="radio" checked="checked">
+					<span>Radio button 1</span>
+				</label>
+			</div>
+			<div class="radio radio-styled radio-danger">
+				<label>
+					<input type="radio">
+					<span>Radio button 2</span>
+				</label>
+			</div>
+		</div>
+		<pre class="prettyprint">&lt;div class=&quot;radio radio-styled&quot;&gt;
+	&lt;label&gt;
+		&lt;input type=&quot;radio&quot; checked=&quot;checked&quot;&gt;
+		&lt;span&gt;Radio button 1&lt;/span&gt;
+	&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class=&quot;radio radio-styled radio-danger&quot;&gt;
+	&lt;label&gt;
+		&lt;input type=&quot;radio&quot;&gt;
+		&lt;span&gt;Radio button 2&lt;/span&gt;
+	&lt;/label&gt;
+&lt;/div&gt;
+</pre>
+	</div>
+	
+	
+	<h3 id="buttons-radio-colors">Radio button colors</h3>
+	<p>
+		There are several colors for you to choose from.
+	</p>
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-3">
+					<label class="radio-inline radio-styled radio-primary-dark">
+						<input type="radio" checked>
+						<span>Primary dark</span>
+					</label><br/>
+					<label class="radio-inline radio-styled">
+						<input type="radio" checked>
+						<span>Primary</span>
+					</label><br/>
+					<label class="radio-inline radio-styled radio-primary-light">
+						<input type="radio" checked>
+						<span>Primary light</span>
+					</label><br/>
+					<label class="radio-inline radio-styled radio-primary-bright">
+						<input type="radio" checked>
+						<span>Primary bright</span>
+					</label>
+				</div>
+				<div class="col-md-3">
+					<label class="radio-inline radio-styled radio-accent-dark">
+						<input type="radio" checked>
+						<span>Accent dark</span>
+					</label><br/>
+					<label class="radio-inline radio-styled radio-accent">
+						<input type="radio" checked>
+						<span>Accent</span>
+					</label><br/>
+					<label class="radio-inline radio-styled radio-accent-light">
+						<input type="radio" checked>
+						<span>Accent light</span>
+					</label><br/>
+					<label class="radio-inline radio-styled radio-accent-bright">
+						<input type="radio" checked>
+						<span>Accent bright</span>
+					</label>
+				</div>
+				<div class="col-md-3">
+					<label class="radio-inline radio-styled radio-default-dark">
+						<input type="radio" checked>
+						<span>Default dark</span>
+					</label><br/>
+					<label class="radio-inline radio-styled radio-default">
+						<input type="radio" checked>
+						<span>Default</span>
+					</label><br/>
+					<label class="radio-inline radio-styled radio-default-light">
+						<input type="radio" checked>
+						<span>Default light</span>
+					</label><br/>
+					<label class="radio-inline radio-styled radio-default-bright">
+						<input type="radio" checked>
+						<span>Default bright</span>
+					</label>
+				</div>
+				<div class="col-md-3">
+					<label class="radio-inline radio-styled radio-success">
+						<input type="radio" checked>
+						<span>Success</span>
+					</label><br/>
+					<label class="radio-inline radio-styled radio-warning">
+						<input type="radio" checked>
+						<span>Warning</span>
+					</label><br/>
+					<label class="radio-inline radio-styled radio-danger">
+						<input type="radio" checked>
+						<span>Danger</span>
+					</label><br/>
+					<label class="radio-inline radio-styled radio-info">
+						<input type="radio" checked>
+						<span>Info</span>
+					</label>
+				</div>
+			</div>
+		</div>
+		<pre class="prettyprint">&lt;label class=&quot;radio-inline radio-styled radio-primary-dark&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;radio-inline radio-styled&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;radio-inline radio-styled radio-primary-light&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;radio-inline radio-styled radio-primary-bright&quot;&gt;...&lt;/label&gt;
+
+&lt;label class=&quot;radio-inline radio-styled radio-accent-dark&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;radio-inline radio-styled radio-accent&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;radio-inline radio-styled radio-accent-light&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;radio-inline radio-styled radio-accent-bright&quot;&gt;...&lt;/label&gt;
+
+&lt;label class=&quot;radio-inline radio-styled radio-default-dark&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;radio-inline radio-styled radio-default&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;radio-inline radio-styled radio-default-light&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;radio-inline radio-styled radio-default-bright&quot;&gt;...&lt;/label&gt;
+
+&lt;label class=&quot;radio-inline radio-styled radio-success&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;radio-inline radio-styled radio-warning&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;radio-inline radio-styled radio-danger&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;radio-inline radio-styled radio-info&quot;&gt;...&lt;/label&gt;
+</pre>
+	</div>
+	
+	</div>
+<!-- END BUTTONS -->		<!-- BEGIN DROPDOWN -->
+<div class="doc-section">
+	
+	<h1 id="badges" class="page-header">Badges</h1>
+	<p class="lead">
+		In addition to the standard <a class="btn-link" href="http://getbootstrap.com/components/#badges" target="blank">Bootstrap badges <span class="glyphicon glyphicon-link"></span></a>, Material Admin has several additional options.
+	</p>
+	
+	<div class="card card-outlined style-support1">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Additional styles and behavior for this component are located in the following files</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<dl class="dl-horizontal">
+				<dt>Component styles</dt>
+				<dd><code>materialadmin/assets/less/materialadmin/badges.less</code></dd>
+			</dl>
+		</div>
+	</div>
+	
+	
+	<h3 id="badges-colors">Badge colors</h3>
+	<p>
+		Use any of the available badge classes to color a <code>.badge</code>.
+	</p>
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-lg-3">
+					<p><a href="#">Badge <span class="badge style-primary-dark">Primary dark</span></a></p>
+					<p><a href="#">Badge <span class="badge style-primary">Primary</span></a></p>
+					<p><a href="#">Badge <span class="badge style-primary-light">Primary light</span></a></p>
+					<p><a href="#">Badge <span class="badge style-primary-bright">Primary bright</span></a></p>
+				</div>
+				<div class="col-lg-3">
+					<p><a href="#">Badge <span class="badge style-accent-dark">Accent dark</span></a></p>
+					<p><a href="#">Badge <span class="badge style-accent">Accent</span></a></p>
+					<p><a href="#">Badge <span class="badge style-accent-light">Accent light</span></a></p>
+					<p><a href="#">Badge <span class="badge style-accent-bright">Accent bright</span></a></p>
+				</div>
+				<div class="col-lg-3">
+					<p><a href="#">Badge <span class="badge style-default-dark">Default dark</span></a></p>
+					<p><a href="#">Badge <span class="badge style-default">Default</span></a></p>
+					<p><a href="#">Badge <span class="badge style-default-light">Default light</span></a></p>
+					<p><a href="#">Badge <span class="badge style-default-bright">Default bright</span></a></p>
+				</div>
+				<div class="col-lg-3">
+					<p><a href="#">Badge <span class="badge style-success">Success</span></a></p>
+					<p><a href="#">Badge <span class="badge style-warning">Warning</span></a></p>
+					<p><a href="#">Badge <span class="badge style-danger">Danger</span></a></p>
+					<p><a href="#">Badge <span class="badge style-info">Info</span></a></p>
+				</div>
+			</div>
+		</div>
+		<pre class="prettyprint">&lt;a href=&quot;#&quot;&gt;Badge &lt;span class=&quot;badge&quot;&gt;Default&lt;/span&gt;&lt;/a&gt;
+&lt;a href=&quot;#&quot;&gt;Badge &lt;span class=&quot;badge badge-black&quot;&gt;black&lt;/span&gt;&lt;/a&gt;
+&lt;a href=&quot;#&quot;&gt;Badge &lt;span class=&quot;badge badge-white&quot;&gt;white&lt;/span&gt;&lt;/a&gt;
+&lt;a href=&quot;#&quot;&gt;Badge &lt;span class=&quot;badge badge-gray&quot;&gt;gray&lt;/span&gt;&lt;/a&gt;
+&lt;a href=&quot;#&quot;&gt;Badge &lt;span class=&quot;badge badge-inverse&quot;&gt;inverse&lt;/span&gt;&lt;/a&gt;
+
+&lt;a href=&quot;#&quot;&gt;Badge &lt;span class=&quot;badge badge-primary&quot;&gt;primary&lt;/span&gt;&lt;/a&gt;
+&lt;a href=&quot;#&quot;&gt;Badge &lt;span class=&quot;badge badge-success&quot;&gt;success&lt;/span&gt;&lt;/a&gt;
+&lt;a href=&quot;#&quot;&gt;Badge &lt;span class=&quot;badge badge-warning&quot;&gt;warning&lt;/span&gt;&lt;/a&gt;
+&lt;a href=&quot;#&quot;&gt;Badge &lt;span class=&quot;badge badge-danger&quot;&gt;danger&lt;/span&gt;&lt;/a&gt;
+&lt;a href=&quot;#&quot;&gt;Badge &lt;span class=&quot;badge badge-info&quot;&gt;info&lt;/span&gt;&lt;/a&gt;
+
+&lt;a href=&quot;#&quot;&gt;Badge &lt;span class=&quot;badge badge-support1&quot;&gt;support1&lt;/span&gt;&lt;/a&gt;
+&lt;a href=&quot;#&quot;&gt;Badge &lt;span class=&quot;badge badge-support2&quot;&gt;support2&lt;/span&gt;&lt;/a&gt;
+&lt;a href=&quot;#&quot;&gt;Badge &lt;span class=&quot;badge badge-support3&quot;&gt;support3&lt;/span&gt;&lt;/a&gt;
+&lt;a href=&quot;#&quot;&gt;Badge &lt;span class=&quot;badge badge-support4&quot;&gt;support4&lt;/span&gt;&lt;/a&gt;
+&lt;a href=&quot;#&quot;&gt;Badge &lt;span class=&quot;badge badge-support5&quot;&gt;support5&lt;/span&gt;&lt;/a&gt;
+</pre>
+	</div>
+	
+	
+	<h3 id="badges-position">Badge positioning</h3>
+	<p>
+		Use <code>&lt;sup&gt;</code> instead of <code>&lt;span&gt;</code> to position the badge <strong>above</strong> the baseline. Use <code>&lt;sub&gt;</code> instead of <code>&lt;span&gt;</code> to position the badge <strong>below</strong> the baseline.
+	</p>
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<p>
+				<a href="#" class=""><sup class="badge badge-support2">sup</sup> Badge</a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="#" class="">Badge <sup class="badge badge-support2">sup</sup></a>
+			</p>
+			<p>&nbsp;</p>
+			<p>
+				<a href="#" class=""><sub class="badge badge-support2">sub</sub> Badge</a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="#" class="">Badge <sub class="badge badge-support2">sub</sub></a>
+			</p>
+		</div>
+		<pre class="prettyprint">&lt;a href=&quot;#&quot; class=&quot;&quot;&gt;&lt;sup class=&quot;badge badge-support2&quot;&gt;sup&lt;/sup&gt; Badge&lt;/a&gt;
+&lt;a href=&quot;#&quot; class=&quot;&quot;&gt;Badge &lt;sup class=&quot;badge badge-support2&quot;&gt;sup&lt;/sup&gt;&lt;/a&gt;
+&lt;a href=&quot;#&quot; class=&quot;&quot;&gt;&lt;sub class=&quot;badge badge-support2&quot;&gt;sub&lt;/sub&gt; Badge&lt;/a&gt;
+&lt;a href=&quot;#&quot; class=&quot;&quot;&gt;Badge &lt;sub class=&quot;badge badge-support2&quot;&gt;sub&lt;/sub&gt;&lt;/a&gt;
+</pre>
+	</div>
+	
+	</div>
+<!-- END DROPDOWN -->		<!-- BEGIN DROPDOWN -->
+<div class="doc-section">
+	
+	<h1 id="lists" class="page-header">Lists</h1>
+	<p class="lead">
+		In addition to the standard <a class="btn-link" href="http://getbootstrap.com/components/#list-group" target="blank">Bootstrap lists <span class="glyphicon glyphicon-link"></span></a>, Material Admin has several additional options.
+	</p>
+	
+	<div class="card card-outlined style-support1">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Additional styles and behavior for this component are located in the following files</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<dl class="dl-horizontal">
+				<dt>Component styles</dt>
+				<dd><code>materialadmin/assets/less/materialadmin/list-group.less</code></dd>
+			</dl>
+		</div>
+	</div>
+	
+	
+	<h3 id="lists-task">Comments list</h3>
+	<h4>Basics</h4>
+	<p>
+		The comments list is basically a <code>.card</code> element wrapped in an <code>&lt;ul&gt;</code> list with the class <code>.list-comments</code>.
+	</p>
+	<p>
+		Because the comments are wrapped inside a <code>.card</code>, you can use any <code>.style-*</code> class to color your comments.
+	</p>
+	<p>
+		Comments have additional classes to create different elements for the comment.<br/>
+		First, there's the <code>.comment-avatar</code> class to contain the avatar. 
+		The avatar will be placed in front of the text. The avatar can be any icon or image you like.<br/>
+		Second, there's the <code>.comment-title</code> class which has some modifications to the margins.
+	</p>
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			
+			<ul class="list-comments">
+				<li>
+					<div class="card style-default-light">
+						<div class="comment-avatar"><i class="glyphicon glyphicon-user opacity-50"></i></div>
+						<div class="card-body">
+							<h4 class="comment-title">Comment title <small>20/06/2013 at 4:02 pm</small></h4>
+							<a class="btn btn-default-dark stick-top-right" href="#respond">Reply</a>
+							<p>Etiam dui libero, tempor quis congue in, interdum eget tortor. Vivamus aliquam dictum lacus quis tincidunt. Phasellus rhoncus ante sollicitudin nisl consectetur ultricies. Sed rhoncus ullamcorper mauris, ac condimentum metus egestas ut. Nam et urna ante, vitae pretium lacus.</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="card style-default-dark">
+						<div class="comment-avatar"><img class="img-circle" src="../assets/img/avatar1.jpg?1403934956" alt="" /></div>
+						<div class="card-body">
+							<h4 class="comment-title">Comment title <small>20/06/2013 at 4:38 pm</small></h4>
+							<a class="btn btn-default-dark stick-top-right" href="#respond">Reply</a>
+							<p>Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer ac magna lacinia velit bibendum ornare. Morbi eget dui lectus, eget eleifend mi.</p>
+						</div>
+					</div>
+				</li>
+			</ul>
+			
+		</div>
+		<pre class="prettyprint">&lt;ul class=&quot;list-comments&quot;&gt;
+	&lt;li&gt;
+		&lt;div class=&quot;card style-default-light&quot;&gt;
+			&lt;div class=&quot;comment-avatar&quot;&gt;&lt;i class=&quot;glyphicon glyphicon-user opacity-50&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+			&lt;div class=&quot;card-body&quot;&gt;
+				&lt;h4 class=&quot;comment-title&quot;&gt;Comment title &lt;small&gt;20/06/2013 at 4:02 pm&lt;/small&gt;&lt;/h4&gt;
+				&lt;a class=&quot;btn btn-default-dark stick-top-right&quot; href=&quot;#&quot;&gt;Reply&lt;/a&gt;
+				&lt;p&gt;...&lt;/p&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;div class=&quot;card style-default-dark&quot;&gt;
+			&lt;div class=&quot;comment-avatar&quot;&gt;&lt;img class=&quot;img-circle&quot; src=&quot;...&quot; alt=&quot;&quot; /&gt;&lt;/div&gt;
+			&lt;div class=&quot;card-body&quot;&gt;
+				&lt;h4 class=&quot;comment-title&quot;&gt;Comment title &lt;small&gt;20/06/2013 at 4:38 pm&lt;/small&gt;&lt;/h4&gt;
+				&lt;a class=&quot;btn btn-default-dark stick-top-right&quot; href=&quot;#&quot;&gt;Reply&lt;/a&gt;
+				&lt;p&gt;...&lt;/p&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+	</div>
+	
+	<br/>
+	<h4>Replies</h4>
+	<p>
+		You can add a reply style by putting another <code>&lt;ul&gt;</code> list inside a <code>&lt;li&gt;</code> tag.
+		This will add a vertical stripe which indicates it's a reply.
+		You can nest as many as you want.
+	</p>
+<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			
+			<ul class="list-comments">
+				<li>
+					<div class="card style-default-light">
+						<div class="comment-avatar"><span class="glyphicon glyphicon-user opacity-50"></span></div>
+						<div class="card-body">
+							<h4 class="comment-title">Carol	Sharp <small>20/06/2013 at 4:14 pm</small></h4>
+							<a class="btn btn-default-dark stick-top-right" href="#respond">Reply</a>
+							<p>Integer ac magna lacinia velit bibendum ornare. Morbi eget dui lectus, eget eleifend mi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+						</div>
+					</div>
+					<ul>
+						<li>
+							<div class="card style-default-light">
+								<div class="comment-avatar"><span class="glyphicon glyphicon-user opacity-50"></span></div>
+								<div class="card-body">
+									<h4 class="comment-title">Amber Page <small>20/06/2013 at 4:41 pm</small></h4>
+									<a class="btn btn-default-dark stick-top-right" href="#respond">Reply</a>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in tempus lorem. Vivamus ullamcorper leo risus, non vehicula odio.</p>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			
+		</div>
+		<pre class="prettyprint">&lt;ul class=&quot;list-comments&quot;&gt;
+	&lt;li&gt;
+		&lt;div class=&quot;card style-default-light&quot;&gt;...&lt;/div&gt;
+		&lt;ul&gt;
+			&lt;li&gt;
+				&lt;div class=&quot;card style-default-light&quot;&gt;...&lt;/div&gt;
+			&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+	</div>
+	
+	
+	<h3 id="lists-tags">Tags list</h3>
+	<p>
+		The <code>.list-tags</code> class is a very simple class.
+		It creates an even gap horizontal and vertical between the buttons. 
+		This way it looks good when there are a lot of buttons.
+	</p>
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<div class="list-tags">
+				<a class="btn btn-xs btn-primary">Wordpress</a> 
+				<a class="btn btn-xs btn-primary">Technology</a> 
+				<a class="btn btn-xs btn-primary">HTML5</a> 
+				<a class="btn btn-xs btn-primary">Illustrator</a>
+				<br/>
+				<a class="btn btn-xs btn-primary">Music</a>
+				<a class="btn btn-xs btn-primary">CSS3</a> 
+				<a class="btn btn-xs btn-primary">Video</a> 
+				<a class="btn btn-xs btn-primary">Photoshop</a> 
+				<a class="btn btn-xs btn-primary">jQuery</a> 
+			</div>
+		</div>
+		<pre class="prettyprint">&lt;div class=&quot;list-tags&quot;&gt;
+	&lt;a class=&quot;btn btn-xs btn-primary&quot;&gt;Wordpress&lt;/a&gt; 
+	&lt;a class=&quot;btn btn-xs btn-primary&quot;&gt;Technology&lt;/a&gt; 
+	&lt;a class=&quot;btn btn-xs btn-primary&quot;&gt;HTML5&lt;/a&gt; 
+	&lt;a class=&quot;btn btn-xs btn-primary&quot;&gt;Illustrator&lt;/a&gt;
+	&lt;br/&gt;
+	&lt;a class=&quot;btn btn-xs btn-primary&quot;&gt;Music&lt;/a&gt; 
+	&lt;a class=&quot;btn btn-xs btn-primary&quot;&gt;CSS3&lt;/a&gt; 
+	&lt;a class=&quot;btn btn-xs btn-primary&quot;&gt;Video&lt;/a&gt; 
+	&lt;a class=&quot;btn btn-xs btn-primary&quot;&gt;Photoshop&lt;/a&gt; 
+	&lt;a class=&quot;btn btn-xs btn-primary&quot;&gt;jQuery&lt;/a&gt; 
+&lt;/div&gt;
+</pre>
+	</div>
+	
+	
+	<h3 id="lists-chat">Chat list</h3>
+	<p>
+		To create a chat list, add an <code>&lt;ul&gt;</code> list with the class <code>.list-chats</code>.
+		In every <code>&lt;li&gt;</code> you can create a message by adding a <code>&lt;div&gt;</code> with the class <code>.chat</code>.<br/>
+		Add the class <code>.chat-left</code> to a <code>&lt;li&gt;</code> element to left align the chat.
+		A <code>.chat</code> message consists of two parts:
+	</p>
+	<ol>
+		<li><code>.chat-avatar</code>: this will contain the <code>&lt;img&gt;</code> tag</li>
+		<li><code>.chat-body</code>: the message</li>
+	</ol>
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body style-default-light">
+			<ul class="list-chats">
+				<li>
+					<div class="chat">
+						<div class="chat-avatar"><img class="img-circle" src="../assets/img/avatar1.jpg?1403934956" alt="" /></div>
+						<div class="chat-body">
+							Yes, it is indeed very beautiful.
+							<small>10:03 pm</small>
+						</div>
+					</div>
+				</li>
+				<li class="chat-left">
+					<div class="chat">
+						<div class="chat-avatar"><img class="img-circle" src="../assets/img/avatar9.jpg?1404026744" alt="" /></div>
+						<div class="chat-body">
+							Did you see the changes?
+							<small>10:02 pm</small>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<pre class="prettyprint">&lt;ul class=&quot;list-chats&quot;&gt;
+	&lt;li&gt;
+		&lt;div class=&quot;chat&quot;&gt;
+			&lt;div class=&quot;chat-avatar&quot;&gt;&lt;img class=&quot;img-circle&quot; src=&quot;../assets/img/avatar1.jpg?1403934956&quot; alt=&quot;&quot; /&gt;&lt;/div&gt;
+			&lt;div class=&quot;chat-body&quot;&gt;
+				Yes, it is indeed very beautiful.
+				&lt;small&gt;10:03 pm&lt;/small&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/li&gt;
+	&lt;li class=&quot;chat-left&quot;&gt;
+		&lt;div class=&quot;chat&quot;&gt;
+			&lt;div class=&quot;chat-avatar&quot;&gt;&lt;img class=&quot;img-circle&quot; src=&quot;../assets/img/avatar9.jpg?1404026744&quot; alt=&quot;&quot; /&gt;&lt;/div&gt;
+			&lt;div class=&quot;chat-body&quot;&gt;
+				Did you see the changes?
+				&lt;small&gt;10:02 pm&lt;/small&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/li&gt;
+	..
+&lt;/ul&gt;
+</pre>
+	</div>
+	
+	</div>
+<!-- END DROPDOWN -->		<!-- BEGIN TABBAR -->
+<div class="doc-section">
+	
+	<h1 id="tabs" class="page-header">Tabs</h1>
+	<p class="lead">
+		In addition to the standard <a class="btn-link" href="http://getbootstrap.com/components/#nav-tabs" target="blank">Bootstrap tabs <span class="glyphicon glyphicon-link"></span></a>, Material Admin has several additional options.
+	</p>
+	
+	<div class="card card-outlined style-support1">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Additional styles and behavior for this component are located in the following files</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<dl class="dl-horizontal">
+				<dt>Component styles</dt>
+				<dd><code>materialadmin/assets/less/materialadmin/tabbar.less</code></dd>
+			</dl>
+		</div>
+	</div>
+	
+	
+		<h3 id="tabs-structure">General structure</h3>
+	<p>
+		Place the <code>.nav-tabs</code> in the <code>.card-head</code>.
+		Add <code>.tab-content</code> to the <code>.card-body</code>, then place the <code>.tab-pane</code> inside the <code>.card-body</code>. 
+	</p>
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<div class="card">
+				<div class="card-head">
+					<ul class="nav nav-tabs" data-toggle="tabs">
+						<li class="active"><a href="#home1">Home</a></li>
+						<li><a href="#about1">About</a></li>
+						<li><a href="#contact1">Contact</a></li>
+					</ul>
+				</div>
+				<div class="card-body tab-content">
+					<div class="tab-pane active" id="home1">1 ...</div>
+					<div class="tab-pane" id="about1">2 ...</div>
+					<div class="tab-pane" id="contact1">3 ...</div>
+				</div>
+			</div>
+		</div>
+		<pre class="prettyprint">&lt;div class=&quot;card&quot;&gt;
+	&lt;div class=&quot;card-head&quot;&gt;
+		&lt;ul class=&quot;nav nav-tabs&quot; data-toggle=&quot;tabs&quot;&gt;
+			&lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#home&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href=&quot;#about&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href=&quot;#contact&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;card-body tab-content&quot;&gt;
+		&lt;div class=&quot;tab-pane active&quot; id=&quot;home&quot;&gt;1 ...&lt;/div&gt;
+		&lt;div class=&quot;tab-pane&quot; id=&quot;about&quot;&gt;2 ...&lt;/div&gt;
+		&lt;div class=&quot;tab-pane&quot; id=&quot;contact&quot;&gt;3 ...&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+	</div>
+
+	
+		<h3 id="tabs-pullright">Tab pull right</h3>
+	<p>
+		If you add <code>.pull-right</code> to your <code>.nav-tabs</code>, you have room to add a <code>&lt;header&gt;</code>.
+	</p>
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<div class="card card-underline">
+				<div class="card-head">
+					<header><h4 class="text-light">Header</h4></header>
+					<ul class="nav nav-tabs pull-right" data-toggle="tabs">
+						<li class="active"><a href="#home2">Home</a></li>
+						<li><a href="#about2">About</a></li>
+						<li><a href="#contact2">Contact</a></li>
+					</ul>
+				</div>
+				<div class="card-body tab-content">
+					<div class="tab-pane active" id="home2">1 ...</div>
+					<div class="tab-pane" id="about2">2 ...</div>
+					<div class="tab-pane" id="contact2">3 ...</div>
+				</div>
+			</div>
+		</div>
+		<pre class="prettyprint">&lt;div class=&quot;card card-underline&quot;&gt;
+	&lt;div class=&quot;card-head&quot;&gt;
+		&lt;header&gt;
+			&lt;h4 class=&quot;text-light&quot;&gt;Header&lt;/h4&gt;
+		&lt;/header&gt;
+		&lt;ul class=&quot;nav nav-tabs pull-right&quot; data-toggle=&quot;tabs&quot;&gt;
+			...
+		&lt;/ul&gt;
+	&lt;/div&gt;
+	...
+&lt;/div&gt;
+</pre>
+	</div>
+	
+	
+		<h3 id="tabs-pullleft">Tab pull left</h3>
+	<p>
+		If you add <code>.pull-left</code> to your <code>.nav-tabs</code>, you have room to add <code>.tools</code> to the header.
+	</p>
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<div class="card card-underline">
+				<div class="card-head">
+					<ul class="nav nav-tabs pull-left" data-toggle="tabs">
+						<li class="active"><a href="#home3">Home</a></li>
+						<li><a href="#about3">About</a></li>
+						<li><a href="#contact3">Contact</a></li>
+					</ul>
+					<div class="tools">
+						<div class="btn-group">
+							<a class="btn btn-icon-toggle btn-refresh"><i class="fa fa-refresh"></i></a>
+							<a class="btn btn-icon-toggle btn-collapse"><i class="fa fa-angle-down"></i></a>
+							<a class="btn btn-icon-toggle btn-close"><i class="fa fa-times"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="card-body tab-content">
+					<div class="tab-pane active" id="home3">1 ...</div>
+					<div class="tab-pane" id="about3">2 ...</div>
+					<div class="tab-pane" id="contact3">3 ...</div>
+				</div>
+			</div>
+		</div>
+		<pre class="prettyprint">&lt;div class=&quot;card card-underline&quot;&gt;
+	&lt;div class=&quot;card-head&quot;&gt;
+		&lt;ul class=&quot;nav nav-tabs pull-left&quot; data-toggle=&quot;tabs&quot;&gt;
+			...
+		&lt;/ul&gt;
+		&lt;div class=&quot;tools&quot;&gt;
+			...
+		&lt;/div&gt;
+	&lt;/div&gt;
+	...
+&lt;/div&gt;
+</pre>
+	</div>
+	
+	
+		<h3 id="tabs-center">Tab center</h3>
+	<p>
+		If you add <code>.tabs-center</code> to your <code>.nav-tabs</code>, your tabs will be centered in the header.
+	</p>
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<div class="card card-underline">
+				<div class="card-head">
+					<ul class="nav nav-tabs tabs-center" data-toggle="tabs">
+						<li class="active"><a href="#home4">Home</a></li>
+						<li><a href="#about4">About</a></li>
+						<li><a href="#contact4">Contact</a></li>
+					</ul>
+				</div>
+				<div class="card-body tab-content">
+					<div class="tab-pane active" id="home4">1 ...</div>
+					<div class="tab-pane" id="about4">2 ...</div>
+					<div class="tab-pane" id="contact4">3 ...</div>
+				</div>
+			</div>
+		</div>
+		<pre class="prettyprint">&lt;div class=&quot;card card-underline&quot;&gt;
+	&lt;div class=&quot;card-head&quot;&gt;
+		&lt;ul class=&quot;nav nav-tabs tabs-center&quot; data-toggle=&quot;tabs&quot;&gt;
+			...
+		&lt;/ul&gt;
+		&lt;div class=&quot;tools&quot;&gt;
+			...
+		&lt;/div&gt;
+	&lt;/div&gt;
+	...
+&lt;/div&gt;
+</pre>
+	</div>
+	
+	
+		<h3 id="tabs-position">Tab positioning</h3>
+	<p>
+		If you want to position the tabs left, right or below your content, you have to add the <code>&lt;ul&gt;</code> tag directly to your <code>.card</code>.
+		Then add <code>.tabs-left</code>, <code>.tabs-right</code> or <code>.tabs-below</code> to the <code>.card</code> class to position the tabs relative to their content.
+	</p>
+	<div class="alert alert-callout alert-info">
+		If you use <code>.tabs-below</code>, place your <code>&lt;ul&gt;</code> below the main content.
+	</div>
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<div class="card tabs-left style-transparent">
+				<ul class="card-head nav nav-tabs" data-toggle="tabs">
+					<li><a href="#personal5">Personal details</a></li>
+					<li class="active"><a href="#about5">About us</a></li>
+					<li><a href="#favorites5">Favorites</a></li>
+				</ul>
+				<div class="card-body tab-content style-default-bright">
+					<div class="tab-pane" id="personal5">			<h3 class="text-light">Daniel <strong>Johnson</strong></h3>
+								<p>Ad ius duis dissentiunt, an sit harum primis persecuti, adipisci tacimates mediocrem sit et. Id illud voluptaria omittantur qui, te affert nostro mel. Cu conceptam vituperata temporibus has.</p>
+			
+		<dl class="dl-horizontal">
+			<dt>Description lists</dt>
+			<dd>A description list is perfect for defining terms.</dd>
+			<dt>Euismod</dt>
+			<dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+			<dd>Donec id elit non mi porta gravida.</dd>
+			<dt>Malesuada porta</dt>
+			<dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+					</dl>
+	</div>
+					<div class="tab-pane active" id="about5">
+									<h3 class="text-light">Daniel <strong>Johnson</strong></h3>
+								<p>Per at postea mediocritatem, vim numquam aliquid eu, in nam sale gubergren. Fuisset delicatissimi duo, qui ut animal noluisse erroribus. Ea eum veniam audire. Dicant vituperata consequuntur.</p>
+			
+		<dl class="dl-horizontal">
+			<dt>Description lists</dt>
+			<dd>A description list is perfect for defining terms.</dd>
+			<dt>Euismod</dt>
+			<dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+			<dd>Donec id elit non mi porta gravida.</dd>
+			<dt>Malesuada porta</dt>
+			<dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+					</dl>
+	
+					</div>
+					<div class="tab-pane" id="favorites5">						<p>Duo semper accumsan ea, quidam convenire cum cu, oportere maiestatis incorrupte est eu. Soluta audiam timeam ius te, idque gubergren forensibus ad mel, persius urbanitas usu id. Civibus nostrum fabellas mea te, ne pri lucilius iudicabit. Ut cibo semper vituperatoribus vix, cum in error elitr. Vix molestiae intellegat omittantur an, nam cu modo ullum scriptorem.</p>
+			<p>Quod option numquam vel in, et fuisset delicatissimi duo, qui ut animal noluisse erroribus. Ea eum veniam audire. Per at postea mediocritatem, vim numquam aliquid eu, in nam sale gubergren. Dicant vituperata consequuntur at sea, mazim commodo</p>
+			</div>
+				</div>
+			</div><!--end .card -->
+		</div>
+		<pre class="prettyprint">&lt;div class=&quot;card tabs-left&quot;&gt;
+	&lt;ul class=&quot;card-head nav nav-tabs&quot; data-toggle=&quot;tabs&quot;&gt;
+		...
+	&lt;/ul&gt;
+	&lt;div class=&quot;card-body tab-content&quot;&gt;
+		&lt;div class=&quot;tab-pane active&quot; id=&quot;home&quot;&gt;...&lt;/div&gt;
+		&lt;div class=&quot;tab-pane&quot; id=&quot;about&quot;&gt;...&lt;/div&gt;
+		&lt;div class=&quot;tab-pane&quot; id=&quot;contact&quot;&gt;...&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;&lt;!--end .card --&gt;
+</pre>
+	</div>
+	
+	
+		<h3 id="tabs-colors">Tab colors</h3>
+	<p>
+		Use any of the available tab classes to create a colored tabbar.
+	</p>
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-3">
+					<ul class="nav nav-tabs tabs-primary-dark" data-toggle="tabs">
+						<li class="active"><a href="#first">First tab</a></li>
+						<li><a href="#second">No. two</a></li>
+					</ul>
+					<br/>
+					<ul class="nav nav-tabs tabs-primary" data-toggle="tabs">
+						<li class="active"><a href="#first">First tab</a></li>
+						<li><a href="#second">No. two</a></li>
+					</ul>
+					<br/>
+					<ul class="nav nav-tabs tabs-primary-light" data-toggle="tabs">
+						<li class="active"><a href="#first">First tab</a></li>
+						<li><a href="#second">No. two</a></li>
+					</ul>
+					<br/>
+					<ul class="nav nav-tabs tabs-primary-bright" data-toggle="tabs">
+						<li class="active"><a href="#first">First tab</a></li>
+						<li><a href="#second">No. two</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3">
+					<ul class="nav nav-tabs tabs-accent-dark" data-toggle="tabs">
+						<li class="active"><a href="#first">First tab</a></li>
+						<li><a href="#second">No. two</a></li>
+					</ul>
+					<br/>
+					<ul class="nav nav-tabs tabs-accent" data-toggle="tabs">
+						<li class="active"><a href="#first">First tab</a></li>
+						<li><a href="#second">No. two</a></li>
+					</ul>
+					<br/>
+					<ul class="nav nav-tabs tabs-accent-light" data-toggle="tabs">
+						<li class="active"><a href="#first">First tab</a></li>
+						<li><a href="#second">No. two</a></li>
+					</ul>
+					<br/>
+					<ul class="nav nav-tabs tabs-accent-bright" data-toggle="tabs">
+						<li class="active"><a href="#first">First tab</a></li>
+						<li><a href="#second">No. two</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3">
+					<ul class="nav nav-tabs tabs-default-dark" data-toggle="tabs">
+						<li class="active"><a href="#first">First tab</a></li>
+						<li><a href="#second">No. two</a></li>
+					</ul>
+					<br/>
+					<ul class="nav nav-tabs tabs-default" data-toggle="tabs">
+						<li class="active"><a href="#first">First tab</a></li>
+						<li><a href="#second">No. two</a></li>
+					</ul>
+					<br/>
+					<ul class="nav nav-tabs tabs-default-light" data-toggle="tabs">
+						<li class="active"><a href="#first">First tab</a></li>
+						<li><a href="#second">No. two</a></li>
+					</ul>
+					<br/>
+					<ul class="nav nav-tabs tabs-default-bright" data-toggle="tabs">
+						<li class="active"><a href="#first">First tab</a></li>
+						<li><a href="#second">No. two</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3">
+					<ul class="nav nav-tabs tabs-success" data-toggle="tabs">
+						<li class="active"><a href="#first">First tab</a></li>
+						<li><a href="#second">No. two</a></li>
+					</ul>
+					<br/>
+					<ul class="nav nav-tabs tabs-warning" data-toggle="tabs">
+						<li class="active"><a href="#first">First tab</a></li>
+						<li><a href="#second">No. two</a></li>
+					</ul>
+					<br/>
+					<ul class="nav nav-tabs tabs-danger" data-toggle="tabs">
+						<li class="active"><a href="#first">First tab</a></li>
+						<li><a href="#second">No. two</a></li>
+					</ul>
+					<br/>
+					<ul class="nav nav-tabs tabs-info" data-toggle="tabs">
+						<li class="active"><a href="#first">First tab</a></li>
+						<li><a href="#second">No. two</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<pre class="prettyprint">&lt;ul class=&quot;nav nav-tabs tabs-primary-dark&quot; data-toggle=&quot;tabs&quot;&gt;...&lt;/ul&gt;
+&lt;ul class=&quot;nav nav-tabs tabs-primary&quot; data-toggle=&quot;tabs&quot;&gt;...&lt;/ul&gt;
+&lt;ul class=&quot;nav nav-tabs tabs-primary-light&quot; data-toggle=&quot;tabs&quot;&gt;...&lt;/ul&gt;
+&lt;ul class=&quot;nav nav-tabs tabs-primary-bright&quot; data-toggle=&quot;tabs&quot;&gt;...&lt;/ul&gt;
+
+&lt;ul class=&quot;nav nav-tabs tabs-accent-dark&quot; data-toggle=&quot;tabs&quot;&gt;...&lt;/ul&gt;
+&lt;ul class=&quot;nav nav-tabs tabs-accent&quot; data-toggle=&quot;tabs&quot;&gt;...&lt;/ul&gt;
+&lt;ul class=&quot;nav nav-tabs tabs-accent-light&quot; data-toggle=&quot;tabs&quot;&gt;...&lt;/ul&gt;
+&lt;ul class=&quot;nav nav-tabs tabs-accent-bright&quot; data-toggle=&quot;tabs&quot;&gt;...&lt;/ul&gt;
+
+&lt;ul class=&quot;nav nav-tabs tabs-default-dark&quot; data-toggle=&quot;tabs&quot;&gt;...&lt;/ul&gt;
+&lt;ul class=&quot;nav nav-tabs tabs-default&quot; data-toggle=&quot;tabs&quot;&gt;...&lt;/ul&gt;
+&lt;ul class=&quot;nav nav-tabs tabs-default-light&quot; data-toggle=&quot;tabs&quot;&gt;...&lt;/ul&gt;
+&lt;ul class=&quot;nav nav-tabs tabs-default-bright&quot; data-toggle=&quot;tabs&quot;&gt;...&lt;/ul&gt;
+
+&lt;ul class=&quot;nav nav-tabs tabs-success&quot; data-toggle=&quot;tabs&quot;&gt;...&lt;/ul&gt;
+&lt;ul class=&quot;nav nav-tabs tabs-warning&quot; data-toggle=&quot;tabs&quot;&gt;...&lt;/ul&gt;
+&lt;ul class=&quot;nav nav-tabs tabs-danger&quot; data-toggle=&quot;tabs&quot;&gt;...&lt;/ul&gt;
+&lt;ul class=&quot;nav nav-tabs tabs-info&quot; data-toggle=&quot;tabs&quot;&gt;...&lt;/ul&gt;
+</pre>
+	</div>
+	
+	
+		<h3 id="tabs-contrast">Text contrast</h3>
+	<p>
+		If you use a dark background for your tabs, you can use <code>.tabs-text-contrast</code>.
+		This will contrast the text to your background.<br/>
+		So if you have a black background, your tab text will be white.
+		If the background is white, the text will be black.
+	</p>
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<div class="card card-underline">
+				<div class="card-head style-default-dark">
+					<ul class="nav nav-tabs tabs-text-contrast" data-toggle="tabs">
+						<li class="active"><a href="#home7">Home</a></li>
+						<li><a href="#about7">About</a></li>
+						<li><a href="#contact7">Contact</a></li>
+					</ul>
+				</div>
+				<div class="card-body tab-content">
+					<div class="tab-pane active" id="home7">1 ...</div>
+					<div class="tab-pane" id="about7">2 ...</div>
+					<div class="tab-pane" id="contact7">3 ...</div>
+				</div>
+			</div>
+		</div>
+		<pre class="prettyprint">&lt;div class=&quot;card card-underline&quot;&gt;
+	&lt;div class=&quot;card-head&quot;&gt;
+		&lt;ul class=&quot;nav nav-tabs tabs-text-contrast&quot; data-toggle=&quot;tabs&quot;&gt;
+			...
+		&lt;/ul&gt;
+		&lt;div class=&quot;tools&quot;&gt;
+			...
+		&lt;/div&gt;
+	&lt;/div&gt;
+	...
+&lt;/div&gt;
+</pre>
+	</div>
+	
+	</div>
+<!-- END TABBAR -->		<!-- BEGIN DROPDOWN -->
+<div class="doc-section">
+	
+	<h1 id="timeline" class="page-header">Timeline</h1>
+	<div class="card card-outlined style-support1">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Additional styles and behavior for this component are located in the following files</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<dl class="dl-horizontal">
+				<dt>Component styles</dt>
+				<dd><code>materialadmin/assets/less/materialadmin/timeline.less</code></dd>
+			</dl>
+		</div>
+	</div>
+	
+	
+	<h3 id="timeline-basic">Basic example</h3>
+	<p>
+		To create a basic timeline, follow the following steps.
+	</p>
+	<ol>
+		<li>Create a standard <code>&lt;ul&gt;</code> list and give it a <code>.timeline</code> class.</li>
+		<li>Every odd <strong>or</strong> even <code>&lt;li&gt;</code> tag should get the class <code>.timeline-inverted</code>.</li>
+		<li>Add a sphere inside a <code>&lt;li&gt;</code> by adding a <code>.timeline-circ</code> to a <code>&lt;div&gt;</code> tag.</li>
+		<li>Then add the class <code>.timeline-entry</code> to a <code>&lt;div&gt;</code> tag which will contain your text.</li>
+		<li>Inside the <code>.timeline-entry</code> you can add a standard <code>.card</code> layout.</li>
+	</ol>
+	
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<ul class="timeline">
+				<li class="timeline-inverted">
+					<div class="timeline-circ"></div>
+					<div class="timeline-entry">
+						<div class="card style-primary">
+							<div class="card-body small-padding">
+								<span class="text-medium">Head text</span><br/>
+								<span class="opacity-50">Subline</span>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="timeline-circ"></div>
+					<div class="timeline-entry">
+						<div class="card style-primary">
+							<div class="card-body small-padding">
+								<span class="text-medium">Head text</span><br/>
+								<span class="opacity-50">Subline</span>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<pre class="prettyprint">&lt;ul class=&quot;timeline&quot;&gt;
+	&lt;li class=&quot;timeline-inverted&quot;&gt;
+		&lt;div class=&quot;timeline-circ&quot;&gt;&lt;/div&gt;
+		&lt;div class=&quot;timeline-entry&quot;&gt;
+			&lt;div class=&quot;card style-primary&quot;&gt;
+				&lt;div class=&quot;card-body small-padding&quot;&gt;
+					..
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;div class=&quot;timeline-circ&quot;&gt;&lt;/div&gt;
+		&lt;div class=&quot;timeline-entry&quot;&gt;
+			&lt;div class=&quot;card style-primary&quot;&gt;
+				&lt;div class=&quot;card-body small-padding&quot;&gt;
+					..
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/li&gt;
+	...
+&lt;/ul&gt;
+</pre>
+	</div>
+	
+	
+	<h3 id="timeline-colors">Colors</h3>
+	<p>
+		The <code>.timeline-circ</code> can be styled with several colors.
+	</p>
+	
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-3">
+					<ul class="timeline collapse-lg">
+						<li>
+							<div class="timeline-circ style-primary-dark"></div>
+							<div class="timeline-entry">&nbsp;</div>
+						</li>
+						<li>
+							<div class="timeline-circ style-primary"></div>
+							<div class="timeline-entry">&nbsp;</div>
+						</li>
+						<li>
+							<div class="timeline-circ style-primary-light"></div>
+							<div class="timeline-entry">&nbsp;</div>
+						</li>
+						<li>
+							<div class="timeline-circ style-primary-bright"></div>
+							<div class="timeline-entry">&nbsp;</div>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-3">
+					<ul class="timeline collapse-lg">
+						<li>
+							<div class="timeline-circ style-accent-dark"></div>
+							<div class="timeline-entry">&nbsp;</div>
+						</li>
+						<li>
+							<div class="timeline-circ style-accent"></div>
+							<div class="timeline-entry">&nbsp;</div>
+						</li>
+						<li>
+							<div class="timeline-circ style-accent-light"></div>
+							<div class="timeline-entry">&nbsp;</div>
+						</li>
+						<li>
+							<div class="timeline-circ style-accent-bright"></div>
+							<div class="timeline-entry">&nbsp;</div>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-3">
+					<ul class="timeline collapse-lg">
+						<li>
+							<div class="timeline-circ style-default-dark"></div>
+							<div class="timeline-entry">&nbsp;</div>
+						</li>
+						<li>
+							<div class="timeline-circ style-default"></div>
+							<div class="timeline-entry">&nbsp;</div>
+						</li>
+						<li>
+							<div class="timeline-circ style-default-light"></div>
+							<div class="timeline-entry">&nbsp;</div>
+						</li>
+						<li>
+							<div class="timeline-circ style-default-bright"></div>
+							<div class="timeline-entry">&nbsp;</div>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-3">
+					<ul class="timeline collapse-lg">
+						<li>
+							<div class="timeline-circ style-success"></div>
+							<div class="timeline-entry">&nbsp;</div>
+						</li>
+						<li>
+							<div class="timeline-circ style-warning"></div>
+							<div class="timeline-entry">&nbsp;</div>
+						</li>
+						<li>
+							<div class="timeline-circ style-danger"></div>
+							<div class="timeline-entry">&nbsp;</div>
+						</li>
+						<li>
+							<div class="timeline-circ style-info"></div>
+							<div class="timeline-entry">&nbsp;</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+		</div>
+		<pre class="prettyprint">&lt;div class=&quot;timeline-circ style-primary-dark&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;timeline-circ style-primary&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;timeline-circ style-primary-light&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;timeline-circ style-primary-bright&quot;&gt;&lt;/div&gt;
+
+&lt;div class=&quot;timeline-circ style-accent-dark&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;timeline-circ style-accent&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;timeline-circ style-accent-light&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;timeline-circ style-accent-bright&quot;&gt;&lt;/div&gt;
+
+&lt;div class=&quot;timeline-circ style-default-dark&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;timeline-circ style-default&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;timeline-circ style-default-light&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;timeline-circ style-default-bright&quot;&gt;&lt;/div&gt;
+
+&lt;div class=&quot;timeline-circ style-success&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;timeline-circ style-warning&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;timeline-circ style-danger&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;timeline-circ style-info&quot;&gt;&lt;/div&gt;
+</pre>
+	</div>
+	
+	<div class="alert alert-callout alert-info">
+		You can use all the available <code>.card</code> styling colors in the timeline.
+	</div>
+	
+	
+	<h3 id="timeline-size">Size</h3>
+	<p>
+		The <code>.timeline-circ</code> has several sizes to choose from.
+	</p>
+	
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<ul class="timeline">
+				<li class="timeline-inverted">
+					<div class="timeline-circ"></div>
+					<div class="timeline-entry">
+						<div class="card style-primary">
+							<div class="card-body small-padding">
+								<span class="text-medium">Head text</span><br/>
+								<span class="opacity-50">Subline</span>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="timeline-circ circ-lg"></div>
+					<div class="timeline-entry">
+						<div class="card style-primary">
+							<div class="card-body small-padding">
+								<span class="text-medium">Head text</span><br/>
+								<span class="opacity-50">Subline</span>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="timeline-inverted">
+					<div class="timeline-circ circ-xl"></div>
+					<div class="timeline-entry">
+						<div class="card style-primary">
+							<div class="card-body small-padding">
+								<span class="text-medium">Head text</span><br/>
+								<span class="opacity-50">Subline</span>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+
+		</div>
+		<pre class="prettyprint">&lt;div class=&quot;timeline-circ&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;timeline-circ circ-lg&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;timeline-circ circ-xl&quot;&gt;&lt;/div&gt;
+</pre>
+	</div>
+	
+	
+	<h3 id="timeline-icon">Icons</h3>
+	<p>
+		You can easily add an icon in a <code>.timeline-circ</code>.
+	</p>
+	
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<ul class="timeline">
+				<li>
+					<div class="timeline-circ circ-lg"><span class="glyphicon glyphicon-leaf"></span></div>
+					<div class="timeline-entry">
+						<div class="card style-primary">
+							<div class="card-body small-padding">
+								<span class="text-medium">Head text</span><br/>
+								<span class="opacity-50">Subline</span>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="timeline-inverted">
+					<div class="timeline-circ circ-xl"><span class="glyphicon glyphicon-leaf"></span></div>
+					<div class="timeline-entry">
+						<div class="card style-primary">
+							<div class="card-body small-padding">
+								<span class="text-medium">Head text</span><br/>
+								<span class="opacity-50">Subline</span>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+
+		</div>
+		<pre class="prettyprint">&lt;div class=&quot;timeline-circ circ-lg&quot;&gt;&lt;span class=&quot;glyphicon glyphicon-leaf&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;timeline-circ circ-xl&quot;&gt;&lt;span class=&quot;glyphicon glyphicon-leaf&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+</pre>
+	</div>
+	
+	
+	<h3 id="timeline-hairline">Hairline</h3>
+	<p>
+		If you want the timeline to be thinner, you can add the class <code>.timeline-hairline</code> to <code>&lt;ul&gt;</code> tag.
+	</p>
+	
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<ul class="timeline timeline-hairline">
+				<li>
+					<div class="timeline-circ"></div>
+					<div class="timeline-entry">
+						<div class="card style-primary">
+							<div class="card-body small-padding">
+								<span class="text-medium">Head text</span><br/>
+								<span class="opacity-50">Subline</span>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="timeline-inverted">
+					<div class="timeline-circ"></div>
+					<div class="timeline-entry">
+						<div class="card style-primary">
+							<div class="card-body small-padding">
+								<span class="text-medium">Head text</span><br/>
+								<span class="opacity-50">Subline</span>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+
+		</div>
+		<pre class="prettyprint">&lt;ul class=&quot;timeline timeline-hairline&quot;&gt;
+	..
+&lt;/ul&gt;
+</pre>
+	</div>
+	
+	
+	<h3 id="timeline-shadow">Shadows</h3>
+	<p>
+		Shadows can be turned off by adding <code>.no-shadow</code> or <code>.no-card-shadow</code> to the <code>&lt;ul&gt;</code> tag.
+	</p>
+	
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+
+			<ul class="timeline">
+				<li>
+					<div class="timeline-circ"></div>
+					<div class="timeline-entry">
+						<div class="card style-primary">
+							<div class="card-body small-padding">
+								<span class="text-medium">Head text</span><br/>
+								<span class="opacity-50">Subline</span>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="timeline-inverted">
+					<div class="timeline-circ"></div>
+					<div class="timeline-entry">
+						<div class="card style-primary">
+							<div class="card-body small-padding">
+								<span class="text-medium">Head text</span><br/>
+								<span class="opacity-50">Subline</span>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<p class="text-center">
+				By default all shadows are visible.
+			</p>
+
+			<ul class="timeline no-card-shadow">
+				<li>
+					<div class="timeline-circ"></div>
+					<div class="timeline-entry">
+						<div class="card style-primary">
+							<div class="card-body small-padding">
+								<span class="text-medium">Head text</span><br/>
+								<span class="opacity-50">Subline</span>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="timeline-inverted">
+					<div class="timeline-circ"></div>
+					<div class="timeline-entry">
+						<div class="card style-primary">
+							<div class="card-body small-padding">
+								<span class="text-medium">Head text</span><br/>
+								<span class="opacity-50">Subline</span>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<p class="text-center">
+				<code>.no-card-shadow</code> Hide the card shadows.
+			</p>
+
+			<ul class="timeline no-shadow">
+				<li>
+					<div class="timeline-circ"></div>
+					<div class="timeline-entry">
+						<div class="card style-primary">
+							<div class="card-body small-padding">
+								<span class="text-medium">Head text</span><br/>
+								<span class="opacity-50">Subline</span>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="timeline-inverted">
+					<div class="timeline-circ"></div>
+					<div class="timeline-entry">
+						<div class="card style-primary">
+							<div class="card-body small-padding">
+								<span class="text-medium">Head text</span><br/>
+								<span class="opacity-50">Subline</span>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<p class="text-center">
+				<code>.no-shadow</code> Hide the card and circ shadows.
+			</p>
+		</div>
+		<pre class="prettyprint">&lt;ul class=&quot;timeline&quot;&gt;..&lt;/ul&gt;
+&lt;ul class=&quot;timeline no-card-shadow&quot;&gt;..&lt;/ul&gt;
+&lt;ul class=&quot;timeline no-shadow&quot;&gt;..&lt;/ul&gt;
+</pre>
+	</div>
+	
+	
+	<h3 id="timeline-responsive">Responsive</h3>
+	<p>
+		Material Admin has a responsive timeline.
+		To add responsiveness to your timeline, you can add one of the folowing classes: <code>.collapse-xs</code>, <code>.collapse-sm</code>, <code>.collapse-md</code> or <code>.collapse-lg</code>.
+	</p>
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<ul class="timeline collapse-xs">
+				<li class="timeline-inverted">
+					<div class="timeline-circ circ-xl style-primary"><span class="glyphicon glyphicon-leaf"></span></div>
+					<div class="timeline-entry">
+						<div class="card style-primary">
+							<div class="card-body small-padding">
+								<span class="text-medium">Head text</span><br/>
+								<span class="opacity-50">Subline</span>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="timeline-circ circ-xl style-primary"><span class="glyphicon glyphicon-leaf"></span></div>
+					<div class="timeline-entry">
+						<div class="card style-primary">
+							<div class="card-body small-padding">
+								<span class="text-medium">Head text</span><br/>
+								<span class="opacity-50">Subline</span>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<p class="text-center">
+				<code>.collapse-xs</code> Only collapse on the extra small devices.
+			</p>
+			
+			<ul class="timeline collapse-sm">
+				<li class="timeline-inverted">
+					<div class="timeline-circ circ-xl style-primary"><span class="glyphicon glyphicon-leaf"></span></div>
+					<div class="timeline-entry">
+						<div class="card style-primary">
+							<div class="card-body small-padding">
+								<span class="text-medium">Head text</span><br/>
+								<span class="opacity-50">Subline</span>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="timeline-circ circ-xl style-primary"><span class="glyphicon glyphicon-leaf"></span></div>
+					<div class="timeline-entry">
+						<div class="card style-primary">
+							<div class="card-body small-padding">
+								<span class="text-medium">Head text</span><br/>
+								<span class="opacity-50">Subline</span>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<p class="text-center">
+				<code>.collapse-sm</code> Collapse on the small and extra small devices.
+			</p>
+			
+			<ul class="timeline collapse-md">
+				<li class="timeline-inverted">
+					<div class="timeline-circ circ-xl style-primary"><span class="glyphicon glyphicon-leaf"></span></div>
+					<div class="timeline-entry">
+						<div class="card style-primary">
+							<div class="card-body small-padding">
+								<span class="text-medium">Head text</span><br/>
+								<span class="opacity-50">Subline</span>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="timeline-circ circ-xl style-primary"><span class="glyphicon glyphicon-leaf"></span></div>
+					<div class="timeline-entry">
+						<div class="card style-primary">
+							<div class="card-body small-padding">
+								<span class="text-medium">Head text</span><br/>
+								<span class="opacity-50">Subline</span>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<p class="text-center">
+				<code>.collapse-md</code> Collapse on the medium devices and smaller.
+			</p>
+			
+			<ul class="timeline collapse-lg">
+				<li class="timeline-inverted">
+					<div class="timeline-circ circ-xl style-primary"><span class="glyphicon glyphicon-leaf"></span></div>
+					<div class="timeline-entry">
+						<div class="card style-primary">
+							<div class="card-body small-padding">
+								<span class="text-medium">Head text</span><br/>
+								<span class="opacity-50">Subline</span>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="timeline-circ circ-xl style-primary"><span class="glyphicon glyphicon-leaf"></span></div>
+					<div class="timeline-entry">
+						<div class="card style-primary">
+							<div class="card-body small-padding">
+								<span class="text-medium">Head text</span><br/>
+								<span class="opacity-50">Subline</span>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<p class="text-center">
+				<code>.collapse-lg</code> Collapse on all devices.
+			</p>
+			
+		</div>
+		<pre class="prettyprint">&lt;ul class=&quot;timeline collapse-xs&quot;&gt;..&lt;/ul&gt;
+&lt;ul class=&quot;timeline collapse-sm&quot;&gt;..&lt;/ul&gt;
+&lt;ul class=&quot;timeline collapse-md&quot;&gt;..&lt;/ul&gt;
+&lt;ul class=&quot;timeline collapse-lg&quot;&gt;..&lt;/ul&gt;
+</pre>
+	</div>
+	
+	</div>
+<!-- END DROPDOWN -->		
+	</div><!--end .section-body -->
+</section>
+<!-- BEGIN CSS SECTION -->
+
+		</div><!--end #content-->		
+		<!-- END CONTENT -->
+
+
+		<!-- BEGIN MENUBAR-->
+		<div id="menubar" class="menubar-inverse">
+			<div class="menubar-fixed-panel">
+				<div>
+					<a class="btn btn-icon-toggle btn-default menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
+						<i class="fa fa-bars"></i>
+					</a>
+				</div>
+				<div class="brand-holder">
+					<a href="../docs/getting-start.html">
+						<span class="text-lg text-bold text-primary ">MATERIAL&nbsp;ADMIN</span>
+					</a>
+				</div>
+			</div>
+			<div class="menubar-scroll-panel">
+				<!-- BEGIN MAIN MENU -->
+				
+
+
+<ul id="main-menu" class="gui-controls gui-controls-tree">
+	<!-- Menu Getting started -->
+	<li class="gui-folder">
+		<a href="../docs/getting-start.html" >
+			<div class="gui-icon"><i class="fa fa-rocket fa-fw"></i></div>
+			<span class="title">Getting started</span>
+		</a>
+		<ul>
+		</ul>
+	</li>
+	<!-- Menu CSS -->
+	<li class="gui-folder">
+		<a href="../docs/css.html" >
+			<div class="gui-icon"><i class="fa fa-flask fa-fw"></i></div>
+			<span class="title">CSS Structure</span>
+		</a>
+		<ul>
+		</ul>
+	</li>
+	<!-- Menu Components -->
+	<li class="gui-folder">
+		<a href="../docs/components.html" class="active">
+			<div class="gui-icon"><i class="fa fa-th-large fa-fw"></i></div>
+			<span class="title">Components</span>
+		</a>
+		<ul>
+		</ul>
+	</li>
+	<!-- Menu Javascript -->
+	<li class="gui-folder">
+		<a href="../docs/javascript.html" >
+			<div class="gui-icon"><i class="fa fa-code fa-fw"></i></div>
+			<span class="title">Javascript</span>
+		</a>
+		<ul>
+		</ul>
+	</li>
+	<!-- Menu Javascript-forms -->
+	<li class="gui-folder">
+		<a href="../docs/javascript-forms.html" >
+			<div class="gui-icon"><i class="fa fa-code fa-fw"></i></div>
+			<span class="title">Javascript for forms</span>
+		</a>
+		<ul>
+		</ul>
+	</li>
+
+</ul><!--end .main-menu -->
+				<!-- END MAIN MENU -->
+			</div>
+		</div><!--end #menubar-->
+		<!-- END MENUBAR -->
+
+	</div><!--end #base-->	
+	<!-- END BASE -->
+
+	<!-- BEGIN JAVASCRIPT -->
+		
+			<script src="../assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
+<script src="../assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
+<script src="../assets/js/libs/jquery-ui/jquery-ui.min.js"></script>
+<script src="../assets/js/libs/bootstrap/bootstrap.min.js"></script>
+<script src="../assets/js/libs/spin.js/spin.min.js"></script>
+<script src="../assets/js/libs/autosize/jquery.autosize.min.js"></script>
+<script src="../assets/js/libs/bootstrap-rating/bootstrap-rating-input.min.js"></script>
+<script src="../assets/js/libs/nanoscroller/jquery.nanoscroller.min.js"></script>
+<script src="../assets/js/core/source/App.js"></script>
+<script src="../assets/js/core/source/AppNavigation.js"></script>
+<script src="../assets/js/core/source/AppOffcanvas.js"></script>
+<script src="../assets/js/core/source/AppCard.js"></script>
+<script src="../assets/js/core/source/AppForm.js"></script>
+<script src="../assets/js/core/source/AppNavSearch.js"></script>
+<script src="../assets/js/core/source/AppVendor.js"></script>
+<script src="../assets/js/core/demo/Demo.js"></script>
+<script src="../assets/js/core/demo/DemoDocs.js"></script>
+
+	
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+	<!-- END JAVASCRIPT -->
+
+	
+	
+	</body>
+</html>

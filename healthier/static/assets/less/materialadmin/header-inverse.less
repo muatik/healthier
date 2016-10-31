@@ -1,0 +1,53 @@
+//
+// Header
+// --------------------------------------------------
+
+// Common
+// -------------------------
+
+#header {
+	&.header-inverse {
+		background: @headerbar-inverse-bg;
+		color: @headerbar-inverse-color;
+	}
+}
+
+
+// Header nav
+// --------------------------------------------------
+
+.header-inverse .header-nav {
+	// General style for the ico buttons
+	.btn-icon-toggle {
+		&:hover {
+			background-color: @headerbar-inverse-link-hover;
+		}
+	}
+}
+
+
+// Responsive classes
+// --------------------------------------------------
+
+
+// Small Devices
+// -------------------------
+
+@media (max-width: @screen-xs-max) {
+	.header-inverse {
+		// Left header bar
+		// ---------------------------
+
+		.headerbar-left {
+			background: @headerbar-inverse-bg;
+			border-bottom-color: fade(@white, 15%);
+		}
+
+		// Right header bar
+		// ---------------------------
+
+		.headerbar-right {
+			background: @headerbar-inverse-bg;
+		}
+	}
+}

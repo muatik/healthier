@@ -1,0 +1,19 @@
+.demo-icon-list .demo-icon-hover {
+  line-height: 32px;
+  padding: 8px;
+  padding-left: 10px;
+  text-align: center;
+}
+.demo-icon-list .demo-icon-hover .fa,
+.demo-icon-list .demo-icon-hover .md,
+.demo-icon-list .demo-icon-hover .glyphicon {
+  font-size: 24px;
+  display: block;
+  margin-right: 10px;
+}
+.demo-icon-list .demo-icon-hover:hover {
+  background: #0aa89e;
+  cursor: default;
+  color: #ffffff;
+}
+

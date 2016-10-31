@@ -1,0 +1,79 @@
+// Core variables and mixins
+@import "../../shared/variables.less";
+@import "../../shared/mixins.less";
+
+// Core CSS
+@import "fullcalendar.source.less";
+
+
+
+// Overides
+// -------------------------
+
+.fc-unthemed {
+	.fc-widget-header {
+		thead {
+			opacity: 0.6;
+			text-transform: uppercase;
+			font-size: 11px;
+			font-weight: 500;
+
+			.fc-day-header {
+				padding: 8px 4px;
+			}
+			th {
+				border-color: transparent;
+			}
+		}
+	}
+
+	th,
+	td,
+	hr,
+	thead,
+	tbody,
+	.fc-row,
+	.fc-popover {
+		border-color: @gray-lighter;
+	}
+	
+	.fc-today {
+		background: fade(@brand-primary, 7);
+	}
+	
+	.fc-event {
+		border-color: @brand-primary;
+		background-color: @brand-primary;
+	}
+}
+
+
+// Variants
+// -------------------------
+
+.fc-event {
+	&.event-danger {
+		border-color: @brand-danger;
+		background-color: @brand-danger;
+	}
+	
+	&.event-warning {
+		border-color: @brand-warning;
+		background-color: @brand-warning;
+	}
+	
+	&.event-success {
+		border-color: @brand-success;
+		background-color: @brand-success;
+	}
+	
+	&.event-info {
+		border-color: @brand-info;
+		background-color: @brand-info;
+	}
+	
+	&.event-default {
+		border-color: @gray-light;
+		background-color: @gray-light;
+	}
+}

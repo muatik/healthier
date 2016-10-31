@@ -1,0 +1,47 @@
+// Typography mixins
+// --------------------------------------------------
+
+
+// Guards
+// -------------------------
+
+.textshadowguard(@color, @size:0 1px 2px, @shadow-color:#000000) when (lightness(@color) >= @color-threshold) {
+	text-shadow: @size @shadow-color;
+}
+.textshadowguard(@color) when (lightness(@color) < @color-threshold) {
+	text-shadow: none;
+}
+
+
+// Contrast
+// -------------------------
+
+.color-contrast-soft(@color) {
+	color: contrast(@color, hardlight(@color, #5e5e5e), screen(@color, #a6a6a6), @color-threshold);
+}
+
+
+// Saturate
+// -------------------------
+
+.saturate(@percentage) {
+	filter: saturate(@percentage);
+	// Browser Specific
+	-webkit-filter: saturate(@percentage);
+	-moz-filter: saturate(@percentage);
+	-o-filter: saturate(@percentage);
+	-ms-filter: saturate(@percentage);
+}
+
+
+// Text variants
+// -------------------------
+
+.text-variants(@name; @color) {
+	.@{name} {
+		color: @color;
+	}
+	.@{name}-track {
+		border-color: @color;
+	}
+}

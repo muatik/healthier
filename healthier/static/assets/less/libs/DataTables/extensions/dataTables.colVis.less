@@ -1,0 +1,150 @@
+// Core variables and mixins
+@import "../../../shared/variables.less";
+@import "../../../shared/mixins.less";
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * ColVis styles
+ */
+div.ColVis {
+	float: right;
+	margin: 0 0 0 15px;
+	
+	.card-body.no-padding & {
+		margin: 15px 15px 15px 0;
+	}
+}
+
+button.ColVis_Button,
+ul.ColVis_collection li {
+	position: relative;
+	float: left;
+	margin-right: 3px;
+	background-color: #fff;
+	border: 1px solid #d0d0d0;
+	outline: none;
+	cursor: pointer;
+	*cursor: hand;
+	padding: 4px 12px 4px 30px;
+	white-space: nowrap;
+
+	.ColVis.TableTools & {
+		padding: 6px 12px;
+	}
+	
+	padding: 5px 8px;
+	//font-size: 0.88em;
+	
+	&:hover {
+		border: 1px solid #999;
+		background-color: #f0f0f0;
+	}
+}
+
+
+button.ColVis_Button {
+	height: 30px;
+	padding: 3px 8px;
+}
+
+button.ColVis_Button::-moz-focus-inner { 
+	border: none !important;
+	padding: 0;
+}
+
+button.ColVis_Button:active { 
+	outline: none;
+}
+
+
+div.ColVis_collectionBackground {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: fade(white, 5%);
+	z-index: 1100;
+}
+
+ul.ColVis_collection {
+	list-style: none;
+	width: 250px;
+	padding: 8px 0;
+	margin: 0;
+	border: none;
+	background-color: @white;
+	overflow: hidden;
+	z-index: 2002;
+	.box-shadow(0 3px 9px rgba(0,0,0,.5));
+}
+
+ul.ColVis_collection li {
+	position: relative;
+	height: auto;
+	left: 0;
+	right: 0;
+	padding: 3px 10px;
+	display: block;
+	float: left;
+	width: 100%;
+	margin-bottom: -1px;
+	border: none;
+
+	&:hover {
+		border: none;
+	}
+}
+
+ul.ColVis_collection li {
+	text-align: left;
+}
+
+ul.ColVis_collection li.ColVis_Button:hover {
+	border: 1px solid #999;
+	background-color: #f0f0f0;
+}
+
+ul.ColVis_collection li span {
+	display: inline-block;
+	padding-left: 0.5em;
+	cursor: pointer;
+}
+
+
+ul.ColVis_collection li.ColVis_Special {
+	border-color: #555;
+	background: rgb(237,237,237); /* Old browsers */
+	background: -webkit-linear-gradient(top, rgba(237,237,237,1) 0%,rgba(214,214,214,1) 77%,rgba(232,232,232,1) 100%); /* Chrome10+,Safari5.1+ */
+	background:    -moz-linear-gradient(top, rgba(237,237,237,1) 0%, rgba(214,214,214,1) 77%, rgba(232,232,232,1) 100%); /* FF3.6+ */
+	background:     -ms-linear-gradient(top, rgba(237,237,237,1) 0%,rgba(214,214,214,1) 77%,rgba(232,232,232,1) 100%); /* IE10+ */
+	background:      -o-linear-gradient(top, rgba(237,237,237,1) 0%,rgba(214,214,214,1) 77%,rgba(232,232,232,1) 100%); /* Opera 11.10+ */
+	background:         linear-gradient(to bottom, rgba(237,237,237,1) 0%,rgba(214,214,214,1) 77%,rgba(232,232,232,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#e8e8e8',GradientType=0 ); /* IE6-9 */
+}
+
+ul.ColVis_collection li.ColVis_Special:hover {
+	background: #e2e2e2; /* Old browsers */
+	background: -webkit-linear-gradient(top, #d0d0d0 0%,#d5d5d5 89%,#e2e2e2 100%); /* Chrome10+,Safari5.1+ */
+	background:    -moz-linear-gradient(top, #d0d0d0 0%,#d5d5d5 89%,#e2e2e2 100%); /* FF3.6+ */
+	background:     -ms-linear-gradient(top, #d0d0d0 0%,#d5d5d5 89%,#e2e2e2 100%); /* IE10+ */
+	background:      -o-linear-gradient(top, #d0d0d0 0%,#d5d5d5 89%,#e2e2e2 100%); /* Opera 11.10+ */
+	background:         linear-gradient(top, #d0d0d0 0%,#d5d5d5 89%,#e2e2e2 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f3f3', endColorstr='#e2e2e2',GradientType=0 ); /* IE6-9 */
+}
+
+
+span.ColVis_radio {
+	display: inline-block;
+	width: 20px;
+}
+
+div.ColVis_catcher {
+	position: absolute;
+	z-index: 1101;
+}
+
+.disabled {
+	color: #999;
+}
+
+

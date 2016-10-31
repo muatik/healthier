@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Material Admin - Profile</title>
+
+		<!-- BEGIN META -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="keywords" content="your,keywords">
+		<meta name="description" content="Short explanation about this website">
+		<!-- END META -->
+
+		<!-- BEGIN STYLESHEETS -->
+		<link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet' type='text/css'/>
+		<link type="text/css" rel="stylesheet" href="assets/css/theme-default/bootstrap.css?1422792965" />
+		<link type="text/css" rel="stylesheet" href="assets/css/theme-default/materialadmin.css?1425466319" />
+		<link type="text/css" rel="stylesheet" href="assets/css/theme-default/font-awesome.min.css?1422529194" />
+		<link type="text/css" rel="stylesheet" href="assets/css/theme-default/material-design-iconic-font.min.css?1421434286" />
+		<link type="text/css" rel="stylesheet" href="assets/css/timeline.css" />
+		<link type="text/css" rel="stylesheet" href="assets/css/autocomplete.css" />
+		<!-- END STYLESHEETS -->
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="assets/js/libs/utils/html5shiv.js?1403934957"></script>
+		<script type="text/javascript" src="assets/js/libs/utils/respond.min.js?1403934956"></script>
+		<![endif]-->
+	</head>
+	<body class="menubar-hoverable header-fixed ">
+
+		<!-- BEGIN HEADER-->
+		<header id="header" >
+			<div class="headerbar">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="headerbar-left">
+					<ul class="header-nav header-nav-options">
+						<li class="header-nav-brand" >
+							<div class="brand-holder">
+								<a href="../../html/dashboards/dashboard.html">
+									<span class="text-lg text-bold text-primary">MATERIAL ADMIN</span>
+								</a>
+							</div>
+						</li>
+						<li>
+							<a class="btn btn-icon-toggle menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
+								<i class="fa fa-bars"></i>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="headerbar-right">
+					<ul class="header-nav header-nav-options">
+						<li>
+							<!-- Search form -->
+							<form class="navbar-search" role="search">
+								<div class="form-group">
+									<input type="text" class="form-control" name="headerSearch" placeholder="Enter your keyword">
+								</div>
+								<button type="submit" class="btn btn-icon-toggle ink-reaction"><i class="fa fa-search"></i></button>
+							</form>
+						</li>
+						<li class="dropdown hidden-xs">
+							<a href="javascript:void(0);" class="btn btn-icon-toggle btn-default" data-toggle="dropdown">
+								<i class="fa fa-bell"></i><sup class="badge style-danger">4</sup>
+							</a>
+							<ul class="dropdown-menu animation-expand">
+								<li class="dropdown-header">Today's messages</li>
+								<li>
+									<a class="alert alert-callout alert-warning" href="javascript:void(0);">
+										<img class="pull-right img-circle dropdown-avatar" src="assets/img/avatar2.jpg?1404026449" alt="" />
+										<strong>Alex Anistor</strong><br/>
+										<small>Testing functionality...</small>
+									</a>
+								</li>
+								<li>
+									<a class="alert alert-callout alert-info" href="javascript:void(0);">
+										<img class="pull-right img-circle dropdown-avatar" src="assets/img/avatar3.jpg?1404026799" alt="" />
+										<strong>Alicia Adell</strong><br/>
+										<small>Reviewing last changes...</small>
+									</a>
+								</li>
+								<li class="dropdown-header">Options</li>
+								<li><a href="../../html/pages/login.html">View all messages <span class="pull-right"><i class="fa fa-arrow-right"></i></span></a></li>
+								<li><a href="../../html/pages/login.html">Mark as read <span class="pull-right"><i class="fa fa-arrow-right"></i></span></a></li>
+							</ul><!--end .dropdown-menu -->
+						</li><!--end .dropdown -->
+						<li class="dropdown hidden-xs">
+							<a href="javascript:void(0);" class="btn btn-icon-toggle btn-default" data-toggle="dropdown">
+								<i class="fa fa-area-chart"></i>
+							</a>
+							<ul class="dropdown-menu animation-expand">
+								<li class="dropdown-header">Server load</li>
+								<li class="dropdown-progress">
+									<a href="javascript:void(0);">
+										<div class="dropdown-label">
+											<span class="text-light">Server load <strong>Today</strong></span>
+											<strong class="pull-right">93%</strong>
+										</div>
+										<div class="progress"><div class="progress-bar progress-bar-danger" style="width: 93%"></div></div>
+									</a>
+								</li><!--end .dropdown-progress -->
+								<li class="dropdown-progress">
+									<a href="javascript:void(0);">
+										<div class="dropdown-label">
+											<span class="text-light">Server load <strong>Yesterday</strong></span>
+											<strong class="pull-right">30%</strong>
+										</div>
+										<div class="progress"><div class="progress-bar progress-bar-success" style="width: 30%"></div></div>
+									</a>
+								</li><!--end .dropdown-progress -->
+								<li class="dropdown-progress">
+									<a href="javascript:void(0);">
+										<div class="dropdown-label">
+											<span class="text-light">Server load <strong>Lastweek</strong></span>
+											<strong class="pull-right">74%</strong>
+										</div>
+										<div class="progress"><div class="progress-bar progress-bar-warning" style="width: 74%"></div></div>
+									</a>
+								</li><!--end .dropdown-progress -->
+							</ul><!--end .dropdown-menu -->
+						</li><!--end .dropdown -->
+					</ul><!--end .header-nav-options -->
+					<ul class="header-nav header-nav-profile">
+						<li class="dropdown">
+							<a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
+								<img src="assets/img/avatar1.jpg?1403934956" alt="" />
+								<span class="profile-info">
+									Daniel Johnson
+									<small>Administrator</small>
+								</span>
+							</a>
+							<ul class="dropdown-menu animation-dock">
+								<li class="dropdown-header">Config</li>
+								<li><a href="../../html/pages/profile.html">My profile</a></li>
+								<li><a href="../../html/pages/blog/post.html">My blog <span class="badge style-danger pull-right">16</span></a></li>
+								<li><a href="../../html/pages/calendar.html">My appointments</a></li>
+								<li class="divider"></li>
+								<li><a href="../../html/pages/locked.html"><i class="fa fa-fw fa-lock"></i> Lock</a></li>
+								<li><a href="../../html/pages/login.html"><i class="fa fa-fw fa-power-off text-danger"></i> Logout</a></li>
+							</ul><!--end .dropdown-menu -->
+						</li><!--end .dropdown -->
+					</ul><!--end .header-nav-profile -->
+					<ul class="header-nav header-nav-toggle">
+						<li>
+							<a class="btn btn-icon-toggle btn-default" href="#offcanvas-search" data-toggle="offcanvas" data-backdrop="false">
+								<i class="fa fa-ellipsis-v"></i>
+							</a>
+						</li>
+					</ul><!--end .header-nav-toggle -->
+				</div><!--end #header-navbar-collapse -->
+			</div>
+		</header>
+		<!-- END HEADER-->
+
+		<!-- BEGIN BASE-->
+		<div id="base">
+
+			<!-- BEGIN OFFCANVAS LEFT -->
+			<div class="offcanvas">
+			</div><!--end .offcanvas-->
+			<!-- END OFFCANVAS LEFT -->
+
+			<!-- BEGIN CONTENT-->
+			<div id="content">
+
+				<!-- BEGIN PROFILE HEADER -->
+
+				<!-- END PROFILE HEADER  -->
+
+				<section>
+					<div class="section-body no-margin">
+						<div class="row">
+							<div class="col-md-offset-1 col-md-10">
+								<h2>Timeline</h2>
+
+
+								<div class="card no-margin timeline-form-buttons">
+									<button type="button" class="btn  btn-raised btn-default-light" data-target="consumption-form">
+										<i class="fa fa-cutlery" aria-hidden="true" ></i> Add consumption</button>
+									<button type="button" class="btn  btn-raised btn-default-light" data-target="activity-form">
+										<i class="fa fa-bicycle" aria-hidden="true"></i> Add activity</button>
+								</div>
+
+
+								<!-- BEGIN CONSUMPTION-FORM  -->
+								<div id="consumption-form" class="card card-underline no-margin timeline-form-views">
+								    <div class="card-head">
+								        <header>What did you eat?</header>
+								        <div class="tools">
+								            <div class="btn-group">
+								                <a class="btn btn-icon-toggle btn-hide"><i class="md md-close"></i></a>
+								            </div>
+								        </div>
+								    </div><!--end .card-head -->
+								    <div class="card-body">
+								        <!-- BEGIN CONSUMPTION-FORM -->
+								        <form class="form-horizontal col-md-9 col-md-offset-1 col-lg-8 col-lg-offset-1" role="form">
+								            <div class="form-group">
+								                <label for="placeholder13" class="col-sm-2 control-label">What</label>
+								                <div class="col-sm-10">
+
+						                    		<input type="text" class="form-control" id="consumption_what"
+						                    			placeholder="type to search for food or recipe" />
+						                    		<div class="form-control-line"></div>
+
+								                </div>
+								            </div>
+								            <div class="form-group">
+								                <label for="placeholder13" class="col-sm-2 control-label">When</label>
+								                <div class="col-sm-10">
+								                    <div class="input-group date" id="demo-date-month">
+								                        <div class="input-group-content">
+								                            <input type="text" class="form-control datetime-picker">
+								                        </div>
+								                        <span class="input-group-addon "><i class="fa fa-calendar"></i></span>
+								                    </div>
+								                    <div class="form-control-line"></div>
+								                </div>
+								            </div>
+								            <div class="form-group">
+								              <label for="entry_quantity" class="col-sm-2 control-label">How much: </label>
+								              <div class="col-sm-10">
+
+								                <div class=" form-group col-sm-5 col-md-4 col-lg-4 ">
+								                    <input class="form-control" type="text" id="entry_quantity">
+								                </div>
+								                <div class=" form-group col-sm-5 col-md-4 col-lg-4 ">
+								                    <select class="form-control" id="consumption_measure">
+								                        <option value="kg" selected="1">Kg</option>
+								                    </select>
+								                </div>
+
+								              </div>
+								            </div>
+								            <div class="form-group ">
+								                <button type="button" class="btn btn-raised  btn-sm btn-primary col-sm-offset-2">
+								                    <i class="fa fa-cutlery" aria-hidden="true"></i> Submit
+								                </button>
+								                <span class="pull-right">
+						                    		<button type="button" class="btn btn-block ink-reaction btn-flat btn-default btn-sm">
+						                    		<i class="fa fa-cubes"></i>manage your recipes</span></button>
+						                    	</span>
+								            </div>
+								        </form>
+
+								    </div><!--end .card-body -->
+								</div>
+								<!-- END CONSUMPTION-FORM -->
+
+								<!-- BEGIN CONSUMPTION-FORM  -->
+								<div id="activity-form" class="card card-underline no-margin timeline-form-views">
+								    <div class="card-head">
+								        <header>What did you do?</header>
+								        <div class="tools">
+								            <div class="btn-group">
+								                <a class="btn btn-icon-toggle btn-hide"><i class="md md-close"></i></a>
+								            </div>
+								        </div>
+								    </div><!--end .card-head -->
+								    <div class="card-body">
+								        <!-- BEGIN CONSUMPTION-FORM -->
+								        <form class="form-horizontal col-md-9 col-md-offset-1 col-lg-8 col-lg-offset-1" role="form">
+								            <div class="form-group">
+								                <label for="placeholder13" class="col-sm-2 control-label">What</label>
+								                <div class="col-sm-10">
+								                    <input type="text" class="form-control" id="placeholder13" placeholder="Placeholder"><div class="form-control-line"></div>
+								                </div>
+								            </div>
+								            <div class="form-group">
+								                <label for="placeholder13" class="col-sm-2 control-label">When</label>
+								                <div class="col-sm-10">
+								                    <div class="input-group date" id="demo-date-month">
+								                        <div class="input-group-content">
+								                            <input type="text" class="form-control datetime-picker">
+								                        </div>
+								                        <span class="input-group-addon "><i class="fa fa-calendar"></i></span>
+								                    </div>
+								                    <div class="form-control-line"></div>
+								                </div>
+								            </div>
+								            <div class="form-group">
+								              <label for="entry_quantity" class="col-sm-2 control-label">How much: </label>
+								              <div class="col-sm-10">
+
+								                <div class=" form-group col-sm-5 col-md-4 col-lg-4 ">
+								                    <input class="form-control" type="text" id="entry_quantity">
+								                </div>
+								                <div class=" form-group col-sm-5 col-md-4 col-lg-4 ">
+								                    <select class="form-control" id="entry_measure">
+								                        <option value="kg" selected="1">minutes</option>
+								                    </select>
+								                </div>
+
+								              </div>
+								            </div>
+								            <div class="form-group ">
+								                <button type="button" class="btn ink-reaction btn-raised  btn-sm btn-primary col-sm-offset-2">
+								                    <i class="fa fa-bicycle" aria-hidden="true"></i> Submit
+								                </button>
+								            </div>
+								        </form>
+
+								    </div><!--end .card-body -->
+								</div>
+								<!-- END CONSUMPTION-FORM -->
+
+
+								<!-- BEGIN MESSAGE ACTIVITY -->
+								<div class="tab-pane" id="activity">
+									<ul class="timeline collapse-lg timeline-hairline">
+										<li class="timeline-inverted">
+											<div class="timeline-circ circ-xl style-primary"><i class="md md-event"></i></div>
+											<div class="timeline-entry">
+												<div class="card style-default-light">
+													<div class="card-body small-padding">
+														<span class="text-medium">Received a <a class="text-primary" href="../../html/mail/inbox.html">message</a> from <span class="text-primary">Ann Lauren</span></span><br/>
+														<span class="opacity-50">
+															Saturday, Oktober 18, 2014
+														</span>
+													</div>
+												</div>
+											</div><!--end .timeline-entry -->
+										</li>
+										<li>
+											<div class="timeline-circ circ-xl style-primary-dark"><i class="md md-access-time"></i></div>
+											<div class="timeline-entry">
+												<div class="card style-default-light">
+													<div class="card-body small-padding">
+														<p>
+															<span class="text-medium">User login at <span class="text-primary">8:15 pm</span></span><br/>
+															<span class="opacity-50">
+																Saturday, August 2, 2014
+															</span>
+														</p>
+														Check out my new location.
+													</div>
+												</div>
+											</div><!--end .timeline-entry -->
+										</li>
+										<li>
+											<div class="timeline-circ circ-xl style-primary"><i class="md md-location-on"></i></div>
+											<div class="timeline-entry">
+												<div class="card style-default-light">
+													<div class="card-body small-padding">
+														<img class="img-circle img-responsive pull-left width-1" src="assets/img/avatar2.jpg?1404026449" alt="" />
+														<span class="text-medium">Meeting in the <span class="text-primary">conference room</span></span><br/>
+														<span class="opacity-50">
+															Saturday, Juli 29, 2014
+														</span>
+													</div>
+													<div class="card-body">
+														<p><em>Walked all the way home...</em></p>
+														<img class="img-responsive" src="assets/img/img14.jpg?1404589160" alt="" />
+													</div>
+												</div>
+											</div><!--end .timeline-entry -->
+										</li>
+									</ul>
+								</div><!--end #activity -->
+							</div><!--end .col -->
+							<!-- END MESSAGE ACTIVITY -->
+
+
+						</div><!--end .row -->
+					</div><!--end .section-body -->
+				</section>
+			</div><!--end #content-->
+			<!-- END CONTENT -->
+
+		</div><!--end #base-->
+		<!-- END BASE -->
+
+		<!-- BEGIN JAVASCRIPT -->
+		<script src="assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
+		<script src="assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
+		<script src="assets/js/libs/bootstrap/bootstrap.min.js"></script>
+		<script src="assets/js/libs/spin.js/spin.min.js"></script>
+		<script src="assets/js/libs/autosize/jquery.autosize.min.js"></script>
+		<script src="assets/js/libs/nanoscroller/jquery.nanoscroller.min.js"></script>
+		<script src="assets/js/libs/mustache.min.js"></script>
+		<script src="assets/js/core/source/App.js"></script>
+		<script src="assets/js/core/source/AppNavigation.js"></script>
+		<script src="assets/js/core/source/AppOffcanvas.js"></script>
+		<script src="assets/js/core/source/AppCard.js"></script>
+		<script src="assets/js/core/source/AppForm.js"></script>
+		<script src="assets/js/core/source/AppNavSearch.js"></script>
+		<script src="assets/js/core/source/AppVendor.js"></script>
+		<script src="assets/js/core/demo/Demo.js"></script>
+		<!-- END JAVASCRIPT -->
+
+		<script src="assets/js/libs/jquery.autocomplete.min.js"></script>
+
+
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.min.css" />
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/js/bootstrap-datetimepicker.min.js"></script>
+
+		<script type="text/javascript" src="assets/js/timeline.js"></script>
+		<script type="text/javascript" src="assets/js/activities.js"></script>
+		<script type="text/javascript" src="assets/js/consumption.js"></script>
+
+		<script>
+
+		$('.datetime-picker').datetimepicker({
+		        defaultDate: new Date(),
+		        icons:{
+		            time: 'fa fa-clock-o',
+		            date: 'fa fa-calendar',
+		            up: 'fa fa-chevron-up',
+		            down: 'fa fa-chevron-down',
+		            previous: 'fa fa-chevron-left',
+		            next: 'fa fa-chevron-right',
+		            today: 'fa fa-screenshot',
+		            clear: 'fa fa-trash',
+		            close: 'fa fa-remove'
+		        }});
+
+		</script>
+
+	</body>
+</html>

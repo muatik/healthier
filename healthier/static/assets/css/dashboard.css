@@ -1,0 +1,97 @@
+.card-progress {
+    height: 140px;
+    margin-bottom: 10px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    background: #fff;
+    padding: 15px 15px 30px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-progress .display {
+    margin-bottom: 20px;
+}
+
+.card-progress .display .number h3{
+    margin: 0 0 2px;
+    padding: 0;
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.card-progress .display h4 {
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+
+.card-progress .display .number small {
+    font-size: 14px;
+    color: #AAB5BC;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.card-progress .display .number h4 small {
+    font-size: 12px;
+    margin-top: 4px;
+    display: block;
+}
+.card-progress .display .number .fa{
+    font-size: 1.4em;
+    margin-right: 4px;
+}
+
+.progress-info .progress {
+    margin: 0;
+    height: 4px;
+    clear: both;
+    display: block;
+}
+.progress-info .status  {
+    color: #aaa;
+}
+.progress-info .status .status-title {
+    float: left;
+    display: inline-block;
+}
+
+.progress-info .status .status-number {
+    float: right;
+    display: inline-block;
+}
+
+.card-progress .display .icon {
+    display: inline-block;
+    float: right;
+    padding: 7px 0 0;
+}
+
+.card-progress .action-button {
+    margin: -15px -15px 0 0;
+}
+
+
+.btn-radio{
+    margin-top: 7px;
+}
+.goals-status {
+    margin-bottom: 15px;
+}
+
+.target-nutrients .card-body{
+    overflow-y: auto;
+}
+
+.card-progress.challenge {
+    background-color: #e7505a;
+}
+.card-progress.challenge h3{
+    text-align: center;
+    color: #fff;
+    line-height: 60px;
+    text-shadow: 1px 1px 1px #666;
+}

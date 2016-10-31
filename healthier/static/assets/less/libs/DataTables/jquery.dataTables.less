@@ -1,0 +1,600 @@
+// Core variables and mixins
+@import "../../shared/variables.less";
+@import "../../shared/mixins.less";
+
+/*
+ * Table styles
+ */
+table.dataTable {
+	margin: 0 auto;
+	clear: both;
+
+	/*
+	 * Header and footer styles
+	 */
+	thead th,
+	thead td {
+		&:active {
+			outline: none;
+		}
+	}
+
+	td {
+		&.center, 
+		&.dataTables_empty {
+			text-align: center;
+		}
+	}
+
+	td.details-control {
+		text-align: center;
+		&:before { 
+			font-family: FontAwesome;
+			font-weight: normal;
+			font-style: normal;
+			text-decoration: inherit;
+			-webkit-font-smoothing: antialiased;
+			*margin-right: .3em;
+			content: "\f067";
+		}
+		cursor: pointer;
+	}
+	tr.shown td.details-control {
+		&:before { 
+			content: "\f068";
+		}
+	}
+		
+	// Sorting
+	thead {
+		.sorting,
+		.sorting_asc,
+		.sorting_asc_disabled,
+		.sorting_desc,
+		.sorting_desc_disabled {
+			position: relative;
+			cursor: pointer;
+			*cursor: hand;
+
+			&:before { 
+				font-family: FontAwesome;
+				font-weight: normal;
+				font-style: normal;
+				text-decoration: inherit;
+				-webkit-font-smoothing: antialiased;
+				*margin-right: .3em;
+				float: right;
+				content: "\f0dc";
+			}
+		}
+		.sorting_asc:before, .sorting_asc_disabled:before { 
+			content: "\f0de";
+		}
+		.sorting_desc:before, .sorting_desc_disabled:before { 
+			content: "\f0dd";
+		}
+		// Numeric icons
+		.sort-numeric {
+			&.sorting:before, &.sorting_asc:before, &.sorting_asc_disabled:before { 
+				content: "\f162";
+			}
+			&.sorting_desc:before, &.sorting_desc_disabled:before { 
+				content: "\f163";
+			}
+		}
+		// Alphabet icons
+		.sort-alpha {
+			&.sorting:before, &.sorting_asc:before, &.sorting_asc_disabled:before { 
+				content: "\f15d";
+			}
+			&.sorting_desc:before, &.sorting_desc_disabled:before { 
+				content: "\f15e";
+			}
+		}
+		
+		.sorting_asc:before, .sorting_desc:before {
+			color: darken(@brand-primary, 20%);
+		}
+		.sorting:before, .sorting_asc_disabled:before, .sorting_desc_disabled:before {
+			color: lighten(#000, 75%);
+		}
+	}
+
+
+	/*
+	 * Body styles
+	 */
+	tbody {
+		tr {
+			background-color: @table-row-background;
+
+			&.selected {
+				background-color: @table-row-selected;
+				color: contrast(@table-row-selected, @text-color, @white, @color-threshold);
+			}
+		}
+
+		th,
+		td {
+			padding: 8px 10px;
+		}
+	}
+
+
+	// Stripe classes - add "row-border" class to the table to activate
+	&.row-border tbody,
+	&.display tbody {
+		th, td {
+			border-top: @table-body-border;
+		}
+
+		tr:first-child th,
+			tr:first-child td {
+			border-top: none;
+		}
+	}
+
+
+	// Stripe classes - add "cell-border" class to the table to activate
+	&.cell-border tbody {
+		th, td {
+			border-top: @table-body-border;
+			border-right: @table-body-border;
+		}
+
+		tr th:first-child,
+			tr td:first-child {
+			border-left: @table-body-border;
+		}
+
+		tr:first-child th, tr:first-child td {
+			border-top: none;
+		}
+	}
+
+
+	// Stripe classes - add "stripe" class to the table to activate
+	&.stripe tbody,
+	&.display tbody {
+		tr.odd {
+			background-color: shade(@table-row-background, 2.35%); // shade by f9
+
+			&.selected {
+				background-color: shade(@table-row-selected, 2.35%);
+				color: contrast(shade(@table-row-selected, 2.35%), @text-color, @white, @color-threshold);
+			}
+		}
+	}
+
+
+	// Hover classes - add "hover" class to the table to activate
+	&.hover tbody,
+	&.display tbody {
+		tr:hover, tr.odd:hover, tr.even:hover {
+			background-color: shade(@table-row-background, 3.6%); // shade by f5
+
+			&.selected {
+				background-color: shade(@table-row-selected, 3.6%);
+				color: contrast(shade(@table-row-selected, 3.6%), @text-color, @white, @color-threshold);
+			}
+		}
+	}
+
+
+	// Sort column highlighting - add "hover" class to the table to activate
+	&.order-column,
+	&.display {
+		tbody {
+			tr>.sorting_1,
+			tr>.sorting_2,
+			tr>.sorting_3 {
+				background-color: shade(@table-row-background, 2%); // shade by fa
+			}
+
+			tr.selected>.sorting_1,
+			tr.selected>.sorting_2,
+			tr.selected>.sorting_3 {
+				background-color: shade(@table-row-selected, 2%);
+				color: contrast(shade(@table-row-selected, 2%), @text-color, @white, @color-threshold);
+			}
+		}
+	}
+
+	&.display tbody,
+	&.order-column.stripe tbody,
+	&.table-striped tbody {
+		tr.odd {
+			>.sorting_1 { background-color: shade(@table-row-background, 5.4%); } // shade by f1
+			>.sorting_2 { background-color: shade(@table-row-background, 4.7%); } // shade by f3
+			>.sorting_3 { background-color: shade(@table-row-background, 3.9%); } // shade by f5
+
+			&.selected {
+				>.sorting_1 { background-color: shade(@table-row-selected, 5.4%); }
+				>.sorting_2 { background-color: shade(@table-row-selected, 4.7%); }
+				>.sorting_3 { background-color: shade(@table-row-selected, 3.9%); }
+			}
+		}
+
+		tr.even {
+			>.sorting_1 { background-color: shade(@table-row-background, 2%); } // shade by fa
+			>.sorting_2 { background-color: shade(@table-row-background, 1.2%); } // shade by fc
+			>.sorting_3 { background-color: shade(@table-row-background, 0.4%); } // shade by fe
+
+			&.selected {
+				>.sorting_1 { background-color: shade(@table-row-selected, 2%); }
+				>.sorting_2 { background-color: shade(@table-row-selected, 1.2%); }
+				>.sorting_3 { background-color: shade(@table-row-selected, 0.4%); }
+			}
+		}
+	}
+
+	&.display tbody,
+	&.order-column.hover tbody {
+		tr:hover,
+			tr.odd:hover,
+			tr.even:hover {
+			>.sorting_1 { background-color: shade(@table-row-background, 8.2%); } // shade by ea
+			>.sorting_2 { background-color: shade(@table-row-background, 7.5%); } // shade by ec
+			>.sorting_3 { background-color: shade(@table-row-background, 6.3%); } // shade by ef
+
+			&.selected {
+				>.sorting_1 { background-color: shade(@table-row-selected, 8.2%); }
+				>.sorting_2 { background-color: shade(@table-row-selected, 7.5%); }
+				>.sorting_3 { background-color: shade(@table-row-selected, 6.3%); }
+			}
+		}
+	}
+
+	&.nowrap {
+		th, td {
+			white-space: nowrap;
+		}
+	}
+
+	&.compact {
+		thead th,
+		thead td {
+			padding: 5px 9px;
+		}
+
+		tfoot th,
+		tfoot td {
+			padding: 5px 9px 3px 9px;
+		}
+
+		tbody th,
+		tbody td {
+			padding: 4px 5px;
+		}
+	}
+
+
+	// Typography
+	th.dt-left,
+	td.dt-left {
+		text-align: left;
+	}
+
+	th.dt-center,
+	td.dt-center,
+	td.dataTables_empty {
+		text-align: center;
+	}
+
+	th.dt-right,
+	td.dt-right {
+		text-align: right;
+	}
+
+	th.dt-justify,
+	td.dt-justify {
+		text-align: justify;
+	}
+
+	th.dt-nowrap,
+	td.dt-nowrap {
+		white-space: nowrap;
+	}
+
+	thead,
+	tfoot {
+		th.dt-head-left,
+		td.dt-head-left {
+			text-align: left;
+		}
+
+		th.dt-head-center,
+		td.dt-head-center{
+			text-align: center;
+		}
+
+		th.dt-head-right,
+		td.dt-head-right {
+			text-align: right;
+		}
+
+		th.dt-head-justify,
+		td.dt-head-justify {
+			text-align: justify;
+		}
+
+		th.dt-head-nowrap,
+		td.dt-head-nowrap {
+			white-space: nowrap;
+		}
+	}
+
+	tbody {
+		th.dt-body-left,
+		td.dt-body-left {
+			text-align: left;
+		}
+
+		th.dt-body-center,
+		td.dt-body-center {
+			text-align: center;
+		}
+
+		th.dt-body-right,
+		td.dt-body-right {
+			text-align: right;
+		}
+
+		th.dt-body-justify,
+		td.dt-body-justify {
+			text-align: justify;
+		}
+
+		th.dt-body-nowrap,
+		td.dt-body-nowrap {
+			white-space: nowrap;
+		}
+	}
+
+}
+
+// Its not uncommon to use * {border-box} now, but it messes up the column width
+// calculations, so use content-box for the table and cells
+table.dataTable,
+table.dataTable th,
+table.dataTable td {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+
+/*
+ * Control feature layout
+ */
+.dataTables_wrapper {
+	position: relative;
+	clear: both;
+	*zoom: 1;
+
+	.card-body.no-padding & {
+		.clearfix();
+	}
+
+	// Page length options
+	.dataTables_length {
+		float: left;
+		margin: 0 0 15px 0;
+
+		select {
+			height: @input-height-base;
+			padding: @padding-base-vertical @padding-base-horizontal;
+			font-size: @font-size-base;
+			line-height: @line-height-base;
+			margin-right: 5px;
+			border: none;
+			border-bottom: 1px solid fade(@black, 12);
+			background: transparent;
+			color: @black;
+			
+			// Form control focus state
+			&:focus {
+				outline: 0;
+				border-bottom-width: 2px;
+				border-bottom-color: @brand-primary;
+			}
+		}
+		.card-body.no-padding & {
+			margin: 15px;
+		}
+	}
+
+	// Filtering input
+	.dataTables_filter {
+		float: right;
+		text-align: right;
+		margin: 0 0 15px 0;
+
+		label {
+			margin: 0;
+
+			i {
+				margin-right: 5px;
+			}
+		}
+		input {
+			height: @input-height-base;
+			padding: @padding-base-vertical @padding-base-horizontal;
+			font-size: @font-size-base;
+			line-height: @line-height-base;
+			border: none;
+			border-bottom: 1px solid fade(@black, 12);
+			background: transparent;
+			color: @black;
+
+			// Form control focus state
+			&:focus {
+				outline: 0;
+				border-bottom-width: 2px;
+				border-bottom-color: @brand-primary;
+			}
+		}
+		.card-body.no-padding & {
+			margin: 15px;
+		}
+	}
+
+	// Table info
+	.dataTables_info {
+		margin-top: 15px;
+		padding: 6px 0 0 0;
+		clear: both;
+		float: left;
+
+		.card-body.no-padding & {
+			margin: 15px;
+		}
+	}
+
+	// Paging
+	.dataTables_paginate {
+		margin-top: 15px;
+		float: right;
+		text-align: right;
+
+		.card-body.no-padding & {
+			margin: 15px;
+		}
+
+		.paginate_button {
+			box-sizing: border-box;
+			display: inline-block;
+			min-width: 1.5em;
+			padding: 6px 12px;
+			margin-left: -1px;
+			text-align: center;
+			text-decoration: none !important;
+			cursor: pointer;
+			*cursor: hand;
+
+			background-color: #fff;
+			color: @btn-default-color;
+			border: 1px solid @btn-default-border;
+
+			&.current,
+			&.current:hover {
+				background-color: @table-paging-button-active;
+				color: contrast(@table-paging-button-active, @text-color, @white, @color-threshold);
+			}
+
+			&.disabled,
+			&.disabled:hover,
+				&.disabled:active {
+				cursor: default;
+				color: @gray-light;
+				border: 1px solid transparent;
+				background: transparent;
+				cursor:no-drop;
+			}
+
+			&:hover {
+				background-color: @table-paging-button-hover;
+				color: contrast(@table-paging-button-hover, @text-color, @white, @color-threshold);
+			}
+
+			&:active {
+				outline: none;
+			}
+		}
+	}
+
+	// Processing
+	.dataTables_processing {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 100%;
+		height: 40px;
+		margin-left: -50%;
+		margin-top: -25px;
+		padding-top: 20px;
+
+		text-align: center;
+		font-size: 1.2em;
+
+		background-color: white;
+		#gradient > .horizontal-three-colors(@start-color: fade(@table-row-background, 0); @mid-color: fade(@table-row-background, 0); @end-color: fade(@table-row-background, 0));
+	}
+
+	.dataTables_length,
+	.dataTables_filter,
+	.dataTables_info,
+	.dataTables_processing,
+	.dataTables_paginate {
+		color: @text-color;
+	}
+
+	// Scrolling
+	.dataTables_scroll {
+		clear: both;
+
+		div.dataTables_scrollBody {
+			*margin-top: -1px;
+			-webkit-overflow-scrolling: touch;
+
+			th > div.dataTables_sizing,
+			td > div.dataTables_sizing {
+				// Hide the element used to wrap the content in the header for
+				// the body scrolling table
+				height: 0;
+				overflow: hidden;
+				margin: 0 !important;
+				padding: 0 !important;
+			}
+		}
+	}
+
+	&.no-footer {
+		div.dataTables_scrollHead table,
+		div.dataTables_scrollBody table {
+			border-bottom: none;
+		}
+	}
+
+	// Self clear the wrapper
+	&:after {
+		visibility: hidden;
+		display: block;
+		content: "";
+		clear: both;
+		height: 0;
+	}
+	zoom: 1; // Poor old IE
+}
+
+
+// Collapse the two column display of the control elements when the screen is
+// small - the info and paging control get collapsed first as they are wider,
+// and then the length and filter controls
+@media screen and (max-width: 767px) {
+	.dataTables_wrapper {
+		.dataTables_info,
+		.dataTables_paginate {
+			float: none;
+			text-align: center;
+		}
+
+		.dataTables_paginate {
+			margin-top: 0.5em;
+		}
+	}
+}
+
+@media screen and (max-width: 640px) {
+	.dataTables_wrapper {
+		.dataTables_length,
+		.dataTables_filter {
+			float: none;
+			text-align: center;
+		}
+
+		.dataTables_filter {
+			margin-top: 0.5em;
+		}
+	}
+}

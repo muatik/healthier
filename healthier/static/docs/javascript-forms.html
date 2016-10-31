@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+	<head>
+		<title>Material Admin - JavaScript forms</title>
+		
+		<!-- BEGIN META -->
+		<meta charset="utf-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="keywords" content="your,keywords">
+		<meta name="description" content="Short explanation about this website">
+		<!-- END META -->
+
+		<!-- BEGIN STYLESHEETS -->
+				<link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet' type='text/css'/>
+			<link type="text/css" rel="stylesheet" href="../assets/css/theme-default/bootstrap.css?1422792965" />
+
+			<link type="text/css" rel="stylesheet" href="../assets/css/theme-default/materialadmin.css?1425466319" />
+
+			<link type="text/css" rel="stylesheet" href="../assets/css/theme-default/font-awesome.min.css?1422529194" />
+
+			<link type="text/css" rel="stylesheet" href="../assets/css/theme-default/material-design-iconic-font.min.css?1421434286" />
+
+	
+		<!-- END STYLESHEETS -->
+
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+	<script type="text/javascript" src="../assets/js/libs/utils/html5shiv.js?1403934957"></script>
+	<script type="text/javascript" src="../assets/js/libs/utils/respond.min.js?1403934956"></script>
+    <![endif]-->
+	</head>
+
+	
+				
+				
+	
+
+	<body class="menubar-hoverable menubar-pin menubar-first ">
+		<!-- BEGIN HEADER-->
+	<header id="header">
+					
+
+
+<div class="headerbar">
+	<div class="headerbar-right small-padding">
+		<img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKoAAAAoCAYAAABuDmFRAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjM3M0JFMDJENzY4MTFFM0FENTE4RTlENzAzNDA1N0IiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjM3M0JFMDNENzY4MTFFM0FENTE4RTlENzAzNDA1N0IiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoyMzczQkUwMEQ3NjgxMUUzQUQ1MThFOUQ3MDM0MDU3QiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoyMzczQkUwMUQ3NjgxMUUzQUQ1MThFOUQ3MDM0MDU3QiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PtwGlEYAABUXSURBVHja7F15fBRV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" />
+	</div>
+</div>
+			</header>
+	<!-- END HEADER-->
+
+	<!-- BEGIN BASE-->
+	<div id="base">
+		<!-- BEGIN CONTENT-->
+		<div id="content">
+			
+<!-- BEGIN INTRO SECTION -->
+<section class="style-gray-bright clearfix">
+	
+	<div class="section-body contain-lg">
+
+		<!-- BEGIN CSS SECTION -->
+		<div class="doc-section doc-lead">
+			<h1 id="header-stucture" class="text-xxxl text-default-bright">JavaScript forms</h1>
+			<p class="lead">
+				Use any of the custom jQuery plugins to enhance your forms. Easily include them all, or one by one.
+			</p>
+		</div>
+		<!-- END CSS SECTION -->
+
+	</div>
+</section>
+<!-- END INTRO SECTION -->
+
+<!-- BEGIN CSS SECTION -->
+<section>
+	<div class="section-body contain-lg">
+
+		<!-- BEGIN COLORPICKER -->
+<div class="doc-section">
+	
+	<h1 id="colorpicker" class="page-header">Bootstrap Colorpicker</h1>
+	<p class="lead">
+		Adds a color picker to a field or any other element.
+		Bootstrap Colorpicker provides documentation on <a class="btn-link" href="http://mjolnic.github.io/bootstrap-colorpicker/" target="blank">GitHub <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+	
+	<h3 id="colorpicker-example">Example</h3>
+	<p>
+		You can view a basic example of the Colorpicker <a class="btn-link" href="../forms/advanced.html" target="blank">here <span class="glyphicon glyphicon-link"></span></a>
+	</p>
+	
+		
+	<h3 id="colorpicker-javascript">Getting started</h3>
+	<h4>Dependencies</h4>
+	<p>
+		The first step is to have the right JavaScript and CSS files included. <br/>
+		All additional CSS should be included after <code>&lt;!-- Additional CSS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.<br/>
+		All additional Javascripts should be included after <code>&lt;!-- Additional JS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.
+	</p>
+	<p>
+		<em>Additional CSS</em>
+	</p>
+	<pre class="prettyprint">&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;assets/theme-default/libs/bootstrap-colorpicker/bootstrap-colorpicker.css&quot;&gt;
+</pre>
+	
+	<p>
+		<em>Additional Javascript</em>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/bootstrap-colorpicker/bootstrap-colorpicker.min.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+		
+	<h4>Javascript</h4>
+	<p>
+		Once you have your dependencies, you need to write the JavaScript code.
+	</p>
+	<pre class="prettyprint">&lt;input type=&quot;text&quot; class=&quot;demo1&quot; value=&quot;#5367ce&quot; /&gt;
+&lt;script&gt;
+    $(function(){
+        $(&#039;.demo1&#039;).colorpicker();
+    });
+&lt;/script&gt;
+</pre>
+	
+	</div>
+<!-- END COLORPICKER -->
+		<!-- BEGIN DATEPICKER -->
+<div class="doc-section">
+	
+	<h1 id="datepicker" class="page-header">Bootstrap datepicker</h1>
+	<p class="lead">
+		Adds a datepicker to a field or any other element.
+		Bootstrap datepicker provides documentation on their <a class="btn-link" href="http://bootstrap-datepicker.readthedocs.org" target="blank">website <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+	
+	<h3 id="datepicker-example">Example</h3>
+	<p>
+		You can view a basic example of the Colorpicker <a class="btn-link" href="../forms/advanced.html" target="blank">here <span class="glyphicon glyphicon-link"></span></a>
+	</p>
+	
+		
+	<h3 id="datepicker-javascript">Getting started</h3>
+	<h4>Dependencies</h4>
+	<p>
+		The first step is to have the right JavaScript and CSS files included. <br/>
+		All additional CSS should be included after <code>&lt;!-- Additional CSS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.<br/>
+		All additional Javascripts should be included after <code>&lt;!-- Additional JS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.
+	</p>
+	<p>
+		<em>Additional CSS</em>
+	</p>
+	<pre class="prettyprint">&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;assets/theme-default/libs/bootstrap-datepicker/datepicker3.css&quot;&gt;
+</pre>
+	
+	<p>
+		<em>Additional Javascript</em>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/moment/moment.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;assets/js/libs/bootstrap-datepicker/bootstrap-datepicker.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+		
+	<h4>Javascript</h4>
+	<p>
+		Once you have your dependencies, you need to write the JavaScript code.
+	</p>
+	<pre class="prettyprint">$(&#039;#datepicker&#039;).datepicker()
+</pre>
+	
+		
+	<h4>Html</h4>
+	<p>
+		The Javascript is tied to an element in the body of your page.
+	</p>
+	<pre class="prettyprint">&lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;datepicker&quot;&gt;
+</pre>
+	
+	</div>
+<!-- END DATEPICKER -->
+		<!-- BEGIN INPUTMASK -->
+<div class="doc-section">
+	
+	<h1 id="rating" class="page-header">Bootstrap Rating Input</h1>
+	<p class="lead">
+		Bootstrap Rating Input is a plugin that eases the generation of rating stars for jQuery and Bootstrap.<br/>
+		Documentation is provided on <a class="btn-link" href="https://github.com/javiertoledo/bootstrap-rating-input" target="blank">GitHub <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+	
+	<h3 id="rating-example">Example</h3>
+	<p>
+		You can view a basic example of Bootstrap Rating Input <a class="btn-link" href="../pages/contacts/details.html" target="blank">here <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+		
+	<h3 id="rating-javascript">Getting started</h3>
+	<h4>Dependencies</h4>
+	<p>
+		The first step is to have the right JavaScript files included. <br/>
+		All additional Javascripts should be included after <code>&lt;!-- Additional JS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.
+	</p>
+	<p>
+		<em>Additional Javascript</em>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/bootstrap-rating/bootstrap-rating-input.min.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+		
+	<h4>Html</h4>
+	<p>
+		You do not need extra JavaScript. 
+		Only add an input with the attribute <code>type="number"</code> to your forms and add the class <code>.rating</code> to it.
+	</p>
+	<pre class="prettyprint">&lt;input type=&quot;number&quot; name=&quot;rating&quot; class=&quot;rating&quot; value=&quot;3&quot;/&gt;
+</pre>
+	
+		
+	<h4>CSS</h4>
+	<p>
+		Wrap the input in a <code>&lt;div&gt;</code> tag with a <code>.star-rating</code> class to inline the stars.
+	</p>
+	<pre class="prettyprint">&lt;div class=&quot;star-rating&quot;&gt;
+	&lt;input type=&quot;number&quot; name=&quot;rating&quot; class=&quot;rating&quot; value=&quot;3&quot;/&gt;
+&lt;/div&gt;
+</pre>
+	
+	</div>
+<!-- END INPUTMASK -->
+		<!-- BEGIN TAGSINPUT -->
+<div class="doc-section">
+	
+	<h1 id="tagsinput" class="page-header">Bootstrap Tags Input</h1>
+	<p class="lead">
+		jQuery plugin providing a Twitter Bootstrap user interface for managing tags.
+		Bootstrap Tags Input provides documentation on <a class="btn-link" href="http://timschlechter.github.io/bootstrap-tagsinput/examples/" target="blank">GitHub <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+	
+	<h3 id="tagsinput-example">Example</h3>
+	<p>
+		You can view a basic example of the Colorpicker <a class="btn-link" href="../forms/advanced.html" target="blank">here <span class="glyphicon glyphicon-link"></span></a>
+	</p>
+	
+		
+	<h3 id="tagsinput-javascript">Getting started</h3>
+	<h4>Dependencies</h4>
+	<p>
+		The first step is to have the right JavaScript and CSS files included. <br/>
+		All additional CSS should be included after <code>&lt;!-- Additional CSS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.<br/>
+		All additional Javascripts should be included after <code>&lt;!-- Additional JS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.
+	</p>
+	<p>
+		<em>Additional CSS</em>
+	</p>
+	<pre class="prettyprint">&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;assets/theme-default/libs/bootstrap-tagsinput/bootstrap-tagsinput.css&quot;&gt;
+</pre>
+	
+	<p>
+		<em>Additional Javascript</em>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/bootstrap-tagsinput/bootstrap-tagsinput.min.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+		
+	<h4>Html</h4>
+	<p>
+		Just add <code>data-role="tagsinput"</code> to your input field to automatically change it to a tags input field.
+	</p>
+	
+	</div>
+<!-- END TAGSINPUT -->
+		<!-- BEGIN WIZARD -->
+<div class="doc-section">
+	
+	<h1 id="wizard" class="page-header">Bootstrap Wizard</h1>
+	<p class="lead">
+		This Twitter Bootstrap plugin builds a wizard using a formatted tabbable structure. 
+		It allows to build a wizard functionality using buttons to go through the different wizard steps and using events which allows to hook into each step individually.<br/>
+		Bootstrap Wizard provides documentation on <a class="btn-link" href="http://github.com/VinceG/twitter-bootstrap-wizard" target="blank">GitHub <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+	
+	<h3 id="wizard-example">Example</h3>
+	<p>
+		You can view a basic example of Bootstrap Wizard <a class="btn-link" href="../forms/wizard.html" target="blank">here <span class="glyphicon glyphicon-link"></span></a>
+	</p>
+	
+		
+	<h3 id="wizard-javascript">Getting started</h3>
+	<h4>Dependencies</h4>
+	<p>
+		The first step is to have the right JavaScript and CSS files included. <br/>
+		All additional CSS should be included after <code>&lt;!-- Additional CSS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.<br/>
+		All additional Javascripts should be included after <code>&lt;!-- Additional JS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.
+	</p>
+	<p>
+		<em>Additional CSS</em>
+	</p>
+	<pre class="prettyprint">&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;assets/theme-default/libs/wizard/wizard.css&quot;&gt;
+</pre>
+	
+	<p>
+		<em>Additional Javascript</em>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/wizard/jquery.bootstrap.wizard.min.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+		
+	<h4>Javascript</h4>
+	<p>
+		Once you have your dependencies, you need to write the JavaScript code.
+	</p>
+	<pre class="prettyprint">$(&#039;#wizard&#039;).bootstrapWizard(options);
+</pre>
+	
+		
+	<h4>Html</h4>
+	<p>
+		The Javascript is tied to an element in the body of your page.
+	</p>
+	<pre class="prettyprint">&lt;div id=&quot;wizard&quot; class=&quot;form-wizard form-wizard-horizontal&quot;&gt;
+	&lt;form class=&quot;form-horizontal&quot; role=&quot;form&quot; novalidate=&quot;novalidate&quot;&gt;
+		&lt;div class=&quot;form-wizard-nav&quot;&gt;
+			&lt;div class=&quot;progress&quot;&gt;&lt;div class=&quot;progress-bar progress-bar-primary&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+			&lt;ul class=&quot;nav nav-justified&quot;&gt;
+				&lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#tab1&quot; data-toggle=&quot;tab&quot;&gt;&lt;span class=&quot;step&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Location information&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;#tab2&quot; data-toggle=&quot;tab&quot;&gt;&lt;span class=&quot;step&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Address information&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;#tab3&quot; data-toggle=&quot;tab&quot;&gt;&lt;span class=&quot;step&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;User settings&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;#tab4&quot; data-toggle=&quot;tab&quot;&gt;&lt;span class=&quot;step&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Confirmation&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;&lt;!--end .form-wizard-nav --&gt;
+		&lt;div class=&quot;tab-content&quot;&gt;
+			&lt;div class=&quot;tab-pane active&quot; id=&quot;tab1&quot;&gt;
+				...
+			&lt;/div&gt;&lt;!--end #tab1 --&gt;
+			&lt;div class=&quot;tab-pane&quot; id=&quot;tab2&quot;&gt;
+				...
+			&lt;/div&gt;&lt;!--end #tab2 --&gt;
+			&lt;div class=&quot;tab-pane&quot; id=&quot;tab3&quot;&gt;
+				...
+			&lt;/div&gt;&lt;!--end #tab3 --&gt;
+			&lt;div class=&quot;tab-pane&quot; id=&quot;tab4&quot;&gt;
+				...
+			&lt;/div&gt;&lt;!--end #tab4 --&gt;
+		&lt;/div&gt;&lt;!--end .tab-content --&gt;
+		&lt;ul class=&quot;pager wizard&quot;&gt;
+			&lt;li class=&quot;previous first&quot;&gt;&lt;a href=&quot;javascript:void(0);&quot;&gt;First&lt;/a&gt;&lt;/li&gt;
+			&lt;li class=&quot;previous&quot;&gt;&lt;a href=&quot;javascript:void(0);&quot;&gt;Previous&lt;/a&gt;&lt;/li&gt;
+			&lt;li class=&quot;next last&quot;&gt;&lt;a href=&quot;javascript:void(0);&quot;&gt;Last&lt;/a&gt;&lt;/li&gt;
+			&lt;li class=&quot;next&quot;&gt;&lt;a href=&quot;javascript:void(0);&quot;&gt;Next&lt;/a&gt;&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/form&gt;
+&lt;/div&gt;&lt;!--end #rootwizard --&gt;
+</pre>
+	
+	</div>
+<!-- END WIZARD -->
+		<!-- BEGIN CKEDITOR -->
+<div class="doc-section">
+	
+	<h1 id="ckeditor" class="page-header">CKEditor</h1>
+	<p class="lead">
+		CKEditor is a ready-for-use HTML text editor designed to simplify web content creation.
+		It's a WYSIWYG editor that brings common word processor features directly to your web pages.
+		CKEditor provides documentation on their <a class="btn-link" href="http://docs.ckeditor.com/" target="blank">website <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+	
+	<h3 id="ckeditor-example">Example</h3>
+	<p>
+		You can view a basic example of CKEditor <a class="btn-link" href="../forms/editors.html" target="blank">here <span class="glyphicon glyphicon-link"></span></a>
+	</p>
+	
+		
+	<h3 id="ckeditor-javascript">Getting started</h3>
+	<h4>Dependencies</h4>
+	<p>
+		The first step is to have the right JavaScript files included. <br/>
+		All additional Javascripts should be included after <code>&lt;!-- Additional JS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.
+	</p>
+	
+	<p>
+		<em>Additional Javascript</em>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/ckeditor/ckeditor.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;assets/js/libs/ckeditor/adapters/jquery.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+		
+	<h4>Javascript</h4>
+	<p>
+		Once you have your dependencies, you need to write the JavaScript code.
+	</p>
+	<pre class="prettyprint">$( &#039;#ckeditor&#039; ).ckeditor();
+</pre>
+	
+		
+	<h4>Html</h4>
+	<p>
+		The Javascript is tied to an element in the body of your page.
+	</p>
+	<pre class="prettyprint">&lt;textarea id=&quot;ckeditor&quot;&gt;
+	...
+&lt;/textarea&gt;
+</pre>
+	
+	</div>
+<!-- END CKEDITOR -->
+		<!-- BEGIN DROPZONE -->
+<div class="doc-section">
+	
+	<h1 id="dropzone" class="page-header">Dropzone</h1>
+	<p class="lead">
+		DropzoneJS is an open source library that provides drag’n’drop file uploads with image previews.<br/>
+		DropzoneJS provides documentation on their <a class="btn-link" href="http://www.dropzonejs.com/" target="blank">website <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+	
+	<h3 id="dropzone-example">Example</h3>
+	<p>
+		You can view a basic example of DropzoneJS <a class="btn-link" href="../forms/advanced.html" target="blank">here <span class="glyphicon glyphicon-link"></span></a>
+	</p>
+	
+		
+	<h3 id="dropzone-javascript">Getting started</h3>
+	<h4>Dependencies</h4>
+	<p>
+		The first step is to have the right JavaScript files included. <br/>
+		All additional CSS should be included after <code>&lt;!-- Additional CSS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.<br/>
+		All additional Javascripts should be included after <code>&lt;!-- Additional JS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.
+	</p>
+	<p>
+		<em>Additional CSS</em>
+	</p>
+	<pre class="prettyprint">&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;assets/theme-default/libs/dropzone/dropzone-theme.css&quot;&gt;
+</pre>
+	
+	<p>
+		<em>Additional Javascript</em>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/dropzone/dropzone.min.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+		
+	<h4>Javascript</h4>
+	<p>
+		You can enable validation by adding attributes to input elements.
+	</p>
+	
+	</div>
+<!-- END DROPZONE -->
+		<!-- BEGIN CKEDITOR -->
+<div class="doc-section">
+	
+	<h1 id="autosize" class="page-header">jQuery Autosize</h1>
+	<p class="lead">
+		jQuery Autosize is a plugin to automatically adjust the height of a textarea.
+		jQuery Autosize provides documentation on their <a class="btn-link" href="http://www.jacklmoore.com/autosize/" target="blank">website <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+	
+	<h3 id="autosize-example">Example</h3>
+	<p>
+		You can view a basic example of the jQuery Autosize on their <a class="btn-link" href="http://www.jacklmoore.com/autosize/" target="blank">website <span class="glyphicon glyphicon-link"></span></a>
+	</p>
+	
+		
+	<h3 id="autosize-javascript">Getting started</h3>
+	<h4>Dependencies</h4>
+	<p>
+		The first step is to have the right JavaScript files included. <br/>
+		All additional Javascripts should be included after <code>&lt;!-- Additional JS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.
+	</p>
+	
+	<p>
+		<em>Additional Javascript</em>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/autosize/jquery.autosize.min.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+		
+	<h4>Javascript</h4>
+	<p>
+		Once you have your dependencies, you need to write the JavaScript code.
+	</p>
+	<pre class="prettyprint">$(&#039;textarea&#039;).autosize();
+</pre>
+	
+	</div>
+<!-- END CKEDITOR -->
+		<!-- BEGIN INPUTMASK -->
+<div class="doc-section">
+	
+	<h1 id="inputmask" class="page-header">jQuery inputmask</h1>
+	<p class="lead">
+		jquery.inputmask is a jQuery plugin which creates an input mask.
+		An inputmask helps the user with the input by ensuring a predefined format. 
+		This can be useful for dates, numerics, phone numbers, etc.<br/>
+		jquery.inputmask provides documentation on <a class="btn-link" href="http://github.com/RobinHerbots/jquery.inputmask" target="blank">GitHub <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+	
+	<h3 id="inputmask-example">Example</h3>
+	<p>
+		You can view a basic example of jquery.inputmask <a class="btn-link" href="../forms/advanced.html" target="blank">here <span class="glyphicon glyphicon-link"></span></a>
+	</p>
+	
+		
+	<h3 id="inputmask-javascript">Getting started</h3>
+	<h4>Dependencies</h4>
+	<p>
+		The first step is to have the right JavaScript files included. <br/>
+		All additional Javascripts should be included after <code>&lt;!-- Additional JS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.
+	</p>
+	<p>
+		<em>Additional Javascript</em>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/inputmask/jquery.inputmask.bundle.min.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+		
+	<h4>Javascript</h4>
+	<p>
+		Once you have your dependencies, you need to write the JavaScript code.
+	</p>
+	<pre class="prettyprint">$(&quot;:input&quot;).inputmask();
+</pre>
+	
+		
+	<h4>Html</h4>
+	<p>
+		The Javascript is tied to an element in the body of your page.
+	</p>
+	<pre class="prettyprint">&lt;input data-inputmask=&quot;&#039;alias&#039;: &#039;date&#039;&quot; /&gt;
+&lt;input data-inputmask=&quot;&#039;mask&#039;: &#039;9&#039;, &#039;repeat&#039;: 10, &#039;greedy&#039; : false&quot; /&gt;
+&lt;input data-inputmask=&quot;&#039;mask&#039;: &#039;99-9999999&#039;&quot; /&gt;
+</pre>
+	
+	</div>
+<!-- END INPUTMASK -->
+		<!-- BEGIN VALIDATION -->
+<div class="doc-section">
+	
+	<h1 id="validation" class="page-header">jQuery Validation</h1>
+	<p class="lead">
+		This jQuery plugin makes simple clientside form validation easy, whilst still offering plenty of customization options.<br/>
+		jQuery Validation provides documentation on their <a class="btn-link" href="http://jqueryvalidation.org/documentation" target="blank">website <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+	
+	<h3 id="validation-example">Example</h3>
+	<p>
+		You can view a basic example of jQuery Validation <a class="btn-link" href="../forms/validation.html" target="blank">here <span class="glyphicon glyphicon-link"></span></a>
+	</p>
+	
+		
+	<h3 id="validation-javascript">Getting started</h3>
+	<h4>Dependencies</h4>
+	<p>
+		The first step is to have the right JavaScript files included. <br/>
+		All additional Javascripts should be included after <code>&lt;!-- Additional JS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.
+	</p>
+	<p>
+		<em>Additional Javascript</em>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/jquery-validation/dist/jquery.validate.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;assets/js/libs/jquery-validation/dist/additional-methods.min.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+		
+	<h4>Javascript</h4>
+	<p>
+		You can enable validation by adding attributes to input elements.
+	</p>
+	
+	</div>
+<!-- END VALIDATION -->
+		<!-- BEGIN MULTISELECT -->
+<div class="doc-section">
+	
+	<h1 id="multiselect" class="page-header">Multi select</h1>
+	<p class="lead">
+		User-friendly drop-in replacement for the standard <code>&lt;select&gt;</code> with multiple attribute activated.<br/>
+		Multi select provides documentation on their <a class="btn-link" href="http://loudev.com/" target="blank">website <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+	
+	<h3 id="multiselect-example">Example</h3>
+	<p>
+		You can view a basic example of Multi select <a class="btn-link" href="../forms/advanced.html" target="blank">here <span class="glyphicon glyphicon-link"></span></a>
+	</p>
+	
+		
+	<h3 id="multiselect-javascript">Getting started</h3>
+	<h4>Dependencies</h4>
+	<p>
+		The first step is to have the right JavaScript and CSS files included. <br/>
+		All additional CSS should be included after <code>&lt;!-- Additional CSS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.<br/>
+		All additional Javascripts should be included after <code>&lt;!-- Additional JS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.
+	</p>
+	<p>
+		<em>Additional CSS</em>
+	</p>
+	<pre class="prettyprint">&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;assets/theme-default/libs/multi-select/multi-select.css&quot;&gt;
+</pre>
+	
+	<p>
+		<em>Additional Javascript</em>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/multi-select/jquery.multi-select.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+		
+	<h4>Javascript</h4>
+	<p>
+		Once you have your dependencies, you need to write the JavaScript code.
+	</p>
+	<pre class="prettyprint">$(&#039;#multi-select&#039;).multiSelect({});
+</pre>
+	
+		
+	<h4>Html</h4>
+	<p>
+		The Javascript is tied to an element in the body of your page.
+	</p>
+	<pre class="prettyprint">&lt;select multiple=&quot;multiple&quot; id=&quot;multi-select&quot; name=&quot;my-select[]&quot;&gt;
+	&lt;option value=&#039;elem_1&#039;&gt;elem 1&lt;/option&gt;
+	&lt;option value=&#039;elem_2&#039;&gt;elem 2&lt;/option&gt;
+	...
+&lt;/select&gt;
+</pre>
+	
+	</div>
+<!-- END MULTISELECT -->
+		<!-- BEGIN SELECT2 -->
+<div class="doc-section">
+	
+	<h1 id="select2" class="page-header">Select2</h1>
+	<p class="lead">
+		Select2 is a jQuery based replacement for select boxes. It supports searching, remote data sets, and infinite scrolling of results.
+		Select2 provides documentation on <a class="btn-link" href="http://ivaynberg.github.io/select2/" target="blank">GitHub <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+	
+	<h3 id="select2-example">Example</h3>
+	<p>
+		You can view a basic example of Select2 <a class="btn-link" href="../forms/advanced.html" target="blank">here <span class="glyphicon glyphicon-link"></span></a>
+	</p>
+	
+		
+	<h3 id="select2-javascript">Getting started</h3>
+	<h4>Dependencies</h4>
+	<p>
+		The first step is to have the right JavaScript and CSS files included. <br/>
+		All additional CSS should be included after <code>&lt;!-- Additional CSS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.<br/>
+		All additional Javascripts should be included after <code>&lt;!-- Additional JS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.
+	</p>
+	<p>
+		<em>Additional CSS</em>
+	</p>
+	<pre class="prettyprint">&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;assets/theme-default/libs/select2/select2.css&quot;&gt;
+</pre>
+	
+	<p>
+		<em>Additional Javascript</em>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/select2/select2.min.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+		
+	<h4>Javascript</h4>
+	<p>
+		Once you have your dependencies, you need to write the JavaScript code.
+	</p>
+	<pre class="prettyprint">$(&quot;#select2&quot;).select2();
+</pre>
+	
+		
+	<h4>Html</h4>
+	<p>
+		The Javascript is tied to an element in the body of your page.
+	</p>
+	<pre class="prettyprint">&lt;select id=&quot;select2&quot;&gt;
+	&lt;option value=&quot;AL&quot;&gt;Alabama&lt;/option&gt;
+	...
+	&lt;option value=&quot;WY&quot;&gt;Wyoming&lt;/option&gt;
+&lt;/select&gt;
+</pre>
+	
+	</div>
+<!-- END SELECT2 -->
+		<!-- BEGIN WYSIHTML5 -->
+<div class="doc-section">
+	
+	<h1 id="summernote" class="page-header">Summernote</h1>
+	<p class="lead">
+		Super Simple WYSIWYG Editor on Bootstrap.
+		Summernote provides documentation on <a class="btn-link" href="https://github.com/summernote/summernote" target="blank">github <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+	
+	<h3 id="summernote-example">Example</h3>
+	<p>
+		You can view a basic example of Summernote <a class="btn-link" href="../forms/editors.html" target="blank">here <span class="glyphicon glyphicon-link"></span></a>
+	</p>
+	
+		
+	<h3 id="summernote-javascript">Getting started</h3>
+	<h4>Dependencies</h4>
+	<p>
+		The first step is to have the right JavaScript and CSS files included. <br/>
+		All additional CSS should be included after <code>&lt;!-- Additional CSS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.<br/>
+		All additional Javascripts should be included after <code>&lt;!-- Additional JS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.
+	</p>
+	<p>
+		<em>Additional CSS</em>
+	</p>
+	<pre class="prettyprint">&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;assets/theme-default/libs/summernote/summernote.css&quot;&gt;
+</pre>
+	
+	<p>
+		<em>Additional Javascript</em>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/libs/summernote/summernote.min.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+		
+	<h4>Javascript</h4>
+	<p>
+		Once you have your dependencies, you need to write the JavaScript code.
+	</p>
+	<pre class="prettyprint">$(&#039;#summernote1&#039;).summernote();
+$(&#039;#summernote2&#039;).summernote();
+</pre>
+	
+		
+	<h4>Html</h4>
+	<p>
+		Summernote is applied to a <code>textarea</code> element:
+	</p>
+	<pre class="prettyprint">&lt;!-- Add summernote to an div element --&gt;
+&lt;div id=&quot;summernote1&quot;&gt;
+	...
+&lt;/div&gt;
+
+&lt;!-- Or to an textarea --&gt;
+&lt;textarea id=&quot;summernote2&quot;&gt;
+	...
+&lt;/textarea&gt;
+</pre>
+	
+	</div>
+<!-- END WYSIHTML5 -->
+		<!-- BEGIN TYPEAHEAD -->
+<div class="doc-section">
+	
+	<h1 id="typeahead" class="page-header">Typeahead.js</h1>
+	<p class="lead">
+		Inspired by twitter.com's autocomplete search functionality, typeahead.js is a flexible JavaScript library that provides a strong foundation for building robust typeaheads.<br/>
+		Typeahead.js provides documentation on <a class="btn-link" href="http://twitter.github.io/typeahead.js/examples/" target="blank">GitHub <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+	
+	<h3 id="typeahead-example">Example</h3>
+	<p>
+		You can view a basic example of the Typeahead.js <a class="btn-link" href="../forms/advanced.html" target="blank">here <span class="glyphicon glyphicon-link"></span></a>
+	</p>
+	
+		
+	<h3 id="typeahead-javascript">Getting started</h3>
+	<h4>Dependencies</h4>
+	<p>
+		The first step is to have the right JavaScript and CSS files included. <br/>
+		All additional CSS should be included after <code>&lt;!-- Additional CSS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.<br/>
+		All additional Javascripts should be included after <code>&lt;!-- Additional JS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.
+	</p>
+	<p>
+		<em>Additional CSS</em>
+	</p>
+	<pre class="prettyprint">&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;assets/theme-default/libs/typeahead/typeahead.css&quot;&gt;
+</pre>
+	
+	<p>
+		<em>Additional Javascript</em>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/typeahead/typeahead.min.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+		
+	<h4>Javascript</h4>
+	<p>
+		Once you have your dependencies, you need to write the JavaScript code.
+	</p>
+	<pre class="prettyprint">$(&#039;#typeahead&#039;).typeahead(options);
+</pre>
+	
+		
+	<h4>Html</h4>
+	<p>
+		The Javascript is tied to an element in the body of your page.
+	</p>
+	<pre class="prettyprint">&lt;input type=&quot;text&quot; id=&quot;typeahead&quot; class=&quot;form-control&quot; data-source=&quot;data/countries.json&quot; placeholder=&quot;Countries&quot;&gt;
+</pre>
+	
+	</div>
+<!-- END TYPEAHEAD -->
+		
+	</div><!--end .section-body -->
+</section>
+<!-- BEGIN CSS SECTION -->
+
+		</div><!--end #content-->		
+		<!-- END CONTENT -->
+
+
+		<!-- BEGIN MENUBAR-->
+		<div id="menubar" class="menubar-inverse">
+			<div class="menubar-fixed-panel">
+				<div>
+					<a class="btn btn-icon-toggle btn-default menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
+						<i class="fa fa-bars"></i>
+					</a>
+				</div>
+				<div class="brand-holder">
+					<a href="../docs/getting-start.html">
+						<span class="text-lg text-bold text-primary ">MATERIAL&nbsp;ADMIN</span>
+					</a>
+				</div>
+			</div>
+			<div class="menubar-scroll-panel">
+				<!-- BEGIN MAIN MENU -->
+				
+
+
+<ul id="main-menu" class="gui-controls gui-controls-tree">
+	<!-- Menu Getting started -->
+	<li class="gui-folder">
+		<a href="../docs/getting-start.html" >
+			<div class="gui-icon"><i class="fa fa-rocket fa-fw"></i></div>
+			<span class="title">Getting started</span>
+		</a>
+		<ul>
+		</ul>
+	</li>
+	<!-- Menu CSS -->
+	<li class="gui-folder">
+		<a href="../docs/css.html" >
+			<div class="gui-icon"><i class="fa fa-flask fa-fw"></i></div>
+			<span class="title">CSS Structure</span>
+		</a>
+		<ul>
+		</ul>
+	</li>
+	<!-- Menu Components -->
+	<li class="gui-folder">
+		<a href="../docs/components.html" >
+			<div class="gui-icon"><i class="fa fa-th-large fa-fw"></i></div>
+			<span class="title">Components</span>
+		</a>
+		<ul>
+		</ul>
+	</li>
+	<!-- Menu Javascript -->
+	<li class="gui-folder">
+		<a href="../docs/javascript.html" >
+			<div class="gui-icon"><i class="fa fa-code fa-fw"></i></div>
+			<span class="title">Javascript</span>
+		</a>
+		<ul>
+		</ul>
+	</li>
+	<!-- Menu Javascript-forms -->
+	<li class="gui-folder">
+		<a href="../docs/javascript-forms.html" class="active">
+			<div class="gui-icon"><i class="fa fa-code fa-fw"></i></div>
+			<span class="title">Javascript for forms</span>
+		</a>
+		<ul>
+		</ul>
+	</li>
+
+</ul><!--end .main-menu -->
+				<!-- END MAIN MENU -->
+			</div>
+		</div><!--end #menubar-->
+		<!-- END MENUBAR -->
+
+	</div><!--end #base-->	
+	<!-- END BASE -->
+
+	<!-- BEGIN JAVASCRIPT -->
+		
+			<script src="../assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
+<script src="../assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
+<script src="../assets/js/libs/jquery-ui/jquery-ui.min.js"></script>
+<script src="../assets/js/libs/bootstrap/bootstrap.min.js"></script>
+<script src="../assets/js/libs/spin.js/spin.min.js"></script>
+<script src="../assets/js/libs/autosize/jquery.autosize.min.js"></script>
+<script src="../assets/js/libs/bootstrap-rating/bootstrap-rating-input.min.js"></script>
+<script src="../assets/js/libs/nanoscroller/jquery.nanoscroller.min.js"></script>
+<script src="../assets/js/core/source/App.js"></script>
+<script src="../assets/js/core/source/AppNavigation.js"></script>
+<script src="../assets/js/core/source/AppOffcanvas.js"></script>
+<script src="../assets/js/core/source/AppCard.js"></script>
+<script src="../assets/js/core/source/AppForm.js"></script>
+<script src="../assets/js/core/source/AppNavSearch.js"></script>
+<script src="../assets/js/core/source/AppVendor.js"></script>
+<script src="../assets/js/core/demo/Demo.js"></script>
+<script src="../assets/js/core/demo/DemoDocs.js"></script>
+
+	
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+	<!-- END JAVASCRIPT -->
+
+	
+	
+	</body>
+</html>

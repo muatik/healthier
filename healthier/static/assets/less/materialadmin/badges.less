@@ -1,0 +1,50 @@
+//
+// Badges /* Badges */
+// --------------------------------------------------
+
+
+sup.badge {
+	font-size: 70%;
+	top: -0.9em;
+	margin-left: -5px;
+	margin-right: -5px;
+}
+sub.badge {
+	font-size: 70%;
+	bottom: -0.9em;
+	margin-left: -5px;
+	margin-right: -5px;
+}
+
+
+// Badge variants
+// -------------------------
+
+.style-variant(style-default-dark,	@brand-default-dark);
+.style-variant(style-default,		@brand-default);
+.style-variant(style-default-light,	@brand-default-light);
+.style-variant(style-default-bright,@brand-default-bright);
+
+.style-variant(style-primary,		@brand-primary);
+.style-variant(style-primary-light,	@brand-primary-light);
+.style-variant(style-primary-dark,	@brand-primary-dark);
+.style-variant(style-primary-bright,@brand-primary-bright);
+
+.style-variant(style-accent,		@brand-accent);
+.style-variant(style-accent-light,	@brand-accent-light);
+.style-variant(style-accent-dark,	@brand-accent-dark);
+.style-variant(style-accent-bright,	@brand-accent-bright);
+
+.style-variant(style-success,		@brand-success);
+.style-variant(style-warning,		@brand-warning);
+.style-variant(style-danger,		@brand-danger);
+.style-variant(style-info,			@brand-info);
+
+.style-variant(@name; @color) {
+	.badge {
+		&.@{name} {
+			background-color: @color;
+			color: contrast(@color,@text-color,@white, @color-threshold);
+		}
+	}
+}

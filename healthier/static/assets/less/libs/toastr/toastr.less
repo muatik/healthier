@@ -1,0 +1,204 @@
+// Core variables and mixins
+@import "../../shared/variables.less";
+@import "../../shared/mixins.less";
+
+// Core CSS
+@import "toastr-source.less";
+
+
+// Overides
+// -------------------------
+
+#toast-container {
+	> div {
+		margin-bottom:8px;
+		padding: 12px 24px;
+		width: auto;
+		min-width: 288px;
+		max-width: 568px;
+		.opacity(1);
+	}
+}
+#toast-container {
+	&.toast-bottom-left,
+	&.toast-bottom-center,
+	&.toast-bottom-right,
+	&.toast-bottom-full-width {
+		> div {
+			margin-top: 8px;
+			margin-bottom: 0;
+		}
+	}
+	&.toast-top-center,
+	&.toast-top-full-width {
+		> div {
+			margin-bottom: 8px;
+		}
+	}
+}
+
+
+// Positioning
+// -------------------------
+
+.toast-top-left,
+.toast-top-center,
+.toast-top-right,
+#toast-container.toast-top-full-width {
+	top: 24px;
+
+	.header-fixed & {
+		top: (@headerbar-height + 24px);
+	}
+}
+
+.toast-top-left,
+.toast-bottom-left,
+#toast-container.toast-top-full-width,
+#toast-container.toast-bottom-full-width {
+	left: (@menubar-width-collapsed + 24px);
+}
+
+.toast-top-right,
+.toast-bottom-right,
+#toast-container.toast-top-full-width,
+#toast-container.toast-bottom-full-width {
+	right: 24px;
+}
+
+.toast-bottom-left,
+.toast-bottom-center,
+.toast-bottom-right,
+#toast-container.toast-bottom-full-width {
+	bottom: 24px;
+}
+
+
+// Full width adjustments
+// -------------------------
+
+#toast-container {
+	&.toast-top-full-width ,
+	&.toast-bottom-full-width {
+		width: auto;
+
+		> div {
+			width: 100%;
+			max-width: 100%;
+		}
+	}
+}
+
+
+// Close button
+// --------------------------------------------------
+
+.toast-close-button,
+button.toast-close-button {
+	right: 0;
+	top: 0;
+	display: inline-block;
+	margin: -6px -14px -6px 0;
+	width: 36px;
+	font-size: @button-size;
+	font-weight: @weight-medium;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	background-color: transparent;
+	border-radius: 999px !important;
+	border: 1px solid transparent;
+	white-space: nowrap;
+	.button-size(@padding-base-vertical; 0; @font-size-base; @line-height-base; @border-radius-base);
+	.user-select(none);
+	text-shadow: none;
+	.opacity(1);
+
+	&:hover, &:focus {
+		background-color: fade(@black, 7%);
+		border-color: transparent;
+		.box-shadow(@z-height-0);
+		color: inherit;
+		.opacity(1);
+	}
+}
+
+
+// Progress
+// --------------------------------------------------
+
+.toast-info {
+	.toast-progress {
+		background: @white;
+	}
+}
+
+
+// Action
+// --------------------------------------------------
+
+.toastr-action {
+	float: right;
+	margin-top: -6px;
+	margin-bottom: -6px;
+
+	&:last-child {
+		margin-left: 24px;
+	}
+}
+
+
+
+// Responsive classes
+// --------------------------------------------------
+
+// Large Devices
+// -------------------------
+
+@media (min-width: @screen-lg) { 
+	.menubar-pin {
+		.toast-top-left,
+		.toast-bottom-left,
+		#toast-container.toast-top-full-width,
+		#toast-container.toast-bottom-full-width {
+			left: (@menubar-width + 24px);
+		}
+	}
+}
+
+// Small Devices
+// -------------------------
+
+@media (max-width: @screen-sm) {
+	.toast-top-left,
+	.toast-top-center,
+	.toast-top-right,
+	#toast-container.toast-top-full-width {
+		top: 0;
+
+		.header-fixed & {
+			top: @headerbar-height;
+		}
+	}
+
+	.toast-top-left,
+	.toast-bottom-left,
+	#toast-container.toast-top-full-width,
+	#toast-container.toast-bottom-full-width {
+		left: 0;
+	}
+
+	.toast-top-right,
+	.toast-bottom-right,
+	#toast-container.toast-top-full-width,
+	#toast-container.toast-bottom-full-width {
+		right: 0;
+	}
+
+	.toast-bottom-left,
+	.toast-bottom-center,
+	.toast-bottom-right,
+	#toast-container.toast-bottom-full-width {
+		bottom: 0;
+	}
+}

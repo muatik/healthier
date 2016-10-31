@@ -1,0 +1,21 @@
+.timeline-form-buttons {
+
+}
+.timeline-form-buttons button {
+    margin: 14px 12px;
+}
+
+.card .timeline-form-views{
+    display: none;
+}
+
+.timeline-form-views {
+    display: none;
+}
+
+
+.card-head .toolbar-left {
+    float: left;
+    margin-left: 10px;
+}
+

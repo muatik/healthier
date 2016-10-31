@@ -1,0 +1,88 @@
+//
+// Dropdown menus
+// --------------------------------------------------
+
+.dropdown-menu {
+	margin: 0;
+	border-color: fade(@white, 90);
+	.box-shadow(@z-height-1);
+	
+	> li > a {
+		padding: 5px 20px;
+	}
+
+	.alert {
+		min-width: 250px;
+		margin: 10px;
+		padding: 10px;
+
+		.clearfix();
+	}
+
+	img.pull-right { 
+		margin-left: 10px;
+		margin-bottom: 2px;
+	}
+	img.pull-left { 
+		margin-right: 10px;
+		margin-bottom: 2px;
+	}
+}
+
+// Dropdown section headers
+// ---------------------------
+
+.dropdown-header {
+	padding: 15px 20px 5px 20px;
+	font-size: 10px;
+	font-weight: @weight-medium;
+	opacity: .6;
+}
+
+.dropdown-avatar {
+	max-width: 40px;
+}
+
+li.dropdown-progress {
+	min-width: 250px;
+
+	> a {
+		padding: 15px 0px;
+	}
+	.dropdown-label {
+		padding: 5px 20px;
+	}
+	.progress {
+		margin-bottom: 0;
+		height: 5px;
+	}
+}
+
+.dropdown-label {
+	.clearfix();
+}
+
+
+// Dropup menu
+// ---------------------------
+
+.dropup {
+	.dropdown-menu {
+		margin-bottom: 0;
+	}
+}
+
+
+// Animation effects
+// ---------------------------
+
+.open > .dropdown-menu.animation-zoom {			.animation(zoom-down, .25s, ease-out); }
+.dropup.open > .dropdown-menu.animation-zoom {	.animation(zoom-up, .25s, ease-out); }
+
+.open > .dropdown-menu.animation-slide {		.animation(slide-right, .3s, ease-out); }
+
+.open > .dropdown-menu.animation-dock {			.animation(slide-up, .3s, ease-out); }
+.dropup.open > .dropdown-menu.animation-dock {	.animation(slide-down, .3s, ease-out); }
+
+.open > .dropdown-menu.animation-expand {		.animation(slide-down, .3s, ease-out); }
+.dropup.open > .dropdown-menu.animation-expand {.animation(slide-up, .3s, ease-out); }

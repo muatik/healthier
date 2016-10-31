@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+	<head>
+		<title>Material Admin - JavaScript</title>
+		
+		<!-- BEGIN META -->
+		<meta charset="utf-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="keywords" content="your,keywords">
+		<meta name="description" content="Short explanation about this website">
+		<!-- END META -->
+
+		<!-- BEGIN STYLESHEETS -->
+				<link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet' type='text/css'/>
+			<link type="text/css" rel="stylesheet" href="../assets/css/theme-default/bootstrap.css?1422792965" />
+
+			<link type="text/css" rel="stylesheet" href="../assets/css/theme-default/materialadmin.css?1425466319" />
+
+			<link type="text/css" rel="stylesheet" href="../assets/css/theme-default/font-awesome.min.css?1422529194" />
+
+			<link type="text/css" rel="stylesheet" href="../assets/css/theme-default/material-design-iconic-font.min.css?1421434286" />
+
+	
+		<!-- END STYLESHEETS -->
+
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+	<script type="text/javascript" src="../assets/js/libs/utils/html5shiv.js?1403934957"></script>
+	<script type="text/javascript" src="../assets/js/libs/utils/respond.min.js?1403934956"></script>
+    <![endif]-->
+	</head>
+
+	
+				
+				
+	
+
+	<body class="menubar-hoverable menubar-pin menubar-first ">
+		<!-- BEGIN HEADER-->
+	<header id="header">
+					
+
+
+<div class="headerbar">
+	<div class="headerbar-right small-padding">
+		<img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKoAAAAoCAYAAABuDmFRAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjM3M0JFMDJENzY4MTFFM0FENTE4RTlENzAzNDA1N0IiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjM3M0JFMDNENzY4MTFFM0FENTE4RTlENzAzNDA1N0IiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoyMzczQkUwMEQ3NjgxMUUzQUQ1MThFOUQ3MDM0MDU3QiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoyMzczQkUwMUQ3NjgxMUUzQUQ1MThFOUQ3MDM0MDU3QiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PtwGlEYAABUXSURBVHja7F15fBRV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" />
+	</div>
+</div>
+			</header>
+	<!-- END HEADER-->
+
+	<!-- BEGIN BASE-->
+	<div id="base">
+		<!-- BEGIN CONTENT-->
+		<div id="content">
+			
+<!-- BEGIN INTRO SECTION -->
+<section class="style-gray-bright clearfix">
+	
+	<div class="section-body contain-lg">
+
+		<!-- BEGIN CSS SECTION -->
+		<div class="doc-section doc-lead">
+			<h1 id="header-stucture" class="text-xxxl text-default-bright">JavaScript</h1>
+			<p class="lead">
+				Use any of the custom jQuery plugins to enhance your project. Easily include them all, or one by one.
+			</p>
+		</div>
+		<!-- END CSS SECTION -->
+
+	</div>
+</section>
+<!-- END INTRO SECTION -->
+
+<!-- BEGIN CSS SECTION -->
+<section>
+	<div class="section-body contain-lg">
+
+				<!-- BEGIN NESTABLE -->
+<div class="doc-section">
+	
+	<h1 id="collapse" class="page-header">Card collapse</h1>
+	
+	
+	<h3 id="collapse-example">Example</h3>
+	<p>
+		Add collapsing functionality to any <code>.card</code> with this method.
+	</p>
+	<div class="card card-outlined style-default-light" id="EXAMPLE">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<div class="card card-outlined style-primary">
+				<div class="card-head">
+					<div class="tools">
+						<div class="btn-group">
+							<a class="btn btn-icon-toggle btn-collapse"><i class="fa fa-angle-down"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="card-body">
+											<p>Duo semper accumsan ea, quidam convenire cum cu, oportere maiestatis incorrupte est eu. Soluta audiam timeam ius te, idque gubergren forensibus ad mel, persius urbanitas usu id. Civibus nostrum fabellas mea te, ne pri lucilius iudicabit. Ut cibo semper vituperatoribus vix, cum in error elitr. Vix molestiae intellegat omittantur an, nam cu modo ullum scriptorem.</p>
+			<p>Quod option numquam vel in, et fuisset delicatissimi duo, qui ut animal noluisse erroribus. Ea eum veniam audire. Per at postea mediocritatem, vim numquam aliquid eu, in nam sale gubergren. Dicant vituperata consequuntur at sea, mazim commodo</p>
+			
+				</div>
+			</div>
+		</div>
+	</div>
+	
+		
+	<h3 id="collapse-methods">Methods</h3>
+	<h4>materialadmin.App.toggleCardCollapse(card)</h4>
+	<p>
+		Toggles the collapse state of a <code>.card</code> class.
+		It requires an instance of your card.
+	</p>
+	<pre class="prettyprint">var card = $(&#039;.card&#039;);
+materialadmin.App.toggleCardCollapse(card);
+</pre>
+	
+		
+	<h3 id="collapse-events">Events</h3>
+	<p>
+		Card collapse class exposes a few events for hooking into custom functionality.
+	</p>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th style="width: 150px;">Event Type</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>card.bb.collapse</td>
+				<td>This event is fired when a <code>.card</code> element has been expanded or collapsed (will wait for the transitions to complete).</td>
+			</tr>
+		</tbody>
+    </table>
+	
+		<pre class="prettyprint">$(&#039;.card&#039;).on(&#039;card.bb.collapse&#039;, function (event, collapsed) {
+	event.target // activated card
+	collapsed // true or false
+});
+</pre>
+	
+	</div>
+<!-- END NESTABLE -->
+		<!-- BEGIN NESTABLE -->
+<div class="doc-section">
+	
+	<h1 id="loader" class="page-header">Card loader</h1>
+	
+	
+	<h3 id="loader-example">Example</h3>
+	<p>
+		Card loader can add a spinning loader to any <code>.card</code>.
+	</p>
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<div class="card card-outlined style-primary">
+				<div class="card-head">
+					<div class="tools">
+						<div class="btn-group">
+							<a class="btn btn-icon-toggle btn-sm btn-refresh"><i class="fa fa-refresh"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="card-body">
+											<p>Duo semper accumsan ea, quidam convenire cum cu, oportere maiestatis incorrupte est eu. Soluta audiam timeam ius te, idque gubergren forensibus ad mel, persius urbanitas usu id. Civibus nostrum fabellas mea te, ne pri lucilius iudicabit. Ut cibo semper vituperatoribus vix, cum in error elitr. Vix molestiae intellegat omittantur an, nam cu modo ullum scriptorem.</p>
+			<p>Quod option numquam vel in, et fuisset delicatissimi duo, qui ut animal noluisse erroribus. Ea eum veniam audire. Per at postea mediocritatem, vim numquam aliquid eu, in nam sale gubergren. Dicant vituperata consequuntur at sea, mazim commodo</p>
+			
+				</div>
+			</div>
+		</div>
+	</div>
+	
+		
+	<h3 id="loader-methods">Methods</h3>
+	<h4>materialadmin.App.addCardLoader(card)</h4>
+	<p>
+		Adds a loader to your <code>.card</code> class.
+		It requires an instance of your card.
+	</p>
+	<pre class="prettyprint">var card = $(&#039;.card&#039;);
+materialadmin.App.addCardLoader(card);
+</pre>
+	
+	
+	<h4>materialadmin.App.removeCardLoader(card)</h4>
+	<p>
+		Removes the loader of <code>.card</code> class.
+		It requires an instance of your card.
+	</p>
+	<pre class="prettyprint">var card = $(&#039;.card&#039;);
+materialadmin.App.removeCardLoader(card);
+</pre>
+
+	</div>
+<!-- END NESTABLE -->
+		<!-- BEGIN NESTABLE -->
+<div class="doc-section">
+	
+	<h1 id="card-remove" class="page-header">Card remove</h1>
+	
+	
+	<h3 id="card-remove-example">Example</h3>
+	<p>
+		Removing a card from stage is easy with this method.
+	</p>
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<div class="card card-outlined style-primary">
+				<div class="card-head">
+					<div class="tools">
+						<div class="btn-group">
+							<a class="btn btn-icon-toggle btn-close"><i class="fa fa-times"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="card-body">
+											<p>Duo semper accumsan ea, quidam convenire cum cu, oportere maiestatis incorrupte est eu. Soluta audiam timeam ius te, idque gubergren forensibus ad mel, persius urbanitas usu id. Civibus nostrum fabellas mea te, ne pri lucilius iudicabit. Ut cibo semper vituperatoribus vix, cum in error elitr. Vix molestiae intellegat omittantur an, nam cu modo ullum scriptorem.</p>
+			<p>Quod option numquam vel in, et fuisset delicatissimi duo, qui ut animal noluisse erroribus. Ea eum veniam audire. Per at postea mediocritatem, vim numquam aliquid eu, in nam sale gubergren. Dicant vituperata consequuntur at sea, mazim commodo</p>
+			
+				</div>
+			</div>
+		</div>
+	</div>
+	
+		
+	<h3 id="card-remove-methods">Methods</h3>
+	<h4>materialadmin.App.removeCard(card)</h4>
+	<p>
+		Removes your card from stage. It requires an instance of your card.
+	</p>
+	<pre class="prettyprint">var card = $(&#039;.card&#039;);
+materialadmin.App.removeCard(card);
+</pre>
+	
+	</div>
+<!-- END NESTABLE -->
+		<!-- BEGIN TABLES -->
+<div class="doc-section">
+	
+	<h1 id="tables" class="page-header">DataTables</h1>
+	<p class="lead">
+		DataTables is an external library that will add advanced interaction controls to any HTML table.<br/>
+		DataTables provides documentation and examples on their <a class="btn-link" href="https://datatables.net" target="blank">website <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+	
+	<h3 id="tables-example">Example</h3>
+	<p>
+		You can view basic examples of DataTables <a class="btn-link" href="../tables/dynamic.html" target="blank">here <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+		
+	<h3 id="tables-javascript">Getting started</h3>
+	<h4>Dependencies</h4>
+	<p>
+		The first step is to have the right JavaScript and CSS files included. <br/>
+		All additional CSS should be included after <code>&lt;!-- Additional CSS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.<br/>
+		All additional Javascripts should be included after <code>&lt;!-- Additional JS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.
+	</p>
+	<p>
+		<em>Additional CSS</em>
+	</p>
+	<pre class="prettyprint">&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;assets/css/theme-default/libs/DataTables/jquery.dataTables.css&quot;&gt;
+</pre>
+	
+	<p>
+		<em>Additional Javascript</em>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/DataTables/jquery.dataTables.min.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+		
+	<h4>Javascript</h4>
+	<p>
+		Once you have your dependencies, you need to write the JavaScript code.
+	</p>
+	<pre class="prettyprint">$(&#039;#table1&#039;).DataTable({ options });
+</pre>
+	<p>
+		This code must be executed after the page has loaded the Javascript libraries.<br/>
+		The best way to do this, is with jQuery's <code>$(document).ready</code>.
+		You can create your own implementation or use the example code provided by Material Admin which can be located in:<br/>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;materialadmin/assets/js/core/demo/DemoTableDynamic.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+	
+	<h4>HTML</h4>
+	<p>
+		The Javascript is tied to an element in the body of your page. 
+		The DataTable will be placed inside this element:
+	</p>
+	<pre class="prettyprint">&lt;table id=&quot;table1&quot; class=&quot;table&quot;&gt;
+	&lt;thead&gt;
+		&lt;tr&gt;
+			&lt;th&gt;Rendering engine&lt;/th&gt;
+			&lt;th&gt;Browser&lt;/th&gt;
+			&lt;th&gt;Platform(s)&lt;/th&gt;
+			&lt;th&gt;Engine version&lt;/th&gt;
+			&lt;th&gt;CSS grade&lt;/th&gt;
+		&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td&gt;Trident&lt;/td&gt;
+			&lt;td&gt;Internet Explorer 4.0&lt;/td&gt;
+			&lt;td&gt;Win 95+&lt;/td&gt;
+			&lt;td&gt;4&lt;/td&gt;
+			&lt;td&gt;X&lt;/td&gt;
+		&lt;/tr&gt;
+		...
+	&lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+	
+	
+	<h3 id="tabes-options">Options</h3>
+	<p>
+		DataTables has many options that can be found in their <a class="btn-link" href="https://datatables.net" target="blank">documentation <span class="glyphicon glyphicon-link"></span></a>.
+		Material Admin has provided extra options for the DataTables that are described below.
+	</p>
+	
+	<h4>Sorting icons</h4>
+	<p>
+		The standard sorting icons for the DataTables are:<br/>
+		<span class="btn btn-lg"><i class="fa fa-sort"></i></span>
+		<span class="btn btn-lg"><i class="fa fa-sort-desc"></i></span>
+		<span class="btn btn-lg"><i class="fa fa-sort-asc"></i></span>
+	</p>
+	<p>
+		If you add the class <code>.sort-numeric</code> to an <code>&lt;th&gt;</code> element:<br/>
+		<span class="btn btn-lg"><i class="fa fa-sort-numeric-desc"></i></span>
+		<span class="btn btn-lg"><i class="fa fa-sort-numeric-asc"></i></span>
+	</p>
+	<p>
+		If you add the class <code>.sort-alpha</code> to an <code>&lt;th&gt;</code> element:<br/>
+		<span class="btn btn-lg"><i class="fa fa-sort-alpha-desc"></i></span>
+		<span class="btn btn-lg"><i class="fa fa-sort-alpha-asc"></i></span>
+	</p>
+	<pre class="prettyprint">&lt;thead&gt;
+	&lt;tr&gt;
+		&lt;th&gt;Header 1&lt;/th&gt;
+		&lt;th class=&quot;sort-numeric&quot;&gt;Header 2&lt;/th&gt;
+		&lt;th class=&quot;sort-alpha&quot;&gt;Header 3&lt;/th&gt;
+	&lt;/tr&gt;
+&lt;/thead&gt;
+</pre>
+	
+	
+	<h4>Table tools</h4>
+	<p>
+		There are a number of extras for DataTables.
+		<a class="btn-link" href="https://datatables.net/extensions/tabletools/" target="blank">TableTools <span class="glyphicon glyphicon-link"></span></a> is one of these extras.
+		Material Admin has provided a stylesheet for the TableTools.
+	</p>
+	<pre class="prettyprint">&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;assets/css/theme-default/libs/DataTables/extensions/dataTables.tableTools.css&quot;&gt;
+</pre>
+	<p>
+		Also remember to include the TableTools Javascript.
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/DataTables/extensions/TableTools/js/dataTables.tableTools.min.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+	
+	<h4>ColVis</h4>
+	<p>
+		<a class="btn-link" href="https://datatables.net/extensions/colvis/" target="blank">ColVis <span class="glyphicon glyphicon-link"></span></a> is another one of these extras.
+		Material Admin has provided a stylesheet for ColVis.
+	</p>
+	<pre class="prettyprint">&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;assets/css/theme-default/libs/DataTables/extensions/dataTables.colVis.css&quot;&gt;
+</pre>
+	<p>
+		Also remember to include the ColVis Javascript.
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/DataTables/extensions/colVis/js/dataTables.colVis.min.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+	
+	</div>
+<!-- END TABLES -->
+		<!-- BEGIN INPUTMASK -->
+<div class="doc-section">
+	
+	<h1 id="gmap" class="page-header">gmaps.js</h1>
+	<p class="lead">
+		gmaps.js allows you to use the potential of Google Maps in a simple way.
+		No more extensive documentation or large amount of code.<br/>
+		gmaps.js provides documentation on <a class="btn-link" href="http://hpneo.github.io/gmaps/" target="blank">GitHub <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+	
+	<h3 id="gmap-example">Example</h3>
+	<p>
+		You can view basic examples of gmaps.js <a class="btn-link" href="../pages/maps.html" target="blank">here <span class="glyphicon glyphicon-link"></span></a>
+	</p>
+	
+		
+	<h3 id="gmap-javascript">Getting started</h3>
+	<h4>Dependencies</h4>
+	<p>
+		The first step is to have the right JavaScript files included. <br/>
+		All additional Javascripts should be included after <code>&lt;!-- Additional JS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.
+	</p>
+	<p>
+		<em>Additional Javascript</em>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/gmaps/gmaps.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+		
+	<h4>Javascript</h4>
+	<p>
+		Once you have your dependencies, you need to write the JavaScript code.
+	</p>
+	<pre class="prettyprint">var map = new GMaps({
+  div: &#039;#map&#039;,
+  lat: -12.043333,
+  lng: -77.028333
+});
+</pre>
+	
+		
+	<h4>Html</h4>
+	<p>
+		The Javascript is tied to an element in the body of your page.
+		To make the map visible, your <code>&lt;div&gt;</code> element needs to have a fixed height.
+		For this you can use one of the <code>height-*</code> classes
+	</p>
+	<pre class="prettyprint">&lt;div id=&quot;map&quot; class=&quot;height-5&quot;&gt;&lt;/div&gt;
+</pre>
+	
+	</div>
+<!-- END INPUTMASK -->
+		<!-- BEGIN FLOT -->
+<div class="doc-section">
+	
+	<h1 id="flot" class="page-header">Flot charts</h1>
+	<p class="lead">
+		Flot is a pure JavaScript plotting library for jQuery, with a focus on simple usage, attractive looks and interactive features.
+		Flot provides documentation on their <a class="btn-link" href="http://www.flotcharts.org/" target="blank">website <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+	
+	<h3 id="flot-example">Example</h3>
+	<p>
+		You can view a basic example of Flot <a class="btn-link" href="../charts/charts.html" target="blank">here <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+		
+	<h3 id="flot-javascript">Getting started</h3>
+	<h4>Dependencies</h4>
+	<p>
+		The first step is to have the right JavaScript files included. <br/>
+		All additional Javascripts should be included after <code>&lt;!-- Additional JS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.
+	</p>
+	<p>
+		<em>Additional JavaScript</em>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/flot/jquery.flot.min.js&quot;&gt;&lt;/script&gt;
+&lt;!--
+	Flot provides different JavaScript files some charts. Check their website to see which ones you need.
+	The example page uses the following additional includes.
+--&gt;
+&lt;script src=&quot;assets/js/libs/flot/jquery.flot.time.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;assets/js/libs/flot/jquery.flot.resize.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;assets/js/libs/flot/jquery.flot.orderBars.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;assets/js/libs/flot/jquery.flot.pie.min.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+		
+	<h4>JavaScript</h4>
+	<p>
+		Once you have your dependencies, you need to write the JavaScript code.
+	</p>
+	<pre class="prettyprint">$.plot($(&#039;#flot-chart&#039;), data, options);
+</pre>
+	
+		
+	<h4>Html</h4>
+	<p>
+		The JavaScript is tied to an element in the body of your page.
+		Give it a <code>.flot</code> class to easily style the legend.
+	</p>
+	<pre class="prettyprint">&lt;div id=&quot;flot-chart&quot; class=&quot;flot&quot;&gt;&lt;/div&gt;
+</pre>
+	
+	</div>
+<!-- END FLOT -->
+		<!-- BEGIN CALENDAR -->
+<div class="doc-section">
+	
+	<h1 id="calendar" class="page-header">FullCalendar</h1>
+	<p class="lead">
+		FullCalendar provides a full-sized, drag & drop calendar.
+		It uses AJAX to fetch events on-the-fly for each month and is easily configured to use your own feed format.
+		It exposes hooks for user-triggered events. <br/>
+		FullCalendar provides <a class="btn-link" href="http://arshaw.com/fullcalendar/docs/" target="blank">documentation <span class="glyphicon glyphicon-link"></span></a> on their <a class="btn-link" href="http://arshaw.com/fullcalendar/" target="blank">website <span class="glyphicon glyphicon-link"></span></a>. 
+	</p>
+	
+	
+	<h3 id="calendar-example">Example</h3>
+	<p>
+		You can view a basic example of FullCalendar <a class="btn-link" href="../pages/calendar.html" target="blank">here <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+		
+	<h3 id="calendar-javascript">Getting started</h3>
+	<h4>Dependencies</h4>
+	<p>
+		The first step is to have the right JavaScript and CSS files included. <br/>
+		All additional CSS should be included after <code>&lt;!-- Additional CSS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.<br/>
+		All additional Javascripts should be included after <code>&lt;!-- Additional JS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.
+	</p>
+	<p>
+		<em>Additional CSS</em>
+	</p>
+	<pre class="prettyprint">&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;assets/theme-default/libs/fullcalendar/fullcalendar.css&quot;&gt;
+</pre>
+	
+	<p>
+		<em>Additional Javascript</em>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/moment/moment.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;assets/js/libs/fullcalendar/fullcalendar.min.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+		
+	<h4>Javascript</h4>
+	<p>
+		Once you have your dependencies, you need to write the JavaScript code.
+	</p>
+	<pre class="prettyprint">$(&#039;#calendar&#039;).fullCalendar({ options });
+</pre>
+	<p>
+		This code must be executed after the page has loaded the Javascript libraries.<br/>
+		The best way to do this, is with jQuery's <code>$(document).ready</code>.
+		You can create your own implementation or use the example code provided by Material Admin which can be located in:<br/>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;materialadmin/assets/js/core/demo/DemoCalendar.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+	
+	<h4>HTML</h4>
+	<p>
+		The Javascript is tied to an element in the body of your page. 
+		FullCalendar will be placed inside this element:
+	</p>
+	<pre class="prettyprint">&lt;div id=&quot;calendar&quot;&gt;&lt;/div&gt;
+</pre>
+	
+	</div>
+<!-- END CALENDAR -->
+		<!-- BEGIN KNOB -->
+<div class="doc-section">
+	
+	<h1 id="knob" class="page-header">jQuery Knob</h1>
+	<p class="lead">
+		Knob charts are a downward compatible, touchable, jQuery dial.
+		jQuery Knob provides documentation on <a class="btn-link" href="https://github.com/aterrien/jQuery-Knob" target="blank">GitHub <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+	
+	<h3 id="knob-example">Example</h3>
+	<p>
+		You can view a basic example of jQuery Knob <a class="btn-link" href="../charts/charts.html" target="blank">here <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+		
+	<h3 id="knob-javascript">Getting started</h3>
+	<h4>Dependencies</h4>
+	<p>
+		The first step is to have the right JavaScript files included. <br/>
+		All additional Javascripts should be included after <code>&lt;!-- Additional JS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.
+	</p>
+	<p>
+		<em>Additional Javascript</em>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/jquery-knob/jquery-knob.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+		
+	<h4>Javascript</h4>
+	<p>
+		Once you have your dependencies, you need to write the JavaScript code.
+	</p>
+	<pre class="prettyprint">var options = materialadmin.App.getKnobStyle($(&#039;#knob-chart&#039;));
+$(this).knob(options);
+</pre>
+	
+		
+	<h4>Html</h4>
+	<p>
+		The Javascript is tied to an element in the body of your page.
+	</p>
+	<pre class="prettyprint">&lt;div class=&quot;knob knob-support2 knob-inverse-track size-3&quot;&gt;
+	&lt;input type=&quot;text&quot; id=&quot;knob-chart&quot; data-min=&quot;0&quot; data-max=&quot;100&quot; data-thickness=.1 value=&quot;40&quot;&gt;
+&lt;/div&gt;
+</pre>
+	
+		
+	<h3 id="knob-option">Options</h3>
+	<p>
+		Material Admin provides ready made classes so you can easily style the knob charts.
+		You only need to put the <code>&lt;input&gt;</code> element inside a <code>.knob</code> class.
+		Then you can add the following classes to the <code>.knob</code> class:
+	</p>
+	<pre class="prettyprint">&lt;!-- Styles for the progress indicator --&gt;
+&lt;div class=&quot;knob knob-primary-dark&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-primary&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-primary-light&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-primary-bright&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-accent-dark&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-accent&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-accent-light&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-accent-bright&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-default-dark&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-default&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-default-light&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-default-bright&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-success&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-warning&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-danger&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-info&quot;&gt;..&lt;/div&gt;
+&lt;!-- Styles for the track --&gt;
+&lt;div class=&quot;knob knob-primary-dark-track&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-primary-track&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-primary-light-track&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-primary-bright-track&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-accent-dark-track&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-accent-track&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-accent-light-track&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-accent-bright-track&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-default-dark-track&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-default-track&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-default-light-track&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-default-bright-track&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-success-track&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-warning-track&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-danger-track&quot;&gt;..&lt;/div&gt;
+&lt;div class=&quot;knob knob-info-track&quot;&gt;..&lt;/div&gt;
+&lt;!-- You can combine these styles like so: --&gt;
+&lt;div class=&quot;knob knob-primary knob-primary-dark-track&quot;&gt;..&lt;/div&gt;
+</pre>
+
+	</div>
+<!-- END KNOB -->
+		<!-- BEGIN SPARKLINE -->
+<div class="doc-section">
+	
+	<h1 id="sparkline" class="page-header">jQuery Sparklines</h1>
+	<p class="lead">
+		This jQuery plugin generates sparklines (small inline charts) directly in the browser using data supplied either inline in the HTML, or via javascript.
+		jQuery Sparklines provides documentation on their <a class="btn-link" href="http://omnipotent.net/jquery.sparkline/#s-about" target="blank">website <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+	
+	<h3 id="sparkline-example">Example</h3>
+	<p>
+		You can view a basic example of jQuery Sparklines <a class="btn-link" href="../charts/charts.html" target="blank">here <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+		
+	<h3 id="sparkline-javascript">Getting started</h3>
+	<h4>Dependencies</h4>
+	<p>
+		The first step is to have the right JavaScript files included. <br/>
+		All additional Javascripts should be included after <code>&lt;!-- Additional JS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.
+	</p>
+	<p>
+		<em>Additional Javascript</em>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/sparkline/jquery.sparkline.min.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+		
+	<h4>Javascript</h4>
+	<p>
+		Once you have your dependencies, you need to write the JavaScript code.
+	</p>
+	<pre class="prettyprint">var options = $(&#039;#inline-sparkline&#039;).data();
+$(&#039;#inline-sparkline&#039;).sparkline(&#039;html&#039;, options);
+</pre>
+	
+		
+	<h4>Html</h4>
+	<p>
+		The Javascript is tied to an element in the body of your page.
+	</p>
+	<pre class="prettyprint"> &lt;span id=&quot;inline-sparkline&quot; data-type=&quot;pie&quot;&gt;1,1,2&lt;/span&gt;
+</pre>
+	
+	</div>
+<!-- END SPARKLINE -->
+		<!-- BEGIN CKEDITOR -->
+<div class="doc-section">
+	
+	<h1 id="autosize" class="page-header">Micro-Templating</h1>
+	<p class="lead">
+		Micro-Templating is a super-simple templating function that is fast, caches quickly, and is easy to use.
+		Micro-Templating provides documentation on their <a class="btn-link" href="http://ejohn.org/blog/javascript-micro-templating/" target="blank">website <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+	
+	<h3 id="autosize-example">Example</h3>
+	<p>
+		You can view basic examples of Micro-Templating <a class="btn-link" href="../pages/contacts/add.html" target="blank">here <span class="glyphicon glyphicon-link"></span></a>
+	</p>
+	
+		
+	<h3 id="autosize-javascript">Getting started</h3>
+	<h4>Dependencies</h4>
+	<p>
+		The first step is to have the right JavaScript files included. <br/>
+		All additional Javascripts should be included after <code>&lt;!-- Additional JS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.
+	</p>
+	
+	<p>
+		<em>Additional Javascript</em>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/microtemplating/microtemplating.min.js&quot;&gt;&lt;/script&gt;
+</pre>
+		
+	</div>
+<!-- END CKEDITOR -->
+		<!-- BEGIN MORRIS -->
+<div class="doc-section">
+	
+	<h1 id="morris" class="page-header">Morris.js</h1>
+	<p class="lead">
+		Morris.js has good-looking charts.
+		Morris.js provides documentation on their <a class="btn-link" href="http://morrisjs.github.io/morris.js/" target="blank">website <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+	
+	<h3 id="morris-example">Example</h3>
+	<p>
+		You can view a basic example of Morris.js <a class="btn-link" href="../charts/charts.html" target="blank">here <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+		
+	<h3 id="morris-javascript">Getting started</h3>
+	<h4>Dependencies</h4>
+	<p>
+		The first step is to have the right JavaScript and CSS files included. <br/>
+		All additional CSS should be included after <code>&lt;!-- Additional CSS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.<br/>
+		All additional Javascripts should be included after <code>&lt;!-- Additional JS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.
+	</p>
+	<p>
+		<em>Additional CSS</em>
+	</p>
+	<pre class="prettyprint">&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;assets/theme-default/libs/morris/morris.core.css&quot;&gt;
+</pre>
+	
+	<p>
+		<em>Additional Javascript</em>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/morris.js/morris.min.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+		
+	<h4>Javascript</h4>
+	<p>
+		Once you have your dependencies, you need to write the JavaScript code.
+	</p>
+	<pre class="prettyprint">Morris.Donut(options);
+Morris.Line(options);
+Morris.Bar(options);
+Morris.Area(options);
+</pre>
+	
+		
+	<h4>Html</h4>
+	<p>
+		The Javascript is tied to an element in the body of your page.
+	</p>
+	<pre class="prettyprint">&lt;div id=&quot;morris-line-graph&quot; class=&quot;height-8&quot; data-colors=&quot;#0aa89e&quot;&gt;&lt;/div&gt;
+</pre>
+	
+	</div>
+<!-- END MORRIS -->
+		<!-- BEGIN NESTABLE -->
+<div class="doc-section">
+	
+	<h1 id="nanoscroll" class="page-header">nanoScroll</h1>
+	<p class="lead">
+		The jQuery plugin nanoScroller.js offers a simplistic way of implementing Mac OS X Lion-styled scrollbars for your website.<br/>
+		nanoScroll provides examples on their <a class="btn-link" href="http://jamesflorentino.github.io/nanoScrollerJS/" target="blank">website <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+	
+	<h3 id="nanoscroll-example">Example</h3>
+	<p>
+		nanoScroller is integrated in Material Admin. 
+		You just have to add the class <code>.scroll</code> to an element, restrict it's height, and nanoScroll will be added.
+	</p>
+	<div class="card card-outlined style-default-light">
+		<div class="card-head">
+			<header>
+				<h5 class="opacity-50">Example</h5>
+			</header>
+		</div>
+		<div class="card-body">
+			<div class="card card-outlined style-primary">
+				<div class="card-body height-5 scroll">
+					<blockquote><p>Cards can be given a fixed height with a custom scroll bar.</p></blockquote>
+											<p>Cu conceptam vituperata temporibus has. Ad ius duis dissentiunt, an sit harum primis persecuti, adipisci tacimates mediocrem sit et. Id illud voluptaria omittantur qui, te affert nostro mel. Omnis modus phaedrum an vim, pri ipsum quando no.</p>
+			<p>Eros facete ponderum et vix. Quo nisl pertinax at, mea ea ullum simul ponderum. Postulant definiebas ius et, quas voluptaria moderatius pro ex, ea augue aeque labitur mea. Cu quo explicari iracundia, et quo primis ceteros moderatius. Veniam ubique laboramus ut pri, cu mea causae docendi. Cum an tritani civibus, est quem error malorum ei, quod fuisset eu sed.</p>
+			
+											<p>Duo semper accumsan ea, quidam convenire cum cu, oportere maiestatis incorrupte est eu. Soluta audiam timeam ius te, idque gubergren forensibus ad mel, persius urbanitas usu id. Civibus nostrum fabellas mea te, ne pri lucilius iudicabit. Ut cibo semper vituperatoribus vix, cum in error elitr. Vix molestiae intellegat omittantur an, nam cu modo ullum scriptorem.</p>
+			<p>Quod option numquam vel in, et fuisset delicatissimi duo, qui ut animal noluisse erroribus. Ea eum veniam audire. Per at postea mediocritatem, vim numquam aliquid eu, in nam sale gubergren. Dicant vituperata consequuntur at sea, mazim commodo</p>
+			
+				</div>
+			</div>
+		</div>
+		<pre class="prettyprint">&lt;div class=&quot;card card-outlined style-primary&quot;&gt;
+	&lt;div class=&quot;card-body height-5 scroll&quot;&gt;
+		...
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+	</div>
+	
+		
+	<h3 id="slimscroll-javascript">Getting started</h3>
+	<h4>Dependencies</h4>
+	<p>
+		The first step is to have the right JavaScript files included. <br/>
+		All additional Javascripts should be included after <code>&lt;!-- Additional JS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.
+	</p>
+	
+	<p>
+		<em>Additional Javascript</em>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/nanoscroller/jquery.nanoscroller.min.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+	</div>
+<!-- END NESTABLE -->
+		<!-- BEGIN NESTABLE -->
+<div class="doc-section">
+	
+	<h1 id="nestable" class="page-header">Nestable</h1>
+	<p class="lead">
+		Nestable can add drag & drop functionality to hierarchical lists with mouse and touch compatibility.<br/>
+		Nestable provides some examples on their <a class="btn-link" href="http://dbushell.github.io/Nestable/" target="blank">website <span class="glyphicon glyphicon-link"></span></a> and <a class="btn-link" href="https://github.com/dbushell/Nestable" target="blank">GitHub <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+	
+	<h3 id="nestable-example">Example</h3>
+	<p>
+		You can view a basic example of Nestable <a class="btn-link" href="../ui/lists.html" target="blank">here <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+		
+	<h3 id="nestable-javascript">Getting started</h3>
+	<h4>Dependencies</h4>
+	<p>
+		The first step is to have the right JavaScript and CSS files included. <br/>
+		All additional CSS should be included after <code>&lt;!-- Additional CSS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.<br/>
+		All additional Javascripts should be included after <code>&lt;!-- Additional JS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.
+	</p>
+	<p>
+		<em>Additional CSS</em>
+	</p>
+	<pre class="prettyprint">&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;assets/theme-default/libs/nestable/nestable.css&quot;&gt;
+</pre>
+	
+	<p>
+		<em>Additional Javascript</em>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/nestable/jquery.nestable.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+		
+	<h4>Javascript</h4>
+	<p>
+		Once you have your dependencies, you need to write the JavaScript code.
+	</p>
+	<pre class="prettyprint">$(&#039;#nestable-list&#039;).nestable({ options });
+</pre>
+	<p>
+		This code must be executed after the page has loaded the Javascript libraries.<br/>
+		The best way to do this, is with jQuery's <code>$(document).ready</code>.
+		You can create your own implementation or use the example code provided by Material Admin which can be located in:<br/>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;materialadmin/assets/js/core/demo/DemoUILists.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+	
+	<h4>HTML</h4>
+	<p>
+		The Javascript is tied to an element in the body of your page.<br/>
+		Material Admin made some adjustments, so you can use the <code>.btn</code> class inside the Nestable list.
+		This way you can use the available button classes to style your list.
+	</p>
+	<pre class="prettyprint">&lt;div id=&quot;nestable-list&quot; class=&quot;dd&quot;&gt;
+	&lt;ol class=&quot;dd-list&quot;&gt;
+		&lt;li class=&quot;dd-item&quot; data-id=&quot;1&quot;&gt;
+			&lt;div class=&quot;dd-handle btn btn-primary&quot;&gt;Item 1&lt;/div&gt;
+		&lt;/li&gt;
+		&lt;li class=&quot;dd-item&quot; data-id=&quot;2&quot;&gt;
+			&lt;div class=&quot;dd-handle btn btn-default&quot;&gt;Item 2&lt;/div&gt;
+		&lt;/li&gt;
+		&lt;li class=&quot;dd-item&quot; data-id=&quot;3&quot;&gt;
+			&lt;div class=&quot;dd-handle btn btn-default&quot;&gt;Item 3&lt;/div&gt;
+			&lt;ol class=&quot;dd-list&quot;&gt;
+				&lt;li class=&quot;dd-item&quot; data-id=&quot;4&quot;&gt;
+					&lt;div class=&quot;dd-handle btn btn-default&quot;&gt;Item 4&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li class=&quot;dd-item&quot; data-id=&quot;5&quot;&gt;
+					&lt;div class=&quot;dd-handle btn btn-default&quot;&gt;Item 5&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li class=&quot;dd-item&quot; data-id=&quot;6&quot;&gt;
+					&lt;div class=&quot;dd-handle btn btn-default&quot;&gt;Item 6&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li class=&quot;dd-item&quot; data-id=&quot;7&quot;&gt;
+					&lt;div class=&quot;dd-handle btn btn-default&quot;&gt;Item 7&lt;/div&gt;
+				&lt;/li&gt;
+			&lt;/ol&gt;
+		&lt;/li&gt;
+	&lt;/ol&gt;
+&lt;/div&gt;
+</pre>
+	
+	
+	</div>
+<!-- END NESTABLE -->
+		<!-- BEGIN MORRIS -->
+<div class="doc-section">
+	
+	<h1 id="rickshaw" class="page-header">Rickshaw</h1>
+	<p class="lead">
+		Rickshaw is a JavaScript toolkit for creating interactive time series graphs.
+		Rickshaw provides documentation on their <a class="btn-link" href="http://code.shutterstock.com/rickshaw/" target="blank">website <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+	
+	<h3 id="rickshaw-example">Example</h3>
+	<p>
+		You can view a basic example of Rickshaw <a class="btn-link" href="../charts/charts.html" target="blank">here <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+		
+	<h3 id="rickshaw-javascript">Getting started</h3>
+	<h4>Dependencies</h4>
+	<p>
+		The first step is to have the right JavaScript and CSS files included. <br/>
+		All additional CSS should be included after <code>&lt;!-- Additional CSS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.<br/>
+		All additional Javascripts should be included after <code>&lt;!-- Additional JS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.
+	</p>
+	<p>
+		<em>Additional CSS</em>
+	</p>
+	<pre class="prettyprint">&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;assets/theme-default/libs/rickshaw/rickshaw.css&quot;&gt;
+</pre>
+	
+	<p>
+		<em>Additional Javascript</em>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/d3/d3.v3.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;assets/js/libs/rickshaw/rickshaw.min.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+		
+	<h4>Javascript</h4>
+	<p>
+		Once you have your dependencies, you need to write the JavaScript code.
+	</p>
+	<pre class="prettyprint">var graph = new Rickshaw.Graph(options);
+graph.render();
+</pre>
+	
+		
+	<h4>Html</h4>
+	<p>
+		The Javascript is tied to an element in the body of your page.
+	</p>
+	<pre class="prettyprint">&lt;div id=&quot;chart&quot;&gt;&lt;/div&gt;
+</pre>
+	
+	</div>
+<!-- END MORRIS -->
+		<!-- BEGIN MORRIS -->
+<div class="doc-section">
+	
+	<h1 id="skycons" class="page-header">Skycons</h1>
+	<p class="lead">
+		Skycons is a set of ten animated weather glyphs, procedurally generated by JavaScript using the HTML5 canvas tag.
+		Skycons provides documentation on <a class="btn-link" href="http://darkskyapp.github.io/skycons/" target="blank">github <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+	
+	<h3 id="skycons-example">Example</h3>
+	<p>
+		You can view a basic example of Skycons <a class="btn-link" href="../ui/icons/skycons.html" target="blank">here <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+		
+	<h3 id="skycons-javascript">Getting started</h3>
+	<h4>Dependencies</h4>
+	<p>
+		The first step is to have the right JavaScript files included. <br/>
+		All additional Javascripts should be included after <code>&lt;!-- Additional JS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.
+	</p>
+	
+	<p>
+		<em>Additional Javascript</em>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/skycons/skycons.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+		
+	<h4>Javascript</h4>
+	<p>
+		Once you have your dependencies, you need to write the JavaScript code.
+	</p>
+	<pre class="prettyprint">var skycons = new Skycons({&quot;color&quot;: &quot;black&quot;});
+skycons.add(&quot;icon1&quot;, Skycons.PARTLY_CLOUDY_DAY);
+skycons.play();
+</pre>
+	
+		
+	<h4>Html</h4>
+	<p>
+		The Javascript is tied to an element in the body of your page.
+	</p>
+	<pre class="prettyprint">&lt;canvas id=&quot;icon1&quot; width=&quot;128&quot; height=&quot;128&quot;&gt;&lt;/canvas&gt;
+</pre>
+	
+	</div>
+<!-- END MORRIS -->
+		<!-- BEGIN TOASTR -->
+<div class="doc-section">
+	
+	<h1 id="toastr" class="page-header">Toastr</h1>
+	<p class="lead">
+		Toastr is a Javascript library for non-blocking notifications.
+		Toastr provides documentation on <a class="btn-link" href="https://github.com/CodeSeven/toastr" target="blank">GitHub <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+	
+	<h3 id="toastr-example">Example</h3>
+	<p>
+		You can view a basic example of Toastr <a class="btn-link" href="../ui/messages.html" target="blank">here <span class="glyphicon glyphicon-link"></span></a>.
+	</p>
+	
+		
+	<h3 id="toastr-javascript">Getting started</h3>
+	<h4>Dependencies</h4>
+	<p>
+		The first step is to have the right JavaScript and CSS files included. <br/>
+		All additional CSS should be included after <code>&lt;!-- Additional CSS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.<br/>
+		All additional Javascripts should be included after <code>&lt;!-- Additional JS includes --&gt;</code> which can be seen in <a class="btn-link" href="../docs/getting-start#html.html" >getting started <span class="fa fa-share"></span></a>.
+	</p>
+	<p>
+		<em>Additional CSS</em>
+	</p>
+	<pre class="prettyprint">&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;assets/theme-default/libs/toastr/toastr.css&quot;&gt;
+</pre>
+	
+	<p>
+		<em>Additional Javascript</em>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;assets/js/libs/toastr/toastr.min.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+		
+	<h4>Javascript</h4>
+	<p>
+		Once you have your dependencies, you need to write the JavaScript code.
+	</p>
+	<pre class="prettyprint">// Display an info toast with no title
+toastr.info(&#039;Are you the one?&#039;)
+
+// Display a warning toast, with no title
+toastr.warning(&#039;My name is John Doe. You have to go on!&#039;)
+
+// Display a success toast, with a title
+toastr.success(&#039;Good luck!&#039;, &#039;Max Smith says&#039;)
+
+// Display an error toast, with a title
+toastr.error(&#039;I do not think that word means what you think it means.&#039;, &#039;Impossible!&#039;)
+
+// Clears the current list of toasts
+toastr.clear()
+</pre>
+	<p>
+		This code must be executed after the page has loaded the Javascript libraries.<br/>
+		The best way to do this, is with jQuery's <code>$(document).ready</code>.
+		You can create your own implementation or use the example code provided by Material Admin which can be located in:<br/>
+	</p>
+	<pre class="prettyprint">&lt;script src=&quot;materialadmin/assets/js/core/demo/DemoUIMessages.js&quot;&gt;&lt;/script&gt;
+</pre>
+	
+	</div>
+<!-- END TOASTR -->
+		
+	</div><!--end .section-body -->
+</section>
+<!-- BEGIN CSS SECTION -->
+
+		</div><!--end #content-->		
+		<!-- END CONTENT -->
+
+
+		<!-- BEGIN MENUBAR-->
+		<div id="menubar" class="menubar-inverse">
+			<div class="menubar-fixed-panel">
+				<div>
+					<a class="btn btn-icon-toggle btn-default menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
+						<i class="fa fa-bars"></i>
+					</a>
+				</div>
+				<div class="brand-holder">
+					<a href="../docs/getting-start.html">
+						<span class="text-lg text-bold text-primary ">MATERIAL&nbsp;ADMIN</span>
+					</a>
+				</div>
+			</div>
+			<div class="menubar-scroll-panel">
+				<!-- BEGIN MAIN MENU -->
+				
+
+
+<ul id="main-menu" class="gui-controls gui-controls-tree">
+	<!-- Menu Getting started -->
+	<li class="gui-folder">
+		<a href="../docs/getting-start.html" >
+			<div class="gui-icon"><i class="fa fa-rocket fa-fw"></i></div>
+			<span class="title">Getting started</span>
+		</a>
+		<ul>
+		</ul>
+	</li>
+	<!-- Menu CSS -->
+	<li class="gui-folder">
+		<a href="../docs/css.html" >
+			<div class="gui-icon"><i class="fa fa-flask fa-fw"></i></div>
+			<span class="title">CSS Structure</span>
+		</a>
+		<ul>
+		</ul>
+	</li>
+	<!-- Menu Components -->
+	<li class="gui-folder">
+		<a href="../docs/components.html" >
+			<div class="gui-icon"><i class="fa fa-th-large fa-fw"></i></div>
+			<span class="title">Components</span>
+		</a>
+		<ul>
+		</ul>
+	</li>
+	<!-- Menu Javascript -->
+	<li class="gui-folder">
+		<a href="../docs/javascript.html" class="active">
+			<div class="gui-icon"><i class="fa fa-code fa-fw"></i></div>
+			<span class="title">Javascript</span>
+		</a>
+		<ul>
+		</ul>
+	</li>
+	<!-- Menu Javascript-forms -->
+	<li class="gui-folder">
+		<a href="../docs/javascript-forms.html" >
+			<div class="gui-icon"><i class="fa fa-code fa-fw"></i></div>
+			<span class="title">Javascript for forms</span>
+		</a>
+		<ul>
+		</ul>
+	</li>
+
+</ul><!--end .main-menu -->
+				<!-- END MAIN MENU -->
+			</div>
+		</div><!--end #menubar-->
+		<!-- END MENUBAR -->
+
+	</div><!--end #base-->	
+	<!-- END BASE -->
+
+	<!-- BEGIN JAVASCRIPT -->
+		
+			<script src="../assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
+<script src="../assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
+<script src="../assets/js/libs/jquery-ui/jquery-ui.min.js"></script>
+<script src="../assets/js/libs/bootstrap/bootstrap.min.js"></script>
+<script src="../assets/js/libs/spin.js/spin.min.js"></script>
+<script src="../assets/js/libs/autosize/jquery.autosize.min.js"></script>
+<script src="../assets/js/libs/bootstrap-rating/bootstrap-rating-input.min.js"></script>
+<script src="../assets/js/libs/nanoscroller/jquery.nanoscroller.min.js"></script>
+<script src="../assets/js/core/source/App.js"></script>
+<script src="../assets/js/core/source/AppNavigation.js"></script>
+<script src="../assets/js/core/source/AppOffcanvas.js"></script>
+<script src="../assets/js/core/source/AppCard.js"></script>
+<script src="../assets/js/core/source/AppForm.js"></script>
+<script src="../assets/js/core/source/AppNavSearch.js"></script>
+<script src="../assets/js/core/source/AppVendor.js"></script>
+<script src="../assets/js/core/demo/Demo.js"></script>
+<script src="../assets/js/core/demo/DemoDocs.js"></script>
+
+	
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+	<!-- END JAVASCRIPT -->
+
+	
+	
+	</body>
+</html>

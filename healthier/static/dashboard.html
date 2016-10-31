@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Material Admin - Profile</title>
+
+        <!-- BEGIN META -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="your,keywords">
+        <meta name="description" content="Short explanation about this website">
+        <!-- END META -->
+
+        <!-- BEGIN STYLESHEETS -->
+        <link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet' type='text/css'/>
+        <link type="text/css" rel="stylesheet" href="assets/css/theme-default/bootstrap.css?1422792965" />
+        <link type="text/css" rel="stylesheet" href="assets/css/theme-default/materialadmin.css?1425466319" />
+        <link type="text/css" rel="stylesheet" href="assets/css/theme-default/font-awesome.min.css?1422529194" />
+        <link type="text/css" rel="stylesheet" href="assets/css/theme-default/material-design-iconic-font.min.css?1421434286" />
+        <link type="text/css" rel="stylesheet" href="assets/css/timeline.css" />
+        <link type="text/css" rel="stylesheet" href="assets/css/autocomplete.css" />
+        <!-- END STYLESHEETS -->
+        <link type="text/css" rel="stylesheet" href="assets/css/dashboard.css" />
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="assets/js/libs/utils/html5shiv.js?1403934957"></script>
+        <script type="text/javascript" src="assets/js/libs/utils/respond.min.js?1403934956"></script>
+        <![endif]-->
+    </head>
+    <body class="menubar-hoverable header-fixed ">
+
+        <!-- BEGIN HEADER-->
+        <header id="header" >
+            <div class="headerbar">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="headerbar-left">
+                    <ul class="header-nav header-nav-options">
+                        <li class="header-nav-brand" >
+                            <div class="brand-holder">
+                                <a href="../../html/dashboards/dashboard.html">
+                                    <span class="text-lg text-bold text-primary">MATERIAL ADMIN</span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="headerbar-right">
+                    <ul class="header-nav header-nav-options">
+                        <li class="dropdown hidden-xs">
+                            <a href="javascript:void(0);" class="btn btn-icon-toggle btn-default" data-toggle="dropdown">
+                                <i class="fa fa-bell"></i><sup class="badge style-danger">4</sup>
+                            </a>
+                            <ul class="dropdown-menu animation-expand">
+                                <li class="dropdown-header">Today's messages</li>
+                                <li>
+                                    <a class="alert alert-callout alert-warning" href="javascript:void(0);">
+                                        <img class="pull-right img-circle dropdown-avatar" src="assets/img/avatar2.jpg?1404026449" alt="" />
+                                        <strong>Alex Anistor</strong><br/>
+                                        <small>Testing functionality...</small>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="alert alert-callout alert-info" href="javascript:void(0);">
+                                        <img class="pull-right img-circle dropdown-avatar" src="assets/img/avatar3.jpg?1404026799" alt="" />
+                                        <strong>Alicia Adell</strong><br/>
+                                        <small>Reviewing last changes...</small>
+                                    </a>
+                                </li>
+                                <li class="dropdown-header">Options</li>
+                                <li><a href="../../html/pages/login.html">View all messages <span class="pull-right"><i class="fa fa-arrow-right"></i></span></a></li>
+                                <li><a href="../../html/pages/login.html">Mark as read <span class="pull-right"><i class="fa fa-arrow-right"></i></span></a></li>
+                            </ul><!--end .dropdown-menu -->
+                        </li><!--end .dropdown -->
+                        <li class="dropdown hidden-xs">
+                            <a href="javascript:void(0);" class="btn btn-icon-toggle btn-default" data-toggle="dropdown">
+                                <i class="fa fa-area-chart"></i>
+                            </a>
+                            <ul class="dropdown-menu animation-expand">
+                                <li class="dropdown-header">Server load</li>
+                                <li class="dropdown-progress">
+                                    <a href="javascript:void(0);">
+                                        <div class="dropdown-label">
+                                            <span class="text-light">Server load <strong>Today</strong></span>
+                                            <strong class="pull-right">93%</strong>
+                                        </div>
+                                        <div class="progress"><div class="progress-bar progress-bar-danger" style="width: 93%"></div></div>
+                                    </a>
+                                </li><!--end .dropdown-progress -->
+                                <li class="dropdown-progress">
+                                    <a href="javascript:void(0);">
+                                        <div class="dropdown-label">
+                                            <span class="text-light">Server load <strong>Yesterday</strong></span>
+                                            <strong class="pull-right">30%</strong>
+                                        </div>
+                                        <div class="progress"><div class="progress-bar progress-bar-success" style="width: 30%"></div></div>
+                                    </a>
+                                </li><!--end .dropdown-progress -->
+                                <li class="dropdown-progress">
+                                    <a href="javascript:void(0);">
+                                        <div class="dropdown-label">
+                                            <span class="text-light">Server load <strong>Lastweek</strong></span>
+                                            <strong class="pull-right">74%</strong>
+                                        </div>
+                                        <div class="progress"><div class="progress-bar progress-bar-warning" style="width: 74%"></div></div>
+                                    </a>
+                                </li><!--end .dropdown-progress -->
+                            </ul><!--end .dropdown-menu -->
+                        </li><!--end .dropdown -->
+                    </ul><!--end .header-nav-options -->
+                    <ul class="header-nav header-nav-profile">
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
+                                <img src="assets/img/avatar1.jpg?1403934956" alt="" />
+                                <span class="profile-info">
+                                    Daniel Johnson
+                                    <small>Administrator</small>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu animation-dock">
+                                <li class="dropdown-header">Config</li>
+                                <li><a href="../../html/pages/profile.html">My profile</a></li>
+                                <li><a href="../../html/pages/blog/post.html">My blog <span class="badge style-danger pull-right">16</span></a></li>
+                                <li><a href="../../html/pages/calendar.html">My appointments</a></li>
+                                <li class="divider"></li>
+                                <li><a href="../../html/pages/locked.html"><i class="fa fa-fw fa-lock"></i> Lock</a></li>
+                                <li><a href="../../html/pages/login.html"><i class="fa fa-fw fa-power-off text-danger"></i> Logout</a></li>
+                            </ul><!--end .dropdown-menu -->
+                        </li><!--end .dropdown -->
+                    </ul><!--end .header-nav-profile -->
+
+                </div><!--end #header-navbar-collapse -->
+            </div>
+        </header>
+        <!-- END HEADER-->
+
+        <!-- BEGIN BASE-->
+        <div id="base">
+
+            <!-- BEGIN OFFCANVAS LEFT -->
+            <div class="offcanvas">
+            </div><!--end .offcanvas-->
+            <!-- END OFFCANVAS LEFT -->
+
+            <!-- BEGIN CONTENT-->
+            <div id="content">
+                <section class="section-body">
+
+                    <!-- BEGIN GOALS-->
+                    <div class="row goals-status">
+
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="card-progress challenge">
+                                <h3>What's your target weight?</h3>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="card-progress challenge">
+                                <h3>Let's burn some calorie!</h3>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="card-progress challenge">
+                                <h3>Take enough nutrients!</h3>
+                            </div>
+                        </div>
+<!--
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="card-progress">
+                                <div class="btn-group pull-right action-button">
+                                    <button type="button" class="btn btn-icon-toggle btn-default" data-toggle="dropdown"><i class="md md-more-vert"></i></button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">New goal</a></li>
+                                        <li><a href="#">Stop</a></li>
+                                    </ul>
+                                </div>
+                                <div class="display">
+                                    <div class="number">
+                                        <small><i class="fa fa-heart"></i> LOSING WEIGHT</small>
+                                        <h4 class="text-accent">
+                                            <span><span class="counterup" data-value="3">3</span> to 71 kg</span>
+                                            <small>12 days remaining</small>
+                                        </h4>
+
+                                    </div>
+                                </div>
+                                <div class="progress-info">
+                                    <div class="progress">
+                                        <span style="width: 50%;" class="progress-bar progress-bar-success style-primary">
+                                            <span class="sr-only">50% progress</span>
+                                        </span>
+                                    </div>
+                                    <div class="status">
+                                        <div class="status-title"> progress </div>
+                                        <div class="status-number"> 50% </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="card-progress">
+                                <div class="btn-group pull-right action-button">
+                                    <button type="button" class="btn btn-icon-toggle btn-default" data-toggle="dropdown"><i class="md md-more-vert"></i></button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">New goal</a></li>
+                                        <li><a href="#">Stop</a></li>
+                                    </ul>
+                                </div>
+                                <div class="display">
+                                    <div class="number">
+                                        <small><i class="fa fa-bicycle"></i> BURNING CALORIE</small>
+                                        <h4 class="text-accent">
+                                            <span><span class="counterup" data-value="1243">1243</span> to 1550 Kcal</span>
+                                            <small>4 hours reamining</small>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="progress-info">
+                                    <div class="progress">
+                                        <span style="width: 88%;" class="progress-bar progress-bar-success style-primary">
+                                            <span class="sr-only">88% progress</span>
+                                        </span>
+                                    </div>
+                                    <div class="status">
+                                        <div class="status-title"> progress </div>
+                                        <div class="status-number"> 88% </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="card-progress">
+                                <div class="btn-group pull-right action-button">
+                                    <button type="button" class="btn btn-icon-toggle btn-default" data-toggle="dropdown"><i class="md md-more-vert"></i></button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">New goal</a></li>
+                                        <li><a href="#">Stop</a></li>
+                                    </ul>
+                                </div>
+                                <div class="display">
+                                    <div class="number">
+                                        <small><i class="md md-restaurant-menu"></i> Getting Nutrients</small>
+                                        <h4 class="text-accent">
+                                            <span><span class="counterup" data-value="200">200</span> to 1550 Kcal</span>
+                                            <small>14 hours reamining</small>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="progress-info">
+                                    <div class="progress">
+                                        <span style="width: 88%;" class="progress-bar progress-bar-success style-primary">
+                                            <span class="sr-only">88% progress</span>
+                                        </span>
+                                    </div>
+                                    <div class="status">
+                                        <div class="status-title"> progress </div>
+                                        <div class="status-number"> 88% </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="card-progress">
+                                <div class="btn-group pull-right action-button">
+                                    <button type="button" class="btn btn-icon-toggle btn-default" data-toggle="dropdown"><i class="md md-more-vert"></i></button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">New goal</a></li>
+                                        <li><a href="#">Stop</a></li>
+                                    </ul>
+                                </div>
+                                <div class="display">
+                                    <div class="number">
+                                        <small><i class="md md-restaurant-menu"></i> Body Mass Index</small>
+                                        <h4 class="text-accent">
+                                            <span class="text-danger">You're overweight!</span>
+                                            <small>Your BMI is 27,4. You need to lose at least 6 Kg.</small>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--end GOALS -->
+
+                    <!-- BEGIN GOALS-->
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="card card-underline">
+                                <div class="card-head">
+                                    <header><i class="fa fa-area-chart"></i> CALORIE</header>
+                                    <div class="tools">
+                                        <div class="btn-group">
+                                            <div class="btn-group">
+                                                <ul class="dropdown-menu animation-dock pull-right menu-card-styling" role="menu" style="text-align: left;">
+                                                    <li><a href="javascript:void(0);" data-style="style-default-dark"><i class="fa fa-circle fa-fw text-default-dark"></i> Default dark</a></li>
+                                                    <li><a href="javascript:void(0);" data-style="style-info"><i class="fa fa-circle fa-fw text-info"></i> Info</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="btn-group btn-radio" data-toggle="buttons">
+                                                <label class="btn ink-reaction btn-default-light btn-xs active">
+                                                    <input type="radio" name="options" id="option1">Weekly
+                                                </label>
+                                                <label class="btn ink-reaction btn-default-light btn-xs">
+                                                    <input type="radio" name="options" id="option3">Monthly
+                                                </label>
+                                                <label class="btn ink-reaction btn-default-light btn-xs">
+                                                    <input type="radio" name="options" id="option3">Yearly
+                                                </label>
+                                            </div>
+                                            <a class="btn btn-icon-toggle btn-refresh"><i class="md md-refresh"></i></a>
+                                        </div>
+                                    </div>
+                                </div><!--end .card-head -->
+                                <div class="card-body">
+                                    <div id="calorie-chart" style="height: 250px; margin: 0 auto"></div>
+
+                                </div><!--end .card-body -->
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="card card-underline">
+                                <div class="card-head">
+                                    <header><i class="fa fa-area-chart"></i>WEIGHT &amp; BMI</header>
+                                    <div class="tools">
+                                        <div class="btn-group">
+                                            <div class="btn-group">
+                                                <ul class="dropdown-menu animation-dock pull-right menu-card-styling" role="menu" style="text-align: left;">
+                                                    <li><a href="javascript:void(0);" data-style="style-default-dark"><i class="fa fa-circle fa-fw text-default-dark"></i> Default dark</a></li>
+                                                    <li><a href="javascript:void(0);" data-style="style-info"><i class="fa fa-circle fa-fw text-info"></i> Info</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="btn-group btn-radio" data-toggle="buttons">
+                                                <label class="btn ink-reaction btn-default-light btn-xs active">
+                                                    <input type="radio" name="options" id="option1">Weekly
+                                                </label>
+                                                <label class="btn ink-reaction btn-default-light btn-xs">
+                                                    <input type="radio" name="options" id="option3">Monthly
+                                                </label>
+                                                <label class="btn ink-reaction btn-default-light btn-xs">
+                                                    <input type="radio" name="options" id="option3">Yearly
+                                                </label>
+                                            </div>
+                                            <a class="btn btn-icon-toggle btn-refresh"><i class="md md-refresh"></i></a>
+                                        </div>
+                                    </div>
+                                </div><!--end .card-head -->
+                                <div class="card-body">
+                                    <div id="weight-chart" style="height: 250px; margin: 0 auto"></div>
+
+                                </div><!--end .card-body -->
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <!--end .row -->
+                    <div class="row">
+
+                        <div class="col-lg-8">
+                            <div class="card card-underline">
+                                <div class="card-head">
+                                    <header><i class="fa fa-area-chart"></i>Nutrient Intake</header>
+                                    <div class="tools">
+                                        <div class="btn-group">
+                                            <div class="btn-group">
+                                                <ul class="dropdown-menu animation-dock pull-right menu-card-styling" role="menu" style="text-align: left;">
+                                                    <li><a href="javascript:void(0);" data-style="style-default-dark"><i class="fa fa-circle fa-fw text-default-dark"></i> Default dark</a></li>
+                                                    <li><a href="javascript:void(0);" data-style="style-info"><i class="fa fa-circle fa-fw text-info"></i> Info</a></li>
+                                                </ul>
+                                            </div>
+                                            <a class="btn btn-icon-toggle btn-refresh"><i class="md md-refresh"></i></a>
+                                        </div>
+                                    </div>
+                                </div><!--end .card-head -->
+                                <div class="card-body height-8">
+                                    <div id="nutrients-chart" style="height: 100%; margin: 0 auto"></div>
+
+                                </div><!--end .card-body -->
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="card card-underline target-nutrients">
+                                <div class="card-head">
+                                    <header><i class="fa fa-area-chart"></i>Nutrients Goal</header>
+                                    <div class="tools">
+                                        <div class="btn-group">
+                                            <div class="btn-group">
+                                                <ul class="dropdown-menu animation-dock pull-right menu-card-styling" role="menu" style="text-align: left;">
+                                                    <li><a href="javascript:void(0);" data-style="style-default-dark"><i class="fa fa-circle fa-fw text-default-dark"></i> Default dark</a></li>
+                                                    <li><a href="javascript:void(0);" data-style="style-info"><i class="fa fa-circle fa-fw text-info"></i> Info</a></li>
+                                                </ul>
+                                            </div>
+                                            <a class="btn btn-icon-toggle btn-refresh"><i class="md md-refresh"></i></a>
+                                        </div>
+                                    </div>
+                                </div><!--end .card-head -->
+                                <div class="card-body height-8 ">
+
+                                        <strong>214 g</strong> VITAMIN A
+                                        <span class="pull-right text-success text-sm">0,18% <i class="md md-trending-up"></i></span>
+                                        <div class="progress progress-hairline">
+                                            <div class="progress-bar progress-bar-primary-dark" style="width:43%"></div>
+                                        </div>
+                                        <strong>152 g</strong> MAGNESIUM
+                                        <span class="pull-right text-success text-sm">0,68% <i class="md md-trending-up"></i></span>
+                                        <div class="progress progress-hairline">
+                                            <div class="progress-bar progress-bar-primary-dark" style="width:11%"></div>
+                                        </div>
+                                        <strong>42 g</strong>  POTASSIUM
+                                        <span class="pull-right text-danger text-sm">21,08% <i class="md md-trending-down"></i></span>
+                                        <div class="progress progress-hairline">
+                                            <div class="progress-bar progress-bar-danger" style="width:93%"></div>
+                                        </div>
+                                        <strong>42 g</strong>  VITAMIN E
+                                        <span class="pull-right text-success text-sm">0,18% <i class="md md-trending-up"></i></span>
+                                        <div class="progress progress-hairline">
+                                            <div class="progress-bar progress-bar-primary-dark" style="width:63%"></div>
+                                        </div>
+                                        <strong>42 g</strong>  COPPER
+                                        <span class="pull-right text-success text-sm">0,18% <i class="md md-trending-up"></i></span>
+                                        <div class="progress progress-hairline">
+                                            <div class="progress-bar progress-bar-primary-dark" style="width:47%"></div>
+                                        </div>
+                                        <strong>42 g</strong>  SODIUM
+                                        <span class="pull-right text-success text-sm">0,18% <i class="md md-trending-up"></i></span>
+                                        <div class="progress progress-hairline">
+                                            <div class="progress-bar progress-bar-primary-dark" style="width:47%"></div>
+                                        </div>
+                                        <strong>42 g</strong>  CALCIUM
+                                        <span class="pull-right text-success text-sm">0,18% <i class="md md-trending-up"></i></span>
+                                        <div class="progress progress-hairline">
+                                            <div class="progress-bar progress-bar-primary-dark" style="width:47%"></div>
+                                        </div>
+
+                                </div><!--end .card-body -->
+                            </div>
+                        </div>
+
+
+
+
+
+                    </div>
+
+
+                </section>
+            </div>
+            <!-- END CONTENT -->
+
+
+        </div><!--end #base-->
+        <!-- END BASE -->
+
+        <!-- BEGIN JAVASCRIPT -->
+        <script src="assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
+        <script src="assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
+        <script src="assets/js/libs/jquery-counterup/jquery.waypoints.min.js"></script>
+        <script src="assets/js/libs/jquery-counterup/jquery.counterup.min.js"></script>
+
+        <script src="assets/js/libs/bootstrap/bootstrap.min.js"></script>
+        <script src="assets/js/libs/spin.js/spin.min.js"></script>
+        <script src="assets/js/libs/autosize/jquery.autosize.min.js"></script>
+        <script src="assets/js/libs/nanoscroller/jquery.nanoscroller.min.js"></script>
+        <script src="assets/js/libs/mustache.min.js"></script>
+        <script src="assets/js/libs/highcharts/highstock.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="assets/js/libs/jquery-cloud/jqcloud.min.css">
+        <script src="assets/js/libs/jquery-cloud/jqcloud.min.js"></script>
+
+        <script src="assets/js/core/source/App.js"></script>
+        <script src="assets/js/core/source/AppNavigation.js"></script>
+        <script src="assets/js/core/source/AppOffcanvas.js"></script>
+        <script src="assets/js/core/source/AppCard.js"></script>
+        <script src="assets/js/core/source/AppForm.js"></script>
+        <script src="assets/js/core/source/AppNavSearch.js"></script>
+        <script src="assets/js/core/source/AppVendor.js"></script>
+        <script src="assets/js/core/demo/Demo.js"></script>
+        <script src="assets/js/core/demo/Demo.js"></script>
+
+        <!-- END JAVASCRIPT -->
+
+        <script src="assets/js/libs/jquery.autocomplete.min.js"></script>
+
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.min.css" />
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/js/bootstrap-datetimepicker.min.js"></script>
+
+        <script type="text/javascript" src="assets/js/timeline.js"></script>
+        <script type="text/javascript" src="assets/js/activities.js"></script>
+        <script type="text/javascript" src="assets/js/consumption.js"></script>
+        <script type="text/javascript">
+        var words = [
+          {text: "Lorem", weight: 13},
+          {text: "Ipsum", weight: 10.5},
+          {text: "Dolor", weight: 9.4},
+          {text: "Sit", weight: 8},
+          {text: "Amet", weight: 6.2},
+          {text: "Consectetur", weight: 5},
+          {text: "Adipiscing", weight: 5},
+        ];
+            $('#activity-cloud').html("").jQCloud(words, {
+              height: 250
+            });
+            $('.counterup').counterUp({
+                delay: 10,
+                time: 2200
+            });
+        </script>
+        <script type="text/javascript">
+            $(function () {
+                Highcharts.chart('calorie-chart', {
+                    chart: {
+                        type: 'line'
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    // xAxis: {
+                    //     categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                    // },
+                    yAxis: {
+                        title: {
+                            text: 'Calorie (Kcal)'
+                        }
+                    },
+                    plotOptions: {
+                        line: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            enableMouseTracking: true
+                        }
+                    },
+                    series: [{
+                        name: 'consumed',
+                        color: "#ea825f",
+                        data: [[1, 0], [2, 3.9], [3, 4.2], [4, 0], [7, 8.5]]
+                        // data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+                    }, {
+                        name: 'burnt',
+                        color: "#0aa89e",
+                        data: [[1, 3.9], [2, 4.2], [5, 5.7], [8, 8.5]]
+                        // data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+                    }]
+                });
+            });
+$(function () {
+                Highcharts.chart('weight-chart', {
+                    chart: {
+                        type: 'line'
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    xAxis: {
+                        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'weight (Kg)'
+                        }
+                    },
+                    plotOptions: {
+                        line: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            enableMouseTracking: true
+                        }
+                    },
+                    series: [{
+                        name: 'weight',
+                        color: "#0aa89e",
+                        data: [71.5, 73, 72.5, 73.9, 74.5, 74.0, 75.5, 0, 73.5, 74.5, 73.1, 72.5, ]
+                        // data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+                    }]
+                });
+            });
+
+$(function () {
+    Highcharts.chart('nutrients-chart', {
+        chart: {
+            type: 'bar',
+            marginLeft: 220
+        },
+        title: {
+            text: ''
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            type: 'category',
+            title: {
+                text: null
+            },
+            min: 0,
+            max: 12,
+            scrollbar: {
+                enabled: true
+            },
+            tickLength: 0
+        },
+        yAxis: {
+            min: 0,
+            max: 1200,
+            title: {
+                text: 'Votes',
+                align: 'high'
+            }
+        },
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    enabled: true
+                }
+            },
+            column: {
+                pointPadding: 0.1,
+                borderWidth: 0
+            },series: {
+                pointPadding: 0.02,
+                groupPadding: 0,
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: 'Votes',
+            color: "#0aa89e",
+            data: [
+                ["Gantt chart", 4000],
+                ["Autocalculation and plotting of trend lines", 575],
+                ["Allow navigator to have multiple data series", 523],
+                ["Implement dynamic font size", 427],
+                ["Multiple axis alignment control", 399],
+                ["Stacked area (spline etc) in irregular datetime series", 309],
+                ["Adapt chart height to legend height", 278],
+                ["Export charts in excel sheet", 239],
+                ["Toggle legend box", 235],
+                ["Venn Diagram", 203],
+                ["Add ability to change Rangeselector position", 182],
+                ["Draggable legend box", 157],
+                ["Sankey Diagram", 149],
+                ["Add Navigation bar for Y-Axis in Highstock", 144],
+                ["Grouped x-axis", 143],
+                ["ReactJS plugin", 137],
+                ["3D surface charts", 134],
+                ["Draw lines over a stock chart, for analysis purpose", 118],
+                ["Data module for database tables", 118],
+                ["Draggable points", 117]
+            ]
+        }]
+    });
+});
+
+
+// $(function () {
+//                 Highcharts.stockChart('calorie-chart', {
+//                     chart: {
+//                         type: 'line'
+//                     },
+//                     title: {
+//                         text: ''
+//                     },
+//                     subtitle: {
+//                         text: ''
+//                     },
+
+//                     yAxis: {
+//                         title: {
+//                             text: 'Calorie (Kcal)'
+//                         }
+//                     },
+//                     plotOptions: {
+//                         line: {
+//                             dataLabels: {
+//                                 enabled: true
+//                             },
+//                             enableMouseTracking: true
+//                         }
+//                     },
+//                     navigator: {
+//                         enabled: false
+//                     },scrollbar: {
+//                         enabled: false
+//                     },
+//                     series: [{
+//                         name: 'consumed',
+//                         color: "#ea825f",
+//                         data: [/* Aug 2016 */
+//                             [1470000600000,106.05],
+//                             [1470096000000,104.48],
+//                             [1470182400000,105.79],
+//                             [1470268800000,105.87],
+//                             [1470355200000,107.48],
+//                             [1470614400000,108.37],
+//                             [1470700800000,108.81],
+//                             [1470787200000,108.00],
+//                             [1470873600000,107.93],
+//                             [1470960000000,108.18],
+//                             [1471219200000,109.48],
+//                             [1471305600000,109.38],
+//                             [1471392000000,109.22],
+//                             [1471478400000,109.08],
+//                             [1471564800000,109.36],
+//                             [1471824000000,108.51],
+//                             [1471910400000,108.85],
+//                             [1471996800000,108.03],
+//                             [1472083200000,107.57],
+//                             [1472169600000,106.94],
+//                             [1472428800000,106.82],
+//                             [1472515200000,106.00],
+//                             [1472601600000,106.10],
+//                             /* Sep 2016 */
+//                             [1472688000000,106.73],
+//                             [1472774400000,107.73],
+//                             [1473120000000,107.70],
+//                             [1473206400000,108.36],
+//                             [1473292800000,105.52],
+//                             [1473379200000,103.13],
+//                             [1473638400000,105.44],
+//                             [1473724800000,107.95],
+//                             [1473811200000,111.77],
+//                             [1473897600000,115.57],
+//                             [1473984000000,114.92],
+//                             [1474243200000,113.58],
+//                             [1474329600000,113.57],
+//                             [1474416000000,113.55],
+//                             [1474502400000,114.62],
+//                             [1474588800000,112.71],
+//                             [1474848000000,112.88],
+//                             [1474934400000,113.09],
+//                             [1475020800000,113.95],
+//                             [1475107200000,112.18],
+//                             [1475193600000,113.05],
+//                             /* Oct 2016 */
+//                             [1475452800000,112.52],
+//                             [1475539200000,113.00],
+//                             [1475625600000,113.05],
+//                             [1475712000000,113.89],
+//                             [1475798400000,114.06],
+//                             [1476057600000,116.05],
+//                             [1476144000000,116.30],
+//                             [1476230400000,117.34],
+//                             [1476316800000,116.98],
+//                             [1476403200000,117.63],
+//                             [1476662400000,117.55],
+//                             [1476748800000,117.47],
+//                             [1476835200000,117.12],
+//                             [1476921600000,117.06],
+//                             [1477008000000,116.60],
+//                             [1477267200000,117.65],
+//                             [1477353600000,118.25],
+//                             [1477440000000,115.59],
+//                             [1477526400000,114.48],
+//                             [1477612800000,113.72]
+//                         ]
+//                     }, {
+//                         name: 'burnt',
+//                         color: "#0aa89e",
+//                         data: [
+//                         /* Aug 2016 */
+//                         [1470009600000,772.88],
+//                         [1470096000000,771.07],
+//                         [1470182400000,773.18],
+//                         [1470268800000,771.61],
+//                         [1470355200000,782.22],
+//                         [1470614400000,781.76],
+//                         [1470700800000,784.26],
+//                         [1470787200000,784.68],
+//                         [1470873600000,784.85],
+//                         [1470960000000,783.22],
+//                         [1471219200000,782.44],
+//                         [1471305600000,777.14],
+//                         [1471392000000,779.91],
+//                         [1471478400000,777.50],
+//                         [1471564800000,775.42],
+//                         [1471824000000,772.15],
+//                         [1471910400000,772.08],
+//                         [1471996800000,769.64],
+//                         [1472083200000,769.41],
+//                         [1472169600000,769.54],
+//                         [1472428800000,772.15],
+//                         [1472515200000,769.09],
+//                         [1472601600000,767.05],
+//                         /* Sep 2016 */
+//                         [1472688000000,768.78],
+//                         [1472774400000,771.46],
+//                         [1473120000000,780.08],
+//                         [1473206400000,780.35],
+//                         [1473292800000,775.32],
+//                         [1473379200000,759.66],
+//                         [1473638400000,769.02],
+//                         [1473724800000,759.69],
+//                         [1473811200000,762.49],
+//                         [1473897600000,771.76],
+//                         [1473984000000,768.88],
+//                         [1474243200000,765.70],
+//                         [1474329600000,771.41],
+//                         [1474416000000,776.22],
+//                         [1474502400000,787.21],
+//                         [1474588800000,786.90],
+//                         [1474848000000,774.21],
+//                         [1474934400000,783.01],
+//                         [1475020800000,781.56],
+//                         [1475107200000,775.01],
+//                         [1475193600000,777.29],
+//                         /* Oct 2016 */
+//                         [1475452800000,772.56],
+//                         [1475539200000,776.43],
+//                         [1475625600000,776.47],
+//                         [1475712000000,776.86],
+//                         [1475798400000,775.08],
+//                         [1476057600000,785.94],
+//                         [1476144000000,783.07],
+//                         [1476230400000,786.14],
+//                         [1476316800000,778.19],
+//                         [1476403200000,778.53],
+//                         [1476662400000,779.96],
+//                         [1476748800000,795.26],
+//                         [1476835200000,801.56],
+//                         [1476921600000,796.97],
+//                         [1477008000000,799.37],
+//                         [1477267200000,813.11],
+//                         [1477353600000,807.67],
+//                         [1477440000000,799.07],
+//                         [1477526400000,795.35],
+//                         [1477612800000,795.37]
+//                         ]
+//                     }]
+//                 });
+//             });
+        </script>
+    </body>
+</html>

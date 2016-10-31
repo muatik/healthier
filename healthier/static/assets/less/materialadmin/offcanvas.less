@@ -1,0 +1,74 @@
+//
+// Offcanvas
+// --------------------------------------------------
+
+
+// General styles
+// -------------------------
+
+.offcanvas {
+	position: fixed;
+	top: 0; bottom: 0;
+	right: 0;
+	z-index: @zindex-offcanvas;
+}
+body.offcanvas-expanded {
+	overflow: hidden;
+}
+.offcanvas:first-child {
+	left: 0;
+	right: auto;
+}
+
+
+// Pane
+// -------------------------
+
+.offcanvas-pane {
+	position: absolute;
+	top: 0; bottom: 0;
+	min-width: 8px;
+	//max-width: 100%;
+	background-color: @offcanvas-bg;
+	overflow: auto;
+	.box-shadow(@z-height-0);
+	.transition-vendor(transform, @offcanvas-speed-out @offcanvas-ease-out);
+	
+	&.active {
+		display: block;
+		.box-shadow(@z-height-3);
+		.transition-vendor(transform, @offcanvas-speed-in @offcanvas-ease-in);
+	}
+}
+.offcanvas:first-child {
+	.offcanvas-pane {
+		right: 0;
+	}
+}
+
+
+// Offcanvas body
+// -------------------------
+
+.offcanvas-body {
+	padding: 16px;
+}
+
+
+// Offcanvas head
+// -------------------------
+
+.offcanvas-head {
+	position: relative;
+	padding: 4px 16px;
+	
+	header {
+		font-size: @font-size-h3;
+	}
+	
+	.offcanvas-tools {
+		position: absolute;
+		left: 4px; right: 4px;
+		top: 4px;
+	}
+}
