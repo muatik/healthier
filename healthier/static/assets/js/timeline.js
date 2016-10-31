@@ -18,10 +18,6 @@ function showTimelineForms(viewName) {
 
 
 
-
-
-
-
 function init_timeline() {
     var $timeline = $("#timeline");
     fetch_entries({

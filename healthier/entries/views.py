@@ -1,3 +1,5 @@
+import json
+
 from django.db.models import Sum
 from rest_framework.generics import DestroyAPIView, ListCreateAPIView, \
     ListAPIView
@@ -30,11 +32,18 @@ class NutrientsView(ListAPIView):
 
 class FoodSuggestionView(APIView):
     def get(self, request, format=None):
-        keyword = request.query_params.get("q")
-        recipes = Recipe.objects.filter(title__contains=keyword)
-        recipes = [RecipeSerializer(i).data for i in recipes]
+        keyword = request.query_params.get("q").strip()
+
+        history = Entry.objects.filter(what__contains=keyword)
+        history = [{"name": i.what, "ndbno": json.loads(i.extra)["ndbno"]}
+                   for i in history]
+
+        # recipes = Recipe.objects.filter(title__contains=keyword)
+        # recipes = [RecipeSerializer(i).data for i in recipes]
+
         foods = FCD.find(keyword)
-        return Response(recipes + foods)
+
+        return Response(history + foods)
         # return Response(foods)
 
 

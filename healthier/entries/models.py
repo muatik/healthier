@@ -14,7 +14,7 @@ class Entry(models.Model):
     when = models.DateTimeField()
     quantity = models.IntegerField()
     measure = models.CharField(max_length=50)
-
+    extra = models.TextField(blank=True)
 
 class Nutrient(models.Model):
     """
