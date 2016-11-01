@@ -35,7 +35,8 @@ class FoodSuggestionView(APIView):
         keyword = request.query_params.get("q").strip()
 
         history = Entry.objects.filter(what__contains=keyword)
-        history = [{"name": i.what, "ndbno": i.extra["ndbno"]}
+        # history = [{"name": i.what, "ndbno": i.extra["ndbno"]}
+        history = [{"name": i.what, "ndbno": json.loads(i.extra).get("ndbno", "")}
                    for i in history]
 
         # recipes = Recipe.objects.filter(title__contains=keyword)

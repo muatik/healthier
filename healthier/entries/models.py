@@ -20,8 +20,8 @@ class JSONField(models.TextField):
         page.save()
     """
 
-    def from_db_value(self, value, expression, connection, context):
-        return self.to_python(value)
+    # def from_db_value(self, value, expression, connection, context):
+    #     return self.to_python(value)
 
     def to_python(self, value):
         if value == "":
@@ -50,11 +50,12 @@ class Entry(models.Model):
     ]
     id = models.AutoField(primary_key=True)
     category = models.CharField(choices=CATEGORIES, max_length=1)
-    what = models.CharField(max_length=100)
+    what = models.CharField(max_length=200)
     when = models.DateTimeField()
     quantity = models.IntegerField()
     measure = models.CharField(max_length=50)
-    extra = JSONField(blank=True)
+    # extra = JSONField(blank=True, default="{}")
+    extra = models.TextField(blank=True)
 
 
 class Nutrient(models.Model):

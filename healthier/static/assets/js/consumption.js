@@ -110,11 +110,6 @@ var ConsumptionForm = (function(container, options) {
                     hideLoader();
                     reset();
                     toastr.success("consumption has been added successfully. ", "success");
-
-                    $('#consumptionModal').modal('hide');
-                    prepend_entry(entry, true);
-                    show_energy_bar(true);
-
                     if (options["onConsumptionSaved"])
                         options["onConsumptionSaved"](entry)
                 }
@@ -136,7 +131,7 @@ var ConsumptionForm = (function(container, options) {
                 "quantity": quantity
             },
             error: function(e) {
-                if (callback.error)
+                if (callback.onError)
                     callback.onError(e);
             },
             success: function(res) {

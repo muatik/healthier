@@ -20,6 +20,7 @@ def calculate_consumption(ndbno, measure, quantity):
 
 
 def insert_food_consumption(entry, data):
+    entry.extra = {"ndbno": data["ndbno"]}
     entry.extra = json.dumps({"ndbno": data["ndbno"]})
     entry.save()
     nutrients = calculate_consumption(
