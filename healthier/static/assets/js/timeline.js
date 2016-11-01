@@ -19,6 +19,11 @@ var Timeline = (function(){
             prepend_entry(entry)
         }
     });
+    var af = ActivityForm($("#activity-form"), {
+        onActivitySaved: function(entry){
+            prepend_entry(entry)
+        }
+    });
 
     function fetch_entries(callback) {
         $.ajax({

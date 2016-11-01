@@ -40,3 +40,9 @@
     margin-top: 15px;
     padding-left: 20px;
 }
+.category_c  .timeline-circ{
+    background-color: #f66265!important;
+}
+.category_a .timeline-circ{
+    background-color: #0aa89e!important;
+}

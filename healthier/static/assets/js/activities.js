@@ -123,6 +123,7 @@ var ActivityForm = (function(container, options) {
     }
 
 
+    init();
 
 });
 

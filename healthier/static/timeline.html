@@ -37,29 +37,16 @@
 						<li class="header-nav-brand" >
 							<div class="brand-holder">
 								<a href="../../html/dashboards/dashboard.html">
-									<span class="text-lg text-bold text-primary">MATERIAL ADMIN</span>
+									<span class="text-lg text-bold text-primary">HEALTHIER</span>
 								</a>
 							</div>
-						</li>
-						<li>
-							<a class="btn btn-icon-toggle menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
-								<i class="fa fa-bars"></i>
-							</a>
 						</li>
 					</ul>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="headerbar-right">
 					<ul class="header-nav header-nav-options">
-						<li>
-							<!-- Search form -->
-							<form class="navbar-search" role="search">
-								<div class="form-group">
-									<input type="text" class="form-control" name="headerSearch" placeholder="Enter your keyword">
-								</div>
-								<button type="submit" class="btn btn-icon-toggle ink-reaction"><i class="fa fa-search"></i></button>
-							</form>
-						</li>
+
 						<li class="dropdown hidden-xs">
 							<a href="javascript:void(0);" class="btn btn-icon-toggle btn-default" data-toggle="dropdown">
 								<i class="fa fa-bell"></i><sup class="badge style-danger">4</sup>
@@ -85,6 +72,7 @@
 								<li><a href="../../html/pages/login.html">Mark as read <span class="pull-right"><i class="fa fa-arrow-right"></i></span></a></li>
 							</ul><!--end .dropdown-menu -->
 						</li><!--end .dropdown -->
+
 						<li class="dropdown hidden-xs">
 							<a href="javascript:void(0);" class="btn btn-icon-toggle btn-default" data-toggle="dropdown">
 								<i class="fa fa-area-chart"></i>
@@ -121,33 +109,25 @@
 							</ul><!--end .dropdown-menu -->
 						</li><!--end .dropdown -->
 					</ul><!--end .header-nav-options -->
+
 					<ul class="header-nav header-nav-profile">
 						<li class="dropdown">
 							<a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
-								<img src="assets/img/avatar1.jpg?1403934956" alt="" />
+								<img src="https://avatars3.githubusercontent.com/u/106846?v=3&s=466" alt="" />
 								<span class="profile-info">
-									Daniel Johnson
-									<small>Administrator</small>
+									Mustafa Atik
 								</span>
 							</a>
 							<ul class="dropdown-menu animation-dock">
-								<li class="dropdown-header">Config</li>
+								<li class="dropdown-header">Settings</li>
 								<li><a href="../../html/pages/profile.html">My profile</a></li>
-								<li><a href="../../html/pages/blog/post.html">My blog <span class="badge style-danger pull-right">16</span></a></li>
-								<li><a href="../../html/pages/calendar.html">My appointments</a></li>
+								<li><a href="../../html/pages/calendar.html">Settings</a></li>
 								<li class="divider"></li>
-								<li><a href="../../html/pages/locked.html"><i class="fa fa-fw fa-lock"></i> Lock</a></li>
-								<li><a href="../../html/pages/login.html"><i class="fa fa-fw fa-power-off text-danger"></i> Logout</a></li>
+								<li><a href="../../html/pages/locked.html"><i class="fa fa-fw fa-lock"></i> Logout</a></li>
 							</ul><!--end .dropdown-menu -->
 						</li><!--end .dropdown -->
 					</ul><!--end .header-nav-profile -->
-					<ul class="header-nav header-nav-toggle">
-						<li>
-							<a class="btn btn-icon-toggle btn-default" href="#offcanvas-search" data-toggle="offcanvas" data-backdrop="false">
-								<i class="fa fa-ellipsis-v"></i>
-							</a>
-						</li>
-					</ul><!--end .header-nav-toggle -->
+
 				</div><!--end #header-navbar-collapse -->
 			</div>
 		</header>
@@ -264,7 +244,8 @@
 								            <div class="form-group">
 								                <label for="placeholder13" class="col-sm-2 control-label">What</label>
 								                <div class="col-sm-10">
-								                    <input type="text" class="form-control" id="placeholder13" placeholder="Placeholder"><div class="form-control-line"></div>
+								                    <input type="text" class="form-control" placeholder="e.g. running" id="activity_what" >
+								                    <div class="form-control-line"></div>
 								                </div>
 								            </div>
 								            <div class="form-group">
@@ -272,7 +253,7 @@
 								                <div class="col-sm-10">
 								                    <div class="input-group date" id="demo-date-month">
 								                        <div class="input-group-content">
-								                            <input type="text" class="form-control datetime-picker">
+								                            <input type="text" class="form-control datetime-picker" id="activity_when">
 								                        </div>
 								                        <span class="input-group-addon "><i class="fa fa-calendar"></i></span>
 								                    </div>
@@ -284,10 +265,10 @@
 								              <div class="col-sm-10">
 
 								                <div class=" form-group col-sm-5 col-md-4 col-lg-4 ">
-								                    <input class="form-control" type="text" id="entry_quantity">
+								                    <input class="form-control" type="text" id="activity_quantity">
 								                </div>
 								                <div class=" form-group col-sm-5 col-md-4 col-lg-4 ">
-								                    <select class="form-control" id="entry_measure">
+								                    <select class="form-control" id="activity_measure">
 								                        <option value="kg" selected="1">minutes</option>
 								                    </select>
 								                </div>
@@ -295,7 +276,7 @@
 								              </div>
 								            </div>
 								            <div class="form-group ">
-								                <button type="button" class="btn ink-reaction btn-raised  btn-sm btn-primary col-sm-offset-2">
+								                <button type="submit" class="btn ink-reaction btn-raised  btn-sm btn-primary col-sm-offset-2">
 								                    <i class="fa fa-bicycle" aria-hidden="true"></i> Submit
 								                </button>
 								            </div>
@@ -311,8 +292,8 @@
 									<ul class="timeline collapse-lg timeline-hairline" id="timeline-entries">
 									</ul>
 									<script id="template_entry" type="x-tmpl-mustache">
-									<li id="entry-id-{{id}}">
-										<div class="timeline-circ circ-xl style-primary-dark"><i class="fa {{faIcon}}"></i></div>
+									<li id="entry-id-{{id}}" class="category_{{category}}">
+										<div class="timeline-circ circ-xl"><i class="fa {{faIcon}}"></i></div>
 										<div class="timeline-entry">
 											<div class="card style-default-light">
 												<div class="card-body small-padding">
