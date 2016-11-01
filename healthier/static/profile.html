@@ -308,55 +308,49 @@
 
 								<!-- BEGIN MESSAGE ACTIVITY -->
 								<div class="tab-pane" id="activity">
-									<ul class="timeline collapse-lg timeline-hairline">
-										<li class="timeline-inverted">
-											<div class="timeline-circ circ-xl style-primary"><i class="md md-event"></i></div>
-											<div class="timeline-entry">
-												<div class="card style-default-light">
-													<div class="card-body small-padding">
-														<span class="text-medium">Received a <a class="text-primary" href="../../html/mail/inbox.html">message</a> from <span class="text-primary">Ann Lauren</span></span><br/>
-														<span class="opacity-50">
-															Saturday, Oktober 18, 2014
-														</span>
-													</div>
-												</div>
-											</div><!--end .timeline-entry -->
-										</li>
-										<li>
-											<div class="timeline-circ circ-xl style-primary-dark"><i class="md md-access-time"></i></div>
-											<div class="timeline-entry">
-												<div class="card style-default-light">
-													<div class="card-body small-padding">
-														<p>
-															<span class="text-medium">User login at <span class="text-primary">8:15 pm</span></span><br/>
-															<span class="opacity-50">
-																Saturday, August 2, 2014
-															</span>
-														</p>
-														Check out my new location.
-													</div>
-												</div>
-											</div><!--end .timeline-entry -->
-										</li>
-										<li>
-											<div class="timeline-circ circ-xl style-primary"><i class="md md-location-on"></i></div>
-											<div class="timeline-entry">
-												<div class="card style-default-light">
-													<div class="card-body small-padding">
-														<img class="img-circle img-responsive pull-left width-1" src="assets/img/avatar2.jpg?1404026449" alt="" />
-														<span class="text-medium">Meeting in the <span class="text-primary">conference room</span></span><br/>
-														<span class="opacity-50">
-															Saturday, Juli 29, 2014
-														</span>
-													</div>
-													<div class="card-body">
-														<p><em>Walked all the way home...</em></p>
-														<img class="img-responsive" src="assets/img/img14.jpg?1404589160" alt="" />
-													</div>
-												</div>
-											</div><!--end .timeline-entry -->
-										</li>
+									<ul class="timeline collapse-lg timeline-hairline" id="timeline-entries">
 									</ul>
+									<script id="template_entry" type="x-tmpl-mustache">
+									<li id="entry-id-{{id}}">
+										<div class="timeline-circ circ-xl style-primary-dark"><i class="fa {{faIcon}}"></i></div>
+										<div class="timeline-entry">
+											<div class="card style-default-light">
+												<div class="card-body small-padding">
+													<div class="row">
+														<div class="col-sm-10">
+															<p class="text-medium title">
+																{{what}}
+															</p>
+															<span class="opacity-50 datetime">
+																{{humanized_date}}
+															</span>
+														</div>
+														<div class="col-sm-2 text-right pull-right toolbar">
+
+															<button type="button" class="btn btn-icon-toggle toggle-nutrients"
+																data-toggle="tooltip" data-placement="top" data-original-title="display nutrients">
+																<i class="fa fa-angle-down"></i></button>
+														</div>
+													</div>
+													<div class="row nutrients">
+														<ul class="col-md-10">
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div><!--end .timeline-entry -->
+									</li>
+									</script>
+
+									<script id="template_entry_nutrients" type="x-tmpl-mustache">
+									    {{#nutrients}}
+									    <li>
+									        <span class="nutrient quantity col-lg-2">{{formattedQuantity}} {{unit}}</span>
+									        <span class="nutrient  col-lg-7">{{label}}</span>
+									    </li>
+									    {{/nutrients}}
+									</script>
+
 								</div><!--end #activity -->
 							</div><!--end .col -->
 							<!-- END MESSAGE ACTIVITY -->
@@ -400,9 +394,9 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.min.css" />
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/js/bootstrap-datetimepicker.min.js"></script>
 
-		<script type="text/javascript" src="assets/js/timeline.js"></script>
 		<script type="text/javascript" src="assets/js/activities.js"></script>
 		<script type="text/javascript" src="assets/js/consumption.js"></script>
+		<script type="text/javascript" src="assets/js/timeline.js"></script>
 
 		<script>
 

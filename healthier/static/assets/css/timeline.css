@@ -19,3 +19,24 @@
     margin-left: 10px;
 }
 
+
+
+.timeline-entry .title{
+    margin: 0;
+}
+.timeline-entry .toolbar {
+    margin-top: 10px;
+}
+.timeline-entry .energy-intake, .timeline-entry .energy-outtake {
+    margin-right: 5px;
+
+}
+.timeline-entry .energy-intake {
+    color: #ff8100;
+}
+
+.timeline-entry .nutrients {
+    display: none;
+    margin-top: 15px;
+    padding-left: 20px;
+}

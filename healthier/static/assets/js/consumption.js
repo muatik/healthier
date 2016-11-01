@@ -144,11 +144,6 @@ var ConsumptionForm = (function(container, options) {
 
 });
 
-c = ConsumptionForm($("#consumption-form"), {
-    onConsumptionSaved: function(entry){
-        alert("hello")
-    }
-})
 
 // $(document).ready(function(){
 //     // show_energy_bar(false);

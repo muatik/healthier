@@ -6880,12 +6880,12 @@ sub.badge {
   position: relative;
   margin-right: 30px;
 }
-.timeline-entry .card img,
+/*.timeline-entry .card img,
 .timeline-entry .card .fa,
 .timeline-entry .card .md,
 .timeline-entry .card .glyphicon {
   margin-right: 10px;
-}
+}*/
 .timeline-inverted .timeline-entry {
   left: 100%;
 }
