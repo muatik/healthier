@@ -34,11 +34,11 @@ Time management should be done by following the steps listed below.
 
 # Mockups
 
-[Mockups](Mockups)
+[Mockups](https://github.com/muatik/Swe573HW2016F/wiki/Mockups)
 
 # Sequence diagrams
 
-[Sequence diagrams](sequence diagrams)
+[Sequence diagrams](https://github.com/muatik/Swe573HW2016F/wiki/sequence-diagrams)
 
 # System Design
 
