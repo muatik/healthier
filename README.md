@@ -40,6 +40,10 @@ Time management should be done by following the steps listed below.
 
 [Sequence diagrams](sequence diagrams)
 
+# System Design
+
+# RESTful API Documentation
+
 # Tools & Technologies 
 
 **Python** as the primary programming language
