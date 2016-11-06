@@ -42,7 +42,11 @@ Time management should be done by following the steps listed below.
 
 # System Design
 
+@TODO
+
 # RESTful API Documentation
+
+@TODO
 
 # Tools & Technologies 
 
