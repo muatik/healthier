@@ -42,7 +42,7 @@ Time management should be done by following the steps listed below.
 
 # System Design
 
-@TODO
+[Components design diagrams](https://github.com/muatik/Swe573HW2016F/wiki/system-design)
 
 # RESTful API Documentation
 
