@@ -31,6 +31,8 @@ Time management should be done by following the steps listed below.
 
 [time management document](https://docs.google.com/spreadsheets/d/1V-75rL2bIphA4to8VxLWuuvMDwfuOm2EYSsEGD4TQfU/edit?usp=sharing)
 
+![healthier_milestones](https://raw.githubusercontent.com/muatik/Swe573HW2016F/master/docs/healthier_milestones.png)
+
 
 # Mockups
 
