@@ -136,14 +136,9 @@
         <!-- BEGIN BASE-->
         <div id="base">
 
-            <!-- BEGIN OFFCANVAS LEFT -->
-            <div class="offcanvas">
-            </div><!--end .offcanvas-->
-            <!-- END OFFCANVAS LEFT -->
-
             <!-- BEGIN CONTENT-->
             <div id="content">
-                <section>
+                <section class="col-md-offset-1 col-md-10">
                     <div class="section-header">
                         <ol class="breadcrumb">
                             <li class="active">Recipes</li>
@@ -156,32 +151,38 @@
                                     <div class="card-head">
                                         <div class="tools">
                                             <div class="btn-group">
-                                                <a class="btn btn-floating-action btn-primary" href="javascript:void(0);" onclick="javascript:window.print();"><i class="md md-add"></i></a>
+                                                <a class="btn btn-floating-action btn-primary" href="recipe_form.html">
+                                                    <i class="md md-add"></i></a>
                                             </div>
                                         </div>
                                     </div><!--end .card-head -->
                                     <div class="card-body style-default-bright no-padding">
 
 
-                                    <!-- BEGIN recipe list -->
-                                        <div class="card-body no-padding">
-                                            <ul class="list divider-full-bleed" id="food-menus">
-                                            </ul>
-                                            <script id="template_menu_entry" type="x-tmpl-mustache">
-                                                <li id="menu-id-{{id}}" class="menu">
-                                                    <a class="tile-content ink-reaction" href="#2">
-                                                        <div class="tile-icon">
-                                                            <i class="fa fa-cubes"></i>
-                                                        </div>
-                                                        <div class="tile-text">{{name}}</div>
-                                                    </a>
-                                                    <span class="text-right pull-right">
-                                                        <button type="button" class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Edit row"><i class="fa fa-pencil"></i></button>
-                                                        <button type="button" class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Delete row"><i class="fa fa-trash-o"></i></button>
-                                                    </span>
-                                                </li>
-                                            </script>
-                                        </div><!--end .card-body -->
+                                        <!-- BEGIN recipe list -->
+
+                                        <ul class="list divider-full-bleed" id="food-menus">
+                                        </ul>
+
+                                        <script id="template_menu_entry" type="x-tmpl-mustache">
+                                            <li class="tile">
+                                                <a class="tile-content ink-reaction" href="#2">
+                                                    <div class="tile-icon">
+                                                        <i class="fa fa-cubes"></i>
+                                                    </div>
+                                                    <div class="tile-text">{{title}}</div>
+                                                </a>
+                                                <span class="text-right pull-right">
+                                                    <a type="button" class="btn btn-icon-toggle btn-edit"
+                                                        href="recipe_form.html?id={{id}}"
+                                                        data-toggle="tooltip" data-placement="top" data-original-title="Edit row">
+                                                        <i class="fa fa-pencil"></i></a>
+                                                    <button type="button" class="btn btn-icon-toggle btn-delete" data-toggle="tooltip" data-placement="top" data-original-title="Delete row"><i class="fa fa-trash-o"></i></button>
+                                                </span>
+                                            </li>
+                                        </script>
+
+
                                         <!-- END recipe list -->
 
                                     </div><!--end .card-body -->
@@ -222,9 +223,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.min.css" />
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/js/bootstrap-datetimepicker.min.js"></script>
 
-        <script type="text/javascript" src="assets/js/timeline.js"></script>
-        <script type="text/javascript" src="assets/js/activities.js"></script>
-        <script type="text/javascript" src="assets/js/consumption.js"></script>
+        <script type="text/javascript" src="assets/js/recipes.js"></script>
 
         <script>
 
