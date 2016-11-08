@@ -2,7 +2,7 @@ import json
 
 from django.db.models import Sum
 from rest_framework.generics import DestroyAPIView, ListCreateAPIView, \
-    ListAPIView
+    ListAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -36,17 +36,25 @@ class FoodSuggestionView(APIView):
 
         history = Entry.objects.filter(what__contains=keyword)
         # history = [{"name": i.what, "ndbno": i.extra["ndbno"]}
-        history = [{"name": i.what, "ndbno": json.loads(i.extra).get("ndbno", "")}
-                   for i in history]
+        history = []
+        for i in history:
+            if not i.extra:
+                continue
 
-        # recipes = Recipe.objects.filter(title__contains=keyword)
-        # recipes = [RecipeSerializer(i).data for i in recipes]
+            history.append({
+                "name": i.what,
+                "ndbno": json.loads(i.extra).get("ndbno", "")
+            })
+
+        recipes = Recipe.objects.filter(title__contains=keyword)
+        recipes = [{"name": i.title, "id": i.id, "type": "recipe"}
+                   for i in recipes]
         try:
             foods = FCD.find(keyword)
         except KeyError:
             foods = []
 
-        return Response(history + foods)
+        return Response(recipes + history + foods)
         # return Response(foods)
 
 
@@ -94,7 +102,12 @@ class Reports2(APIView):
         pass
 
 
-class RecipesView(ListCreateAPIView, DestroyAPIView):
+class RecipesView(ListCreateAPIView):
+    serializer_class = RecipeSerializer
+    queryset = Recipe.objects.all()
+
+
+class RecipeView(RetrieveUpdateDestroyAPIView):
     serializer_class = RecipeSerializer
     queryset = Recipe.objects.all()
 
@@ -110,6 +123,10 @@ def sum_quantity(nutrients, label, unit):
 class RecipeIngredientsView(ListCreateAPIView, DestroyAPIView):
     serializer_class = RecipeIngredientSerializer
     queryset = RecipeIngredient.objects.all()
+
+    def get_queryset(self):
+        recipe_id = self.kwargs["recipe_id"]
+        return RecipeIngredient.objects.filter(recipe_id=recipe_id)
 
     def perform_create(self, serializer):
         recipe_id = self.kwargs["recipe_id"]

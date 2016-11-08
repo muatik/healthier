@@ -40,6 +40,7 @@ def insert_recipe(entry, data):
     for ingredient in recipe.recipeingredient_set.all():
         for n in ingredient.getNutrients():
             nutrient = Nutrient(**n)
+            nutrient.quantity = nutrient.quantity * entry.quantity
             nutrient.entry = entry
             nutrient.save()
 

@@ -9,6 +9,9 @@ var ConsumptionForm = (function(container, options) {
         $when = $("#consumption_when"),
         $quantity = $("#consumption_quantity");
 
+    var recipe_id;
+    var selection_type;
+
     var that = this;
 
     function reset() {
@@ -60,7 +63,7 @@ var ConsumptionForm = (function(container, options) {
                     },
                     success: function(res) {
                         var suggestions = $.map(res, function(item){
-                            return {value: item.name, data: item.ndbno}
+                            return {value: item.name, data: item}
                         });
                         var result = {"suggestions": suggestions};
                         done(result);
@@ -68,15 +71,36 @@ var ConsumptionForm = (function(container, options) {
                 });
             },
             onSelect: function (suggestion) {
-                $ndbno.val(suggestion.data)
+                if (suggestion.data.type && suggestion.data.type == "recipe") {
+                    recipe_id = suggestion.data.id;
+                    selection_type = "recipe"
+                } else {
+                    selection_type = "food"
+                }
+
+                $ndbno.val(suggestion.data.ndbno)
                 update_measures(suggestion.data)
             }
         });
         hideLoader()
     };
 
-    function update_measures(ndbno) {
+    function update_measures(data) {
         showLoader();
+
+        function fill_measure_selection(items) {
+            $measures.html("");
+            $.map(items, function(item){
+                $measures.append("<option>" + item + "</option>");
+            });
+        }
+
+        if (!data.ndbno && data.type == "recipe") {
+            fill_measure_selection(["portion"])
+            hideLoader();
+            return;
+        }
+
         $.ajax({
             url: '/api/food/' + ndbno + '/measures/',
             type: 'GET',
@@ -85,10 +109,7 @@ var ConsumptionForm = (function(container, options) {
                 toastr.error("units could not be fetched :(")
             },
             success: function(res) {
-                $measures.html("");
-                $.map(res, function(item){
-                    $measures.append("<option>" + item + "</option>");
-                });
+                fill_measure_selection(res)
             }
         });
     }
@@ -119,17 +140,24 @@ var ConsumptionForm = (function(container, options) {
 
 
     function submit_consumption(ndbno, what, when, quantity, measure, callback) {
+        var postData =  {
+            "selection_type": selection_type,
+            "category": "c",
+            "what": what,
+            "when": when,
+            "measure": measure,
+            "quantity": quantity
+        }
+
+        if (selection_type == "recipe")
+            postData.id = recipe_id
+        else
+            postData.ndbno = ndbno
+
         $.ajax({
             url: '/api/entries/',
             type: 'POST',
-            data: {
-                "category": "c",
-                "ndbno": ndbno,
-                "what": what,
-                "when": when,
-                "measure": measure,
-                "quantity": quantity
-            },
+            data: postData,
             error: function(e) {
                 if (callback.onError)
                     callback.onError(e);

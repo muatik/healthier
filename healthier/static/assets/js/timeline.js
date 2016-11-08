@@ -85,7 +85,7 @@ var Timeline = (function(){
                 return this.quantity.toFixed(3);
             }
         }
-        var $container = $(".nutrients", "#entry-id-"+entryId);
+        var $container = $(".nutrients-list", "#entry-id-"+entryId);
         var template = $("#template_entry_nutrients").html();
         Mustache.parse(template);
         var rendered = Mustache.render(template, nutrients);

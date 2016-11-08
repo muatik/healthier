@@ -20,6 +20,7 @@
         <link type="text/css" rel="stylesheet" href="assets/css/autocomplete.css" />
         <!-- END STYLESHEETS -->
         <link type="text/css" rel="stylesheet" href="assets/css/nutrients.css" />
+        <link type="text/css" rel="stylesheet" href="assets/css/recipe_form.css" />
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -152,6 +153,7 @@
                         <div class="row">
 
                             <div id="recipe-form" class="card card-underline no-margin timeline-form-views" style="display: block;">
+
                                 <div class="card-head">
                                     <div class="toolbar-left">
                                         <a class="btn btn-icon-toggle btn-back" href="recipes.html"><i class="fa fa-chevron-left"></i></a>
@@ -163,16 +165,16 @@
                                         </div>
                                     </div>
                                 </div><!--end .card-head -->
+
                                 <div class="card-body">
                                     <!-- BEGIN CONSUMPTION-FORM -->
-
                                     <form class="form-horizontal col-md-11 col-lg-10 col-lg-offset-1" role="form">
+                                        <input type="hidden" name="id" />
                                         <div class="form-group">
                                             <label for="placeholder13" class="col-sm-2 control-label">Name</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="consumption_what" placeholder="e.g. one portion of starbucks lemon cheesecake"><div class="form-control-line"></div>
+                                                <input type="text" class="form-control" name="title" placeholder="e.g. one portion of starbucks lemon cheesecake"><div class="form-control-line"></div>
                                                 <div class="form-control-line"></div>
-
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -182,32 +184,51 @@
                                                     <button type="button" class="btn ink-reaction btn-default btn-xs add-ingredient">
                                                         <i class="fa fa-plus"></i> add</button>
 
-                                                    <script id="text/javascript" type="x-tmpl-mustache">
-                                                    <li class="tile">
+                                                    <script id="template_menu_entry" type="x-tmpl-mustache">
+                                                    <li class="tile ingredient" id="ingredient-{{id}}">
                                                         <span class="pull-left tile-content col-sm-10">
-                                                            <div class="col-sm-8 col-md-8 col-lg-10">Specielized lemon pieces</div>
-                                                            <div class="col-sm-2 col-md-2 col-lg-1">2 cup</div>
-                                                            <div class="col-sm-2 col-md-2 col-lg-1" data-toggle="tooltip" data-original-title="Energy">52 Kcal</div>
+                                                            <div class="col-sm-8 col-md-8 col-lg-10">{{what}}</div>
+                                                            <div class="col-sm-2 col-md-2 col-lg-1">{{quantity}} {{measure}}</div>
+                                                            <div class="col-sm-2 col-md-2 col-lg-1" data-toggle="tooltip" data-original-title="Energy">{{energyIntage}}</div>
                                                         </span>
                                                         <span class="text-right pull-right">
-                                                            <button type="button" class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="display nutrients"><i class="fa fa-angle-down"></i></button>
-                                                            <button type="button" class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Delete ingredient"><i class="fa fa-trash-o"></i></button>
+                                                            <button type="button" class="btn btn-icon-toggle btn-nutrients" data-toggle="tooltip" data-placement="top" data-original-title="display nutrients"><i class="fa fa-angle-down"></i></button>
+                                                            <button type="button" class="btn btn-icon-toggle btn-delete" data-toggle="tooltip" data-placement="top" data-original-title="Delete ingredient"><i class="fa fa-trash-o"></i></button>
                                                         </span>
-                                                        <div class="pull-left tile-content col-sm-12 nutrients-list hidden">
-                                                            <div class="col-sm-8 col-md-8 col-lg-10">here some nutrients</div>
+                                                        <div class="pull-left tile-content col-sm-12 nutrients-list">
+                                                            <ul class="col-sm-8 col-md-8 col-lg-10">
+                                                            {{#nutrients}}
+                                                                <li class="row">
+                                                                    <span class="nutrient quantity col-sm-4">{{formattedQuantity}} {{unit}}</span>
+                                                                    <span class="nutrient  col-sm-7">{{label}}</span>
+                                                                </li>
+                                                            {{/nutrients}}
+                                                            </ul>
                                                         </div>
                                                     </li>
                                                     </script>
 
-                                                    <script id="template_menu_entry" type="x-tmpl-mustache">
-                                                    <li class="tile no-border">
-                                                        <span class="tile-content text-bold">
+                                                    <script id="template_menu_total" type="x-tmpl-mustache">
+                                                    <li class="tile no-border" id="total-bar">
+
+                                                        <span class="tile-content text-bold col-sm-10">
                                                             <div class="col-sm-10 col-md-10 col-lg-10 text-right">Total: </div>
-                                                            <div class="col-sm-2 col-md-2 col-lg-2" data-toggle="tooltip" data-original-title="Energy">52 Kcal</div>
+                                                            <div class="col-sm-2 col-md-2 col-lg-2" data-toggle="tooltip" data-original-title="Energy">{{totalEnergy}}</div>
                                                         </span>
                                                         <span class="text-right pull-right">
-                                                            <button type="button" class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="display nutrients"><i class="fa fa-angle-down"></i></button>
+                                                            <button type="button" class="btn btn-icon-toggle btn-nutrients" data-toggle="tooltip" data-placement="top" data-original-title="display nutrients"><i class="fa fa-angle-down"></i></button>
                                                         </span>
+
+                                                        <div class="col-sm-12 nutrients-list hidden">
+                                                            <ul class="col-sm-8 col-md-8 col-lg-10">
+                                                            {{#totalNutrients}}
+                                                                <li class="row">
+                                                                    <span class="nutrient quantity col-sm-4">{{formattedQuantity}} {{unit}}</span>
+                                                                    <span class="nutrient  col-sm-7">{{label}}</span>
+                                                                </li>
+                                                            {{/totalNutrients}}
+                                                            </ul>
+                                                        </div>
                                                     </li>
                                                     </script>
 
@@ -221,7 +242,7 @@
                                                             </div>
                                                             <div class="col-sm-3 col-lg-2 no-padding">
                                                                 <div class="col-sm-5 no-padding">
-                                                                    <input type="text" class="form-control text-right">
+                                                                    <input type="text" class="form-control text-right" name="amount">
                                                                 </div>
                                                                 <div class="col-sm-7 no-padding">
                                                                     <select class="form-control text measures">
@@ -233,6 +254,7 @@
                                                         <span class="text-right pull-right">
                                                             <button type="button" class="btn btn-icon-toggle btn-save" data-toggle="tooltip" data-placement="top" data-original-title="display nutrients">
                                                                 <i class="fa fa-check"></i></button>
+                                                            <button type="button" class="btn btn-icon-toggle btn-delete" data-toggle="tooltip" data-placement="top" data-original-title="Delete ingredient"><i class="fa fa-trash-o"></i></button>
                                                         </span>
                                                     </li>
                                                     </script>
@@ -244,7 +266,7 @@
                                         </div>
 
                                         <div class="form-group ">
-                                            <button type="button" class="btn ink-reaction btn-raised  btn-sm btn-primary col-sm-offset-2">
+                                            <button type="button" class="btn ink-reaction btn-raised btn-submit btn-sm btn-primary col-sm-offset-2">
                                                 <i class="fa fa-cutlery" aria-hidden="true"></i> Submit
                                             </button>
 
@@ -283,6 +305,8 @@
 
         <script src="assets/js/libs/jquery.autocomplete.min.js"></script>
 
+        <link rel="stylesheet" type="text/css" href="assets/css/theme-default/libs/toastr/toastr.css?1425466569">
+        <script src="assets/js/libs/toastr/toastr.js"></script>
 
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.min.css" />

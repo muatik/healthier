@@ -3,3 +3,10 @@
     background-color: #f0f0f0;
     box-shadow: inset 1px 5px 5px -2px #aaa;
 }
+
+.nutrients-list ul {
+    list-style-type: none;
+}
+.nutrients-list .quantity {
+    text-align: right;
+}

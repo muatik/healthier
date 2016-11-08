@@ -95,7 +95,7 @@ class Recipe(models.Model):
 
 class RecipeIngredient(models.Model):  # each ingredient is a consumption
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
-    what = models.CharField(max_length=100)
+    what = models.CharField(max_length=255)
     quantity = models.IntegerField()
     measure = models.CharField(max_length=50)
     nutrients = models.TextField(default="{}")  # nutrients stored as json

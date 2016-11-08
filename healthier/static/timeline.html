@@ -18,6 +18,7 @@
 		<link type="text/css" rel="stylesheet" href="assets/css/theme-default/material-design-iconic-font.min.css?1421434286" />
 		<link type="text/css" rel="stylesheet" href="assets/css/timeline.css" />
 		<link type="text/css" rel="stylesheet" href="assets/css/autocomplete.css" />
+		<link type="text/css" rel="stylesheet" href="assets/css/nutrients.css" />
 		<!-- END STYLESHEETS -->
 
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -219,8 +220,10 @@
 								                    <i class="fa fa-cutlery" aria-hidden="true"></i> Submit
 								                </button>
 								                <span class="pull-right">
-						                    		<button type="button" class="btn btn-block ink-reaction btn-flat btn-default btn-sm">
-						                    		<i class="fa fa-cubes"></i>manage your recipes</span></button>
+						                    		<a class="btn btn-block ink-reaction btn-flat btn-default btn-sm"
+						                    			href="recipes.html">
+						                    			<i class="fa fa-cubes"></i>manage your recipes
+						                    		</a>
 						                    	</span>
 								            </div>
 								        </form>
@@ -307,14 +310,13 @@
 															</span>
 														</div>
 														<div class="col-sm-2 text-right pull-right toolbar">
-
 															<button type="button" class="btn btn-icon-toggle toggle-nutrients"
 																data-toggle="tooltip" data-placement="top" data-original-title="display nutrients">
 																<i class="fa fa-angle-down"></i></button>
 														</div>
 													</div>
 													<div class="row nutrients">
-														<ul class="col-md-10">
+														<ul class="col-md-10 nutrients-list">
 														</ul>
 													</div>
 												</div>
@@ -326,8 +328,8 @@
 									<script id="template_entry_nutrients" type="x-tmpl-mustache">
 									    {{#nutrients}}
 									    <li>
-									        <span class="nutrient quantity col-lg-2">{{formattedQuantity}} {{unit}}</span>
-									        <span class="nutrient  col-lg-7">{{label}}</span>
+									        <span class="nutrient quantity col-sm-3">{{formattedQuantity}} {{unit}}</span>
+									        <span class="nutrient  col-sm-7">{{label}}</span>
 									    </li>
 									    {{/nutrients}}
 									</script>
