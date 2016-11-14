@@ -19,7 +19,7 @@ class EntryView(ListCreateAPIView):
 
     def perform_create(self, serializer):
         entry = serializer.save()
-        insert_nutrients(entry, serializer.initial_data)
+        entry.insert_nutrients(serializer.initial_data)
 
 
 class NutrientsView(ListAPIView):
@@ -112,14 +112,6 @@ class RecipeView(RetrieveUpdateDestroyAPIView):
     queryset = Recipe.objects.all()
 
 
-# TODO: move this function into an appropriate module
-def sum_quantity(nutrients, label, unit):
-    label = label.lower()
-    unit = unit.lower()
-    return sum(n["quantity"] for n in nutrients
-               if n["label"].lower() == label and n["unit"].lower() == unit)
-
-
 class RecipeIngredientsView(ListCreateAPIView, DestroyAPIView):
     serializer_class = RecipeIngredientSerializer
     queryset = RecipeIngredient.objects.all()
@@ -130,21 +122,17 @@ class RecipeIngredientsView(ListCreateAPIView, DestroyAPIView):
 
     def perform_create(self, serializer):
         recipe_id = self.kwargs["recipe_id"]
-
-        ndbno = serializer.initial_data["ndbno"]
-        measure = serializer.validated_data["measure"]
-        quantity = serializer.validated_data["quantity"]
-        nutrients = calculate_consumption(ndbno, measure, quantity)
-        serializer.save(recipe_id=recipe_id, nutrients=nutrients)
-
         recipe = Recipe.objects.get(id=recipe_id)
-        energy_intake = sum_quantity(nutrients, "energy", "kcal") * quantity
-        recipe.increase_calorie(energy_intake)
+
+        ingredient = serializer.save(recipe_id=recipe_id)
+        ingredient.prepare_nutrients()
+        ingredient.save()
+
+        recipe.increase_calorie(ingredient.getEnergy())
         recipe.save()
 
     def perform_destroy(self, ingredient):
-        energy = sum_quantity(ingredient.getNutrients(), "energy", "kcal")
-        ingredient.recipe.decrease_calorie(energy * ingredient.quantity)
+        ingredient.recipe.decrease_calorie(ingredient.getEnergy())
         ingredient.recipe.save()
         super().perform_destroy(ingredient)
 

@@ -28,7 +28,7 @@ class RecipeSerializer(serializers.ModelSerializer):
 class RecipeIngredientSerializer(serializers.ModelSerializer):
     class Meta:
         model = RecipeIngredient
-        fields = ["id", "what", "measure", "quantity", "nutrients"]
+        fields = ["id", "what", "measure", "quantity", "nutrients", "ndbno"]
         read_only_fields = ["id", "nutrients"]
 
     def to_representation(self, instance):
@@ -37,5 +37,5 @@ class RecipeIngredientSerializer(serializers.ModelSerializer):
         return ret
 
     def create(self, validated_data):
-        validated_data["nutrients"] = json.dumps(validated_data["nutrients"])
+        # validated_data["nutrients"] = json.dumps(validated_data["nutrients"])
         return super().create(validated_data)

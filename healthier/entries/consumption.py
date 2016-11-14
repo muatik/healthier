@@ -49,15 +49,8 @@ def insert_nutrients(entry, data):
     if data["category"] == "c" and "ndbno" not in data and "id" in data:
         insert_recipe(entry, data)
     elif data["category"] == "c" and "ndbno" in data:
-        insert_food_consumption(entry, data)
+        entry.insert_food_nutrients(data)
     else:
-        nutrient = Nutrient(**{
-            "category": "o",
-            "label": "energy burnt",
-            "unit": "kcal",
-            "quantity": float(entry.quantity) * 1.32
-        })
-        nutrient.entry = entry
-        nutrient.save()
+        entry.insert_activity_nutrients()
 
 

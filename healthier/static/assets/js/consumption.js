@@ -102,7 +102,7 @@ var ConsumptionForm = (function(container, options) {
         }
 
         $.ajax({
-            url: '/api/food/' + ndbno + '/measures/',
+            url: '/api/food/' + $ndbno.val() + '/measures/',
             type: 'GET',
             complete: hideLoader,
             error: function() {

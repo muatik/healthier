@@ -39,14 +39,29 @@ class FCD(object):
         return json_response
 
     @staticmethod
-    def get_nutrients(ndbno):
+    def get_nutrients(ndbno, measure=None):
         """
         fetches amd returns the nutrients list of the food associated with ndbno
         :param ndbno:
+        :param measure: filtered with this measure
         :return: nutrients list
         """
         report = FCD.get_report(ndbno)
-        return report["food"]["nutrients"]
+        nutrients = report["food"]["nutrients"]
+
+        if not measure:
+            return nutrients
+
+        filtered = []
+        for nutrient in nutrients:
+            for i_measure in nutrient["measures"]:
+                if i_measure["label"] == measure and i_measure["value"] != 0:
+                    filtered.append({
+                        "label": nutrient["name"],
+                        "unit": nutrient["unit"],
+                        "quantity": float(i_measure["value"])
+                    })
+        return filtered
 
     @staticmethod
     def get_measures(ndbno):
@@ -57,3 +72,10 @@ class FCD(object):
         """
         nutrients = FCD.get_nutrients(ndbno)
         return set(m["label"] for n in nutrients for m in n["measures"])
+
+    @staticmethod
+    def filter_sum_nutrients(nutrients, label, unit):
+        label = label.lower()
+        unit = unit.lower()
+        return sum(n["quantity"] for n in nutrients
+                   if n["label"].lower() == label and n["unit"].lower() == unit)

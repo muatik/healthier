@@ -3,6 +3,8 @@ import json
 from django.core.serializers.json import DjangoJSONEncoder
 from django.db import models
 
+from entries.fcd import FCD
+
 
 class JSONField(models.TextField):
     """
@@ -44,10 +46,18 @@ class JSONField(models.TextField):
 
 
 class Entry(models.Model):
+    """
+    consumption and physical activities are represented as entries.
+
+    they are in a single model to benefit single table inheritance pattern
+    """
+
     CATEGORIES = [
-        ("c", "CONSUMPTION"),
-        ("a", "ACTIVITY")
+        ("fc", "FOOD_CONSUMPTION"),
+        ("rc", "RECIPE_CONSUMPTION"),
+        ("a", "PHYSICAL_ACTIVITY")
     ]
+
     id = models.AutoField(primary_key=True)
     category = models.CharField(choices=CATEGORIES, max_length=1)
     what = models.CharField(max_length=200)
@@ -56,6 +66,43 @@ class Entry(models.Model):
     measure = models.CharField(max_length=50)
     # extra = JSONField(blank=True, default="{}")
     extra = models.TextField(blank=True)
+
+    def insert_nutrients(self, data):
+        if Entry.CATEGORIES[0][0] == self.category:
+            self.insert_food_nutrients(data)
+        elif Entry.CATEGORIES[1][0] == self.category:
+            self.insert_recipe_nutrients(data)
+        elif Entry.CATEGORIES[2][0] == self.category:
+            self.insert_activity_nutrients()
+        else:
+            raise ValueError("entry type is unknown. {}".format(entry_type))
+
+    def insert_food_nutrients(self, data):
+        ndbno = data["ndbno"]
+        self.extra = json.dumps({"ndbno": ndbno})
+        self.save()
+
+        nutrients = FCD.get_nutrients(ndbno=ndbno, measure=self.measure)
+
+        for nutrient_data in nutrients:
+            nutrient_data["category"] = Nutrient.CATEGORIES[0][0]  # intake
+            Nutrient.insert(self, nutrient_data)
+
+    def insert_recipe_nutrients(self, data):
+        recipe_id = data["id"]
+        recipe = Recipe.objects.get(id=recipe_id)
+        for ingredient in recipe.getIngredients():
+            for nutrient_data in ingredient.getNutrients():
+                Nutrient.insert(self, nutrient_data)
+
+    def insert_activity_nutrients(self):
+        nutrient_data = {
+            "category": "o",
+            "label": "energy burnt",
+            "unit": "kcal",
+            "quantity": 1.32
+        }
+        Nutrient.insert(self, nutrient_data)
 
 
 class Nutrient(models.Model):
@@ -79,10 +126,20 @@ class Nutrient(models.Model):
     unit = models.CharField(max_length=20)
     quantity = models.FloatField()
 
+    @classmethod
+    def insert(cls, entry, data):
+        nutrient = Nutrient(**data)
+        nutrient.entry = entry
+        nutrient.save()
+        return nutrient
+
 
 class Recipe(models.Model):
     title = models.CharField(max_length=200)
     totalCalorie = models.IntegerField()
+
+    def get_ingredients(self):
+        self.recipeingredient_set.all()
 
     def increase_calorie(self, quantity):
         self.totalCalorie += quantity
@@ -99,6 +156,14 @@ class RecipeIngredient(models.Model):  # each ingredient is a consumption
     quantity = models.IntegerField()
     measure = models.CharField(max_length=50)
     nutrients = models.TextField(default="{}")  # nutrients stored as json
+    ndbno = models.CharField(max_length=100)
 
     def getNutrients(self):
         return json.loads(self.nutrients)
+
+    def prepare_nutrients(self):
+        nutrients = FCD.get_nutrients(self.ndbno, self.measure)
+        self.nutrients = json.dumps(nutrients)
+
+    def getEnergy(self):
+        return FCD.filter_sum_nutrients(self.getNutrients(), "Energy", "Kcal")
