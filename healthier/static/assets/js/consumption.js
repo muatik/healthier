@@ -119,7 +119,7 @@ var ConsumptionForm = (function(container, options) {
         submit_consumption(
             $ndbno.val(),
             $what.val(),
-            moment($when.data("DateTimePicker").date()).format(),
+            moment($when.data("DateTimePicker").date()).tz("UTC").format(),
             $quantity.val(),
             $measures.val(),
             {
@@ -142,17 +142,19 @@ var ConsumptionForm = (function(container, options) {
     function submit_consumption(ndbno, what, when, quantity, measure, callback) {
         var postData =  {
             "selection_type": selection_type,
-            "category": "c",
             "what": what,
             "when": when,
             "measure": measure,
             "quantity": quantity
         }
 
-        if (selection_type == "recipe")
+        if (selection_type == "recipe") {
             postData.id = recipe_id
-        else
+            postData.category = "rc"
+        } else {
             postData.ndbno = ndbno
+            postData.category = "fc"
+        }
 
         $.ajax({
             url: '/api/entries/',

@@ -91,8 +91,8 @@ class Entry(models.Model):
     def insert_recipe_nutrients(self, data):
         recipe_id = data["id"]
         recipe = Recipe.objects.get(id=recipe_id)
-        for ingredient in recipe.getIngredients():
-            for nutrient_data in ingredient.getNutrients():
+        for ingredient in recipe.get_ingredients():
+            for nutrient_data in ingredient.get_nutrients():
                 Nutrient.insert(self, nutrient_data)
 
     def insert_activity_nutrients(self):
@@ -139,7 +139,7 @@ class Recipe(models.Model):
     totalCalorie = models.IntegerField()
 
     def get_ingredients(self):
-        self.recipeingredient_set.all()
+        return self.recipeingredient_set.all()
 
     def increase_calorie(self, quantity):
         self.totalCalorie += quantity
@@ -158,7 +158,7 @@ class RecipeIngredient(models.Model):  # each ingredient is a consumption
     nutrients = models.TextField(default="{}")  # nutrients stored as json
     ndbno = models.CharField(max_length=100)
 
-    def getNutrients(self):
+    def get_nutrients(self):
         return json.loads(self.nutrients)
 
     def prepare_nutrients(self):
@@ -166,4 +166,4 @@ class RecipeIngredient(models.Model):  # each ingredient is a consumption
         self.nutrients = json.dumps(nutrients)
 
     def getEnergy(self):
-        return FCD.filter_sum_nutrients(self.getNutrients(), "Energy", "Kcal")
+        return FCD.filter_sum_nutrients(self.get_nutrients(), "Energy", "Kcal")

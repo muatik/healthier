@@ -77,10 +77,11 @@ var ActivityForm = (function(container, options) {
 
     function submit() {
         showLoader();
-
+        var a  = $when.data("DateTimePicker").date();
+        console.log(a)
         submit_activity(
             $what.val(),
-            moment($when.data("DateTimePicker").date()).format(),
+            moment($when.data("DateTimePicker").date()).tz(moment.tz.guess()).format(),
             $quantity.val(),
             $measures.val(),
             {

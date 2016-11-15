@@ -21,7 +21,7 @@
 
 
 
-.timeline-entry .title{
+/*.timeline-entry .title{
     margin: 0;
 }
 .timeline-entry .toolbar {
@@ -31,18 +31,36 @@
     margin-right: 5px;
 
 }
+
 .timeline-entry .energy-intake {
     color: #ff8100;
 }
+*/
+.entry .tile-text {
+    color: #777;
+}
+.entry-group {
+    /*border-top: 8px solid #ccc;*/
 
-.timeline-entry .nutrients {
+}
+.entry-group-header {
+    padding: 0 20px;
+    background-color: #fafafa;
+}
+.entry .tile-content.calorie {
+    margin-right: 10px;
+}
+.entry .nutrients-list {
+    display: none;
+}
+.entry .nutrients {
     display: none;
     margin-top: 15px;
     padding-left: 20px;
 }
-.category_c  .timeline-circ{
-    background-color: #f66265!important;
+.category_fc  .fa.entry-type, .category_rc  .fa.entry-type{
+    color: #f66265!important;
 }
-.category_a .timeline-circ{
-    background-color: #0aa89e!important;
+.category_a .fa.entry-type{
+    color: #0aa89e!important;
 }

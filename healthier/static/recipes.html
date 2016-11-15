@@ -16,7 +16,7 @@
         <link type="text/css" rel="stylesheet" href="assets/css/theme-default/materialadmin.css?1425466319" />
         <link type="text/css" rel="stylesheet" href="assets/css/theme-default/font-awesome.min.css?1422529194" />
         <link type="text/css" rel="stylesheet" href="assets/css/theme-default/material-design-iconic-font.min.css?1421434286" />
-        <link type="text/css" rel="stylesheet" href="assets/css/timeline.css" />
+        <link type="text/css" rel="stylesheet" href="assets/css/recipes.css" />
         <link type="text/css" rel="stylesheet" href="assets/css/autocomplete.css" />
         <!-- END STYLESHEETS -->
 
@@ -166,18 +166,22 @@
 
                                         <script id="template_menu_entry" type="x-tmpl-mustache">
                                             <li class="tile">
-                                                <a class="tile-content ink-reaction" href="#2">
+                                                <a class="tile-content ink-reaction .visible-sm-inline-block col-sm-8" href="recipe_form.html?id={{id}}">
                                                     <div class="tile-icon">
                                                         <i class="fa fa-cubes"></i>
                                                     </div>
                                                     <div class="tile-text">{{title}}</div>
                                                 </a>
-                                                <span class="text-right pull-right">
+                                                <div class="tile-content calorie col-sm-2"
+                                                        data-toggle="tooltip" data-placement="top" data-original-title="Total calorie">
+                                                    <div class="tile-text">{{totalCalorie}} Kcal</div>
+                                                </div>
+                                                <span class="text-right pull-right col-sm-2">
                                                     <a type="button" class="btn btn-icon-toggle btn-edit"
                                                         href="recipe_form.html?id={{id}}"
-                                                        data-toggle="tooltip" data-placement="top" data-original-title="Edit row">
+                                                        data-toggle="tooltip" data-placement="top" data-original-title="Edit">
                                                         <i class="fa fa-pencil"></i></a>
-                                                    <button type="button" class="btn btn-icon-toggle btn-delete" data-toggle="tooltip" data-placement="top" data-original-title="Delete row"><i class="fa fa-trash-o"></i></button>
+                                                    <button type="button" class="btn btn-icon-toggle btn-delete" data-toggle="tooltip" data-placement="top" data-original-title="Delete"><i class="fa fa-trash-o"></i></button>
                                                 </span>
                                             </li>
                                         </script>

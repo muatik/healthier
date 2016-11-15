@@ -165,7 +165,7 @@
 
 
 								<!-- BEGIN CONSUMPTION-FORM  -->
-								<div id="consumption-form" class="card card-underline no-margin timeline-form-views">
+								<div id="consumption-form" class="card card-underline timeline-form-views">
 									<input type="hidden" id="consumption_ndbno" />
 								    <div class="card-head">
 								        <header>What did you eat?</header>
@@ -232,7 +232,7 @@
 								<!-- END CONSUMPTION-FORM -->
 
 								<!-- BEGIN CONSUMPTION-FORM  -->
-								<div id="activity-form" class="card card-underline no-margin timeline-form-views">
+								<div id="activity-form" class="card card-underline timeline-form-views">
 								    <div class="card-head">
 								        <header>What did you do?</header>
 								        <div class="tools">
@@ -292,37 +292,46 @@
 
 								<!-- BEGIN MESSAGE ACTIVITY -->
 								<div class="tab-pane" id="activity">
-									<ul class="timeline collapse-lg timeline-hairline" id="timeline-entries">
-									</ul>
+									<div class="card">
+										<div class="card-body no-padding">
+											<ul class="list divider-full-bleed  collapse-lg" id="timeline-entries">
+											</ul>
+										</div>
+									</div>
+
+									<!-- <ul class="timeline collapse-lg timeline-hairline" id="timeline-entries">
+									</ul> -->
+									<script id="template_entry_group" type="x-tmpl-mustache">
+										<div class="entry-group" id={{dateId}}>
+											<input type="hidden" name="timestamp" value="{{timestamp}}" />
+											<li class="tile entry-group-header">
+												<div class="tile-text ink-reaction" href="#">{{dateOfEntry}}</div>
+											</li>
+										</div>
+									</script>
 									<script id="template_entry" type="x-tmpl-mustache">
-									<li id="entry-id-{{id}}" class="category_{{category}}">
-										<div class="timeline-circ circ-xl"><i class="fa {{faIcon}}"></i></div>
-										<div class="timeline-entry">
-											<div class="card style-default-light">
-												<div class="card-body small-padding">
-													<div class="row">
-														<div class="col-sm-10">
-															<p class="text-medium title">
-																{{what}}
-															</p>
-															<span class="opacity-50 datetime">
-																{{humanized_date}}
-															</span>
-														</div>
-														<div class="col-sm-2 text-right pull-right toolbar">
-															<button type="button" class="btn btn-icon-toggle toggle-nutrients"
-																data-toggle="tooltip" data-placement="top" data-original-title="display nutrients">
-																<i class="fa fa-angle-down"></i></button>
-														</div>
+										<li id="entry-id-{{id}}" class="tile entry category_{{category}} ">
+											<input type="hidden" name="timestamp" value="{{timestamp}}" />
+											<div class="tile">
+												<a class="btn btn-flat ink-reaction ">
+													<i class="fa {{faIcon}} entry-type"></i>
+												</a>
+												<a class="tile-content ink-reaction" href="#">
+													<div class="tile-text">
+														{{what}} {{dateId}} {{when}}
+														<small>{{humanized_date}}</small>
 													</div>
-													<div class="row nutrients">
-														<ul class="col-md-10 nutrients-list">
-														</ul>
-													</div>
-												</div>
+												</a>
+												<a class="tile-content ink-reaction pull-right calorie" href="#">
+													<div class="tile-text"> 23 kcal</div>
+												</a>
+												<a class="btn btn-flat ink-reaction toggle-nutrients"
+														data-toggle="tooltip" data-placement="top" data-original-title="display nutrients">
+													<i class="fa fa-angle-down"></i>
+												</a>
 											</div>
-										</div><!--end .timeline-entry -->
-									</li>
+											<ul class="nutrients-list"></ul>
+										</li>
 									</script>
 
 									<script id="template_entry_nutrients" type="x-tmpl-mustache">
@@ -374,6 +383,9 @@
 
 
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+
+		<script type="text/javascript" src="assets/js/libs/moment/moment-timezone-with-data.js"></script>
+
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.min.css" />
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/js/bootstrap-datetimepicker.min.js"></script>
 

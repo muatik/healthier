@@ -44,6 +44,7 @@ var FoodMenus = (function(){
         fetch_entries({
             onSuccess: function(res) {
                 $.map(res, function(entry){prepend_entry(entry, false)})
+                $('[data-toggle="tooltip"]').tooltip({container: 'body'});
             },
             onError: function() {
                 toastr.error("food menus could not be fetched :(")
@@ -56,6 +57,7 @@ var FoodMenus = (function(){
 
 $(document).ready(function(){
     t = FoodMenus();
+    $('[data-toggle="tooltip"]').tooltip({container: 'body'});
 });
 
 

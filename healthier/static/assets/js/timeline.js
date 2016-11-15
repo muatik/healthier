@@ -34,12 +34,63 @@ var Timeline = (function(){
         });
     }
 
+    function createEntryGroupElement(data) {
+        var template = $("#template_entry_group").html();
+        Mustache.parse(template);
+
+        var $rendered = $(Mustache.render(template, data));
+
+        // function findPosition () {
+        //     var $entry_groups = $(".entry-group", $timeline);
+        //     console.log("entry_groups.length", $entry_groups.length)
+        //     if ($entry_groups.length == 0) {
+        //         // will be the first item after the container's header
+        //         return false;
+        //     }
+
+        //     var $afterElement = false;
+        //     for (var i = $entry_groups.length - 1; i >= 0; i--) {
+        //         var $entry_group = $entry_groups[i];
+        //         var entryTimestamp = $("input[name='timestamp']", $entry_group).val();
+        //         $afterElement = $entry_group;
+        //         console.log("dates", data.when, entryTimestamp, data.timestamp)
+        //         if (entryTimestamp < data.timestamp) {
+        //             console.log("breaking")
+        //             break;
+        //         }
+        //     };
+
+        //     return $afterElement;
+        // }
+
+        // var $afterElement = findPosition();
+        // console.log($afterElement)
+        // if ($afterElement)
+        //     $rendered.insertAfter($afterElement);
+        // else
+        //     $timeline.append($rendered)
+        $timeline.append($rendered);
+        return $rendered;
+    }
+
     function prepend_entry(data, animation) {
+
         var template = $("#template_entry").html();
         Mustache.parse(template);
-        data.humanized_date = moment(data.when).fromNow();
-        data.faIcon = (data.category == "c" ? "fa-cutlery" : "fa-bicycle");
 
+        var datez = moment(data.when).tz(moment.tz.guess())
+        data.dateId = "day-" + datez.format('YYYY-MM-DD') // used to group entries
+        data.dateOfEntry = datez.format("dddd, D MMM");
+        data.timestamp = datez.format("x");
+        data.humanized_date = datez.fromNow();
+        data.faIcon = (data.category == "a" ? "fa-bicycle" : "fa-cutlery");
+
+        var $container = $("#" + data.dateId)
+
+        if (!$container.length) {
+            var $container = createEntryGroupElement(data)
+        }
+        data.when =datez
         var $rendered = $(Mustache.render(template, data));
         $(".toggle-nutrients", $rendered).click(function(){
             toggleEntryNutrients(data.id);
@@ -47,7 +98,27 @@ var Timeline = (function(){
 
         if (animation)
             $rendered.hide();
-        $timeline.prepend($rendered);
+
+        function findPosition () {
+            var $entries = $(".entry", $container);
+            var $afterElement = $(".entry-group-header", $container);
+            if ($entries.length == 0) {
+                // will be the first item after the container's header
+                return $afterElement;
+            }
+
+            for (var i = $entries.length - 1; i >= 0; i--) {
+                var $entry = $entries[i];
+                var entryTimestamp = $("input[name='timestamp']", $entry).val();
+                if (entryTimestamp < data.timestamp)
+                    break;
+                $afterElement = $entry;
+            };
+
+            return $afterElement;
+        }
+
+        $rendered.insertAfter(findPosition());
         if (animation)
             $rendered.toggle("fold")
     }
@@ -61,7 +132,7 @@ var Timeline = (function(){
 
     function toggleEntryNutrients(entryId) {
         showNutrientsLoader(entryId);
-        var $nutrients = $(".nutrients", "#entry-id-"+entryId);
+        var $nutrients = $(".nutrients-list", "#entry-id-"+entryId);
         $nutrients.toggle();
         if ($nutrients.is(":hidden")) {
             return;
@@ -91,6 +162,7 @@ var Timeline = (function(){
         var rendered = Mustache.render(template, nutrients);
         $container.html("");
         $container.prepend(rendered);
+        $container.show();
     };
 
 

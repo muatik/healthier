@@ -544,7 +544,7 @@ body,
   height: 100%;
 }
 body {
-  background: #e5e6e6;
+  background: #f0f0f0;
   background-size: 100% 100%;
   color: #313534;
   -ms-overflow-style: scrollbar;
@@ -6384,7 +6384,7 @@ sub.badge {
   right: 0;
   display: block;
   height: 1px;
-  background: rgba(150, 156, 156, 0.3);
+  background: rgba(180, 186, 186, 0.3);
 }
 .list li.divider-full-bleed:after,
 .list.divider-full-bleed li:after {

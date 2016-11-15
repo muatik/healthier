@@ -14,7 +14,7 @@ from entries.serializers import EntrySerializer, NutrientSerializer, \
 
 
 class EntryView(ListCreateAPIView):
-    queryset = Entry.objects.all()
+    queryset = Entry.objects.all().order_by("-when")
     serializer_class = EntrySerializer
 
     def perform_create(self, serializer):
