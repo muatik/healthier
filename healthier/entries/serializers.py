@@ -33,7 +33,7 @@ class RecipeIngredientSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         ret = super().to_representation(instance)
-        ret["nutrients"] = instance.getNutrients()
+        ret["nutrients"] = instance.get_nutrients()
         return ret
 
     def create(self, validated_data):

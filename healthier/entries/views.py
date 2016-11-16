@@ -6,7 +6,6 @@ from rest_framework.generics import DestroyAPIView, ListCreateAPIView, \
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from entries.consumption import insert_nutrients, calculate_consumption
 from entries.fcd import FCD
 from entries.models import Entry, Nutrient, Recipe, RecipeIngredient
 from entries.serializers import EntrySerializer, NutrientSerializer, \
