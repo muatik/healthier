@@ -71,7 +71,7 @@ class Entry(models.Model):
         if Entry.CATEGORIES[0][0] == self.category:
             self.insert_food_nutrients(data)
         elif Entry.CATEGORIES[1][0] == self.category:
-            raise NotImplementedError()
+            self.insert_recipe_nutrients(data)
         elif Entry.CATEGORIES[2][0] == self.category:
             self.insert_activity_nutrients()
         else:
@@ -87,6 +87,13 @@ class Entry(models.Model):
         for nutrient_data in nutrients:
             nutrient_data["category"] = Nutrient.CATEGORIES[0][0]  # intake
             Nutrient.insert(self, nutrient_data)
+
+    def insert_recipe_nutrients(self, data):
+        recipe_id = data["id"]
+        recipe = Recipe.objects.get(id=recipe_id)
+        for ingredient in recipe.get_ingredients():
+            for nutrient_data in ingredient.get_nutrients():
+                Nutrient.insert(self, nutrient_data)
 
     def insert_activity_nutrients(self):
         nutrient_data = {
@@ -125,3 +132,38 @@ class Nutrient(models.Model):
         nutrient.entry = entry
         nutrient.save()
         return nutrient
+
+
+class Recipe(models.Model):
+    title = models.CharField(max_length=200)
+    totalCalorie = models.IntegerField()
+
+    def get_ingredients(self):
+        return self.recipeingredient_set.all()
+
+    def increase_calorie(self, quantity):
+        self.totalCalorie += quantity
+
+    def decrease_calorie(self, quantity):
+        self.totalCalorie -= quantity
+        if self.totalCalorie < 0:
+            self.totalCalorie = 0
+
+
+class RecipeIngredient(models.Model):  # each ingredient is a consumption
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    what = models.CharField(max_length=255)
+    quantity = models.IntegerField()
+    measure = models.CharField(max_length=50)
+    nutrients = models.TextField(default="{}")  # nutrients stored as json
+    ndbno = models.CharField(max_length=100)
+
+    def get_nutrients(self):
+        return json.loads(self.nutrients)
+
+    def prepare_nutrients(self):
+        nutrients = FCD.get_nutrients(self.ndbno, self.measure)
+        self.nutrients = json.dumps(nutrients)
+
+    def get_energy(self):
+        return FCD.filter_sum_nutrients(self.get_nutrients(), "Energy", "Kcal")

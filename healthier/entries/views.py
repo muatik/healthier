@@ -2,13 +2,14 @@ import json
 
 from django.db.models import Sum
 from rest_framework.generics import ListCreateAPIView, \
-    ListAPIView
+    ListAPIView, RetrieveUpdateDestroyAPIView, DestroyAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from entries.fcd import FCD
-from entries.models import Entry, Nutrient
-from entries.serializers import EntrySerializer, NutrientSerializer
+from entries.models import Entry, Nutrient, Recipe, RecipeIngredient
+from entries.serializers import EntrySerializer, NutrientSerializer, \
+    RecipeIngredientSerializer, RecipeSerializer
 
 
 class EntryView(ListCreateAPIView):
@@ -42,12 +43,16 @@ class FoodSuggestionView(APIView):
                 "ndbno": json.loads(i.extra).get("ndbno", "")
             })
 
+        recipes = Recipe.objects.filter(title__contains=keyword)
+        recipes = [{"name": i.title, "id": i.id, "type": "recipe"}
+                   for i in recipes]
+
         try:
             foods = FCD.find(keyword)
         except KeyError:
             foods = []
 
-        return Response(history + foods)
+        return Response(recipes + history + foods)
         # return Response(foods)
 
 
@@ -87,3 +92,40 @@ class Reports(APIView):
                 "outtake": outtake["quantity__sum"]
             }
         })
+
+
+class RecipesView(ListCreateAPIView):
+    serializer_class = RecipeSerializer
+    queryset = Recipe.objects.all()
+
+
+class RecipeView(RetrieveUpdateDestroyAPIView):
+    serializer_class = RecipeSerializer
+    queryset = Recipe.objects.all()
+
+
+class RecipeIngredientsView(ListCreateAPIView, DestroyAPIView):
+    serializer_class = RecipeIngredientSerializer
+    queryset = RecipeIngredient.objects.all()
+
+    def get_queryset(self):
+        recipe_id = self.kwargs["recipe_id"]
+        return RecipeIngredient.objects.filter(recipe_id=recipe_id)
+
+    def perform_create(self, serializer):
+        recipe_id = self.kwargs["recipe_id"]
+        recipe = Recipe.objects.get(id=recipe_id)
+
+        ingredient = serializer.save(recipe_id=recipe_id)
+        ingredient.prepare_nutrients()
+        ingredient.save()
+
+        recipe.increase_calorie(ingredient.get_energy())
+        recipe.save()
+
+    def perform_destroy(self, ingredient):
+        ingredient.recipe.decrease_calorie(ingredient.get_energy())
+        ingredient.recipe.save()
+        super().perform_destroy(ingredient)
+
+
