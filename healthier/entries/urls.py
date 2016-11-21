@@ -25,10 +25,4 @@ urlpatterns = [
     url(r"^food/(?P<ndbno>.+)/measures/$", views.FoodReport.as_view()),
     url(r"^activities/$", views.ActivitySuggestionView.as_view()),
     url(r"^reports/$", views.Reports.as_view()),
-    url(r"^recipes/$", views.RecipesView.as_view()),
-    url(r"^recipes/(?P<pk>\d+)/$", views.RecipeView.as_view()),
-    url(r"^recipes/(?P<recipe_id>\d+)/ingredients/$",
-        views.RecipeIngredientsView.as_view()),
-    url(r"^recipes/(?P<recipe_id>\d+)/ingredients/(?P<pk>\d+)/$",
-        views.RecipeIngredientsView.as_view()),
 ]

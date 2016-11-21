@@ -1,15 +1,14 @@
 import json
 
 from django.db.models import Sum
-from rest_framework.generics import DestroyAPIView, ListCreateAPIView, \
-    ListAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListCreateAPIView, \
+    ListAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from entries.fcd import FCD
-from entries.models import Entry, Nutrient, Recipe, RecipeIngredient
-from entries.serializers import EntrySerializer, NutrientSerializer, \
-    RecipeSerializer, RecipeIngredientSerializer
+from entries.models import Entry, Nutrient
+from entries.serializers import EntrySerializer, NutrientSerializer
 
 
 class EntryView(ListCreateAPIView):
@@ -30,13 +29,11 @@ class NutrientsView(ListAPIView):
 
 
 class FoodSuggestionView(APIView):
-    def get(self, request, format=None):
+    def get(self, request, frm=None):
         keyword = request.query_params.get("q").strip()
 
-        history = Entry.objects.filter(what__contains=keyword)
-        # history = [{"name": i.what, "ndbno": i.extra["ndbno"]}
         history = []
-        for i in history:
+        for i in Entry.objects.filter(what__contains=keyword):
             if not i.extra:
                 continue
 
@@ -45,26 +42,23 @@ class FoodSuggestionView(APIView):
                 "ndbno": json.loads(i.extra).get("ndbno", "")
             })
 
-        recipes = Recipe.objects.filter(title__contains=keyword)
-        recipes = [{"name": i.title, "id": i.id, "type": "recipe"}
-                   for i in recipes]
         try:
             foods = FCD.find(keyword)
         except KeyError:
             foods = []
 
-        return Response(recipes + history + foods)
+        return Response(history + foods)
         # return Response(foods)
 
 
 class FoodReport(APIView):
-    def get(self, request, ndbno, format=None):
+    def get(self, request, ndbno, frm=None):
         result = FCD.get_measures(ndbno)
         return Response(result)
 
 
 class ActivitySuggestionView(APIView):
-    def get(self, request, format=None):
+    def get(self, request, frm=None):
         return Response([
             {"id": 1, "name": "ARNOLD DUMBBELL PRESS"},
             {"id": 2, "name": "Hill sprint"},
@@ -78,8 +72,7 @@ class ActivitySuggestionView(APIView):
 
 
 class Reports(APIView):
-    def get(self, request, format=None):
-
+    def get(self, request, frm=None):
         outtake = Nutrient.objects.filter(
             category="o"
         ).aggregate(Sum("quantity"))
@@ -94,47 +87,3 @@ class Reports(APIView):
                 "outtake": outtake["quantity__sum"]
             }
         })
-
-
-class Reports2(APIView):
-    def get(self, request, format=None):
-        pass
-
-
-class RecipesView(ListCreateAPIView):
-    serializer_class = RecipeSerializer
-    queryset = Recipe.objects.all()
-
-
-class RecipeView(RetrieveUpdateDestroyAPIView):
-    serializer_class = RecipeSerializer
-    queryset = Recipe.objects.all()
-
-
-class RecipeIngredientsView(ListCreateAPIView, DestroyAPIView):
-    serializer_class = RecipeIngredientSerializer
-    queryset = RecipeIngredient.objects.all()
-
-    def get_queryset(self):
-        recipe_id = self.kwargs["recipe_id"]
-        return RecipeIngredient.objects.filter(recipe_id=recipe_id)
-
-    def perform_create(self, serializer):
-        recipe_id = self.kwargs["recipe_id"]
-        recipe = Recipe.objects.get(id=recipe_id)
-
-        ingredient = serializer.save(recipe_id=recipe_id)
-        ingredient.prepare_nutrients()
-        ingredient.save()
-
-        recipe.increase_calorie(ingredient.getEnergy())
-        recipe.save()
-
-    def perform_destroy(self, ingredient):
-        ingredient.recipe.decrease_calorie(ingredient.getEnergy())
-        ingredient.recipe.save()
-        super().perform_destroy(ingredient)
-
-
-
-
