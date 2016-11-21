@@ -35,6 +35,7 @@ Time management should be done by following the steps listed below.
 
 ![healthier_milestones detail](https://raw.githubusercontent.com/muatik/Swe573HW2016F/master/docs/healthier_milestones_detail.png)
 
+https://www.tomsplanner.com/public/muatikhealthier
 
 # Mockups
 
