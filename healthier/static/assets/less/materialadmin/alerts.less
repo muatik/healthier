@@ -1,0 +1,48 @@
+//
+// Alerts
+// --------------------------------------------------
+
+
+// Base styles
+// -------------------------
+
+.alert {
+	&.alert-callout {
+		position: relative;
+		padding-left: 20px;
+		background: @white;
+		color: @text-color;
+		border-radius: 3px;
+		border-color: fade(@gray, 15%);
+		
+		&:before {
+			content: '';
+			position: absolute;
+			display: block;
+			width: 4px;
+			left: -1px;
+			top: -1px;
+			bottom: -1px;
+			background: red;
+		}
+	}
+}
+
+
+// Alternate styles
+// -------------------------
+
+.alert-callout {
+	&.alert-success:before {
+		background: @brand-success;
+	}
+	&.alert-info:before {
+		background: @brand-info;
+	}
+	&.alert-warning:before {
+		background: @brand-warning;
+	}
+	&.alert-danger:before {
+		background: @brand-danger;
+	}
+}

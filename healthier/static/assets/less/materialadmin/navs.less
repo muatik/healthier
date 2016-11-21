@@ -1,0 +1,153 @@
+//
+// Navs
+// --------------------------------------------------
+
+
+// Nav Stacked
+// --------------------------------------------------
+
+.nav-stacked {
+	border-bottom: none;
+	> li {
+		margin-bottom: 0;
+		+ li {
+			margin-top: 1px;
+			margin-bottom: 0;
+		}
+		> a {
+			margin-right: 0;
+		}
+	}
+
+	&.nav-tabs > li.active > a, 
+	&.nav-tabs > li.active > a:hover, 
+		&.nav-tabs > li.active > a:focus {
+		border: none;
+	}
+}
+
+
+// Small
+// --------------------------------------------------
+
+.nav {
+	> li > small {
+		display: block;
+		margin: 20px 0 10px 10px;
+		font-size: 10px;
+		font-weight: @weight-medium;
+		opacity: .6;
+	}
+	> li:first-child > small {
+		margin-top: 0;
+	}
+}
+
+
+// Nav icon
+// --------------------------------------------------
+
+.nav.nav-icon {
+	> li {
+		a {
+			padding-left: 32px;
+
+			.fa,
+			.md,
+			.glyphicon {
+				position: relative;
+				width: 32px;
+				text-align: center;
+				margin-left: -32px;
+				float: left;
+				font-size: 1.3em;
+			}
+		}
+	}
+}
+
+
+// Colors
+// --------------------------------------------------
+
+.nav-transparent {
+	a {			color: inherit; border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+	a:hover {	color: @text-color; }
+}
+
+
+// Nav pills
+// --------------------------------------------------
+
+.nav-pills {
+	img {
+		margin-right: 10px;
+	}
+
+	li.focus > a {
+		&, &:hover, &:focus {
+			background-color: @gray-lightest;
+		}
+	}
+}
+
+
+// Nav search
+// --------------------------------------------------
+
+.navbar-search {
+	position: relative;
+	display: inline-table;
+	padding:0;
+	white-space: nowrap;
+	border-radius: 2px;
+	.transition(background 0.25s ease-in-out);
+
+	.form-group {
+		display: table-cell;
+		margin-bottom: 0;
+		max-width: 0;
+		vertical-align: middle;
+		overflow: hidden;
+		.transition(max-width 0.25s ease-in-out);
+	}
+	input {
+		display: inline-block;
+		padding: 0 10px;
+		max-width: 0;
+		height: 36px;
+		border: none;
+		.transition(max-width 0.25s ease-in-out);
+	}
+	.btn {
+		display: table-cell;
+	}
+
+	&.expanded {
+		background-color: @white;
+		.box-shadow(@z-height-1);
+
+		.form-group {
+			max-width: 500px;
+		}
+		.btn {
+			color: @black;
+			background: inherit;
+		}
+		input {
+			max-width: 500px;
+		}
+	}
+}
+
+
+// Utils
+// --------------------------------------------------
+
+.nav {
+	li {
+		&.padded {
+			padding: 10px;
+		}
+	}
+}

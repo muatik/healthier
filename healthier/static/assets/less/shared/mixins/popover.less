@@ -1,0 +1,22 @@
+// Popover mixins
+// --------------------------------------------------
+
+
+// Popover variant
+// -------------------------
+
+.popover-variant(@color) {
+	background-color: @color;
+	color: contrast(@color, @text-color, @white, @color-threshold);
+
+	.popover-title {
+		background-color: darken(@color, 10%);
+		color: contrast(darken(@color, 10%), fade(@text-color, 90%), fade(@white, 90%), @color-threshold);
+		border-bottom-color: contrast(@color, fade(@text-color, 20%), fade(@white, 20%), @color-threshold);
+	}
+
+	&.top > .arrow :after {		border-top-color: @color; }
+	&.right > .arrow:after {	border-right-color:  @color; }
+	&.bottom > .arrow:after {	border-bottom-color: @color; }
+	&.left > .arrow:after {		border-left-color: @color; }
+}

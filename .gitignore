@@ -87,3 +87,16 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+
+
+.idea/*
+*.idea/*
+healtier/.idea/*
+# Ignore Mac DS_Store files
+.DS_Store
+
+*.sqlite3
+healthier/.idea/*
+
+healthier/.idea/workspace.xml

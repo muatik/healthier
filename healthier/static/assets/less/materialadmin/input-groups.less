@@ -1,0 +1,105 @@
+//
+// Input groups
+// --------------------------------------------------
+
+// Sizing options
+// -------------------------
+
+.input-group-lg > .input-group-content > .form-control,
+.input-group-lg > .input-group-addon {
+	.input-lg();
+}
+
+.input-group-sm > .input-group-content > .form-control,
+.input-group-sm > .input-group-addon {
+	.input-sm();
+}
+
+// Addons
+// -------------------------
+
+.input-group-addon {
+	border-color: transparent;
+	background-color: transparent;
+	color: inherit;
+	opacity: 0.7;
+}
+
+.input-group-addon, 
+.input-group-btn {
+	padding-left: 10px;
+
+	&:first-child {
+		padding-left: 0;
+		padding-right: 10px;
+	}
+	&:last-child {
+		padding-right: 0;
+	}
+	
+	.btn-floating-action {
+		margin-top: -7px;
+		
+		&.btn-lg { margin-top: -19px; }
+	}
+}
+
+
+// Content
+// -------------------------
+
+.input-group-content {
+	position: relative;
+	display: table-cell;
+	vertical-align: bottom;
+}
+
+
+// Display as table-cell
+// -------------------------
+
+.input-group .form-control-static {
+	display: table-cell;
+
+	&:not(:first-child):not(:last-child) {
+		border-radius: 0;
+	}
+}
+
+// Reset rounded corners
+.input-group .form-control-static:first-child {
+	.border-right-radius(0);
+}
+.input-group .form-control-static:last-child {
+	.border-left-radius(0);
+}
+
+
+// Input groups .form markup
+// -------------------------
+
+.form {
+	.form-group {
+		// Input-group's need extra padding in vertical forms, 
+		// First reset the position with the margin
+		.input-group {
+			margin-top: -16px;
+		}
+		
+		// then add the extra padding
+		.input-group-content,
+		.input-group-addon,
+		.input-group-btn {
+			padding-top: 16px;
+		}
+		
+		// Only align the addons to the bottom 
+		.input-group-addon {
+			vertical-align: bottom;
+		}
+		.input-group-addon:first-child {
+			min-width: 42px;
+			text-align: left;
+		}
+	}
+}

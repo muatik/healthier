@@ -1,0 +1,116 @@
+// Forms mixins
+// --------------------------------------------------
+
+
+// Form control focus state
+// -------------------------
+
+// Overiddes bootstraps '.form-control-focus'. 
+// - Shadow is removed
+
+.form-control-focus(@color: @input-border-focus) {
+	&:focus {
+		border-color: @brand-primary;
+		outline: 0;
+		.box-shadow(none);
+	}
+}
+
+
+// Form validation states
+// -------------------------
+
+.form-control-validation(@text-color: #555; @border-color: #ccc; @background-color: #f5f5f5) {
+	// Color the label and help text
+	.help-block,
+	.control-label,
+	.radio,
+	.checkbox,
+	.radio-inline,
+	.checkbox-inline  {
+		color: @text-color;
+	}
+	// Set the border and box shadow on specific inputs to match
+	.form-control {
+		border-bottom-color: @border-color;
+		.box-shadow(none);
+
+		&:focus {
+			border-bottom-color: @border-color;
+			.box-shadow(none);
+		}
+	}
+	// Set validation states also for addons
+	.input-group-addon {
+		color: @text-color;
+		background-color: @background-color;
+	}
+	// Optional feedback icon
+	.form-control-feedback {
+		color: @text-color;
+	}
+}
+
+
+// Form control sizing
+// -------------------------
+
+.input-size(@input-height; @padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
+	height: @input-height;
+	padding: @padding-vertical @padding-horizontal;
+	font-size: @font-size;
+	line-height: @line-height;
+	border-radius: @border-radius;
+
+	select& {
+		height: @input-height;
+		line-height: @input-height;
+	}
+
+	textarea&,
+	select[multiple]& {
+		height: auto;
+	}
+
+	
+	~ label {
+		.floating-label & {
+			font-size: @font-size;
+		}
+	}
+}
+
+
+// Alert variations
+// -------------------------
+
+.alert-variant(@color) {
+	.help-block  {
+		color: @color;
+		opacity: 1;
+	}
+	.form-control {
+		border-bottom-color: @color;
+	}
+	.form-control:focus, .form-control.dirty {
+		border-bottom-color: @color;
+		~ label {
+			color: inherit;
+		}
+	}
+	.form-control ~ label,
+	.form-control ~ .form-control-line {
+		color: inherit;
+		&:after{
+			background-color: @color;
+		}
+	}
+	label,
+	.control-label,
+	.form-control-feedback {
+		color: @color;
+		.form-horizontal & {
+			opacity: 1;
+		}
+	}
+}

@@ -1,0 +1,78 @@
+//
+// Layout
+// --------------------------------------------------
+
+// Base
+// -------------------------
+
+#base {
+	overflow: hidden;
+	padding-left: @menubar-width-collapsed;
+	width: 100%;
+	min-height: 100%;
+
+	> .backdrop {
+		position: fixed;
+		z-index: @zindex-offcanvas-backdrop;
+		left: 0; right: 0;
+		top: 0; bottom: 0;
+		display: block;
+		background-color: fade(@black, 33%);
+	}
+
+	&.hide-backdrop > .backdrop {
+		display: none;
+		position: relative;
+	}
+
+}
+
+
+// Content
+// -------------------------
+
+#content {
+	position: relative;
+	width: 100%;
+	left: 0;
+	padding-top: @headerbar-height;
+}
+
+
+
+// Responsive classes
+// --------------------------------------------------
+
+
+// Large Devices
+// -------------------------
+
+@media (min-width: @screen-lg-min) { 
+	.menubar-pin {
+		#base {
+			padding-left: @menubar-width;
+		}
+	}
+}
+
+// From Medium Devices and up
+// -------------------------
+
+@media (min-width: @screen-sm-min) { 
+	.full-content  {
+		#base,
+		#content {
+			height: 100%;
+		}
+	}
+}
+
+// Small Devices
+// -------------------------
+
+@media (max-width: @screen-xs-max) {
+	#base {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}

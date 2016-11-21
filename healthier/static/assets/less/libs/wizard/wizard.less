@@ -1,0 +1,79 @@
+// Core variables and mixins
+@import "../../shared/variables.less";
+@import "../../shared/mixins.less";
+
+
+.form-wizard.form-wizard-horizontal {
+	position: relative;
+	
+	.form-wizard-nav {
+		
+		.progress { 
+			position: absolute;
+			display: inline-block;
+			top: 23px; left: 0; right: 0;
+			margin: auto;
+			height: 10px;
+			
+			@media (max-width: (@screen-sm - 1px)) {
+				display: none;
+			}
+		}
+	}
+	
+	.nav {
+		position: relative;
+		
+		a {
+			margin-bottom: 15px;
+		}
+		
+		li.active,
+		li:hover {
+			a {
+				color: inherit;
+				background-color: transparent;
+			}
+			.step {
+				.transition(border-color 0.40s linear);
+				border-color: @brand-primary;
+			}
+			.title {
+				color: @text-color;
+			}
+		}
+		li.done {
+			.step {
+				color: @white;
+				border-color: @brand-primary;
+				background-color: @brand-primary;
+				font-weight: @weight-medium;
+				.transition(background-color 0.20s linear);
+			}
+		}
+		
+		.step {
+			display: inline-block;
+			line-height: 28px;
+			width: 36px;
+			height: 36px;
+			border-radius: 999px;
+			border: 4px solid @gray-lighter;
+			background: @white;
+		}
+		.title {
+			position: absolute;
+			width: 100%;
+			left: 0;
+			bottom: -15px;
+			color: @gray-light;
+		}
+	}
+}
+
+.no-padding .form-wizard {
+	.pager {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}

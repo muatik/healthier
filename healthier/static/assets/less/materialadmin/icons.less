@@ -1,0 +1,75 @@
+//
+// Icons
+// --------------------------------------------------
+
+// Common
+// -------------------------
+
+.fa.icon-tilt,
+.md.icon-tilt,
+.glyphicon.icon-tilt,
+.icon-tilt {			
+	.rotate(10deg); 
+}
+
+.fa.icon-tilt-alt,
+.md.icon-tilt-alt,
+.glyphicon.icon-tilt-alt,
+.icon-tilt-alt {		
+	.rotate(350deg); 
+}
+
+
+// Button icons
+// -------------------------
+
+.btn {
+	&+.dropdown-toggle {
+		.fa, .md {
+			margin: 0;
+		}
+	}
+	
+	.fa + .fa,
+	.md + .md {
+		margin-right: 0;
+		margin-left: 6px;
+	}
+}
+
+.btn-icon-toggle {
+	.fa,
+	.md,
+	.glyphicon {
+		margin: 0;
+	}
+}
+
+
+// Nav icons
+// -------------------------
+
+.nav a {
+	&+.dropdown-toggle {
+		.fa,
+		.md {
+			margin: 0;
+		}
+	}
+	
+	.fa + .fa,
+	.md + .md {
+		margin-right: 0;
+		margin-left: 6px;
+	}
+}
+
+
+// Material icons
+// -------------------------
+
+body [class*=" md-"], [class^=md-] {
+	font-size: 1.2em;
+	margin-top: -0.2em;
+	margin-bottom: -0.2em;
+}

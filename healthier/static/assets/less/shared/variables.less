@@ -1,0 +1,446 @@
+//
+// Shared Variables
+// --------------------------------------------------
+
+@import "../bootstrap/variables.less";
+
+
+// GLOBAL VALUES
+// --------------------------------------------------
+
+@color-threshold:				72%;
+
+// Grays
+// -------------------------
+@black:							#0c0c0c;
+@gray-darkest:					hsl(hue(@brand-primary), 3%, 10%);
+@gray-darker:					hsl(hue(@brand-primary), 3%, 13.5%);
+@gray-dark:						hsl(hue(@brand-primary), 3%, 20%);
+@gray:							hsl(hue(@brand-primary), 3%, 33.5%);
+@gray-light:					hsl(hue(@brand-primary), 3%, 60%);
+@gray-light2:					hsl(hue(@brand-primary), 3%, 75%);
+@gray-lighter:					hsl(hue(@brand-primary), 3%, 90%);
+@gray-lightest:					hsl(hue(@brand-primary), 3%, 95%);
+@white:							#fff;
+
+
+// Brand colors
+// -------------------------
+@brand-default:				    @gray-lighter;
+@brand-inverse:					#20252b;
+@brand-primary:				    #0aa89e;
+@brand-accent:				    #9C27B0;
+@brand-success:					#4CAF50;
+@brand-warning:					#FF9800;
+@brand-danger:					#F44336;
+@brand-info:					#2196F3;
+
+// Formulas are being used to calculate the dark and light color.
+// If you want you can change these to hex color values
+@brand-default-dark:			@brand-inverse;
+@brand-default-light:			@gray-lightest;
+@brand-default-bright:			@white;
+
+@primary-l:						hsvvalue(@brand-primary);
+@primary-s:						hsvsaturation(@brand-primary);
+@brand-primary-dark:			darken(rgb(red(@brand-primary), green(@brand-primary), blue(@brand-primary) + 15), 15);
+@brand-primary-light:			hsv(hue(@brand-primary), 42%, (100% - (100% - @primary-l) * (42% / @primary-s)) );
+@brand-primary-bright:			hsv(hue(@brand-primary), 16%, (100% - (100% - @primary-l) * (16% / @primary-s)) );
+
+@accent-l:						hsvvalue(@brand-accent);
+@accent-s:						hsvsaturation(@brand-accent);
+@brand-accent-dark:				darken(rgb(red(@brand-accent), green(@brand-accent), blue(@brand-accent) + 15), 15);
+@brand-accent-light:			hsv(hue(@brand-accent), 42%, (100% - (100% - @accent-l) * (42% / @accent-s)) );
+@brand-accent-bright:			hsv(hue(@brand-accent), 16%, (100% - (100% - @accent-l) * (16% / @accent-s)) );
+
+
+// Body
+// -------------------------
+@body-background:				@brand-default;
+@body-background-size:			100% 100%;
+@body-color:					@text-color;
+
+
+// Buttons colors
+// -------------------------
+
+@btn-default-color:				@gray-light;
+@btn-default-bg:				@gray-lighter;
+@btn-default-border:			@gray-lighter;
+
+@btn-primary-color:				@brand-primary;
+@btn-primary-bg:				@brand-primary;
+@btn-primary-border:			@brand-primary;
+
+@btn-success-color:				@brand-success;
+@btn-success-bg:				@brand-success;
+@btn-success-border:			@brand-success;
+
+@btn-info-color:				@brand-info;
+@btn-info-bg:					@brand-info;
+@btn-info-border:				@brand-info;
+
+@btn-warning-color:				@brand-warning;
+@btn-warning-bg:				@brand-warning;
+@btn-warning-border:			@brand-warning;
+
+@btn-danger-color:				@brand-danger;
+@btn-danger-bg:					@brand-danger;
+@btn-danger-border:				@brand-danger;
+
+
+// Typography
+// -------------------------
+@font-family-sans-serif:		"Roboto", sans-serif, Helvetica, Arial, sans-serif;
+@display4-size:					112px;
+@display3-size:					56px;
+@display2-size:					45px;
+@display1-size:					34px;
+@headline-size:					24px;
+@title-size:					20px;
+@subhead-size:					15px;
+@font-size-base:				13px;
+@button-size:					14px;
+@caption-size:					12px;
+
+@weight-light:					300;
+@weight-normal:					400;
+@weight-medium:					500;
+@weight-bold:					700;
+@weight-ultra-bold:				900;
+
+@headings-font-weight:			@weight-normal;
+@blockquote-border-color:		@brand-primary-bright;
+
+@font-size-h1:					@display1-size;
+@font-size-h2:					@headline-size;
+@font-size-h3:					@title-size;
+@font-size-h4:					@subhead-size;
+@font-size-h5:					@font-size-base;
+@font-size-h6:					@caption-size;
+
+@line-height-base:				1.846153846; // 24/13
+@line-height-computed:			round((@font-size-base * @line-height-base)); // ~24px
+
+
+// Base variables
+// -------------------------
+@padding-base-vertical:			4.5px;
+@padding-base-horizontal:		14px;
+
+
+// Shadow heights
+// -------------------------
+
+@z-height-0: none;
+@z-height-1: 0 1px 3px 0 rgba(0,0,0,.33);
+@z-height-2: 0 3px 8px 0 rgba(0,0,0,.38);
+@z-height-3: 0 8px 14px 0 rgba(0,0,0,.38);
+@z-height-4: 0 14px 19px 0 rgba(0,0,0,.38);
+@z-height-5: 0 20px 24px 0 rgba(0,0,0,.38);
+
+@z-height-1-inverse: 0 -1px 3px 0 rgba(0,0,0,.33);
+@z-height-2-inverse: 0 -3px 8px 0 rgba(0,0,0,.38);
+@z-height-3-inverse: 0 -8px 14px 0 rgba(0,0,0,.38);
+@z-height-4-inverse: 0 -14px 19px 0 rgba(0,0,0,.38);
+@z-height-5-inverse: 0 -20px 24px 0 rgba(0,0,0,.38);
+
+
+
+// COMPONENT VARIABLES
+// --------------------------------------------------
+
+// Border radius
+// -------------------------
+@border-radius-base:			2px;
+@border-radius-large:			2px;
+@border-radius-small:			0px;
+
+
+// Z-index
+// -------------------------
+@zindex-navbar:					1000; // Bootstrap index
+@zindex-dropdown:				1000; // Bootstrap index
+@zindex-section-action:			1001;
+@zindex-menubar:				1004;
+@zindex-header:					1005;
+@zindex-menubar-first:			1006;
+@zindex-header-mobile:			1011;
+@zindex-header-offcanvas:		1012;
+@zindex-menubar-mobile:			1013;
+@zindex-navbar-fixed:			1030; // Bootstrap index
+@zindex-offcanvas-backdrop:		1031;
+@zindex-offcanvas:				1032;
+@zindex-modal-background:		1040; // Bootstrap index
+@zindex-modal:					1050; // Bootstrap index
+@zindex-popover:				1060; // Bootstrap index
+@zindex-tooltip:				1070; // Bootstrap index
+@zindex-toast:					2000;
+
+
+// Media queries breakpoints
+// -------------------------
+@screen-xs:						480px;
+@screen-sm:						769px;
+
+
+
+// COMPONENTS
+// --------------------------------------------------
+
+// Gutters
+// -------------------------
+@gutter-size:					4px;
+@grid-gutter-width:				(@gutter-size * 6);
+@section-gutter-width:			(@gutter-size * 6);
+@section-gutter-width-sm:		(@gutter-size * 3);
+@header-gutter-width:			(@gutter-size * 6);
+@header-gutter-width-sm:		(@gutter-size * 3);
+
+
+// Dimensions
+// -------------------------
+@dimensions-steps:				40px;
+
+
+// List group
+// -------------------------
+@list-group-done-color:			desaturate(@brand-success, 50%);
+@list-group-done-bg:			lighten(@brand-success, 50%);
+
+
+// Headerbar
+// -------------------------
+@headerbar-height:				64px;
+@headerbar-bg:					@white;
+@headerbar-color:				fade(@text-color, 60%);
+@headerbar-link-hover:			fade(@black, 7%);
+
+
+// Headerbar inverse
+// -------------------------
+@headerbar-inverse-bg:			lighten(@brand-inverse, 2%);
+@headerbar-inverse-color:		fade(@white, 60%);
+@headerbar-inverse-link-hover:	fade(@white, 15%);
+
+
+// Menubar
+// -------------------------
+@menubar-bg:					@gray-lightest;
+@menubar-color:					fade(@black, 85%);
+@menubar-folder-color:			fade(@menubar-color, 75%);
+@menubar-font-size:				12px;
+@menubar-gap:					(@gutter-size * 3);
+@menubar-link-hover:			fade(@black, 7%);
+@menubar-link-hover-color:		@black;
+@menubar-link-active:			@white;
+@menubar-link-active-color:		@brand-primary;
+@menubar-icon-width:			40px;
+@menubar-icon-bg:				@white;
+@menubar-icon-bg-active:		@white;
+@menubar-icon-bg-hover:			fade(@black, 7%);
+@menubar-icon-color:			@gray;
+@menubar-icon-color-active:		@brand-primary;
+@menubar-icon-color-hover:		@text-color;
+@menubar-icon-border:			@menubar-icon-bg;
+@menubar-width:					240px;
+@menubar-width-collapsed:		@menubar-icon-width + (@menubar-gap * 2);
+@menubar-collapse-speed:		.5s;
+@menubar-collapse-ease:			cubic-bezier(.15,.99,.18,1.01);//ease-out;
+
+
+// Menubar tree variables
+@menubar-tree-border-color:		fade(contrast(@menubar-bg, @black, @white, @color-threshold), 30%);
+@menubar-tree-width:			21px;
+@menubar-tree-indent:			57px;
+@menubar-tree-indent-level1:	30px;
+@menubar-tree-indent-level2:	@menubar-tree-indent-level1 + @menubar-tree-width;
+@menubar-tree-indent-level3:	@menubar-tree-indent-level2 + @menubar-tree-width;
+@menubar-tree-indent-level4:	@menubar-tree-indent-level3 + @menubar-tree-width;
+@menubar-tree-indent-level5:	@menubar-tree-indent-level4 + @menubar-tree-width;
+
+
+// Menubar inverse
+// -------------------------
+@menubar-inverse-bg:					lighten(@brand-inverse, 5%);
+@menubar-inverse-color:					fade(@white, 55%);
+@menubar-inverse-folder-color:			fade(@white, 50%);
+@menubar-inverse-link-hover:			lighten(@brand-inverse, 8%);
+@menubar-inverse-link-hover-color:		@white;
+@menubar-inverse-link-active:			@brand-inverse;
+@menubar-inverse-link-active-color:		@white;
+@menubar-inverse-icon-bg:				lighten(@brand-inverse, 2%);
+@menubar-inverse-icon-bg-active:		@brand-primary;
+@menubar-inverse-icon-bg-hover:			fade(@white, 12%);
+@menubar-inverse-icon-color:			fade(@white, 65%);
+@menubar-inverse-icon-color-active:		contrast(@menubar-inverse-icon-bg-active, @text-color, @white, @color-threshold);
+@menubar-inverse-icon-color-hover:		@white;
+@menubar-inverse-icon-border:			@menubar-inverse-icon-bg;
+@menubar-inverse-tree-border-color:		fade(contrast(@menubar-inverse-bg, @black, @white, @color-threshold), 30%);
+
+
+// Offcanvas
+// -------------------------
+@offcanvas-bg:					@brand-default-bright;
+@offcanvas-ease-in:				cubic-bezier(.22,.99,.68,.98);
+@offcanvas-speed-in:			.5s;
+@offcanvas-ease-out:			ease-in;
+@offcanvas-speed-out:			.33s;
+
+
+// Card
+// -------------------------
+@card-header-lg:				80px;
+@card-header:					56px;
+@card-header-sm:				48px;
+@card-header-xs:				36px;
+@card-gutter-width:				(@gutter-size * 6);
+@card-gutter-width-sm:			(@gutter-size * 4);
+@card-radius:					2px;
+@card-header-color:				@gray;
+@card-default-border:			@gray-light;
+@card-back-color:				#fff;
+
+
+// Pager
+// -------------------------
+
+@pager-border-radius:			0px;
+
+
+// Pagination
+// -------------------------
+
+@pagination-active-bg:			@brand-primary;
+@pagination-active-color:		contrast(@pagination-active-bg, @text-color, @white, @color-threshold);
+@pagination-disabled-color:		@gray-light;
+
+
+// Tables
+// -------------------------
+@table-cell-padding:			10px 8px;
+@table-condensed-cell-padding:	5px;
+
+@table-bg:						transparent; // overall background-color
+@table-bg-accent:				fade(@gray-lightest, 35); // for striping
+@table-bg-hover:				fade(@gray-lighter, 25);
+@table-bg-hover-color:			@text-color;
+@table-bg-active:				@table-bg-hover;
+
+@table-border-color:			fade(@gray-light2, 20); // table and cell border
+
+@table-theme-head:				darken(desaturate(@brand-primary, 10%), 5%);
+@table-theme-head-border:		lighten(@table-theme-head, 30);
+
+// DataTables
+// -------------------------
+@table-body-border:				1px solid @gray-lighter; // Border of rows / cells
+@table-row-background:			transparent; // Row background colour
+@table-row-selected:			@brand-primary; // Row colour, when selected (tr.selected)
+@table-paging-button-active:	@btn-default-bg;
+@table-paging-button-hover:		darken(@btn-default-bg, 5%);
+
+
+// Forms
+// -------------------------
+@input-color:					@black;
+@input-border:					fade(@black, 12);
+@input-border-focus:			@brand-primary;
+@input-border-disabled:			fade(@black, 20);
+@input-color-placeholder:		@gray-light;
+@form-label-focus:				@brand-primary;
+@form-label-opacity:			0.5;
+@form-label-focus-opacity:		1;
+
+@input-border-success-focus:	@brand-success;
+@input-border-warning-focus:	@brand-warning;
+@input-border-danger-focus:		@brand-danger;
+
+@inverse-input-color:					@gray-lightest;
+@inverse-input-border:					fade(@white, 25);
+@inverse-input-border-focus:			hsv(hue(@brand-primary), 30%, 93%);
+@inverse-input-border-disabled:			fade(@white, 40%);
+@inverse-input-color-placeholder:		fade(@white, 50%);
+@inverse-form-label-focus:				hsv(hue(@brand-primary), 30%, 93%);
+
+@inverse-input-border-success-focus:	hsv(hue(@brand-success), 70%, 90%);
+@inverse-input-border-warning-focus:	hsv(hue(@brand-warning), 80%, 90%);
+@inverse-input-border-danger-focus:		hsv(hue(@brand-danger), 70%, 90%);
+
+
+// Form states and alerts
+// -------------------------
+@state-success-text:             #3c763d;
+@state-success-bg:               hsv(hue(@brand-success), 15%, 98%);//#dff0d8;
+
+@state-info-text:                #31708f;
+@state-info-bg:                  hsv(hue(@brand-info), 15%, 98%);//#d9edf7;
+
+@state-warning-text:             #8a6d3b;
+@state-warning-bg:               hsv(hue(@brand-warning), 15%, 98%);//#fcf8e3;
+
+@state-danger-text:              #a94442;
+@state-danger-bg:                hsv(hue(@brand-danger), 15%, 98%);
+
+
+// Lock screen
+// -------------------------
+@lock-header-height:			100px;
+@lock-body-height:				330px;
+@lock-body-width:				500px;
+@lock-body-spacer:				25px;
+
+
+// Login screen
+// -------------------------
+@login-header-height:			100px;
+@login-body-height:				275px;
+@login-body-width:				500px;
+@login-body-spacer:				25px;
+
+
+// Carousel
+// ------------------------
+@carousel-text-shadow:			0 1px 5px rgba(0,0,0,.4);
+@carousel-control-width:		5%;
+
+
+// Breadcrumbs
+// -------------------------
+@breadcrumb-bg:					transparent;
+@breadcrumb-color:				@text-color;
+@breadcrumb-active-color:		@text-color;
+
+
+// Nav tabs
+// ------------------------
+@nav-tabs-active-color:			@brand-primary;
+
+
+// Container sizes
+// ------------------------
+@container-sm:					@container-tablet - (@menubar-icon-width * 2) - (@menubar-gap * 3);
+@container-md:					@container-desktop - (@menubar-icon-width * 2) - (@menubar-gap * 3);
+@container-lg:					@container-large-desktop - (@menubar-icon-width * 2) - (@menubar-gap * 2);
+
+
+// Knob legend
+// ------------------------
+@knob-legend-diagonal-side:		125px;
+@knob-legend-diagonal:			sqrt((@knob-legend-diagonal-side * @knob-legend-diagonal-side) + (@knob-legend-diagonal-side * @knob-legend-diagonal-side));
+@knob-legend-diagonal-x:		(sqrt((@knob-legend-diagonal * @knob-legend-diagonal) + (@knob-legend-diagonal * @knob-legend-diagonal)) / 2 )- @knob-legend-diagonal;
+
+
+//
+// Timeline
+// --------------------------------------------------
+@timeline-arrow-size:		10px;
+@timeline-arrow-top:		15px;
+@timeline-circle-size:		20px;
+@timeline-circle-top:		15px;
+
+//
+// THEME VARIABLES
+// --------------------------------------------------
+
+@import "themes/theme-default.less";

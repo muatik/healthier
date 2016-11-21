@@ -1,0 +1,246 @@
+//
+// Charts
+// --------------------------------------------------
+
+// Knob styles
+// ---------------------------
+
+.knob {
+	position: relative;
+	display:inline-block;
+	border-color: lighten(#000, 88%);
+
+	canvas {
+		position: relative;
+		vertical-align: top;
+	}
+
+	&.knob-shadow:before {
+		position: absolute;
+		content: "";
+		height: 15%;
+		left: 30%;
+		right: 30%;
+		bottom: -8%;
+		box-shadow: 0 0 10px 10px rgba(0, 0, 0, .2),
+			0 0 40px 20px rgba(0, 0, 0, .2),
+			inset 0 0 50px 100px rgba(0, 0, 0, .3);
+		border-radius: 50%;
+		.scaleY(.07);
+		z-index: 0;
+	}
+}
+
+
+// Knob stack
+// ---------------------------
+
+.knob-stack {
+	position: relative;
+	display: block;
+
+	.knob-pane {
+		display: block;
+
+		&:after {
+			position: absolute;
+			top: 0;
+			width: 100%;
+			z-index: 10;
+			content: "\25CF";
+			display: block;
+			color: @white;
+			text-align: center;
+		}
+
+		.knob-legend {
+			position: absolute;
+
+			strong {
+				position: absolute;
+				top: -22px;
+				font-size: 16px;
+				display: block;
+				width: 100%;
+			}
+			span {
+				position: relative;
+				top: 2px;
+			}
+
+			&:after,
+				&:before {
+				position: absolute;
+				z-index: 10;
+				content: "";
+				display: block;
+				height: 1px;
+				background-color: @gray-light2;
+			}
+			&:after {
+				width: @knob-legend-diagonal;
+			}
+		}
+		&:nth-child(1) {
+			.knob-legend {
+				left: 5%; right: 50%;
+				top: 10px;
+
+				&:before {
+					top: 0; right: 0; left: 0;
+				}
+				&:after { width: 0; }
+			}
+		}
+		&:nth-child(2) {
+			&:after { top: 20px; }
+			.knob-legend {
+				left: 50%; right: 5%;
+				top: 30px;
+				text-align: right;
+
+				&:before {
+					top: 0; right: 0; left: 0;
+				}
+				&:after { width: 0; }
+			}
+		}
+		&:nth-child(3) {
+			&:after { top: 40px; }
+			.knob-legend {
+				left: 5%; right: 50%;
+				top: @knob-legend-diagonal-side + 50px;
+
+				&:before {
+					top: 0; right: @knob-legend-diagonal-side; left: 0;
+				}
+				&:after {
+					right: @knob-legend-diagonal-x  / 2;
+					top: -(@knob-legend-diagonal / 2) - (@knob-legend-diagonal-x  / 2);
+					.rotate(-45deg);
+				}
+			}
+		}
+		&:nth-child(4) {
+			&:after { top: 60px; }
+			.knob-legend {
+				left: 50%; right: 5%;
+				top: @knob-legend-diagonal-side + 70px;
+				text-align: right;
+
+				&:before {
+					top: 0; right: 0; left: @knob-legend-diagonal-side;
+				}
+				&:after {
+					left: @knob-legend-diagonal-x  / 2;
+					top: -(@knob-legend-diagonal / 2) - (@knob-legend-diagonal-x  / 2);
+					.rotate(45deg);
+				}
+			}
+		}
+	}
+
+	.knob {
+		position: absolute;
+		top: 0; left: 0; right: 0; bottom: 0;
+		margin: auto;
+	}
+}
+
+
+// Knob colors
+// ---------------------------
+
+.knob-variants(knob-default-dark,		@brand-default-dark);
+.knob-variants(knob-default,			@brand-default);
+.knob-variants(knob-default-light,		@brand-default-light);
+.knob-variants(knob-default-bright,		@brand-default-bright);
+
+.knob-variants(knob-primary-dark,		@brand-primary-dark);
+.knob-variants(knob-primary,			@brand-primary);
+.knob-variants(knob-primary-light,		@brand-primary-light);
+.knob-variants(knob-primary-bright,		@brand-primary-bright);
+
+.knob-variants(knob-accent-dark,		@brand-accent-dark);
+.knob-variants(knob-accent,				@brand-accent);
+.knob-variants(knob-accent-light,		@brand-accent-light);
+.knob-variants(knob-accent-bright,		@brand-accent-bright);
+
+.knob-variants(knob-success,			@brand-success);
+.knob-variants(knob-warning,			@brand-warning);
+.knob-variants(knob-danger,				@brand-danger);
+.knob-variants(knob-info,				@brand-info);
+
+
+// Flot styles
+// ---------------------------
+
+.flot {
+	min-height: 20px;
+
+	div.legend {
+		> div {
+			border: 1px solid rgba(255, 255, 255, 0.4);
+		}
+		> table{ 
+			color: inherit !important;
+			td { padding: 4px; }
+		}
+	}
+}
+
+.legendColorBox {
+	> div {
+		margin: 5px;
+		border: none!important;
+		
+		> div {
+			border-radius: 50%;
+		}
+	}
+}
+.flot-legend-horizontal {
+	table tr {
+		float: left;
+		padding-right: 8px;
+	}
+}
+
+
+// Piechart styles
+// ---------------------------
+
+.piechart {
+	position: relative;
+	display: inline-table;
+	min-width: 10px;
+	min-height: 10px;
+	text-align: center;
+
+	canvas {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	.display{
+		display: table-cell;
+		width: 100%;
+		vertical-align: middle;
+
+		.percent:after{
+			content: '%';
+			font-weight: @weight-light;
+			margin-left: 0.1em;
+			font-size: .6em;
+		}
+	}	
+}
+
+
+// Sparkline tooltip fix
+// ---------------------------
+
+.jqstooltip{
+	box-sizing: content-box;
+}

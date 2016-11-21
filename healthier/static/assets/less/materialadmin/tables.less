@@ -1,0 +1,130 @@
+//
+// Tables
+// --------------------------------------------------
+
+// Baseline styles
+// -------------------------
+
+.table {
+	// Cells
+	> thead,
+	> tbody,
+	> tfoot {
+		> tr {
+			> th,
+			> td {
+				vertical-align: baseline;
+			}
+		}
+	}
+	
+	thead {
+		opacity: 0.75;
+		
+		> tr > th {
+			color: inherit;
+			font-weight: @weight-medium;
+		}
+	}
+}
+
+
+// Bordered version
+// -------------------------
+// Add borders all around the table and between all the columns.
+
+.table-bordered {
+	border-color: darken(@table-border-color, 10%);
+	> thead,
+	> tbody,
+	> tfoot {
+		> tr {
+			> th,
+			> td {
+				border-color: darken(@table-border-color, 10%);
+			}
+		}
+	}
+}
+
+
+// Zebra-striping
+// -------------------------
+// Default zebra-stripe styles (alternating gray and transparent backgrounds)
+
+.table-striped {
+	> tbody > tr:nth-child(odd) {
+		> td,
+		> th {
+			background-color: @table-bg-accent;
+		}
+	}
+}
+
+
+// Banded-striping
+// -------------------------
+// Default Banded-stripe styles (alternating gray and transparent backgrounds)
+
+.table-banded {
+	> tbody {
+		> tr {
+			> td:nth-child(odd),
+				> th:nth-child(odd) {
+				background-color: @table-bg-accent;
+			}
+		}
+	}
+}
+
+
+// No border
+// -------------------------
+
+.table-no-border {
+	border-color: transparent;
+	> thead,
+	> tbody,
+	> tfoot {
+		> tr {
+			> th,
+			> td {
+				border-color: transparent;
+			}
+		}
+	}
+}
+
+
+// Condensed table
+// -------------------------
+
+.table-condensed > tbody > tr > td {
+	vertical-align: middle;
+}
+
+
+// Hover effect
+// -------------------------
+// Placed here since it has to come after the potential zebra striping
+
+.table-hover {
+	> tbody {
+		> tr:hover {
+			> td,
+			> th {
+				background-color: @table-bg-hover ;
+			}
+		}
+	}
+}
+
+
+// Table buttons
+// -------------------------
+
+.table > tbody td {
+	.btn-xs {
+		//margin: -5px 0 -2px 0;
+	}
+}

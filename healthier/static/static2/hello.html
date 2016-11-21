@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Healthcare</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet"
+          href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/entries.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/reports.css">
+    <link rel="stylesheet" href="css/timeline.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" />
+</head>
+
+<body>
+<nav class="navbar" id="main-navigation">
+    <a class="navbar-brand" href="/jobs">HealthCare Prototype 1.0</a>
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link active" href="/jobs" role="tab"
+               data-toggle="tab">Timeline</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#accounts" role="tab"
+               data-toggle="tab">Reports</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#crawlers" role="tab"
+               data-toggle="tab">Settings</a>
+        </li>
+        <li class="pull-right">
+              <span class="greeting">Hello Mustafa </span>
+              <spsn class="avatar"><img src="https://avatars3.githubusercontent.com/u/106846?v=3&s=466" /></span>
+
+        </li>
+    </ul>
+</nav>
+
+<div id="main-container" class="container tab-content">
+    <div class="timeline-toolbar">
+      <button class="btn btn-primary btn-consumption">Consumption</button>
+      <button class="btn btn-primary btn-activity">Activity</button>
+    </div>
+    <!-- consumption Modal -->
+    <div id="consumptionView">
+
+
+          <h4 class="modal-title">
+            <button class="btn btn-secondary btn-back"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+            What did you eat?</h4>
+
+
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#consumption-tab" role="tab">Add</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#recipe-form" role="tab">Recipes</a>
+          </li>
+        </ul>
+
+        <!-- Modal content-->
+
+          <div class="tab-content">
+          <div class="tab-pane active" id="consumption-tab" role="tabpanel">
+
+          <form id="consumption_form">
+              <input type="hidden" id="entry_ndbno" />
+              <div class="form-group row">
+                <label for="entry_what" class="col-xs-3 col-form-label">What: </label>
+                <div class="col-xs-9">
+                  <input class="form-control" type="text" id="entry_what">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="entry_when" class="col-xs-3 col-form-label">When: </label>
+                <div class="col-xs-9">
+                    <div class='input-group date' id='entry_when_picker'>
+                        <input type='text' class="form-control" id="entry_when" />
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="entry_quantity" class="col-xs-3 col-form-label">How much: </label>
+                <div class="col-xs-9 col-lg-6 ">
+
+                  <div class=" form-group col-lg-4 ">
+                      <input class="form-control" type="text" id="entry_quantity">
+                  </div>
+                  <div class=" form-group col-lg-4 ">
+                      <select class="form-control" id="entry_measure">
+                          <option value="kg" selected="1">Kg</option>
+                      </select>
+                  </div>
+
+                </div>
+              </div>
+          </form>
+
+
+
+          <div class="modal-footer">
+            <button class="btn btn-primary" id="consumption_submit">Save</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+
+          </div> <!-- end of tab-->
+
+          <div class="tab-pane active" id="recipe-form" role="tabpanel">
+          </div>
+
+          </div> <!-- tab-content -->
+
+    </div> <!-- end of consumption modal -->
+
+
+    <!-- Activity Modal -->
+    <div id="activityView" >
+      <div class="">
+
+        <!-- Modal content-->
+        <div class="">
+            <div class="modal-header">
+              <h4 class="modal-title">
+                <button class="btn btn-secondary btn-back"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+                What did you do?</h4>
+            </div>
+          <div class="">
+
+          <form id="consumption_form">
+                <input type="hidden" id="activity_id" />
+              <div class="form-group row">
+                <label for="entry_what" class="col-xs-3 col-form-label">What: </label>
+                <div class="col-xs-9">
+                  <input class="form-control" type="text" id="activity_what">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="entry_when" class="col-xs-3 col-form-label">When: </label>
+                <div class="col-xs-9">
+                    <div class='input-group date' id='activity_when_picker'>
+                        <input type='text' class="form-control" id="activity_when" />
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="entry_quantity" class="col-xs-3 col-form-label">How much: </label>
+                <div class="col-xs-9 col-lg-6 ">
+
+                  <div class=" form-group col-lg-4 ">
+                      <input class="form-control" type="text" id="activity_quantity">
+                  </div>
+                  <div class=" form-group col-lg-4 ">
+                      minutes
+                      <input type="hidden" id="activity_measure" value="minutes" />
+                  </div>
+
+                </div>
+              </div>
+          </form>
+
+          </div> <!-- end of modal-body -->
+
+          <div class="modal-footer">
+            <button class="btn btn-primary" id="activity_submit">Save</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+
+      </div>
+    </div> <!-- end of consumption modal -->
+
+
+    <div id="timeline">
+
+        <div id="energy_bar"></div>
+        <script id="template_energy_bar" type="x-tmpl-mustache">
+            <span class="intake"
+                data-toggle="tooltip" data-placement="top" title="{{intake.quantity}} kcal energy intake"
+                style="width:{{intake.percentage}}%">
+                intake %{{intake.percentage}}</span>
+            <span class="outtake"
+                data-toggle="tooltip" data-placement="top" title="{{outake.quantity}} kcal energy burn"
+                style="width:{{outtake.percentage}}%">
+                outtake %{{outtake.percentage}}</span>
+        </script>
+
+        <h3 class="header">Timeline</h3>
+        <ul id="entries"></ul>
+        <script id="template_entry" type="x-tmpl-mustache">
+        <li class="entry category_{{category}}" id="entry-id-{{id}}">
+            <div class="title">
+                <span class="field when col-lg-3" title="{{when}}">
+                    <i class="fa {{faIcon}}" aria-hidden="true"></i>
+                    {{humanized_date}}</span>
+                <span class="field what col-lg-6">{{what}}</span>
+                <span class="field howmuch col-lg-2">{{quantity}} {{measure}}</span>
+                <span class="field what col-lg-1">
+                    <i class="fa fa-eye toggle-detil" aria-hidden="true"></i>
+                </span>
+            </div>
+
+            <ul class="nutrients">
+            </ul>
+
+        </li>
+        </script>
+
+        <script id="template_entry_nutrients" type="x-tmpl-mustache">
+            {{#nutrients}}
+            <li>
+                <span class="nutrient quantity col-lg-2">{{formattedQuantity}} {{unit}}</span>
+                <span class="nutrient  col-lg-7">{{label}}</span>
+            </li>
+            {{/nutrients}}
+        </script>
+
+    </div> <!-- end of timeline -->
+
+
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.0/mustache.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+
+<script type="text/javascript" src="js/jquery.autocomplete.min.js"></script>
+
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.3/js/standalone/selectize.min.js"></script> -->
+<!-- <script type="text/javascript" src="js/selectize.js"></script> -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.3/css/selectize.bootstrap3.min.css" /> -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.min.css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/js/bootstrap-datetimepicker.min.js"></script>
+
+<script type="text/javascript" src="js/notify.min.js"></script>
+
+<script src="js/reports.js"></script>
+<script src="js/timeline.js"></script>
+<script src="js/activities.js"></script>
+<script src="js/consumption.js"></script>
+
+<script>
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+//
+// HBox
+// --------------------------------------------------
+
+.hbox-sm,
+.hbox-md,
+.hbox-lg {
+	padding: 0;
+	
+	.hbox-column {
+		display: block;
+		//min-width: 100%;
+		vertical-align: top;
+
+		&.v-top { vertical-align: top; }
+		&.v-middle { vertical-align: middle; }
+		&.v-bottom { vertical-align: bottom; }
+	}
+}
+
+.hbox-xs {
+	display: table;
+	table-layout: fixed;
+	padding: 0;
+}
+
+.hbox-xs .hbox-column {
+	display: table-cell;
+}
+
+@media (min-width: @screen-sm-min) {
+	.hbox-sm {
+		display: table;
+		table-layout: fixed;
+	}
+	
+	.hbox-sm .hbox-column {
+		float: none;
+		display: table-cell;
+	}
+}
+@media (min-width: @screen-md-min) {
+	.hbox-md {
+		float: none;
+		display: table;
+		table-layout: fixed;
+	}
+	
+	.hbox-md .hbox-column {
+		float: none;
+		display: table-cell;
+	}
+}
+@media (min-width: @screen-lg-min) {
+	.hbox-lg {
+		display: table;
+		table-layout: fixed;
+	}
+	
+	.hbox-lg .hbox-column {
+		float: none;
+		display: table-cell;
+	}
+}
+
+// Vertical alignment, works only when parent style has a display:table
+// -------------------------
+
+.v-top, .v-inline-top {
+	float: none!important;
+	display:table-cell;
+	vertical-align: top;
+}
+.v-middle, .v-inline-middle {
+	float: none!important;
+	display:table-cell;
+	vertical-align: middle;
+}
+.v-bottom, .v-inline-bottom {
+	float: none!important;
+	display:table-cell;
+	vertical-align: bottom;
+}
+
+.v-inline-top,
+.v-inline-middle,
+.v-inline-bottom {
+	display: inline-block;
+}
+
+
+.card-tiles .hbox-column {
+	padding: 20px;
+}

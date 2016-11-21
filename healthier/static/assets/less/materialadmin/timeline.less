@@ -1,0 +1,244 @@
+//
+// Timeline
+// --------------------------------------------------
+
+.timeline {
+	position: relative;
+	list-style: none;
+	padding: 20px 0 0 0;
+	left: 50%;
+
+	// Timeline bar
+	&:before {
+		top: 0;
+		bottom: 0;
+		position: absolute;
+		content: " ";
+		width: 4px;
+		background-color: @black;
+		opacity: 0.15;
+		left: 0;
+		margin-left: -2px;
+
+		.timeline-hairline& {
+			width: 2px;
+			margin-left: -1px;
+		}
+	}
+
+	li {
+		position: relative;
+		display: block;
+		width: 50%; left: -50%;
+		white-space: nowrap;
+		min-height: 30px;
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+}
+
+// Timeline entry
+
+.timeline-entry {
+	position:relative;
+	display: inline-block;
+	width: 100%;
+	padding: 0;
+	vertical-align: top;
+	margin: 0 -3px 0 0;
+	white-space: normal;
+
+	.card {
+		position: relative;
+		margin-right: 30px;
+
+		img, .fa, .md, .glyphicon {
+			margin-right: 10px;
+		}
+	}
+
+	// Inverted entry
+
+	.timeline-inverted & {
+		left: 100%;
+
+		.card {
+			margin-left: 30px;
+			margin-bottom: 15px;
+			margin-right: 0;
+		}
+	}
+}
+
+// Timeline arrows
+
+.timeline-entry {
+	.card:after {
+		content:"";
+		position: absolute;
+		top: @timeline-arrow-top + 1;
+		right: -(@timeline-arrow-size - 1);
+		width: 0px;
+		height: 0px;
+		border-style: solid;
+		border-width: (@timeline-arrow-size - 1) 0 (@timeline-arrow-size - 1) (@timeline-arrow-size - 1);
+		border-color: transparent transparent transparent #ffffff; 
+
+		.timeline-inverted & {
+			right: auto;
+			left: -(@timeline-arrow-size - 1);
+			.rotate(180deg);
+		}
+	}
+
+	// Arrow colors
+	.timeline-variant(style-default-dark,	@brand-default-dark);
+	.timeline-variant(style-default,		@brand-default);
+	.timeline-variant(style-default-light,	@brand-default-light);
+	.timeline-variant(style-default-bright,	@brand-default-bright);
+
+	.timeline-variant(style-primary,		@brand-primary);
+	.timeline-variant(style-primary-light,	@brand-primary-light);
+	.timeline-variant(style-primary-dark,	@brand-primary-dark);
+	.timeline-variant(style-primary-bright,	@brand-primary-bright);
+
+	.timeline-variant(style-accent,			@brand-accent);
+	.timeline-variant(style-accent-light,	@brand-accent-light);
+	.timeline-variant(style-accent-dark,	@brand-accent-dark);
+	.timeline-variant(style-accent-bright,	@brand-accent-bright);
+
+	.timeline-variant(style-success,		@brand-success);
+	.timeline-variant(style-warning,		@brand-warning);
+	.timeline-variant(style-danger,			@brand-danger);
+	.timeline-variant(style-info,			@brand-info);
+}
+
+
+// Timeline circle icons
+
+.timeline-circ {
+	position: absolute;
+	top: @timeline-circle-top;
+	left: 100%;
+	width: @timeline-circle-size;
+	height: @timeline-circle-size;
+	line-height: @timeline-circle-size;
+	margin-left: -(@timeline-circle-size / 2);
+	text-align: center;
+	background: @gray-light;
+	color: @white;
+	border-width: 3px;
+	border-style: solid;
+	border-color: #fff !important;
+	border-radius: 50%;
+	.box-shadow(@z-height-1);
+
+	.glyphicon, .fa, .md {
+		top: 0;
+		margin: 0;
+	}
+
+	&.circ-lg {
+		top: 10px;
+		width: 30px;
+		height: 30px;
+		margin-left: -(30px / 2);
+
+		.glyphicon, .fa, .md {
+			font-size: 14px;
+			line-height: 24px;
+		}
+	}
+	&.circ-xl {
+		top: 6px;
+		width: 38px;
+		height: 38px;
+		margin-left: -(38px / 2);
+
+		.glyphicon, .fa, .md {
+			font-size: 18px;
+			line-height: 32px;
+		}
+	}
+}
+
+
+// No shadow
+
+.timeline.no-shadow {
+	.card,
+	.timeline-circ {
+		.box-shadow(none);
+	}
+}
+.timeline.no-card-shadow {
+	.card {
+		.box-shadow(none);
+	}
+}
+
+
+// Up to Extra Small Devices
+// -------------------------
+
+@media (max-width: @screen-xs-max) {
+	.collapse-timeline(collapse-xs);
+}
+
+// Up to Small Devices
+// -------------------------
+
+@media (max-width: @screen-sm-max) {
+	.collapse-timeline(collapse-sm);
+}
+
+// Up to Medium Devices
+// -------------------------
+
+@media (max-width: @screen-md-max) {
+	.collapse-timeline(collapse-md);
+}
+
+// Up to Large Devices
+// -------------------------
+
+.collapse-timeline(collapse-lg);
+
+// Repsonive mixin
+// -------------------------
+
+.collapse-timeline (@name) {
+	.timeline.@{name} {
+		left: 0;
+
+		&:before {
+			left: (@timeline-circle-size / 2);
+		}
+
+		li {
+			left: 0;
+			width: 100%;
+		}
+
+
+		.timeline-entry {
+			left: 0 !important;
+
+			.card {
+				margin-left: 30px + (@timeline-circle-size / 2) !important;
+				margin-right: 0;
+
+				&:after {
+					right: auto;
+					left: -(@timeline-arrow-size - 1);
+					.rotate(180deg);
+				}
+			}
+		}
+
+		.timeline-circ {
+			left: (@timeline-circle-size / 2);
+		}
+	}
+}

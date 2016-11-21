@@ -1,0 +1,73 @@
+// Button mixins
+// --------------------------------------------------
+
+
+// Button variant
+// -------------------------
+// Overiddes bootstraps '.button-variant'.
+
+.button-variant(@color; @background; @border;) {
+	color: contrast(@background, @text-color, @white, @color-threshold);
+	background-color: @background;
+	border-color: @border;
+
+	&:hover,
+		&:focus,
+		.open .dropdown-toggle& {
+		color: contrast(darken(@background, 7%), @text-color, @white, @color-threshold);
+		background-color: darken(@background, 7%);
+        border-color: darken(@background, 7%);
+	}
+
+	&:active, &.active {
+		color: contrast(darken(@background, 10%), @text-color, @white, @color-threshold);
+		background-color: darken(@background, 10%);
+        border-color: darken(@background, 10%);
+	}
+
+	&.btn-flat,
+	&.btn-icon-toggle {
+		color: @color;//@background;
+
+		.open .dropdown-toggle& {
+			color: @background;
+		}
+	}
+}
+
+
+// Button sizes
+// -------------------------
+// Overiddes bootstraps '.button-size'.
+
+.button-size(@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
+	padding: @padding-vertical @padding-horizontal;
+	font-size: @font-size;
+	line-height: @line-height;
+	border-radius: @border-radius;
+
+	&.btn-flat {
+		padding: @padding-vertical (@padding-horizontal/2);
+	}
+}
+
+
+// Checkboxes & Radiobuttons variants
+// -------------------------
+
+.checkbox-radio-variant(@name; @color) {
+	.checkbox-styled:not(ie8),
+		.radio-styled:not(ie8) {
+
+		&.checkbox-@{name},
+		&.radio-@{name}{
+			input:checked ~ span:before {
+				border-color: @color;
+			}
+			input ~ span:after {
+				background-color: @color;
+			}
+		}
+
+	}
+}

@@ -1,0 +1,12 @@
+// Timeline mixins
+// --------------------------------------------------
+
+
+// Timeline variant
+// -------------------------
+
+.timeline-variant(@name; @color) {
+	.card.@{name}:after {
+		border-color: transparent transparent transparent @color;
+	}
+}

@@ -1,0 +1,253 @@
+//
+// Sections
+// --------------------------------------------------
+
+
+// Base
+// -------------------------
+
+section {
+	position: relative;
+	padding: @section-gutter-width;
+
+	&:first-child {
+		padding-top: 0;
+	}
+	
+	.row & {
+		margin-bottom: 0;
+	}
+
+	&.full-bleed {
+		padding: 0 !important;
+	}
+}
+
+
+// Section body
+// -------------------------
+
+.section-body {
+
+	&:first-child {
+		margin-top: @section-gutter-width;
+		
+		.full-bleed & {
+			margin-top: 0;
+		}
+	}
+	
+	&.full-bleed {
+		margin: 0 -@section-gutter-width;
+	}
+}
+
+
+// Page header
+// -------------------------
+
+.section-header {
+	height: @menubar-width-collapsed;
+	padding: 14px 0;
+
+	h1, h2, h3, h4, h5, h6 {
+		.textshadowguard(@body-color);
+		line-height: @line-height-base;
+		margin: 0;
+	}
+	h1 {	margin-top: -9px; margin-bottom: -6px; }
+	h2 {	margin-top: -3px; margin-bottom: -6px; }
+	h3 {	margin-top: 0px; }
+	h4 {	margin-top: 5px; }
+	h5 {	margin-top: 9px; }
+	h6 {	margin-top: 8px; }
+}
+
+
+// Section action
+// -------------------------
+
+.section-action {
+	position: relative;
+	height: @headerbar-height;
+	padding-bottom: @card-gutter-width-sm / 2;
+	padding-top: @card-gutter-width-sm / 2;
+
+	.clearfix();
+}
+.full-content {
+	.section-action {
+		position: fixed;
+		z-index: @zindex-section-action;
+		bottom: 0;
+		left: @menubar-width-collapsed; 
+		right: 0;
+		.box-shadow(@z-height-1-inverse);
+	}
+}
+
+.section-action-row {
+	padding: 6px @card-gutter-width-sm;
+}
+.section-floating-action-row{
+	position: absolute;
+	right: @grid-gutter-width;
+	top: 0;
+
+	.btn {
+		top: -20px;
+	}
+	.btn-lg {
+		top: -28px;
+	}
+	.btn-sm {
+		top: -18px;
+	}
+	.btn-xs {	
+		top: -15px;
+	}
+}
+
+
+// Login
+// -------------------------
+
+section.section-account {
+	.img-backdrop {
+		background-position: center;
+		height: 0;
+	}
+
+	.spacer {
+		position: relative;
+		display: block;
+		position: relative;
+	}
+
+	.img-circle {
+		float: left;
+		right: 0;
+		border: 5px solid @white;
+		margin-right: 20px;
+		width: 120px;
+		height: 120px;
+	}
+}
+
+@media (min-height: 500px) and (max-height: 700px) {
+	section.section-account {
+		.img-backdrop,
+		.spacer {
+			height: 150px;
+		}
+		.img-circle {
+			position: absolute;
+			top: -80px;
+			margin-right: 0;
+		}
+		.img-backdrop {
+			.animation(backdrop-animation 0.8s ease-out);
+		}
+		.card-body {
+			.animation(box-animation 1s ease-out);
+		}
+	}
+}
+@media (min-height: 700px) {
+	section.section-account {
+		.img-backdrop,
+		.spacer {
+			height: 300px;
+		}
+		.img-circle {
+			position: absolute;
+			top: -80px;
+			margin-right: 0;
+		}
+		.img-backdrop {
+			.animation(backdrop-animation 0.8s ease-out);
+		}
+		.card-body {
+			.animation(box-animation 1s ease-out);
+		}
+	}
+}
+
+// Animations
+
+@-webkit-keyframes backdrop-animation {
+	from  { margin-top: -10px; }
+	to    { margin-top: 0; }
+}
+@keyframes backdrop-animation {
+	from  { margin-top: -10px; }
+	to    { margin-top: 0; }
+}
+@-webkit-keyframes box-animation {
+	from  { opacity: 0; margin-top: -20px;}
+	to    { opacity: 1; margin-top: 0;}
+}
+@keyframes box-animation {
+	from  { opacity: 0; margin-top: -20px;}
+	to    { opacity: 1; margin-top: 0;}
+}
+
+
+
+// Responsive classes
+// --------------------------------------------------
+
+
+// Large Devices
+// -------------------------
+
+@media (min-width: @screen-lg-min) { 
+	.menubar-pin.full-content {
+		.section-action {
+			left: @menubar-width;
+		}
+	}
+}
+
+
+// From Medium Devices and up
+// -------------------------
+
+@media (min-width: @screen-sm-min) { 
+	.full-content  {
+		section {
+			position: absolute;
+			top: @headerbar-height;
+			bottom: 0;
+			left: 0; 
+			right: 0;
+			overflow: auto;
+
+			&.has-actions {
+				bottom: @headerbar-height;
+			}
+		}
+	}
+}
+
+
+// Small Devices
+// -------------------------
+
+@media (max-width: @screen-xs-max) {
+	section {
+		padding: @section-gutter-width-sm;
+
+	}
+
+	.full-content  {
+		section {
+			&.has-actions {
+				padding-bottom: @headerbar-height;
+			}
+		}
+		.section-action {
+			left: 0;
+		}
+	}
+}

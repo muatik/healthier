@@ -1,0 +1,443 @@
+//
+// Header
+// --------------------------------------------------
+
+// Common
+// -------------------------
+
+#header {
+	position: absolute;
+	left: 0; right: 0;
+	height: @headerbar-height;
+	z-index: @zindex-header;
+	background: @headerbar-bg;
+	color: @headerbar-color;
+	.box-shadow(@z-height-1);
+
+	.header-fixed & {
+		position: fixed;
+	}
+
+	.no-sidebar & {
+		right: @menubar-gap;
+	}
+}
+
+
+// Headerbar
+// --------------------------------------------------
+
+.headerbar {
+	position: relative;
+	min-height: @headerbar-height;
+	.clearfix();
+
+	.navbar-devider {
+		display: block;
+		width: 20px;
+		height: 5px;
+	}
+
+}
+
+// Header nav left
+// --------------------------------------------------
+
+.headerbar-left {
+	position: absolute;
+
+	a {
+		float: left;
+	}
+
+	.header-nav {
+		margin-left: @header-gutter-width;
+	}
+}
+
+
+// Header nav right
+// --------------------------------------------------
+
+.headerbar-right {
+	float: right;
+
+	.header-nav {
+		display: inline-block;
+		float: left;
+	}
+
+	.dropdown-menu {
+		left: auto;
+		right: 0;
+	}
+
+	.header-nav-toggle {
+		margin-left: 0;
+	}
+}
+
+
+// Header nav
+// --------------------------------------------------
+
+.header-nav {
+	margin: 0 (@header-gutter-width / 2);
+	padding-left: 0; // Override default ul/ol
+	list-style: none;
+	&:extend(.clearfix all);
+
+	> li {
+		position: relative;
+		display: block;
+		padding: 14px 0 14px @menubar-gap;
+		float: left;
+
+		&:first-child {
+			padding-left: 0;
+		}
+
+		> a {
+			position: relative;
+			display: block;
+
+			&:hover, &:focus {
+				text-decoration: none;
+				background-color: @headerbar-link-hover;
+			}
+		}
+
+		// Disabled state sets text to gray and nukes hover/tab effects
+		&.disabled > a {
+			color: @nav-disabled-link-color;
+
+			&:hover,
+				&:focus {
+				color: @nav-disabled-link-hover-color;
+				text-decoration: none;
+				background-color: transparent;
+				cursor: not-allowed;
+			}
+		}
+	}
+
+	// Open dropdowns
+	.open > a {
+		&, &:hover, &:focus {
+			background-color: @nav-link-hover-bg;
+			border-color: @link-color;
+		}
+	}
+
+	// Prevent IE8 from misplacing imgs
+	// See https://github.com/h5bp/html5-boilerplate/issues/984#issuecomment-3985989
+	> li > a > img {
+		max-width: none;
+	}
+
+	// General style for the ico buttons
+	.btn-icon-toggle {
+		&:hover {
+			background-color: @headerbar-link-hover;
+		}
+	}
+
+	.navbar-search {
+		float: right;
+	}
+}
+
+
+// Header brand
+// --------------------------------------------------
+
+.header-nav {
+	.header-nav-brand {
+		display: inline-table;
+		padding: 0;
+		height: @headerbar-height;
+
+		.brand-holder {
+			display: table-cell;
+			vertical-align: middle;
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		img {
+			max-height: (@headerbar-height - (@gutter-size * 4))
+		}
+	}
+}
+
+
+// Header nav profile
+// --------------------------------------------------
+
+.header-nav-profile {
+	.dropdown {
+		padding: 0;
+
+		> a {
+			position: relative;
+			min-height: 64px;
+			min-width: 210px;
+			padding: @menubar-gap;
+			border-left: 1px solid transparent;
+			border-right: 1px solid transparent;
+
+			&:after { 
+				content: "\f107";
+				position: absolute;
+				*margin-right: .3em;
+				right: 10px;
+				top: 22px;
+				font-family: FontAwesome;
+				font-weight: normal;
+				font-style: normal;
+				text-decoration: inherit;
+				-webkit-font-smoothing: antialiased;
+			}
+
+			.ink {
+				background-color: fade(@gray, 15);
+			}
+		}
+		img {
+			width: @menubar-icon-width;
+			height: @menubar-icon-width;
+			border-radius: @menubar-icon-width;
+		}
+		.profile-info {
+			display: inline-block;
+			vertical-align: middle;
+			padding: 0 20px 0 10px;
+			line-height: 15px;
+
+			small {
+				display: block;
+				opacity: 0.5;
+			}
+		}
+
+		// Menu
+		.dropdown-menu {
+			min-width: 100%;
+		}
+
+		// When open
+		&.open {
+			color: @text-color;
+
+			> a {
+				margin-top: (@menubar-gap / 2);
+				padding: (@menubar-gap / 2) @menubar-gap @menubar-gap @menubar-gap;
+				min-height: 58px;
+				background-color: @white;
+				border-color: fade(@white, 90);
+				.box-shadow(@z-height-1);
+
+				&:after {
+					top: (22px - (@menubar-gap / 2));
+					.rotate(180deg);
+				}
+			}
+			.dropdown-menu {
+				margin-top: -1px;
+				border-top: none;
+			}
+		}
+	}
+}
+
+
+// Header nav options
+// ---------------------------
+
+.header-nav-options {
+	.dropdown {
+		// Icon
+		> a {
+			.badge {
+				position: absolute;
+				font-size: 10px;
+				top: -1px;
+				right: 4px;
+			}
+		}
+
+		// Menu
+		.dropdown-menu {
+			top: 14px;
+		}
+	}
+}
+
+
+// Responsive classes
+// --------------------------------------------------
+
+
+// Large Devices only
+// -------------------------
+
+@media (min-width: @screen-lg-min) { 
+	.menubar-first {
+		&.menubar-pin {
+			.header-nav {
+				// Hide the header brand when the menu is both pinnen and first
+				.header-nav-brand {
+					display: none;
+				}
+			}
+			// Adjust header left alignment
+			#header {
+				left: @menubar-width;
+			}
+		}
+	}
+}
+
+
+// Medium and Large Devices
+// -------------------------
+
+@media (min-width: (@screen-sm-min)) { 
+	.menubar-first {
+		// Hide the menu tggler when the menu is first
+		#header .menubar-toggle {
+			display: none;
+		}
+
+		// Adjust header left alignment
+		#header {
+			left: @menubar-width-collapsed;
+		}
+
+		&.menubar-pin {
+			.header-nav {
+				// Hide the header brand when the menu is both pinnen and first
+				.header-nav-brand {
+					//display: none;
+				}
+
+			}
+		}
+	}
+}
+
+
+// Extra Small Devices Only
+// -------------------------
+
+@media (max-width: @screen-xs-max) {
+	// Header container
+	// ---------------------------
+
+	#header {
+		position: relative;
+
+		.header-fixed & {
+			position: relative;
+
+			&:before {
+				content: '';
+				z-index: 0;
+				position: fixed;
+				top: 0;
+				display: block;
+				width: 100%;
+				height: @headerbar-height;
+				.box-shadow(@z-height-1);
+			}
+		}
+	}
+
+
+	// Left header bar
+	// ---------------------------
+
+	.headerbar-left {
+		z-index: @zindex-header-mobile;
+		left: 0; right: 0;
+		height: @headerbar-height;
+		background: @headerbar-bg;
+		border-bottom: 1px solid @gray-lighter;
+
+	}
+	.header-fixed {
+		.headerbar-left {
+			position: fixed;
+		}
+	}
+
+
+	// Right header bar
+	// ---------------------------
+
+	.headerbar-right {
+		position: absolute;
+		left: 0; 
+		right: 0;
+		min-height: @headerbar-height;
+		top: @headerbar-height;
+		float: none !important;
+		background: @headerbar-bg;
+		.box-shadow(@z-height-1);
+
+		.header-nav-options {
+			margin-right: @header-gutter-width-sm;
+			float: right;
+		}
+		.header-nav-profile {
+			position: absolute;
+			float: left;
+		}
+
+		//.sidebar-toggle
+		.header-nav-toggle {
+			position: absolute;
+			z-index: @zindex-header-offcanvas;
+			top: -@headerbar-height;
+			right: 0;
+
+			.header-fixed & {
+				position: fixed;
+				top: 0;
+			}
+		}
+	}
+	
+	// Left header bar
+	// ---------------------------
+
+	.headerbar-left {
+		.header-nav {
+			margin-left: @header-gutter-width-sm;
+		}
+	}
+
+	.header-nav-profile {
+		.dropdown {
+			img {
+				width: 0px;
+				opacity: 0;
+			}
+			.profile-info {
+				padding-left: 0;
+				padding-right: 30px;
+			}
+		}
+	}
+
+	.navbar-search {
+		position: relative;
+		z-index: 1;
+	}
+	.navbar-search.expanded .form-group {
+		max-width: 100%;
+		width: @screen-xs;
+	}
+}

@@ -1,0 +1,572 @@
+//
+// Buttons
+// --------------------------------------------------
+
+// Button variant
+// --------------------------------------------------
+
+.btn-default-bright {		.button-variant(@gray-lighter; @brand-default-bright; @gray-lighter); }
+.btn-default-light {		.button-variant(@gray-light2; @brand-default-light; @brand-default-light); }
+.btn-default-dark {			.button-variant(@brand-default-dark; @brand-default-dark; @brand-default-dark); }
+
+.btn-primary-bright {		.button-variant(@brand-primary-bright; @brand-primary-bright; @brand-primary-bright); }
+.btn-primary-light {		.button-variant(@brand-primary-light; @brand-primary-light; @brand-primary-light); }
+.btn-primary-dark {			.button-variant(@brand-primary-dark; @brand-primary-dark; @brand-primary-dark); }
+
+.btn-accent-bright {		.button-variant(@brand-accent-bright; @brand-accent-bright; @brand-accent-bright); }
+.btn-accent-light {			.button-variant(@brand-accent-light; @brand-accent-light; @brand-accent-light); }
+.btn-accent {				.button-variant(@brand-accent; @brand-accent; @brand-accent); }
+.btn-accent-dark {			.button-variant(@brand-accent-dark; @brand-accent-dark; @brand-accent-dark); }
+
+
+// Base styles
+// --------------------------------------------------
+
+// Core styles
+.btn {
+	font-size: @button-size;
+	text-transform: uppercase;
+
+	&:active, &.active {
+		.box-shadow(@z-height-0);
+		outline: 0;
+	}
+
+	&, &:active, &.active {
+		&:focus {
+			outline: 0;
+		}
+	}
+
+	.pull-right,
+	.pull-left {
+		line-height: 1.5em;
+	}
+
+	&.disabled,
+	&[disabled],
+	fieldset[disabled] & {
+		border-color: transparent;
+		background: fade(black, 15);
+		color: @text-color;
+		.opacity(.4);
+	}
+}
+
+
+// Ink reaction
+// --------------------------------------------------
+
+.ink-reaction {
+	position: relative;
+	overflow:hidden;
+
+	.ink {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+		margin-left: -100px;
+		margin-top: -100px;
+        background-color: fade(@white, 50);
+        border-radius: 50%;
+        z-index: 1;
+		pointer-events: none;
+		opacity: 0; // Hide this effect in IE9
+
+		-webkit-animation: ripple-animation 1.5s;
+		animation: ripple-animation 1.5s;
+
+		&.inverse {
+			background-color: fade(@black, 50);
+		}
+    }
+
+
+	&.btn-icon-toggle,
+	&.btn-floating-action {
+		overflow:visible;
+		.ink {
+			width: 100px;
+			height: 100px;
+			margin-left: -50px;
+			margin-top: -50px;
+		}
+	}
+	&.btn-icon-toggle,
+	&.btn-flat {
+		.ink {
+			background-color: fade(@white, 25);
+
+			&.inverse {
+				background-color: fade(@black, 25);
+			}
+		}
+	}
+}
+
+@-webkit-keyframes ripple-animation {
+	from {
+		.scale(0);
+		opacity: 1;
+    }
+    to {
+		.scale(1,1);
+		opacity: 0;
+    }
+}
+@keyframes ripple-animation {
+	from {
+		.scale(0);
+		opacity: 1;
+    }
+    to {
+		.scale(1,1);
+		opacity: 0;
+    }
+}
+
+
+// Button raised
+// --------------------------------------------------
+
+.btn-raised {
+	.box-shadow(@z-height-1);
+	.transition-vendor(box-shadow, .15s ease-out);
+
+	&:hover {
+		.box-shadow(@z-height-2);
+	}
+
+
+	&:active, &.active {
+		.box-shadow(@z-height-2);
+	}
+	
+	&.disabled,
+	&[disabled],
+	.pager .disabled & {
+		.box-shadow(@z-height-0);
+	}
+}
+
+
+// Flat button & icon toggle button
+// --------------------------------------------------
+
+.btn-flat,
+.btn-icon-toggle {
+	background-color: transparent;
+	font-weight: @weight-medium;
+	border-color: transparent;
+
+	&:hover, &:focus, .open .dropdown-toggle& {
+		background-color: fade(@black, 7%);
+		border-color: transparent;
+		.box-shadow(@z-height-0);
+		color: inherit;
+	}
+
+	&:active, &.active {
+		background-color: fade(@black, 25%);
+		border-color: transparent;
+		color: @white;
+	}
+
+	&.disabled,
+	&[disabled],
+	fieldset[disabled] & {
+		background: transparent;
+		.opacity(.3);
+	}
+}
+
+.btn-icon-toggle {
+	border-radius: 999px !important;
+}
+
+
+// Rounded button
+// --------------------------------------------------
+
+.btn-rounded {
+	border-radius: 999px;
+	.label {
+		top: 0;
+		right: 3px;
+	}
+}
+
+// Plane buttons
+// --------------------------------------------------
+
+.btn-plane {
+	display: table;
+	width: 100%;
+	height: 100%;
+	padding-left: 0;
+	padding-right: 0;
+
+	> div {
+		display: table-cell;
+		vertical-align: middle;
+	}
+}
+
+// Labeled buttons
+// --------------------------------------------------
+
+.btn-labeled {
+	position: relative;
+
+	.label {
+		position: absolute;
+		top: -6px; right: -6px;
+
+		.btn-rounded& {
+			top: 7px;
+			right: auto;
+			left: 99%;
+			margin: auto;
+		}
+	}
+}
+
+
+// Equal button
+// --------------------------------------------------
+
+.btn-icon-toggle {
+	padding: 0;
+	width: 36px;
+	
+	.fa, .md, .glyphicon {
+		margin: 0;
+		line-height: 34px;
+	}
+
+	&.btn-lg {	
+		width: 46px; 
+		.fa, .md, .glyphicon {
+			line-height: 44px;
+		}
+	}
+	&.btn-sm {	
+		width: 32px; 
+		.fa, .md, .glyphicon {
+			line-height: 30px;
+		}
+	}
+	&.btn-xs {	
+		width: 24px; 
+		.fa, .md, .glyphicon {
+			line-height: 22px;
+		}
+	}
+}
+
+
+// Button group sizing
+.btn-group-xs > .btn.btn-icon-toggle { 
+	width: 22px; 
+	padding: 0;
+}
+
+.btn-group-sm > .btn.btn-icon-toggle { 
+	width: 30px; 
+	padding: 0;
+}
+
+.btn-group-lg > .btn.btn-icon-toggle { 
+	width: 44px; 
+	padding: 0;
+}
+
+
+// Checkboxes & Radiobuttons
+// --------------------------------------------------
+
+.checkbox-styled:not(ie8),
+.radio-styled:not(ie8) {
+	position: relative;
+	margin-top: 0;
+
+	input ~ span {
+		position: relative;
+		padding-left: 30px;
+		display: inline-block;
+		cursor: pointer;
+		vertical-align: text-top;
+	}
+
+	input ~ span:before {
+		content: "";
+		position: absolute;
+		left: 0;
+		z-index: 1;
+		width: 20px;
+		height: 20px;
+		border: 2px solid @gray;
+	}
+
+	// In order to support the browser's form validation feedback, powered by the
+	// `required` attribute, we have to "hide" the inputs via `opacity`. We cannot
+	// use `display: none;` or `visibility: hidden;` as that also hides the popover.
+	// This way, we ensure a DOM element is visible to position the popover from.
+	input[type="radio"],
+	input[type="checkbox"] {
+		position: absolute;
+		z-index: -1;
+		.opacity(0);
+	}
+
+	// Re-align label
+	label {
+		padding-left: 0;
+	}
+
+	// Re-align inline elements
+	&.radio-inline, 
+	&.checkbox-inline {
+		padding-left: 0;
+	}
+
+	// Disabled style
+	&.disabled,
+	input[disabled],
+	input[readonly] {
+		~ span:before {
+			border-color: @gray-lighter;
+		}
+
+		&:checked ~ span:before {
+			border-color: @gray-lighter;
+		}
+		&:checked ~ span:after {
+			background-color: @gray-lighter;
+		}
+	}
+}
+
+// Checkbox specific styles
+.checkbox-styled:not(ie8) {
+	// Checkbox border
+	input ~ span:before {
+		.transition(all 0.2s ease-in-out);
+	}
+
+	// Checkbox selected
+	input:checked ~ span:before {
+		.rotate(-45deg);
+		height: 10px;
+		border-color: @brand-primary;
+		border-top-style: none;
+		border-right-style: none;
+	}
+}
+
+// Checkbox specific styles
+.radio-styled:not(ie8) {
+	// Radio border
+	input ~ span:before {
+		top: 0;
+		border-radius: 50%;
+		.transition(all 0.15s ease-in-out);
+	}
+
+	// Radio border selected
+	input:checked ~ span:before {
+		border-color: @brand-primary;
+	}
+
+	// Radio inner circ
+	input ~ span:after {
+		content: "";
+		position: absolute;
+		left: 10px;
+		top: 10px;
+		z-index: 1;
+		width: 0;
+		height: 0;
+		background-color: @brand-primary;
+		border-radius: 50%;
+		.transition(all 0.15s ease-in-out);
+	}
+
+	// Radio inner circ selected
+	input:checked ~ span:after {
+		left: 5px;
+		top: 5px;
+		width: 10px;
+		height: 10px;
+	}
+}
+
+// Checkboxes & Radiobuttons inversed form
+// --------------------------------------------------
+
+.form-inverse {
+	.checkbox-styled:not(ie8), .radio-styled:not(ie8) {
+		input ~ span:before {
+			border-color: fade(@white, 80);
+		}
+
+		input:checked ~ span:before {
+			border-color: @brand-primary;
+		}
+
+		// Disabled style
+		&.disabled,
+		input[disabled],
+		input[readonly] {
+			~ span:before, &:checked ~ span:before {
+				border-color: fade(@white, 20);
+			}
+			&:checked ~ span:after {
+				background-color: fade(@white, 20);
+			}
+		}
+	}
+}
+
+
+// Checkboxes & Radiobuttons variants
+// --------------------------------------------------
+
+.checkbox-radio-variant(default-bright,		@brand-default-bright);
+.checkbox-radio-variant(default-light,		@brand-default-light);
+.checkbox-radio-variant(default,			@brand-default);
+.checkbox-radio-variant(default-dark,		@brand-default-dark);
+
+.checkbox-radio-variant(primary-bright,		@brand-primary-bright);
+.checkbox-radio-variant(primary-light,		@brand-primary-light);
+.checkbox-radio-variant(primary,			@brand-primary);
+.checkbox-radio-variant(primary-dark,		@brand-primary-dark);
+
+.checkbox-radio-variant(accent-bright,		@brand-accent-bright);
+.checkbox-radio-variant(accent-light,		@brand-accent-light);
+.checkbox-radio-variant(accent,				@brand-accent);
+.checkbox-radio-variant(accent-dark,		@brand-accent-dark);
+
+.checkbox-radio-variant(success,	@brand-success);
+.checkbox-radio-variant(warning,	@brand-warning);
+.checkbox-radio-variant(danger,		@brand-danger);
+.checkbox-radio-variant(info,		@brand-info);
+
+
+// Button floating action
+// --------------------------------------------------
+
+.btn-floating-action {
+	width: 44px;
+	height: 44px;
+	border-radius: 999px !important;
+	padding: 0;
+	font-size: 17px;
+
+	.fa, .md, .glyphicon {
+		top: 0;
+		margin: 0;
+		line-height: (44px - 2);
+	}
+
+	&.btn-lg {
+		width: 56px;
+		height: 56px;
+		.fa, .md, .glyphicon {
+			line-height: (56px - 2);
+			font-size: 1.3em;
+		}
+		.md {
+			font-size: 1.5em;
+		}
+	}
+	&.btn-sm {
+		width: 36px;
+		height: 36px;
+		.fa, .md, .glyphicon {
+			line-height: (36px - 2);
+		}
+	}
+	&.btn-xs {	
+		width: 28px;
+		height: 28px;
+		.fa, .md, .glyphicon {
+			line-height: (28px - 2);
+		}
+	}
+	.box-shadow(@z-height-1);
+	.transition-vendor(box-shadow, .15s ease-out);
+
+	&:hover {
+		.box-shadow(@z-height-3);
+	}
+
+	&:active, &.active {
+		.box-shadow(@z-height-3);
+	}
+}
+
+// Button group sizing
+.btn-group-xs > .btn.btn-floating-action { 
+	width: 22px; 
+	padding: 0;
+}
+.btn-group-sm > .btn.btn-floating-action,
+.input-group-sm .btn.btn-floating-action { 
+	width: 30px; 
+	padding: 0;
+}
+.btn-group-lg > .btn.btn-floating-action,
+.input-group-lg .btn.btn-floating-action { 
+	width: 44px; 
+	padding: 0;
+}
+
+
+// Vertical button groups
+// ----------------------
+
+.btn-group-vertical {
+	&.full-width {
+		width: 100%;
+		.btn,
+		.btn-group {
+			width: 100%;
+		}
+	}
+}
+
+
+// Links
+// --------------------------------------------------
+
+.link-default {
+	text-decoration: none;
+	font-weight: @weight-medium;
+	color: inherit;
+
+	&:hover {
+		opacity: 1;
+	}
+
+	.fa,
+	.md,
+	.glyphicon {
+		margin-right: (@gutter-size * 3);
+	}
+}
+
+
+
+// Redefine button font-sizes
+// --------------------------------------------------
+
+.btn-lg {
+	font-size: @font-size-large;
+}
+.btn-sm {
+	font-size: @font-size-small;
+}
+.btn-xs {
+	font-size: @font-size-small;
+}

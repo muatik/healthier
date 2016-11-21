@@ -1,0 +1,423 @@
+//
+// Forms
+// --------------------------------------------------
+
+
+// Legend
+// -------------------------
+
+legend {
+	display: table;
+	width: 100%;
+	margin: 13px 0 20px 0;
+	font-size: 12px;
+	font-weight: @weight-bold;
+	text-transform: uppercase;
+	border: none;
+
+	span {
+		display: table-cell;
+		padding: 0 10px 0 0;
+		position: relative;
+		bottom: -7px;
+		white-space: nowrap;
+		opacity: 0.8;
+	}
+	&:before, &:after {
+		content: '';
+
+		display: table-cell;
+		border-bottom: 1px solid fade(@black, 25);
+	}
+	&:before {
+		width: 0%;
+	}
+	&:after {
+		width: 100%;
+	}
+
+	&.text-center {
+		span {
+			padding: 0 10px;
+		}
+		&:before, &:after {
+			width: 50%;
+		}
+	}
+	&.text-right {
+		span {
+			padding: 0 0 0 10px;
+		}
+		&:before {
+			width: 100%;
+		}
+		&:after {
+			width: 0%;
+		}
+	}
+}
+
+
+// Label
+// -------------------------
+
+label {
+	font-weight: @weight-normal;
+}
+
+.form-group {
+	> label,
+	.control-label {
+		font-size: @font-size-small;
+		opacity: @form-label-opacity;
+		margin-bottom: 0;
+	}
+}
+
+// Position the label absolute only in the .form and .form-inline layouts
+.form,
+.form-inline {
+	.form-group > label {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+}
+
+
+// Form control static
+// -------------------------
+
+.form-control-static {
+	font-size: 16px;
+}
+
+
+// Form control feedback
+// -------------------------
+
+.has-feedback label ~ .form-control-feedback,
+.form-control-feedback {
+	top: auto;
+	bottom: 0;
+}
+
+
+// Common form controls
+// -------------------------
+
+.form-control {
+	padding: 0;
+	height: 37px;
+	border-left: none;
+	border-right: none;
+	border-top: none;
+	border-bottom-color: @input-border;
+	background: transparent;
+	color: @input-color;
+	font-size: 16px;
+	.box-shadow(none);
+
+	// Placeholder colors
+	&.placeholder {
+		color: @input-color-placeholder;
+		option {
+			color: @input-color;
+		}
+	}
+
+	// Disabled and read-only inputs
+	&[disabled],
+	&[readonly],
+	fieldset[disabled] & {
+		background-color: transparent;
+		border-bottom-color: @input-border-disabled;
+		border-bottom-style: dashed;
+
+		.placeholder(lighten(@input-color-placeholder, 10%));
+
+		// Hide the bottom line when its a readonly
+		~ label:after, ~ .form-control-line:after {
+			display: none;
+		}
+	}
+}
+
+// Textarea
+textarea.form-control {
+	padding: 4px 0 4px 0;
+}
+textarea.autosize {
+	min-height: 38px;
+}
+
+
+// Form groups controls
+// -------------------------
+
+.form,
+.form-inline {
+	.form-group {
+		padding-top: 16px;
+	}
+}
+.form-group {
+	position: relative;
+	margin-bottom: 19px;
+
+	// Animate label, except when a input is already filled on load
+	.form-control:not(.static) {
+		~ label,
+		~ .form-control-line {
+			.transition(0.2s ease all);
+		}
+	}
+
+	// Add styling for the bottom input line
+	.form-control {
+		~ label,
+		~ .form-control-line {
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			pointer-events: none;
+
+			&:after{
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 45%;
+				height: 2px;
+				width: 10px;
+				visibility: hidden;
+				background-color: @input-border-focus;
+				.transition(0.2s ease all);
+			}
+		}
+
+		// Basic label styling
+		~ label {
+			top: 0;
+			margin-bottom: 0;
+			font-size: @font-size-small;
+			opacity: @form-label-opacity;
+		}
+
+		&:focus {
+			border-color: @input-border;
+
+			~ label {
+				color: @form-label-focus;
+				opacity: @form-label-focus-opacity;
+			}
+		}
+	}
+
+	// Expand the line when the input is focused
+	.form-control:focus {
+		~ label:after, ~ .form-control-line:after {
+			visibility: visible;
+			width: 100%;
+			left: 0;
+		}
+	}
+}
+
+
+// Floating labels
+// -------------------------
+
+.floating-label {
+	// Basic label styling
+	.form-control ~ label {
+		top: 19px;
+		font-size: 16px;
+	}
+
+	// Expand the line when the input is focused or dirty
+	.form-control:focus ~ label, .form-control.dirty ~ label {
+		top: 0px;
+		font-size: @font-size-small !important;
+	}
+}
+
+
+// Form control sizing
+// -------------------------
+
+.input-sm {
+	.input-size(@input-height-small; 0; 0; 1em; @line-height-small; @border-radius-small);
+}
+
+.input-lg {
+	.input-size(@input-height-large; 0; 0; 1.6em; @line-height-large; @border-radius-large);
+}
+
+
+// Fixed control sizes
+// -------------------------
+
+.form-group {
+	&.control-width-tiny {		max-width: (@gutter-size * 10); }
+	&.control-width-mini {		max-width: (@gutter-size * 18); }
+	&.control-width-small {		max-width: (@gutter-size * 34); }
+	&.control-width-medium {	max-width: (@gutter-size * 50); }
+	&.control-width-normal {	max-width: (@gutter-size * 75); }
+	&.control-width-large {		max-width: (@gutter-size * 125); }
+	&.control-width-xlarge {	max-width: (@gutter-size * 200); }
+	&.control-width-xxlarge {	max-width: (@gutter-size * 300); }
+}
+
+textarea {
+	&.control-2-rows {			height: (32px * 2); }
+	&.control-3-rows {			height: (32px * 3); }
+	&.control-4-rows {			height: (32px * 4); }
+	&.control-5-rows {			height: (32px * 5); }
+	&.control-6-rows {			height: (32px * 6); }
+	&.control-7-rows {			height: (32px * 7); }
+	&.control-8-rows {			height: (32px * 8); }
+	&.control-9-rows {			height: (32px * 9); }
+	&.control-10-rows {			height: (32px * 10); }
+	&.control-11-rows {			height: (32px * 11); }
+	&.control-12-rows {			height: (32px * 12); }
+}
+
+textarea.no-resize {
+	resize: none;
+}
+
+
+// Horizontal forms
+// -------------------------
+
+.form-horizontal {
+	.form-group {
+		padding-top: 0;
+		margin-bottom: 11px;
+	}
+	.form-control ~ .form-control-line {
+		left: (@grid-gutter-width / 2);
+		right: (@grid-gutter-width / 2);
+		width: auto;
+	}
+	.input-group {
+		.form-control ~ .form-control-line {
+			left: 0;
+			right: 0;
+		}
+	}
+}
+
+
+// Inline forms
+// -------------------------
+
+
+.form-inline {
+	// Kick in the inline
+	@media (min-width: @screen-sm-min) {
+		.form-group {
+			margin-right: (@gutter-size * 3);
+		}
+
+		.radio,
+		.checkbox,
+		.btn {
+			margin-top: 16px;
+			margin-right: (@gutter-size * 3);
+		}
+	}
+}
+
+
+// Help text
+// -------------------------
+
+.help-block {
+	position: absolute;
+	right:  0;
+	bottom: -20px;
+	margin: 0;
+	color: inherit;
+	opacity: .7;
+	font-size: @font-size-small;
+
+	.form-horizontal & {
+		bottom: -20px;
+		right: 10px;
+	}
+}
+// Error messages
+span.help-block {
+	right: auto;
+	.form-horizontal & {
+		right: auto;
+	}
+}
+
+
+// Inversed Form
+// -------------------------
+
+
+.form-inverse  {
+	.form-group .form-control {
+		color: @inverse-input-color;
+		border-bottom-color: @inverse-input-border;
+
+		// Placeholder
+		.placeholder(@inverse-input-color-placeholder);
+
+		~ label:after, ~ .form-control-line:after {
+			background-color: @inverse-input-border-focus;
+		}
+
+		&:focus {
+			border-color: @inverse-input-border;
+
+			~ label {
+				color: @inverse-form-label-focus;
+			}
+		}
+
+		// Disabled and read-only inputs
+		&[disabled],
+		&[readonly],
+		fieldset[disabled] & {
+			border-bottom-color: @inverse-input-border-disabled;
+		}
+	}
+
+	// Select needs the following marking so it will be visible in dark forms
+	select:focus {
+		background: @white;
+		color: @text-color !important;
+	}
+}
+
+
+// States
+// -------------------------
+
+// Warning
+.has-warning {
+	.alert-variant(@input-border-warning-focus);
+	.form-inverse & {
+		.alert-variant(@inverse-input-border-warning-focus);
+	}
+}
+// Error
+.has-error {
+	.alert-variant(@input-border-danger-focus);
+	.form-inverse & {
+		.alert-variant(@inverse-input-border-danger-focus);
+	}
+}
+// Success
+.has-success {
+	.alert-variant(@input-border-success-focus);
+	.form-inverse & {
+		.alert-variant(@inverse-input-border-success-focus);
+	}
+}

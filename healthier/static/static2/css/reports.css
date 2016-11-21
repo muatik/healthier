@@ -1,0 +1,32 @@
+#energy_bar {
+    margin: 20px 0px;
+    height: 30px;
+    border-radius: 2px;
+    box-shadow: 1px 1px 1.3px #b1b1b1;
+}
+
+#energy_bar .intake{
+    float: left;
+    background-color: #ffdf86;
+    height: 100%;
+    width: 40%;
+    text-align: center;
+    color: #dab859;
+    font-size: 0.8em;
+    line-height: 30px;
+    max-width: 88%;
+    min-width: 12%;
+}
+
+#energy_bar .outtake{
+    float: left;
+    background-color: #4a2;
+    height: 100%;
+    width: 60%;
+    text-align: center;
+    color: #256b0d;
+    font-size: 0.8em;
+    line-height: 30px;
+    max-width: 88%;
+    min-width: 12%;
+}

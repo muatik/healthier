@@ -1,0 +1,29 @@
+#main-navigation{
+    background-color: #03a9f4;
+    border-radius: 0;
+}
+#main-navigation .nav-link{
+    color: #fff;
+}
+
+#main-navigation .nav-link.active {
+    background-color: #1183b7!important;
+}
+
+#main-navigation .navbar-brand{
+    color: #fff;
+    margin-right: 3rem;
+}
+
+.greeting {
+    color: #fff;
+    font-size: 0.8em;
+    line-height: 39px;
+}
+
+.avatar img {
+    width: 40px;
+    border-radius: 25px;
+    border: 1px solid #fff;
+    margin-left: 10px;
+}

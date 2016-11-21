@@ -1,0 +1,45 @@
+//
+// Accordion
+// --------------------------------------------------
+
+
+// Base
+// -------------------------
+
+.panel-group {
+	.card {
+		border: inherit;
+		.transition(margin 0.33s ease-out);
+
+		.fa-angle-down,
+		.fa-chevron-down,
+		.fa-caret-down {
+			.rotate(0deg);
+			.transition(all 0.10s linear);
+		}
+
+		.collapsed .fa-angle-down,
+		.collapsed .fa-chevron-down,
+		.collapsed .fa-caret-down {
+			.rotate(90deg);
+		}
+		.fa-plus {
+			.rotate(-135deg);
+			.transition(all 0.3s ease-out);
+		}
+		.collapsed .fa-plus {
+			.rotate(0deg);
+		}
+	}
+	.card + .card {
+		margin-top: 1px;
+	}
+
+	.card.expanded {
+		margin: 16px 0px;
+
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+}

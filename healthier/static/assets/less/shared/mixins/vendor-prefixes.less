@@ -1,0 +1,38 @@
+// Vendor Prefixes
+// --------------------------------------------------
+
+
+// Transitions
+// -------------------------
+
+.transitions (@value1,@value2:X,...) {
+	@value: ~`"@{arguments}".replace(/[\[\]]|\,\sX/g, '')`;
+
+	-webkit-transition: @value;
+	-o-transition: @value;
+	transition: @value;
+}
+.transition-vendor (@prop, @transition){
+	-webkit-transition: ~'-webkit-@{prop}' @transition;
+	-moz-transition: ~'-moz-@{prop}' @transition;
+	-o-transition: ~'-o-@{prop}' @transition;
+	transition: ~'@{prop}' @transition;
+}
+
+// Transformations
+// -------------------------
+
+.freetransform(@value) {
+	-webkit-transform: @value;
+	-ms-transform: @value; // IE9 only
+	transform: @value;
+}
+
+.transform-style(@value) {
+	-webkit-transform-style: @value;
+	transform-style: @value;
+}
+.transform-z(@value) {
+	-webkit-transform: translateZ(@value);
+	transform: translateZ(@value);
+}

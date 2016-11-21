@@ -1,0 +1,11 @@
+// Badge mixins
+// --------------------------------------------------
+
+
+// Badge variants
+// -------------------------
+
+.badge-variant(@background) {
+	color: contrast(@background, @text-color, @white, @color-threshold) !important;
+	background-color: @background !important;
+}

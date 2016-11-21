@@ -1,0 +1,279 @@
+//
+// Utility classes
+// --------------------------------------------------
+
+.holder {
+	position: relative;
+}
+
+.no-radius {
+	border-radius: 0;
+}
+
+//
+// Opacity
+// --------------------------------------------------
+
+.opacity-25 {	.opacity(.25); }
+.opacity-50 {	.opacity(.50); }
+.opacity-75 {	.opacity(.75); }
+.opacity-100 {	.opacity(1); }
+
+
+//
+// Margins
+// --------------------------------------------------
+
+.no-margin {
+	margin: 0 !important;
+}
+
+.margin-bottom-lg {		margin-bottom: 5px; }
+.margin-bottom-xl {		margin-bottom: 10px; }
+.margin-bottom-xxl {	margin-bottom: 20px; }
+
+
+// Padding styles
+// -------------------------
+
+.no-padding {
+	padding: 0 !important;
+}
+.force-padding {
+	padding: @card-gutter-width;
+}
+.large-padding {
+	padding: (@card-gutter-width * 2);
+}
+.small-padding {
+	padding: (@card-gutter-width / 2);
+}
+.no-y-padding {
+	padding: 0 @card-gutter-width;
+}
+.no-side-padding {
+	padding: @card-gutter-width 0;
+}
+
+
+// Borders
+// --------------------------------------------------
+
+.border-gray,
+.border-black,
+.border-white,
+.border-lg,
+.border-xl,
+.border-xxl {
+	border-style: solid;
+	border-width: 1px;
+	border-color: @black;
+}
+
+.border-lg {	border-width: 2px; }
+.border-xl {	border-width: 3px; }
+.border-xxl {	border-width: 5px; }
+
+.border-white {			border-color: @white; }
+.border-gray {			border-color: @gray-light; }
+.border-transparent {	border-color: transparent; }
+
+.hidden-border {
+	border-color: transparent !important;
+}
+.border-dashed {
+	border-style: dashed;
+}
+
+//
+// Overlay
+// --------------------------------------------------
+
+.overlay {
+	position: absolute;
+	left: 0; right: 0;
+	padding: 15px;
+}
+.overlay-default {
+	background-color: fade(@gray-light, 75%);
+	color: contrast(@gray-light, @text-color, @white, @color-threshold);
+	border-bottom: 1px solid fade(@white, 50%);
+	border-top: 1px solid fade(@white, 50%);
+}
+.overlay-primary {
+	background-color: fade(@brand-primary, 75%);
+	color: contrast(@brand-primary, @text-color, @white, @color-threshold);
+	border-bottom: 1px solid fade(@white, 50%);
+	border-top: 1px solid fade(@white, 50%);
+}
+.overlay-shade-top {
+	#gradient > .vertical(fade(@black, 60%), fade(@black, 0%));
+}
+.overlay-shade-bottom {
+	#gradient > .vertical(fade(@black, 0%), fade(@black, 60%));
+}
+
+//
+// Mask
+// --------------------------------------------------
+
+.mask {
+	position: relative;
+	overflow: hidden;
+}
+
+.bottom-layer {
+	position: absolute;
+	top:0; bottom:0;
+	left:0; right: 0;
+	z-index: 0;
+}
+.top-layer {
+	position: relative;
+	z-index: 1;
+}
+
+// Vertical alignment, works only when parent style has a display:table
+// -------------------------
+
+.stick-top-left,
+.stick-top-right,
+.stick-top-left-right {
+	position: absolute;
+	top: 0;
+}
+.stick-bottom-left,
+.stick-bottom-right,
+.stick-bottom-left-right {
+	position: absolute;
+	bottom: 0;
+}
+.stick-top-left,
+.stick-bottom-left,
+.stick-top-left-right,
+.stick-bottom-left-right {
+	left: 0;
+}
+.stick-top-right,
+.stick-bottom-right,
+.stick-top-left-right,
+.stick-bottom-left-right {
+	right: 0;
+}
+
+// Dimensions
+// -------------------------
+
+.height-1, .size-1 {	height: floor(@dimensions-steps * 1); }
+.height-2, .size-2 {	height: floor(@dimensions-steps * 2); }
+.height-3, .size-3 {	height: floor(@dimensions-steps * 3); }
+.height-4, .size-4 {	height: floor(@dimensions-steps * 4); }
+.height-5, .size-5 {	height: floor(@dimensions-steps * 5); }
+.height-6, .size-6 {	height: floor(@dimensions-steps * 6); }
+.height-7, .size-7 {	height: floor(@dimensions-steps * 7); }
+.height-8, .size-8 {	height: floor(@dimensions-steps * 8); }
+.height-9, .size-9 {	height: floor(@dimensions-steps * 9); }
+.height-10, .size-10 {	height: floor(@dimensions-steps * 10); }
+.height-11, .size-11 {	height: floor(@dimensions-steps * 11); }
+.height-12, .size-12 {	height: floor(@dimensions-steps * 12); }
+
+
+.width-1, .size-1 {		width: floor(@dimensions-steps * 1); }
+.width-2, .size-2 {		width: floor(@dimensions-steps * 2); }
+.width-3, .size-3 {		width: floor(@dimensions-steps * 3); }
+.width-4, .size-4 {		width: floor(@dimensions-steps * 4); }
+.width-5, .size-5 {		width: floor(@dimensions-steps * 5); }
+.width-6, .size-6 {		width: floor(@dimensions-steps * 6); }
+.width-7, .size-7 {		width: floor(@dimensions-steps * 7); }
+.width-8, .size-8 {		width: floor(@dimensions-steps * 8); }
+.width-9, .size-9 {		width: floor(@dimensions-steps * 9); }
+.width-10, .size-10 {	width: floor(@dimensions-steps * 10); }
+.width-11, .size-11 {	width: floor(@dimensions-steps * 11); }
+.width-12, .size-12 {	width: floor(@dimensions-steps * 12); }
+
+.auto-width {	width:auto; }
+
+
+// scroll
+// -------------------------
+
+@media (min-width: @screen-sm-min) {
+	.scroll-xs {
+		height: auto !important;
+	}
+}
+@media (min-width: @screen-md-min) {
+	.scroll-sm {
+		height: auto !important;
+	}
+}
+@media (min-width: @screen-lg-min) {
+	.scroll-md {
+		height: auto !important;
+	}
+}
+
+// contain
+// -------------------------
+
+.contain-xs {
+	max-width: @screen-xs;
+	margin-left: auto;
+	margin-right: auto;
+}
+.contain-sm {
+	max-width: @screen-sm;
+	margin-left: auto;
+	margin-right: auto;
+}
+.contain-md {
+	max-width: @screen-md;
+	margin-left: auto;
+	margin-right: auto;
+}
+.contain-lg {
+	max-width: @screen-lg;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// Components
+// -------------------------
+
+.star-rating,
+.demo-color {
+	display: inline-block;
+}
+
+// Pretty print
+// -------------------------
+
+pre.prettyprint { 
+	display: block; 
+	background-color: #f7f7f9; 
+	font-size: 13px;
+	padding: 9px 14px !important;
+	border-color: #e1e1e8 !important;
+	tab-size: 2;
+	-moz-tab-size: 2;
+	-o-tab-size: 2;
+}
+pre .nocode { background-color: none; color: #fff }
+pre .str { color: #da4950 } /* string */
+pre .kwd { color: #2f6f9f; } /* js function */
+pre .com { color: #999999 } /* comment */
+pre .typ { color: #2f6f9f }	/* type */
+pre .lit { color: #cd5c5c }	/* literal */
+pre .pun { color: #4f9fcf } /* punctuation */
+pre .pln { color: #333333 } /* plaintext */
+pre .tag { color: #2f6f9f;} /* html/xml tag */
+pre .atn { color: #4f9fcf;} /* attribute name */
+pre .atv { color: #da4950 }	/* attribute value */
+pre .dec { color: #009999 } /* decimal */
+
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums { margin-top: 0; margin-bottom: 0; color: #AEAEAE } /* IE indents via margin-left */
+li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8 { list-style-type: none }
+/* Alternate shading for lines */
+li.L1,li.L3,li.L5,li.L7,li.L9 { }
+

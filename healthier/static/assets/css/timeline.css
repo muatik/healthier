@@ -1,0 +1,66 @@
+.timeline-form-buttons {
+
+}
+.timeline-form-buttons button {
+    margin: 14px 12px;
+}
+
+.card .timeline-form-views{
+    display: none;
+}
+
+.timeline-form-views {
+    display: none;
+}
+
+
+.card-head .toolbar-left {
+    float: left;
+    margin-left: 10px;
+}
+
+
+
+/*.timeline-entry .title{
+    margin: 0;
+}
+.timeline-entry .toolbar {
+    margin-top: 10px;
+}
+.timeline-entry .energy-intake, .timeline-entry .energy-outtake {
+    margin-right: 5px;
+
+}
+
+.timeline-entry .energy-intake {
+    color: #ff8100;
+}
+*/
+.entry .tile-text {
+    color: #777;
+}
+.entry-group {
+    /*border-top: 8px solid #ccc;*/
+
+}
+.entry-group-header {
+    padding: 0 20px;
+    background-color: #fafafa;
+}
+.entry .tile-content.calorie {
+    margin-right: 10px;
+}
+.entry .nutrients-list {
+    display: none;
+}
+.entry .nutrients {
+    display: none;
+    margin-top: 15px;
+    padding-left: 20px;
+}
+.category_fc  .fa.entry-type, .category_rc  .fa.entry-type{
+    color: #f66265!important;
+}
+.category_a .fa.entry-type{
+    color: #0aa89e!important;
+}

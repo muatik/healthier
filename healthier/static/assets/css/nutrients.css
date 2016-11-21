@@ -1,0 +1,14 @@
+.nutrients-list{
+    padding: 4px 50px;
+    background-color: #f0f0f0;
+    box-shadow: inset 1px 5px 5px -2px #aaa;
+    list-style-type: none;
+    overflow: hidden;
+}
+
+.nutrients-list ul {
+    list-style-type: none;
+}
+.nutrients-list .quantity {
+    text-align: right;
+}

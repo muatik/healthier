@@ -1,0 +1,200 @@
+//
+// Menubar
+// --------------------------------------------------
+
+
+// Menubar
+// -------------------------
+
+#menubar {
+	position: fixed;
+	z-index: @zindex-menubar;
+	left: 0; 
+	top: @headerbar-height; 
+	bottom: 0;
+	width: @menubar-width-collapsed;
+	color: @menubar-color;
+
+	.menubar-first & {
+		z-index: @zindex-menubar-first;
+	}
+
+	// Back panel
+	&:before {
+		content:'';
+		position: absolute;
+		left: 0; top: 0; bottom:0;
+		width: 100%;
+		background: @menubar-bg;
+		.box-shadow(@z-height-1);
+	}
+
+	// Scroller
+	.nano,
+	.nano-content {
+		&:focus {
+			outline: none;
+		}
+	}
+	.nano-pane {
+		z-index: 2;
+		width:5px;
+		background: transparent;
+		
+		
+	}
+	.nano-slider {
+		background: fade(@black, 20);
+	}
+
+	// Menu panels
+	.menubar-scroll-panel {
+		position: relative;
+		padding-top: 16px;
+		z-index: 2;
+		min-height: 100%;
+	}
+	.menubar-foot-panel {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		border-top: 1px solid fade(@black, 7);
+		padding: 16px;
+	}
+
+	// Show menu
+	.menubar-visible & {
+		width: @menubar-width;
+	}
+}
+// Animate the menubar
+#menubar.animate {
+	.transition(width @menubar-collapse-speed @menubar-collapse-ease);
+}
+
+
+// Menubar withoit a fixed header
+// --------------------------------------------------
+
+body:not(.header-fixed),
+.menubar-first {
+	#menubar {
+		top: 0;
+	}
+}
+
+
+// Fixed panel
+// --------------------------------------------------
+
+.menubar-fixed-panel {
+	position: relative;
+	display: inline-table;
+	width: 100%;
+	height: @headerbar-height;
+	z-index: 10;
+	border-bottom: 1px solid fade(@black, 7);
+
+	> div {
+		display: table-cell;
+		vertical-align: middle;
+		padding: 0 0 0 @menubar-gap;
+		
+		&:first-child {
+			max-width: 26px;
+		}
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	img {
+		max-height: (@headerbar-height - (@gutter-size * 4));
+	}
+
+	.expanded {
+		display: none;
+		.menubar-visible &,
+		.menubar-pin & {
+			display: table-cell;
+		}
+	}
+}
+
+// Hide .menubar-fixed-panel when the menubar is not first
+body:not(.menubar-first) {
+	.menubar-fixed-panel {
+		display: none;
+	}
+}
+
+
+// Inversed menubar
+// -------------------------
+
+#menubar.menubar-inverse {
+	color: @menubar-inverse-color;
+
+	&:before {
+		background: @menubar-inverse-bg;
+	}
+	
+	.nano-slider {
+		background: fade(@white, 40);
+	}
+}
+
+
+// Utils
+// --------------------------------------------------
+
+.hidden-folded {
+	display: none;
+}
+.menubar-visible {
+	.hidden-folded {
+		display: inherit;
+	}
+}
+
+
+// Responsive classes
+// --------------------------------------------------
+
+// Medium Devices
+// -------------------------
+
+@media (min-width: @screen-lg-min) {
+	.menubar-pin {
+		#menubar {
+			width: @menubar-width;
+		}
+		.brand-holder {
+			display: table-cell;
+		}
+		.hidden-folded {
+			display: inherit;
+		}
+	}
+}
+
+// From Medium Devices
+// -------------------------
+
+@media (max-width: @screen-xs-max) {
+	#menubar {
+		width: @menubar-width;
+		z-index: @zindex-menubar-mobile;
+		.translate((-@menubar-width - 10), 0);
+		.transition-vendor(transform, @menubar-collapse-speed ease-in);
+	}
+
+	.menubar-visible {
+		#menubar {
+			.translate(0, 0);
+			.transition-vendor(transform, @menubar-collapse-speed @menubar-collapse-ease);
+		}
+	}
+}

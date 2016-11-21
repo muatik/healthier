@@ -1,0 +1,110 @@
+//
+// Scaffolding
+// --------------------------------------------------
+
+// Common
+// -------------------------
+
+html,
+body,
+.full-height {
+	height: 100%;
+}
+
+
+// Body styles
+// -------------------------
+
+body {
+	background: @body-background;
+	background-size: @body-background-size;
+	color: @body-color;
+	
+	-ms-overflow-style: scrollbar;
+}
+
+// Container
+// -------------------------
+
+.container {
+	padding: 0;
+}
+
+// Links
+// -------------------------
+
+a {
+	color: inherit;
+	text-decoration: none;
+
+	&:hover,
+		&:focus {
+		color: inherit;
+	}
+}
+
+
+// Horizontal ruler
+// -------------------------
+
+hr {
+	border-top-color: fade(@black, 12);
+}
+hr.ruler-lg {	margin: (@gutter-size * 2) 0; }
+hr.ruler-xl {	margin: (@gutter-size * 6) 0; }
+hr.ruler-xxl {	margin: (@gutter-size * 14) 0; }
+
+
+// Images
+// -------------------------
+
+.img-backdrop {
+	position: absolute;
+	left: 0; right: 0; top: 0; bottom: 0;
+	background-repeat:no-repeat;
+	background-size:cover;
+	background-position: center;
+
+	img {
+		display: block;
+		min-width: 100%;
+		min-height: 100%;
+		height: auto;
+	}
+}
+
+// Rounded corners
+.img-rounded {
+	border-radius: 4px;
+}
+
+// Docs
+// -------------------------
+
+.doc-section {
+	margin-bottom: 80px;
+	&.doc-lead {
+		margin-bottom: 20px;
+	}
+
+	h3 {
+		margin-top: 20px;
+	}
+	h4 {
+		margin-top: 17px;
+	}
+	h5 {
+		margin-top: 15px;
+	}
+}
+
+
+// Fuel styles
+// -------------------------
+
+.fuelphp-dump {
+	position: fixed;
+	z-index: 999;
+	right: 0;
+	bottom: 0;
+}
