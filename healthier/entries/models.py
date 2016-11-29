@@ -104,6 +104,21 @@ class Entry(models.Model):
         }
         Nutrient.insert(self, nutrient_data)
 
+    @classmethod
+    def get_suggestions(cls, keyword):
+        history = []
+        for i in cls.objects.filter(what__contains=keyword).order_by("-when"):
+            if i.category != "fc":
+                continue
+            history.append({
+                "name": i.what,
+                "ndbno": json.loads(i.extra).get("ndbno", "")
+            })
+        return history
+
+    def get_nutrients(self):
+        return self.nutrient_set.all()
+
 
 class Nutrient(models.Model):
     """
