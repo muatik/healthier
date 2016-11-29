@@ -2,10 +2,7 @@ import json
 
 import arrow
 from django.test import TestCase
-
-# Create your tests here.
 from django.utils import timezone
-
 from entries.models import Entry
 
 
@@ -87,9 +84,9 @@ class EntryModelTestCase(TestCase):
         self.assertEqual(suggestions[0]["name"], "apple pie")
         self.assertEqual(suggestions[2]["name"], "old apple pie")
 
-    def test_insert_food_nutrient(self):
-        entry = Entry.objects.get(id=1)
-        entry.measure = "cup, diced"
-        entry.insert_food_nutrients({"ndbno": "01009"})
-        nutrients_count = entry.get_nutrients().count()
-        self.assertEqual(nutrients_count, 97)
+    # def test_insert_food_nutrient(self):
+    #     entry = Entry.objects.get(id=1)
+    #     entry.measure = "cup, diced"
+    #     entry.insert_food_nutrients({"ndbno": "01009"})
+    #     nutrients_count = entry.get_nutrients().count()
+    #     self.assertEqual(nutrients_count, 97)

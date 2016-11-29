@@ -14,4 +14,4 @@ before_install:
   - export DJANGO_SETTINGS_MODULE=healthier.settings
 
 script:
-  - python healthier/manage.py test
+  - python healthier/manage.py test healthier/entries
