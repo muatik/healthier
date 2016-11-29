@@ -6,7 +6,7 @@ from django.test import TestCase
 # Create your tests here.
 from django.utils import timezone
 
-from entries.models import Entry, Nutrient
+from entries.models import Entry
 
 
 class EntryModelTestCase(TestCase):
