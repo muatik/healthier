@@ -111,7 +111,8 @@ var ActivityForm = (function(container, options) {
                 "what": what,
                 "when": when,
                 "measure": measure,
-                "quantity": quantity
+                "quantity": quantity,
+                "extra": "{}"
             },
             error: function(e) {
                 if (callback.onError)
