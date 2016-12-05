@@ -35,8 +35,10 @@ class FCD(object):
         """
         base_url = FCD.get_url("reports")
         url = base_url + "&type=f&ndbno={}".format(ndbno)
-        json_response = requests.get(url).json()["report"]
-        return json_response
+        response = requests.get(url)
+        if response.status_code != 200:
+            raise ValueError("ndbno {} not found".format(ndbno))
+        return response.json()["report"]
 
     @staticmethod
     def get_nutrients(ndbno, measure=None):

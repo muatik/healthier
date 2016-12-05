@@ -18,7 +18,17 @@ class EntryView(ListCreateAPIView):
 
     def perform_create(self, serializer):
         entry = serializer.save()
-        entry.insert_nutrients(serializer.initial_data)
+        data = serializer.initial_data
+        data["extra"] = json.loads(data["extra"])
+
+        if Entry.CATEGORIES.FOOD_CONSUMPTION == entry.category:
+            entry.insert_food_nutrients(data["extra"]["ndbno"])
+        elif Entry.CATEGORIES.RECIPE_CONSUMPTION == entry.category:
+            entry.insert_recipe_nutrients(data)
+        elif Entry.CATEGORIES.PHYSICAL_ACTIVITY == entry.category:
+            entry.insert_activity_nutrients()
+        else:
+            raise ValueError("entry type is unknown. {}".format(entry.category))
 
 
 class NutrientsView(ListAPIView):

@@ -9,19 +9,19 @@ from entries.models import Entry
 class EntryModelTestCase(TestCase):
     def setUp(self):
         self.entries = [{
-            "category": Entry.CATEGORIES[0][0],
+            "category": Entry.CATEGORIES.FOOD_CONSUMPTION,
             "what": "apple",
             "when": timezone.make_aware(arrow.utcnow().replace(days=-3).naive),
             "measure": "cup, diced",
             "quantity": 3,
-            "extra": json.dumps({'ndbno': 3})
+            "extra": json.dumps({'ndbno': "18081"})
         }, {
-            "category": Entry.CATEGORIES[0][0],
+            "category": Entry.CATEGORIES.FOOD_CONSUMPTION,
             "what": "banana",
             "when": timezone.make_aware(arrow.utcnow().replace(hours=-3).naive),
-            "measure": "oz",
+            "measure": "skin",
             "quantity": 2,
-            "extra": json.dumps({'ndbno': 21})
+            "extra": json.dumps({'ndbno': "11362"})
         }]
         for i in self.entries:
             Entry.objects.create(**i)
@@ -41,23 +41,10 @@ class EntryModelTestCase(TestCase):
             category="fc",
             what="apple pie",
             when=timezone.make_aware(arrow.utcnow().replace(hours=-1).naive),
-            measure="slice",
+            measure="skin",
             quantity=6,
-            extra=json.dumps({"ndbno": 22})
+            extra=json.dumps({"ndbno": "11362"})
         )
-
-        suggestions = Entry.get_suggestions(keyword="apple")
-        self.assertEqual(len(suggestions), 2)
-
-        Entry.objects.create(
-            category="rc",
-            what="apple pie",
-            when=timezone.make_aware(arrow.utcnow().replace(hours=-1).naive),
-            measure="slice",
-            quantity=6,
-            extra=json.dumps({"ndbno": 22})
-        )
-
         suggestions = Entry.get_suggestions(keyword="apple")
         self.assertEqual(len(suggestions), 2)
 
@@ -84,9 +71,3 @@ class EntryModelTestCase(TestCase):
         self.assertEqual(suggestions[0]["name"], "apple pie")
         self.assertEqual(suggestions[2]["name"], "old apple pie")
 
-    # def test_insert_food_nutrient(self):
-    #     entry = Entry.objects.get(id=1)
-    #     entry.measure = "cup, diced"
-    #     entry.insert_food_nutrients({"ndbno": "01009"})
-    #     nutrients_count = entry.get_nutrients().count()
-    #     self.assertEqual(nutrients_count, 97)

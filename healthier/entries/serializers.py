@@ -6,7 +6,8 @@ from entries.models import Entry, Nutrient, RecipeIngredient, Recipe
 class EntrySerializer(serializers.ModelSerializer):
     class Meta:
         model = Entry
-        fields = ["id", "category", "what", "when", "quantity", "measure"]
+        fields = [
+            "id", "category", "what", "when", "quantity", "measure", "extra"]
         read_only_fields = ["id"]
 
 
