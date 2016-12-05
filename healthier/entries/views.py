@@ -18,7 +18,7 @@ class EntryView(ListCreateAPIView):
 
     def perform_create(self, serializer):
         entry = serializer.save()
-        data = serializer.initial_data
+        data = serializer.initial_data.dict()
         data["extra"] = json.loads(data["extra"])
 
         if Entry.CATEGORIES.FOOD_CONSUMPTION == entry.category:
