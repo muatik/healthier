@@ -160,7 +160,7 @@ class Nutrient(models.Model):
 
 class Recipe(models.Model):
     title = models.CharField(max_length=200)
-    totalCalorie = models.IntegerField()
+    totalCalorie = models.IntegerField(default=0)
 
     def get_ingredients(self):
         return self.recipeingredient_set.all()

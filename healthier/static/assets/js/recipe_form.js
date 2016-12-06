@@ -29,13 +29,19 @@ var RecipeForm = (function($container, recipe_id){
 
     function submit_recipe(options) {
         console.log("submitting the recipe");
+
+        if (data)
+            var totalEnergy = calcTotalEnergy(data.ingredients);
+        else
+            var totalEnergy = 0;
+
         $.ajax({
             url: (is_recipe_submitted() ? '/api/recipes/' + $id.val() + "/" : '/api/recipes/') ,
             type: (is_recipe_submitted() ? "PUT" : "POST"),
             data: {
                 "id": $id.val(),
                 "title": $title.val(),
-                "totalCalorie": 30
+                "totalCalorie": totalEnergy
             },
             error: function() {
                 if (options.onError)
@@ -234,6 +240,14 @@ var RecipeForm = (function($container, recipe_id){
         };
     }
 
+    function calcTotalEnergy(ingredients) {
+        var totalKCal = 0;
+        $.map(ingredients, function(ingredient) {
+            totalKCal += calcEnergy(ingredient);
+        });
+        return totalKCal;
+    }
+
     function showLoader($container) {
         materialadmin.AppCard.addCardLoader($container);
     }
@@ -250,10 +264,7 @@ var RecipeForm = (function($container, recipe_id){
 
         var barData = {
             "totalEnergy": function() {
-                var totalKCal = 0;
-                $.map(data.ingredients, function(ingredient) {
-                    totalKCal += calcEnergy(ingredient);
-                });
+                var totalKCal = calcTotalEnergy(data.ingredients);
                 return totalKCal + " Kcal";
             },
             "totalNutrients": function() {
