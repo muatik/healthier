@@ -145,16 +145,19 @@ var ConsumptionForm = (function(container, options) {
             "what": what,
             "when": when,
             "measure": measure,
-            "quantity": quantity
+            "quantity": quantity,
+            "extra": {}
         }
 
         if (selection_type == "recipe") {
-            postData.id = recipe_id
+            postData.extra.recipe_id = recipe_id
             postData.category = "rc"
         } else {
-            postData.ndbno = ndbno
+            postData.extra.ndbno = ndbno
             postData.category = "fc"
         }
+
+        postData.extra = JSON.stringify(postData.extra)
 
         $.ajax({
             url: '/api/entries/',

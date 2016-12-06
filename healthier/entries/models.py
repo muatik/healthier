@@ -51,15 +51,20 @@ class Entry(models.Model):
 
     they are in a single model to benefit single table inheritance pattern
     """
+    class CATEGORIES(object):
+        FOOD_CONSUMPTION = "fc"
+        RECIPE_CONSUMPTION = "rc"
+        PHYSICAL_ACTIVITY = "a"
 
-    CATEGORIES = [
-        ("fc", "FOOD_CONSUMPTION"),
-        ("rc", "RECIPE_CONSUMPTION"),
-        ("a", "PHYSICAL_ACTIVITY")
-    ]
+        @classmethod
+        def to_set(cls):
+            return (
+                ("fc", cls.FOOD_CONSUMPTION),
+                ("rc", cls.RECIPE_CONSUMPTION),
+                ("a", cls.PHYSICAL_ACTIVITY))
 
     id = models.AutoField(primary_key=True)
-    category = models.CharField(choices=CATEGORIES, max_length=1)
+    category = models.CharField(choices=CATEGORIES.to_set(), max_length=1)
     what = models.CharField(max_length=200)
     when = models.DateTimeField()
     quantity = models.IntegerField()
@@ -67,25 +72,23 @@ class Entry(models.Model):
     # extra = JSONField(blank=True, default="{}")
     extra = models.TextField(blank=True)
 
-    def insert_nutrients(self, data):
-        if Entry.CATEGORIES[0][0] == self.category:
-            self.insert_food_nutrients(data)
-        elif Entry.CATEGORIES[1][0] == self.category:
-            self.insert_recipe_nutrients(data)
-        elif Entry.CATEGORIES[2][0] == self.category:
-            self.insert_activity_nutrients()
-        else:
-            raise ValueError("entry type is unknown. {}".format(self.category))
+    # def insert_nutrients(self, data):
+    #     if Entry.CATEGORIES.FOOD_CONSUMPTION == self.category:
+    #         self.insert_food_nutrients(data)
+    #     elif Entry.CATEGORIES.RECIPE_CONSUMPTION == self.category:
+    #         self.insert_recipe_nutrients(data)
+    #     elif Entry.CATEGORIES.PHYSICAL_ACTIVITY == self.category:
+    #         self.insert_activity_nutrients()
+    #     else:
+    #         raise ValueError("entry type is unknown. {}".format(self.category))
 
-    def insert_food_nutrients(self, data):
-        ndbno = data["ndbno"]
+    def insert_food_nutrients(self, ndbno):
         self.extra = json.dumps({"ndbno": ndbno})
         self.save()
-
         nutrients = FCD.get_nutrients(ndbno=ndbno, measure=self.measure)
 
         for nutrient_data in nutrients:
-            nutrient_data["category"] = Nutrient.CATEGORIES[0][0]  # intake
+            nutrient_data["category"] = Nutrient.CATEGORIES.INTAKE  # intake
             Nutrient.insert(self, nutrient_data)
 
     def insert_recipe_nutrients(self, data):
@@ -97,12 +100,27 @@ class Entry(models.Model):
 
     def insert_activity_nutrients(self):
         nutrient_data = {
-            "category": "o",
+            "category": Nutrient.CATEGORIES.OUTTAKE,
             "label": "energy burnt",
             "unit": "kcal",
             "quantity": 1.32
         }
         Nutrient.insert(self, nutrient_data)
+
+    @classmethod
+    def get_suggestions(cls, keyword):
+        history = []
+        for i in cls.objects.filter(what__contains=keyword).order_by("-when"):
+            if i.category != "fc":
+                continue
+            history.append({
+                "name": i.what,
+                "ndbno": json.loads(i.extra).get("ndbno", "")
+            })
+        return history
+
+    def get_nutrients(self):
+        return self.nutrient_set.all()
 
 
 class Nutrient(models.Model):
@@ -115,12 +133,18 @@ class Nutrient(models.Model):
         'unit': 'g'
     }
     """
-    CATEGORIES = [
-        ("i", "INTAKE"),
-        ("o", "OUTTAKE")
-    ]
+    class CATEGORIES(object):
+        INTAKE = "i"
+        OUTTAKE = "O"
+
+        @classmethod
+        def to_set(cls):
+            return (
+                ("i", cls.INTAKE),
+                ("o", cls.OUTTAKE))
+
     id = models.AutoField(primary_key=True)
-    category = models.CharField(choices=CATEGORIES, max_length=1)
+    category = models.CharField(choices=CATEGORIES.to_set(), max_length=1)
     entry = models.ForeignKey(Entry, on_delete=models.CASCADE)
     label = models.CharField(max_length=100)
     unit = models.CharField(max_length=20)
@@ -136,7 +160,7 @@ class Nutrient(models.Model):
 
 class Recipe(models.Model):
     title = models.CharField(max_length=200)
-    totalCalorie = models.IntegerField()
+    totalCalorie = models.IntegerField(default=0)
 
     def get_ingredients(self):
         return self.recipeingredient_set.all()

@@ -1,0 +1,17 @@
+language: python
+
+python:
+  - "2.7"
+  - "3.4"
+
+env:
+  - DJANGO_VERSION=1.10.3
+
+install:
+  - pip install -r healthier/requirements.txt --quiet
+
+before_install:
+  - export DJANGO_SETTINGS_MODULE=healthier.settings
+
+script:
+  - python healthier/manage.py test healthier/entries
