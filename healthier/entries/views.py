@@ -1,6 +1,8 @@
 import json
 
+import arrow
 from django.db.models import Sum
+from django.utils import timezone
 from rest_framework.generics import ListCreateAPIView, \
     ListAPIView, RetrieveUpdateDestroyAPIView, DestroyAPIView
 from rest_framework.response import Response
@@ -88,19 +90,22 @@ class ActivitySuggestionView(APIView):
 
 class Reports(APIView):
     def get(self, request, frm=None):
-        outtake = Nutrient.objects.filter(
-            category="o"
-        ).aggregate(Sum("quantity"))
+        category = request.query_params["category"]
+        start_date = timezone.make_aware(
+            arrow.get(request.query_params["start_date"]).naive)
+        end_date = timezone.make_aware(
+            arrow.get(request.query_params["end_date"]).naive)
 
-        intake = Nutrient.objects.filter(
-            category="i", label="Energy", unit="kcal"
-        ).aggregate(Sum("quantity"))
+        report = Nutrient.get_energy_report(category, start_date, end_date)
+        report = [[i[0], i[1]] for i in report.items()]
 
         return Response({
-            "energy": {
-                "intake": intake["quantity__sum"],
-                "outtake": outtake["quantity__sum"]
-            }
+            "category": category,
+            "start_date": start_date,
+            "end_date": end_date,
+            "label": "Energy",
+            "unit": "kcal",
+            "data": report
         })
 
 
@@ -137,5 +142,4 @@ class RecipeIngredientsView(ListCreateAPIView, DestroyAPIView):
         ingredient.recipe.decrease_calorie(ingredient.get_energy())
         ingredient.recipe.save()
         super().perform_destroy(ingredient)
-
 
