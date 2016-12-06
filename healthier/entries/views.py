@@ -97,7 +97,6 @@ class Reports(APIView):
             arrow.get(request.query_params["end_date"]).naive)
 
         report = Nutrient.get_energy_report(category, start_date, end_date)
-        report = [[i[0], i[1]] for i in report.items()]
 
         return Response({
             "category": category,

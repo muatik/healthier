@@ -151,7 +151,7 @@ class Nutrient(models.Model):
     """
     class CATEGORIES(object):
         INTAKE = "i"
-        OUTTAKE = "O"
+        OUTTAKE = "o"
 
         @classmethod
         def to_set(cls):
@@ -198,12 +198,14 @@ class Nutrient(models.Model):
             "date"
         ).annotate(
             value=Sum('quantity')
-        ).values("date", "value")
+        ).values(
+            "date", "value", "entry__when"
+        )
 
         for i in records:
             data[i["date"]] = i["value"]
 
-        return data
+        return sorted(data.items())
 
 
 class Recipe(models.Model):
