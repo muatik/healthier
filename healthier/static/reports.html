@@ -348,7 +348,7 @@
                         </div>
 
                         <div class="col-lg-6">
-                            <div class="card card-underline">
+                            <div class="card card-underline" id="weight-card">
                                 <div class="card-head">
                                     <header><i class="fa fa-area-chart"></i>WEIGHT &amp; BMI</header>
                                     <div class="tools">
@@ -388,9 +388,9 @@
                     <div class="row">
 
                         <div class="col-lg-8">
-                            <div class="card card-underline">
+                            <div class="card card-underline target-nutrients" id="nutrients-card">
                                 <div class="card-head">
-                                    <header><i class="fa fa-area-chart"></i>Nutrient Intake</header>
+                                    <header><i class="fa fa-area-chart"></i>Nutrients Intake</header>
                                     <div class="tools">
                                         <div class="btn-group">
                                             <div class="btn-group">
@@ -399,14 +399,36 @@
                                                     <li><a href="javascript:void(0);" data-style="style-info"><i class="fa fa-circle fa-fw text-info"></i> Info</a></li>
                                                 </ul>
                                             </div>
+                                            <div class="btn-group btn-radio date-range-group" data-toggle="buttons">
+                                                <label class="btn ink-reaction btn-default-light btn-xs active">
+                                                    <input type="radio" name="date-option" value="today">Today
+                                                </label>
+                                                <label class="btn ink-reaction btn-default-light btn-xs">
+                                                    <input type="radio" name="date-option" value="weekly" checked="1">This week
+                                                </label>
+                                                <label class="btn ink-reaction btn-default-light btn-xs">
+                                                    <input type="radio" name="date-option" value="monthly" >This month
+                                                </label>
+                                            </div>
                                             <a class="btn btn-icon-toggle btn-refresh"><i class="md md-refresh"></i></a>
                                         </div>
                                     </div>
                                 </div><!--end .card-head -->
-                                <div class="card-body height-8">
-                                    <div id="nutrients-chart" style="height: 100%; margin: 0 auto"></div>
 
+                                <div class="card-body height-8">
+                                    <!-- <div id="nutrients-chart" style="height: 100%; margin: 0 auto"></div> -->
                                 </div><!--end .card-body -->
+
+                                <script id="template_nutrient_entry" type="x-tmpl-mustache">
+                                    <div data-toggle="tooltip" data-placement="top" data-original-title="{{tooltip}}">
+                                        <strong>{{consumption}} {{unit}}</strong> {{label}}
+                                        <span class="pull-right text-success text-sm">{{percentage}}% </span>
+                                        <div class="progress progress-hairline">
+                                            <div class="progress-bar {{bar_class}}" style="width:{{percentage}}%"></div>
+                                        </div>
+                                    </div>
+                                </script>
+
                             </div>
                         </div>
 
@@ -541,41 +563,6 @@
         </script>
         <script type="text/javascript">
 
-            $(function () {
-                Highcharts.chart('weight-chart', {
-                    chart: {
-                        type: 'line'
-                    },
-                    title: {
-                        text: ''
-                    },
-                    subtitle: {
-                        text: ''
-                    },
-                    xAxis: {
-                        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-                    },
-                    yAxis: {
-                        title: {
-                            text: 'weight (Kg)'
-                        }
-                    },
-                    plotOptions: {
-                        line: {
-                            dataLabels: {
-                                enabled: true
-                            },
-                            enableMouseTracking: true
-                        }
-                    },
-                    series: [{
-                        name: 'weight',
-                        color: "#0aa89e",
-                        data: [71.5, 73, 72.5, 73.9, 74.5, 74.0, 75.5, 0, 73.5, 74.5, 73.1, 72.5, ]
-                        // data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-                    }]
-                });
-            });
 
 $(function () {
     Highcharts.chart('nutrients-chart', {

@@ -207,6 +207,18 @@ class Nutrient(models.Model):
 
         return sorted(data.items())
 
+    @classmethod
+    def get_nutrients_report(cls, start_date, end_date):
+        nutrients = Nutrient.objects.filter(
+            category=cls.CATEGORIES.INTAKE,
+            entry__when__range=[start_date, end_date]
+        ).values(
+            "label", "unit"
+        ).annotate(
+            value=Sum("quantity")
+        )
+        return nutrients
+
 
 class Recipe(models.Model):
     title = models.CharField(max_length=200)

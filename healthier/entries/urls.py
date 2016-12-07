@@ -14,7 +14,6 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
-from django.contrib import admin
 
 from entries import views
 
@@ -24,11 +23,17 @@ urlpatterns = [
     url(r"^food/$", views.FoodSuggestionView.as_view()),
     url(r"^food/(?P<ndbno>.+)/measures/$", views.FoodReport.as_view()),
     url(r"^activities/$", views.ActivitySuggestionView.as_view()),
-    url(r"^reports/energy/$", views.Reports.as_view()),
     url(r"^recipes/$", views.RecipesView.as_view()),
     url(r"^recipes/(?P<pk>\d+)/$", views.RecipeView.as_view()),
     url(r"^recipes/(?P<recipe_id>\d+)/ingredients/$",
         views.RecipeIngredientsView.as_view()),
     url(r"^recipes/(?P<recipe_id>\d+)/ingredients/(?P<pk>\d+)/$",
         views.RecipeIngredientsView.as_view()),
+
+    url(r"^reports/energy/", views.Reports.as_view({"get": "energy"})),
+    url(r"^reports/weight/", views.Reports.as_view({"get": "weight_history"})),
+    url(
+        r"^reports/nutrients/",
+        views.Reports.as_view({"get": "consumed_nutrients"})),
+
 ]
