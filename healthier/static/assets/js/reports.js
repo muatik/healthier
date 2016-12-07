@@ -1,10 +1,65 @@
-var EnergyReports = (function(){
+var ChartCard = (function(card){
+    var $card = $(card);
+
+    function getDateOption() {
+        var $input = $(".date-range-group .active input", $card);
+        return $input.val();
+    }
+
+    function getDateRange() {
+        var option = getDateOption();
+        var start_date;
+        var end_date = moment.tz("UTC");
+        if (option == "weekly") {
+            start_date = moment.tz("UTC").subtract(8, "days")
+        } else if (option == "monthly") {
+            start_date = moment.tz("UTC").subtract(32, "days")
+        } else if (option == "yearly") {
+            start_date = moment.tz("UTC").subtract(12, "months")
+        }
+        return {
+            "start_date": start_date,
+            "end_date": end_date
+        }
+    }
+
+
+    function setContent(content) {
+        $card.find(".card-body").html(content)
+    }
+
+    function init() {
+        $(".date-range-group .btn", $card).click(function(e){
+            if (API.onDateRangeChange)
+                setTimeout(API.onDateRangeChange, 200) // waits for btn to be .active
+
+        })
+        $card.find(".btn-refresh").click(function(e){
+            if (API.onRefresh)
+                API.onRefresh(e)
+        })
+    }
+
+    var API = {
+        "onRefresh": null,
+        "onDateRangeChange": null,
+        "getDateRange": getDateRange,
+        "getDateOption": getDateOption,
+        "setContent": setContent,
+    };
+
+    init();
+
+    return API;
+});
+
+var EnergyReports = (function(card){
     var container_id = "calorie-chart"
     var $container = $("#calorie-chart");
     var chart;
 
-    var start_date = moment().subtract(23, "days").format('YYYY-MM-DD hh:mm:ss');
-    var end_date = moment().format('YYYY-MM-DD 23:59:59');
+    var start_date;
+    var end_date;
 
     function fetch_energy_report(category, start_date, end_date, onSuccess) {
         $.ajax({
@@ -21,12 +76,17 @@ var EnergyReports = (function(){
     function add_timeseries(data, series_index) {
         $.map(data, function(i){
             chart.series[series_index].addPoint(
-                [moment.tz(i[0], "UTC").valueOf() , i[1]], true, false)
+                [moment.tz(i[0], "UTC").valueOf() , i[1]], false, false)
         })
+        chart.redraw()
     }
 
     function draw() {
         var category = "i";
+        var format = "YYYY-MM-DD HH:mm:ss"
+        start_date = card.getDateRange().start_date.format(format);
+        end_date = card.getDateRange().end_date.format(format);
+
         fetch_energy_report(category, start_date, end_date, function(res){
             add_timeseries(res.data, 0)
         });
@@ -37,7 +97,8 @@ var EnergyReports = (function(){
         });
     }
 
-    function init() {
+    function refresh() {
+        $container.html("")
         chart = Highcharts.chart(container_id, {
             chart: {
                 type: 'line'
@@ -77,14 +138,24 @@ var EnergyReports = (function(){
             }]
         });
 
+        chart.series[0].data = [];
+        chart.series[1].data = [];
+
         draw();
+    }
+
+    function init() {
+        card.onDateRangeChange = refresh
+        card.onRefresh = refresh
+        refresh()
     }
 
     init();
 });
 
 $(document).ready(function(){
-    t = EnergyReports();
+    aa =ChartCard($("#calorie-card"));
+    t = EnergyReports(ChartCard($("#calorie-card")));
     $('[data-toggle="tooltip"]').tooltip({container: 'body'});
 });
 
