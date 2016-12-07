@@ -1,7 +1,10 @@
 import json
 
+import arrow
 from django.core.serializers.json import DjangoJSONEncoder
 from django.db import models
+from django.db.models import Sum
+from django.db.models.functions import TruncDate
 
 from entries.fcd import FCD
 
@@ -45,6 +48,29 @@ class JSONField(models.TextField):
         return super(JSONField, self).get_db_prep_save(value, *args, **kwargs)
 
 
+def create_time_series(start_date, end_date):
+    """
+    creates a time series sequence taken at successive daily spaced points
+    between start_date end end_date
+
+    Args:
+        start_date:
+        end_date:
+
+    Returns:
+
+    """
+    current_date = arrow.get(start_date)
+    end_date = arrow.get(end_date)
+    data = {}
+
+    while current_date <= end_date:
+        data[current_date.date()] = 0
+        current_date = current_date.replace(days=1)
+
+    return data
+
+
 class Entry(models.Model):
     """
     consumption and physical activities are represented as entries.
@@ -72,16 +98,6 @@ class Entry(models.Model):
     # extra = JSONField(blank=True, default="{}")
     extra = models.TextField(blank=True)
 
-    # def insert_nutrients(self, data):
-    #     if Entry.CATEGORIES.FOOD_CONSUMPTION == self.category:
-    #         self.insert_food_nutrients(data)
-    #     elif Entry.CATEGORIES.RECIPE_CONSUMPTION == self.category:
-    #         self.insert_recipe_nutrients(data)
-    #     elif Entry.CATEGORIES.PHYSICAL_ACTIVITY == self.category:
-    #         self.insert_activity_nutrients()
-    #     else:
-    #         raise ValueError("entry type is unknown. {}".format(self.category))
-
     def insert_food_nutrients(self, ndbno):
         self.extra = json.dumps({"ndbno": ndbno})
         self.save()
@@ -101,11 +117,14 @@ class Entry(models.Model):
     def insert_activity_nutrients(self):
         nutrient_data = {
             "category": Nutrient.CATEGORIES.OUTTAKE,
-            "label": "energy burnt",
+            "label": "Energy",
             "unit": "kcal",
             "quantity": 1.32
         }
         Nutrient.insert(self, nutrient_data)
+
+    def get_nutrients(self):
+        return self.nutrient_set.all()
 
     @classmethod
     def get_suggestions(cls, keyword):
@@ -118,9 +137,6 @@ class Entry(models.Model):
                 "ndbno": json.loads(i.extra).get("ndbno", "")
             })
         return history
-
-    def get_nutrients(self):
-        return self.nutrient_set.all()
 
 
 class Nutrient(models.Model):
@@ -135,7 +151,7 @@ class Nutrient(models.Model):
     """
     class CATEGORIES(object):
         INTAKE = "i"
-        OUTTAKE = "O"
+        OUTTAKE = "o"
 
         @classmethod
         def to_set(cls):
@@ -156,6 +172,40 @@ class Nutrient(models.Model):
         nutrient.entry = entry
         nutrient.save()
         return nutrient
+
+    @classmethod
+    def get_energy_report(cls, category, start_date, end_date):
+        """
+        returns daily energy report
+        Args:
+            category: entry category to be grouped by
+            start_date: beginning of the date range
+            end_date: end of the date range
+
+        Returns: list
+
+        """
+        data = create_time_series(start_date, end_date)
+
+        records = cls.objects.filter(
+            label="Energy",
+            unit="kcal",
+            category=category,
+            entry__when__range=[start_date, end_date]
+        ).annotate(
+            date=TruncDate("entry__when"),
+        ).values(
+            "date"
+        ).annotate(
+            value=Sum('quantity')
+        ).values(
+            "date", "value", "entry__when"
+        )
+
+        for i in records:
+            data[i["date"]] = i["value"]
+
+        return sorted(data.items())
 
 
 class Recipe(models.Model):

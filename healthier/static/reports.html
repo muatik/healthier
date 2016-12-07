@@ -314,7 +314,7 @@
                     <!-- BEGIN GOALS-->
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="card card-underline">
+                            <div class="card card-underline" id="calorie-card">
                                 <div class="card-head">
                                     <header><i class="fa fa-area-chart"></i> CALORIE</header>
                                     <div class="tools">
@@ -325,15 +325,15 @@
                                                     <li><a href="javascript:void(0);" data-style="style-info"><i class="fa fa-circle fa-fw text-info"></i> Info</a></li>
                                                 </ul>
                                             </div>
-                                            <div class="btn-group btn-radio" data-toggle="buttons">
+                                            <div class="btn-group btn-radio date-range-group" data-toggle="buttons">
                                                 <label class="btn ink-reaction btn-default-light btn-xs active">
-                                                    <input type="radio" name="options" id="option1">Weekly
+                                                    <input type="radio" name="date-option" value="weekly" checked="1">Weekly
                                                 </label>
                                                 <label class="btn ink-reaction btn-default-light btn-xs">
-                                                    <input type="radio" name="options" id="option3">Monthly
+                                                    <input type="radio" name="date-option" value="monthly" >Monthly
                                                 </label>
                                                 <label class="btn ink-reaction btn-default-light btn-xs">
-                                                    <input type="radio" name="options" id="option3">Yearly
+                                                    <input type="radio" name="date-option" value="yearly">Yearly
                                                 </label>
                                             </div>
                                             <a class="btn btn-icon-toggle btn-refresh"><i class="md md-refresh"></i></a>
@@ -359,15 +359,15 @@
                                                     <li><a href="javascript:void(0);" data-style="style-info"><i class="fa fa-circle fa-fw text-info"></i> Info</a></li>
                                                 </ul>
                                             </div>
-                                            <div class="btn-group btn-radio" data-toggle="buttons">
+                                            <div class="btn-group btn-radio date-range-group" data-toggle="buttons">
                                                 <label class="btn ink-reaction btn-default-light btn-xs active">
-                                                    <input type="radio" name="options" id="option1">Weekly
+                                                    <input type="radio" name="date-option" value="weekly" checked="1">Weekly
                                                 </label>
                                                 <label class="btn ink-reaction btn-default-light btn-xs">
-                                                    <input type="radio" name="options" id="option3">Monthly
+                                                    <input type="radio" name="date-option" value="monthly" >Monthly
                                                 </label>
                                                 <label class="btn ink-reaction btn-default-light btn-xs">
-                                                    <input type="radio" name="options" id="option3">Yearly
+                                                    <input type="radio" name="date-option" value="yearly">Yearly
                                                 </label>
                                             </div>
                                             <a class="btn btn-icon-toggle btn-refresh"><i class="md md-refresh"></i></a>
@@ -515,8 +515,11 @@
 
 
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+        <script type="text/javascript" src="assets/js/libs/moment/moment-timezone-with-data.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.min.css" />
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/js/bootstrap-datetimepicker.min.js"></script>
+
+        <script type="text/javascript" src="assets/js/reports.js"></script>
 
         <script type="text/javascript">
         var words = [
@@ -537,47 +540,8 @@
             });
         </script>
         <script type="text/javascript">
+
             $(function () {
-                Highcharts.chart('calorie-chart', {
-                    chart: {
-                        type: 'line'
-                    },
-                    title: {
-                        text: ''
-                    },
-                    subtitle: {
-                        text: ''
-                    },
-                    // xAxis: {
-                    //     categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-                    // },
-                    yAxis: {
-                        title: {
-                            text: 'Calorie (Kcal)'
-                        }
-                    },
-                    plotOptions: {
-                        line: {
-                            dataLabels: {
-                                enabled: true
-                            },
-                            enableMouseTracking: true
-                        }
-                    },
-                    series: [{
-                        name: 'consumed',
-                        color: "#ea825f",
-                        data: [[1, 0], [2, 3.9], [3, 4.2], [4, 0], [7, 8.5]]
-                        // data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
-                    }, {
-                        name: 'burnt',
-                        color: "#0aa89e",
-                        data: [[1, 3.9], [2, 4.2], [5, 5.7], [8, 8.5]]
-                        // data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-                    }]
-                });
-            });
-$(function () {
                 Highcharts.chart('weight-chart', {
                     chart: {
                         type: 'line'
