@@ -78,8 +78,8 @@ class NutrientModelTestCase(TestCase):
 
         first_date = start_date.date()
         last_date = end_date.date()
-        self.assertIn(first_date, report)
-        self.assertIn(last_date, report)
+        self.assertIn(first_date, dict(report))
+        self.assertIn(last_date, dict(report))
 
     def test_total_energy_intake(self):
         start_date = arrow.utcnow().replace(days=-10)
@@ -91,7 +91,7 @@ class NutrientModelTestCase(TestCase):
             timezone.make_aware(end_date.naive))
 
         self.assertEqual(
-            report[self.nutrients[1]["entry"].when.date()],
+            dict(report)[self.nutrients[1]["entry"].when.date()],
             self.nutrients[1]["quantity"])
 
     def test_total_energy_outtake(self):
@@ -103,4 +103,4 @@ class NutrientModelTestCase(TestCase):
             timezone.make_aware(start_date.naive),
             timezone.make_aware(end_date.naive))
 
-        self.assertEqual(report[self.entries[2]["when"].date()], 160)
+        self.assertEqual(dict(report)[self.entries[2]["when"].date()], 160)
