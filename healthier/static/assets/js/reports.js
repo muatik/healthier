@@ -125,6 +125,9 @@ var EnergyReports = (function(card){
                     enableMouseTracking: true
                 }
             },
+            credits: {
+                enabled: false
+            },
             series: [{
                 name: 'consumed',
                 color: "#ea825f",
@@ -153,9 +156,163 @@ var EnergyReports = (function(card){
     init();
 });
 
+
+
+var WeightHistoryReports = (function(card){
+    var container_id = "weight-chart"
+    var $container = $("#weight-chart");
+    var chart;
+
+    // @TODO: needs to be parametric
+    var height = 177 / 100; // in meters
+
+    var start_date;
+    var end_date;
+
+    function fetch_weight_history_report(start_date, end_date, onSuccess) {
+        $.ajax({
+            url: "/api/reports/weight/",
+            method: "GET",
+            data: {
+                "start_date": start_date,
+                "end_date": end_date,
+            }
+        }).success(onSuccess);
+    }
+
+    function add_timeseries(data, series_index) {
+        $.map(data, function(i){
+            chart.series[series_index].addPoint(
+                [moment.tz(i[0], "UTC").valueOf() , i[1]], false, false)
+        })
+        chart.redraw()
+    }
+
+    function draw() {
+        var format = "YYYY-MM-DD HH:mm:ss"
+        start_date = card.getDateRange().start_date.format(format);
+        end_date = card.getDateRange().end_date.format(format);
+
+        fetch_weight_history_report(start_date, end_date, function(res){
+
+            var BMI = [];
+            $.map(res.data, function(i){
+                BMI.push([
+                    i[0],
+                    i[1] / (height * height)
+                ])
+            });
+
+            add_timeseries(res.data, 0)
+            add_timeseries(BMI, 1)
+        });
+    }
+
+    function refresh() {
+        $container.html("")
+        chart = Highcharts.chart(container_id, {
+            chart: {
+                type: 'scatter'
+            },
+            title: {
+                text: ''
+            },
+            subtitle: {
+                text: ''
+            },
+            xAxis: {
+                type: 'datetime',
+            },
+            yAxis: [{ // Primary yAxis
+                labels: {
+                    format: '{value} kg',
+                    style: {
+                        color: Highcharts.getOptions().colors[1]
+                    }
+                },
+                title: {
+                    text: 'Weight (Kg)',
+                    style: {
+                        color: Highcharts.getOptions().colors[1]
+                    }
+                }
+            }, { // Secondary yAxis
+                title: {
+                    text: 'BMI',
+                    style: {
+                        color: Highcharts.getOptions().colors[0]
+                    }
+                },
+                labels: {
+                    format: '{value}',
+                    style: {
+                        color: Highcharts.getOptions().colors[0]
+                    }
+                },
+                min: 10,
+                max: 40,
+                plotLines: [{
+                    value: 24.9,
+                    color: '#7b9af7',
+                    dashStyle: 'shortdash',
+                    width: 1,
+                    label: {
+                        text: ''
+                    }
+                }],
+
+                opposite: true
+            }],
+            plotOptions: {
+                scatter: {
+                    tooltip: {
+                        headerFormat: '<b>{series.name}</b><br>',
+                        pointFormat: '{point.x:%d %b %Y}<br>{point.y:.2f}'
+                    },
+                },
+                line: {
+                    dataLabels: {
+                        enabled: true
+                    },
+                    enableMouseTracking: true
+                }
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'weight',
+                color: "#ea825f",
+                data: []
+                // data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+            },{
+                name: 'BMI',
+                yAxis: 1,
+                color: "#2a82ff",
+                data: []
+                // data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+            }]
+        });
+
+        chart.series[0].data = [];
+        chart.series[1].data = [];
+
+        draw();
+    }
+
+    function init() {
+        card.onDateRangeChange = refresh
+        card.onRefresh = refresh
+        refresh()
+    }
+
+    init();
+});
+
+
 $(document).ready(function(){
-    aa =ChartCard($("#calorie-card"));
-    t = EnergyReports(ChartCard($("#calorie-card")));
+    EnergyReports(ChartCard($("#calorie-card")));
+    WeightHistoryReports(ChartCard($("#weight-card")));
     $('[data-toggle="tooltip"]').tooltip({container: 'body'});
 });
 

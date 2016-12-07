@@ -3,6 +3,8 @@ import json
 import arrow
 from django.db.models import Sum
 from django.utils import timezone
+from django.utils.datastructures import MultiValueDictKeyError
+from rest_framework import viewsets
 from rest_framework.generics import ListCreateAPIView, \
     ListAPIView, RetrieveUpdateDestroyAPIView, DestroyAPIView
 from rest_framework.response import Response
@@ -88,26 +90,6 @@ class ActivitySuggestionView(APIView):
         ])
 
 
-class Reports(APIView):
-    def get(self, request, frm=None):
-        category = request.query_params["category"]
-        start_date = timezone.make_aware(
-            arrow.get(request.query_params["start_date"]).naive)
-        end_date = timezone.make_aware(
-            arrow.get(request.query_params["end_date"]).naive)
-
-        report = Nutrient.get_energy_report(category, start_date, end_date)
-
-        return Response({
-            "category": category,
-            "start_date": start_date,
-            "end_date": end_date,
-            "label": "Energy",
-            "unit": "kcal",
-            "data": report
-        })
-
-
 class RecipesView(ListCreateAPIView):
     serializer_class = RecipeSerializer
     queryset = Recipe.objects.all()
@@ -142,3 +124,57 @@ class RecipeIngredientsView(ListCreateAPIView, DestroyAPIView):
         ingredient.recipe.save()
         super().perform_destroy(ingredient)
 
+
+class Reports(viewsets.ViewSet):
+
+    @classmethod
+    def parse_date_range(cls, request):
+        """
+        parses query params to set start_date and end_date, then returns them
+        Args:
+            request: Django request object
+
+        Returns:
+            (start_date, end_date)
+        """
+        try:
+            start_date = timezone.make_aware(
+                arrow.get(request.query_params["start_date"]).naive)
+            end_date = timezone.make_aware(
+                arrow.get(request.query_params["end_date"]).naive)
+            return start_date, end_date
+        except MultiValueDictKeyError as e:
+            raise KeyError(
+                "start_date or/and end_date not found in query params")
+
+    def energy(self, request):
+        category = request.query_params["category"]
+        start_date, end_date = self.parse_date_range(request)
+        report = Nutrient.get_energy_report(category, start_date, end_date)
+
+        return Response({
+            "category": category,
+            "start_date": start_date,
+            "end_date": end_date,
+            "label": "Energy",
+            "unit": "kcal",
+            "data": report
+        })
+
+    def weight_history(self, request):
+        start_date, end_date = self.parse_date_range(request)
+        # Todo: implement actual data and write unit-tests
+        data = [
+            ["2016-10-01", 74],
+            ["2016-10-14", 73.9],
+            ["2016-10-23", 72],
+            ["2016-11-11", 74],
+            ["2016-11-20", 73],
+            ["2016-11-23", 74],
+            ["2016-12-03", 75]
+        ]
+        return Response({
+            "start_date": start_date,
+            "end_date": end_date,
+            "data": data
+        })
