@@ -129,9 +129,11 @@ class Entry(models.Model):
         return self.nutrient_set.all()
 
     @classmethod
-    def get_suggestions(cls, keyword):
+    def get_suggestions(cls, user, keyword):
         history = []
-        for i in cls.objects.filter(what__contains=keyword).order_by("-when"):
+        query = cls.objects.filter(
+            user=user, what__contains=keyword).order_by("-when")
+        for i in query:
             if i.category != "fc":
                 continue
             history.append({
