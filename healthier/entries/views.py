@@ -1,9 +1,12 @@
 import json
 
 import arrow
+from django.contrib.auth.models import User
 from django.db.models import Sum
 from django.utils import timezone
 from django.utils.datastructures import MultiValueDictKeyError
+from rest_framework import generics
+from rest_framework import mixins
 from rest_framework import viewsets
 from rest_framework.generics import ListCreateAPIView, \
     ListAPIView, RetrieveUpdateDestroyAPIView, DestroyAPIView
@@ -12,8 +15,9 @@ from rest_framework.views import APIView
 
 from entries.fcd import FCD
 from entries.models import Entry, Nutrient, Recipe, RecipeIngredient
+from entries.permissions import IsOwner, IsNotAnonymous, IsSelf
 from entries.serializers import EntrySerializer, NutrientSerializer, \
-    RecipeIngredientSerializer, RecipeSerializer
+    RecipeIngredientSerializer, RecipeSerializer, UserSerializer
 
 
 class EntryView(ListCreateAPIView):
@@ -188,3 +192,19 @@ class Reports(viewsets.ViewSet):
             "end_date": end_date,
             "data": report
         })
+
+
+class Users(mixins.CreateModelMixin, viewsets.GenericViewSet):
+    """
+    used for registration
+    """
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class UserDetail(mixins.RetrieveModelMixin,
+                 mixins.UpdateModelMixin,
+                 viewsets.GenericViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = (IsSelf,)

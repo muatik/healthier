@@ -14,8 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
+from rest_framework.routers import DefaultRouter
 
 from entries import views
+
+
+router = DefaultRouter()
+router.register(r"users", views.UserDetail)
+router.register(r"users", views.Users)
+urlpatterns = router.urls
+
 
 urlpatterns = [
     url(r"^entries/$", views.EntryView.as_view()),
@@ -36,4 +44,6 @@ urlpatterns = [
         r"^reports/nutrients/",
         views.Reports.as_view({"get": "consumed_nutrients"})),
 
+
+    url(r"", include(urlpatterns)),
 ]

@@ -1,6 +1,7 @@
 import json
 
 import arrow
+from django.contrib.auth.models import User
 from django.core.serializers.json import DjangoJSONEncoder
 from django.db import models
 from django.db.models import Sum
@@ -85,9 +86,9 @@ class Entry(models.Model):
         @classmethod
         def to_set(cls):
             return (
-                ("fc", cls.FOOD_CONSUMPTION),
-                ("rc", cls.RECIPE_CONSUMPTION),
-                ("a", cls.PHYSICAL_ACTIVITY))
+                (cls.FOOD_CONSUMPTION, "food_consumption"),
+                (cls.RECIPE_CONSUMPTION, "recipe consumption"),
+                (cls.PHYSICAL_ACTIVITY, "physical activity"))
 
     id = models.AutoField(primary_key=True)
     category = models.CharField(choices=CATEGORIES.to_set(), max_length=1)
@@ -253,3 +254,17 @@ class RecipeIngredient(models.Model):  # each ingredient is a consumption
 
     def get_energy(self):
         return FCD.filter_sum_nutrients(self.get_nutrients(), "Energy", "Kcal")
+
+
+class UserProfile(models.Model):
+    FEMALE = 0
+    MALE = 1
+    GENDERS = (
+        (FEMALE, "female"),
+        (MALE, "male"),
+    )
+
+    user = models.OneToOneField(to=User, on_delete=models.CASCADE)
+    gender = models.SmallIntegerField(choices=GENDERS)
+    height = models.SmallIntegerField(blank=False)
+    birth_date = models.DateField(blank=False)
