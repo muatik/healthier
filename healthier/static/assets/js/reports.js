@@ -10,10 +10,12 @@ var ChartCard = (function(card){
         var option = getDateOption();
         var start_date;
         var end_date = moment.tz("UTC");
-        if (option == "weekly") {
-            start_date = moment.tz("UTC").subtract(8, "days")
+        if (option == "today") {
+            start_date = moment.tz("UTC").startOf('day')
+        } else if (option == "weekly") {
+            start_date = moment.tz("UTC").subtract(7, "days")
         } else if (option == "monthly") {
-            start_date = moment.tz("UTC").subtract(32, "days")
+            start_date = moment.tz("UTC").subtract(31, "days")
         } else if (option == "yearly") {
             start_date = moment.tz("UTC").subtract(12, "months")
         }
@@ -310,9 +312,290 @@ var WeightHistoryReports = (function(card){
 });
 
 
+var ConsumedNutrientsReports = (function(card){
+    var container_id = "nutrients-card"
+    var $container = $("#nutrients-card .card-body");
+    var chart;
+
+    var dateRange;
+    var start_date;
+    var end_date;
+
+    var recommendations = [ // daily recommended nutrient
+      {
+        "amount": 65,
+        "label": "Total fat",
+        "unit": "g",
+        "usda_category": "Proximates",
+        "usda_label": "Total lipid (fat)"
+      },
+      {
+        "amount": 20,
+        "label": "Saturated fatty acids",
+        "unit": "g",
+        "usda_category": "Lipids",
+        "usda_label": "Fatty acids, total saturated"
+      },
+      {
+        "amount": 300,
+        "label": "Cholesterol",
+        "unit": "mg",
+        "usda_category": "Proximates",
+        "usda_label": "Cholesterol"
+      },
+      {
+        "amount": 2400,
+        "label": "Sodium",
+        "unit": "mg",
+        "usda_category": "Minerals",
+        "usda_label": "Sodium, Na"
+      },
+      {
+        "amount": 3500,
+        "label": "Potassium",
+        "unit": "mg",
+        "usda_category": "Minerals",
+        "usda_label": "Potassium, K"
+      },
+      {
+        "amount": 300,
+        "label": "Total carbohydrate",
+        "unit": "g",
+        "usda_category": "Proximates",
+        "usda_label": "Carbohydrate, by difference"
+      },
+      {
+        "amount": 25,
+        "label": "Fiber",
+        "unit": "g",
+        "usda_category": "Proximates",
+        "usda_label": "Fiber, total dietary"
+      },
+      {
+        "amount": 50,
+        "label": "Protein",
+        "unit": "g",
+        "usda_category": "Proximates",
+        "usda_label": "Protein"
+      },
+      {
+        "amount": 5000,
+        "label": "Vitamin A",
+        "unit": "IU",
+        "usda_category": "Vitamins",
+        "usda_label": "Vitamin A, IU"
+      },
+      {
+        "amount": 60,
+        "label": "Vitamin C",
+        "unit": "mg",
+        "usda_category": "Vitamins",
+        "usda_label": "Vitamin C, total ascorbic acid"
+      },
+      {
+        "amount": 1000,
+        "label": "Calcium",
+        "unit": "mg",
+        "usda_category": "Minerals",
+        "usda_label": "Calcium, Ca"
+      },
+      {
+        "amount": 18,
+        "label": "Iron",
+        "unit": "mg",
+        "usda_category": "Minerals",
+        "usda_label": "Iron, Fe"
+      },
+      {
+        "amount": 400,
+        "label": "Vitamin D",
+        "unit": "IU",
+        "usda_category": "Vitamins",
+        "usda_label": "Vitamin D"
+      },
+      {
+        "amount": 20,
+        "label": "Vitamin E",
+        "unit": "mg",
+        "usda_category": "Vitamins",
+        "usda_label": "Vitamin E (alpha-tocopherol)"
+      },
+      {
+        "amount": 80,
+        "label": "Vitamin K",
+        "unit": "µg",
+        "usda_category": "Vitamins",
+        "usda_label": "Vitamin K (phylloquinone)"
+      },
+      {
+        "amount": 1.5,
+        "label": "Thiamin",
+        "unit": "mg",
+        "usda_category": "Vitamins",
+        "usda_label": "Thiamin"
+      },
+      {
+        "amount": 1.7,
+        "label": "Riboflavin",
+        "unit": "mg",
+        "usda_category": "Vitamins",
+        "usda_label": "Riboflavin"
+      },
+      {
+        "amount": 20,
+        "label": "Niacin",
+        "unit": "mg",
+        "usda_category": "Vitamins",
+        "usda_label": "Niacin"
+      },
+      {
+        "amount": 2,
+        "label": "Vitamin B6",
+        "unit": "mg",
+        "usda_category": "Vitamins",
+        "usda_label": "Vitamin B-6"
+      },
+      {
+        "amount": 400,
+        "label": "Folate",
+        "unit": "µg",
+        "usda_category": "Vitamins",
+        "usda_label": "Folate, DFE"
+      },
+      {
+        "amount": 6,
+        "label": "Vitamin B12",
+        "unit": "µg",
+        "usda_category": "Vitamins",
+        "usda_label": "Vitamin B-12"
+      },
+      {
+        "amount": 1000,
+        "label": "Phosphorus",
+        "unit": "mg",
+        "usda_category": "Minerals",
+        "usda_label": "Phosphorus, P"
+      },
+      {
+        "amount": 400,
+        "label": "Magnesium",
+        "unit": "mg",
+        "usda_category": "Minerals",
+        "usda_label": "Magnesium, Mg"
+      },
+      {
+        "amount": 15,
+        "label": "Zinc",
+        "unit": "mg",
+        "usda_category": "Minerals",
+        "usda_label": "Zinc, Zn"
+      },
+      {
+        "amount": 2,
+        "label": "Copper",
+        "unit": "mg",
+        "usda_category": "Minerals",
+        "usda_label": "Copper, Cu"
+      },
+      {
+        "amount": 2,
+        "label": "Manganese",
+        "unit": "mg",
+        "usda_category": "Minerals",
+        "usda_label": "Manganese, Mn"
+      }
+    ]
+    function fetch_nutrients_report(start_date, end_date, onSuccess) {
+        $.ajax({
+            url: "/api/reports/nutrients/",
+            method: "GET",
+            data: {
+                "start_date": start_date,
+                "end_date": end_date,
+            }
+        }).success(onSuccess);
+    }
+
+    function add_timeseries(data, series_index) {
+        $.map(data, function(i){
+            chart.series[series_index].addPoint(
+                [moment.tz(i[0], "UTC").valueOf() , i[1]], false, false)
+        })
+        chart.redraw()
+    }
+
+    function render(report) {
+        var entry_template = $("#template_nutrient_entry").html();
+        Mustache.parse(entry_template);
+
+        function get_consumption(label) {
+            for (var i = report.data.length - 1; i >= 0; i--) {
+                if (report.data[i].label == label)
+                    return parseFloat(report.data[i].value);
+            };
+            return 0;
+        }
+
+        var day_diff = dateRange.end_date.diff(dateRange.start_date, "days");
+        if (day_diff == 0)
+            day_diff = 1 // to avoid zero multiply
+
+        $.map(recommendations, function(nutrient){
+            var recommended = nutrient.amount * day_diff;
+            nutrient.consumption =
+                get_consumption(nutrient.usda_label).toFixed(2);
+
+            if (nutrient.consumption == 0)
+                nutrient.percentage = 0
+            else
+                nutrient.percentage = Math.round(
+                    (nutrient.consumption * 100 ) / recommended);
+
+            if (nutrient.percentage > 100) {
+                nutrient.percentage = 100;
+                nutrient.bar_class = "progress-bar-primary-dark"
+            }
+            else {
+                nutrient.bar_class = "progress-bar-warning"
+            }
+
+            nutrient.label = nutrient.label.toLocaleUpperCase()
+            nutrient.tooltip = recommended + " " + nutrient.unit + " recommended, " + nutrient.consumption + " " + nutrient.unit + " consumed";
+
+            var $rendered = $(Mustache.render(entry_template, nutrient));
+            $container.append($rendered)
+        });
+        $('[data-toggle="tooltip"]').tooltip({container: 'body'});
+    }
+
+    function refresh() {
+        $container.html("")
+
+        var format = "YYYY-MM-DD HH:mm:ss"
+        dateRange = card.getDateRange();
+        start_date = dateRange.start_date.format(format);
+        end_date = dateRange.end_date.format(format);
+        fetch_nutrients_report(start_date, end_date, function(res){
+            render(res)
+        });
+
+    }
+
+    function init() {
+        card.onDateRangeChange = refresh
+        card.onRefresh = refresh
+        refresh()
+    }
+
+    init();
+});
+
+
 $(document).ready(function(){
     EnergyReports(ChartCard($("#calorie-card")));
     WeightHistoryReports(ChartCard($("#weight-card")));
+    ConsumedNutrientsReports(ChartCard($("#nutrients-card")));
+
     $('[data-toggle="tooltip"]').tooltip({container: 'body'});
 });
 

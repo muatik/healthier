@@ -178,3 +178,13 @@ class Reports(viewsets.ViewSet):
             "end_date": end_date,
             "data": data
         })
+
+    def consumed_nutrients(self, request):
+        start_date, end_date = self.parse_date_range(request)
+        report = Nutrient.get_nutrients_report(start_date, end_date)
+
+        return Response({
+            "start_date": start_date,
+            "end_date": end_date,
+            "data": report
+        })

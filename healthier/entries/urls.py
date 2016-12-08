@@ -31,5 +31,9 @@ urlpatterns = [
         views.RecipeIngredientsView.as_view()),
 
     url(r"^reports/energy/", views.Reports.as_view({"get": "energy"})),
-    url(r"^reports/weight/", views.Reports.as_view({"get": "weight_history"}))
+    url(r"^reports/weight/", views.Reports.as_view({"get": "weight_history"})),
+    url(
+        r"^reports/nutrients/",
+        views.Reports.as_view({"get": "consumed_nutrients"})),
+
 ]
