@@ -91,6 +91,7 @@ class Entry(models.Model):
                 (cls.PHYSICAL_ACTIVITY, "physical activity"))
 
     id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     category = models.CharField(choices=CATEGORIES.to_set(), max_length=1)
     what = models.CharField(max_length=200)
     when = models.DateTimeField()
@@ -175,7 +176,7 @@ class Nutrient(models.Model):
         return nutrient
 
     @classmethod
-    def get_energy_report(cls, category, start_date, end_date):
+    def get_energy_report(cls, user, category, start_date, end_date):
         """
         returns daily energy report
         Args:
@@ -189,6 +190,7 @@ class Nutrient(models.Model):
         data = create_time_series(start_date, end_date)
 
         records = cls.objects.filter(
+            entry__user=user.id,
             label="Energy",
             unit="kcal",
             category=category,
@@ -209,8 +211,9 @@ class Nutrient(models.Model):
         return sorted(data.items())
 
     @classmethod
-    def get_nutrients_report(cls, start_date, end_date):
+    def get_nutrients_report(cls, user, start_date, end_date):
         nutrients = Nutrient.objects.filter(
+            entry__user=user.id,
             category=cls.CATEGORIES.INTAKE,
             entry__when__range=[start_date, end_date]
         ).values(
@@ -222,6 +225,7 @@ class Nutrient(models.Model):
 
 
 class Recipe(models.Model):
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     totalCalorie = models.IntegerField(default=0)
 

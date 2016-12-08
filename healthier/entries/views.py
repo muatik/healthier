@@ -8,6 +8,7 @@ from django.utils.datastructures import MultiValueDictKeyError
 from rest_framework import generics
 from rest_framework import mixins
 from rest_framework import viewsets
+from rest_framework.exceptions import PermissionDenied, NotFound
 from rest_framework.generics import ListCreateAPIView, \
     ListAPIView, RetrieveUpdateDestroyAPIView, DestroyAPIView
 from rest_framework.response import Response
@@ -23,9 +24,14 @@ from entries.serializers import EntrySerializer, NutrientSerializer, \
 class EntryView(ListCreateAPIView):
     queryset = Entry.objects.all().order_by("-when")
     serializer_class = EntrySerializer
+    permission_classes = (IsNotAnonymous, )
+
+    def get_queryset(self):
+        return self.queryset.filter(user=self.request.user)
 
     def perform_create(self, serializer):
-        entry = serializer.save()
+
+        entry = serializer.save(user=self.request.user)
         data = serializer.initial_data.dict()
         data["extra"] = json.loads(data["extra"])
 
@@ -41,10 +47,13 @@ class EntryView(ListCreateAPIView):
 
 class NutrientsView(ListAPIView):
     serializer_class = NutrientSerializer
+    permission_classes = (IsNotAnonymous, )
 
     def get_queryset(self):
         entry_id = self.kwargs["entry_id"]
-        return Nutrient.objects.filter(entry=entry_id)
+        return Nutrient.objects.filter(
+            entry__user=self.request.user,
+            entry=entry_id)
 
 
 class FoodSuggestionView(APIView):
@@ -97,25 +106,39 @@ class ActivitySuggestionView(APIView):
 class RecipesView(ListCreateAPIView):
     serializer_class = RecipeSerializer
     queryset = Recipe.objects.all()
+    permission_classes = (IsNotAnonymous, )
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+    def get_queryset(self):
+        return self.queryset.filter(user=self.request.user)
 
 
 class RecipeView(RetrieveUpdateDestroyAPIView):
     serializer_class = RecipeSerializer
     queryset = Recipe.objects.all()
+    permission_classes = (IsOwner, )
+
 
 
 class RecipeIngredientsView(ListCreateAPIView, DestroyAPIView):
     serializer_class = RecipeIngredientSerializer
     queryset = RecipeIngredient.objects.all()
+    permission_classes = (IsNotAnonymous, )
 
     def get_queryset(self):
         recipe_id = self.kwargs["recipe_id"]
-        return RecipeIngredient.objects.filter(recipe_id=recipe_id)
+        return RecipeIngredient.objects.filter(
+            recipe__user=self.request.user,
+            recipe_id=recipe_id)
 
     def perform_create(self, serializer):
         recipe_id = self.kwargs["recipe_id"]
-        recipe = Recipe.objects.get(id=recipe_id)
-
+        # TODO: exception handling
+        recipe = Recipe.objects.get(
+            user=self.request.user,
+            id=recipe_id)
         ingredient = serializer.save(recipe_id=recipe_id)
         ingredient.prepare_nutrients()
         ingredient.save()
@@ -124,12 +147,15 @@ class RecipeIngredientsView(ListCreateAPIView, DestroyAPIView):
         recipe.save()
 
     def perform_destroy(self, ingredient):
+        if ingredient.recipe.user != self.request.user:
+            raise PermissionDenied()
         ingredient.recipe.decrease_calorie(ingredient.get_energy())
         ingredient.recipe.save()
         super().perform_destroy(ingredient)
 
 
 class Reports(viewsets.ViewSet):
+    permission_classes = (IsNotAnonymous,)
 
     @classmethod
     def parse_date_range(cls, request):
@@ -154,7 +180,8 @@ class Reports(viewsets.ViewSet):
     def energy(self, request):
         category = request.query_params["category"]
         start_date, end_date = self.parse_date_range(request)
-        report = Nutrient.get_energy_report(category, start_date, end_date)
+        report = Nutrient.get_energy_report(
+            request.user, category, start_date, end_date)
 
         return Response({
             "category": category,
@@ -185,7 +212,8 @@ class Reports(viewsets.ViewSet):
 
     def consumed_nutrients(self, request):
         start_date, end_date = self.parse_date_range(request)
-        report = Nutrient.get_nutrients_report(start_date, end_date)
+        report = Nutrient.get_nutrients_report(
+            request.user, start_date, end_date)
 
         return Response({
             "start_date": start_date,

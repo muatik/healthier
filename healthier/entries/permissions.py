@@ -1,11 +1,12 @@
 from rest_framework import permissions
+from rest_framework.exceptions import NotAuthenticated
 
 
 class IsNotAnonymous(permissions.BasePermission):
     def has_permission(self, request, view):
         if request.user.is_authenticated:
             return True
-        raise Exception("please login to perform this action")
+        raise NotAuthenticated("please login to perform this action")
 
 
 class IsOwner(IsNotAnonymous):
