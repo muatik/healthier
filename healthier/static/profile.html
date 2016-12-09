@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Material Admin - Profile</title>
+
+        <!-- BEGIN META -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="your,keywords">
+        <meta name="description" content="Short explanation about this website">
+        <!-- END META -->
+
+        <!-- BEGIN STYLESHEETS -->
+        <link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet' type='text/css'/>
+        <link type="text/css" rel="stylesheet" href="assets/css/theme-default/bootstrap.css?1422792965" />
+        <link type="text/css" rel="stylesheet" href="assets/css/theme-default/materialadmin.css?1425466319" />
+        <link type="text/css" rel="stylesheet" href="assets/css/theme-default/font-awesome.min.css?1422529194" />
+        <link type="text/css" rel="stylesheet" href="assets/css/theme-default/material-design-iconic-font.min.css?1421434286" />
+        <link type="text/css" rel="stylesheet" href="assets/css/theme-default/libs/bootstrap-datepicker/datepicker3.css?1424887858" />
+        <link type="text/css" rel="stylesheet" href="assets/css/profile.css" />
+        <!-- END STYLESHEETS -->
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="assets/js/libs/utils/html5shiv.js?1403934957"></script>
+        <script type="text/javascript" src="assets/js/libs/utils/respond.min.js?1403934956"></script>
+        <![endif]-->
+    </head>
+    <body class="menubar-hoverable header-fixed ">
+
+        <!-- BEGIN HEADER-->
+        <header id="header" >
+            <div class="headerbara">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class=" navbar navbar-default">
+
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div class="navbar-brand">
+                            <div class="brand-holder">
+                                <a href="timeline.html">
+                                    <span class="text-lg text-bold text-primary">HEALTHIER</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav main-text-nav">
+                            <li class="active"><a href="timeline.html">Timeline</a></li>
+                            <li><a href="recipes.html">Recipes</a></li>
+                            <li><a href="reports.html">Reports</a></li>
+                        </ul>
+
+                        <div class="nav navbar-nav navbar-right">
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="headerbar-right">
+                                <ul class="header-nav header-nav-options">
+
+                                    <li class="dropdown hidden-xs">
+                                        <a href="javascript:void(0);" class="btn btn-icon-toggle btn-default" data-toggle="dropdown">
+                                            <i class="fa fa-bell"></i><sup class="badge style-danger">4</sup>
+                                        </a>
+                                        <ul class="dropdown-menu animation-expand">
+                                            <li class="dropdown-header">Today's messages</li>
+                                            <li>
+                                                <a class="alert alert-callout alert-warning" href="javascript:void(0);">
+                                                    <img class="pull-right img-circle dropdown-avatar" src="assets/img/avatar2.jpg?1404026449" alt="" />
+                                                    <strong>Alex Anistor</strong><br/>
+                                                    <small>Testing functionality...</small>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="alert alert-callout alert-info" href="javascript:void(0);">
+                                                    <img class="pull-right img-circle dropdown-avatar" src="assets/img/avatar3.jpg?1404026799" alt="" />
+                                                    <strong>Alicia Adell</strong><br/>
+                                                    <small>Reviewing last changes...</small>
+                                                </a>
+                                            </li>
+                                            <li class="dropdown-header">Options</li>
+                                            <li><a href="../../html/pages/login.html">View all messages <span class="pull-right"><i class="fa fa-arrow-right"></i></span></a></li>
+                                            <li><a href="../../html/pages/login.html">Mark as read <span class="pull-right"><i class="fa fa-arrow-right"></i></span></a></li>
+                                        </ul><!--end .dropdown-menu -->
+                                    </li><!--end .dropdown -->
+
+                                    <li class="dropdown hidden-xs">
+                                        <a href="javascript:void(0);" class="btn btn-icon-toggle btn-default" data-toggle="dropdown">
+                                            <i class="fa fa-area-chart"></i>
+                                        </a>
+                                        <ul class="dropdown-menu animation-expand">
+                                            <li class="dropdown-header">Server load</li>
+                                            <li class="dropdown-progress">
+                                                <a href="javascript:void(0);">
+                                                    <div class="dropdown-label">
+                                                        <span class="text-light">Server load <strong>Today</strong></span>
+                                                        <strong class="pull-right">93%</strong>
+                                                    </div>
+                                                    <div class="progress"><div class="progress-bar progress-bar-danger" style="width: 93%"></div></div>
+                                                </a>
+                                            </li><!--end .dropdown-progress -->
+                                            <li class="dropdown-progress">
+                                                <a href="javascript:void(0);">
+                                                    <div class="dropdown-label">
+                                                        <span class="text-light">Server load <strong>Yesterday</strong></span>
+                                                        <strong class="pull-right">30%</strong>
+                                                    </div>
+                                                    <div class="progress"><div class="progress-bar progress-bar-success" style="width: 30%"></div></div>
+                                                </a>
+                                            </li><!--end .dropdown-progress -->
+                                            <li class="dropdown-progress">
+                                                <a href="javascript:void(0);">
+                                                    <div class="dropdown-label">
+                                                        <span class="text-light">Server load <strong>Lastweek</strong></span>
+                                                        <strong class="pull-right">74%</strong>
+                                                    </div>
+                                                    <div class="progress"><div class="progress-bar progress-bar-warning" style="width: 74%"></div></div>
+                                                </a>
+                                            </li><!--end .dropdown-progress -->
+                                        </ul><!--end .dropdown-menu -->
+                                    </li><!--end .dropdown -->
+                                </ul><!--end .header-nav-options -->
+
+                                <ul class="header-nav header-nav-profile">
+                                    <li class="dropdown">
+                                        <a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
+                                            <img src="https://avatars3.githubusercontent.com/u/106846?v=3&s=466" alt="" />
+                                            <span class="profile-info">
+                                                Mustafa Atik
+                                            </span>
+                                        </a>
+                                        <ul class="dropdown-menu animation-dock">
+                                            <li class="dropdown-header">Settings</li>
+                                            <li><a href="../../html/pages/profile.html">My profile</a></li>
+                                            <li><a href="../../html/pages/calendar.html">Settings</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#" class="logout"><i class="fa fa-fw fa-lock"></i> Logout</a></li>
+                                        </ul><!--end .dropdown-menu -->
+                                    </li><!--end .dropdown -->
+                                </ul><!--end .header-nav-profile -->
+
+                            </div><!--end #header-navbar-collapse -->
+                        </div>
+
+                    </div> <!--collapse navbar-collapse -->
+
+                </div>
+
+
+            </div>
+        </header>
+        <!-- END HEADER-->
+
+        <!-- BEGIN BASE-->
+        <div id="base">
+            <div id="content">
+                <section class="section-body">
+
+                    <div class="col-sm-3">
+                        <div class="card profile-card">
+                            <div class="card-body">
+                                <div class="profile-userpic">
+                                    <img src="https://avatars3.githubusercontent.com/u/106846?v=3&amp;s=466" alt="">
+                                </div>
+                                <h3 class="text-center">Mustafa Atik</h3>
+                                <button type="button" class="btn ink-reaction btn-raised btn-xs btn-primary center-block">
+                                    change photo</button>
+                            </div><!--end .card-body -->
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-9">
+                        <div class="card">
+
+                            <div class="card-head">
+                                <ul class="nav nav-tabs" data-toggle="tabs">
+                                    <li class="active"><a href="#profile-edit-card">Personal Info</a></li>
+                                    <li class=""><a href="#password-form-card">Change password</a></li>
+                                    <li class=""><a href="#weight-card">Update weight</a></li>
+
+                                </ul>
+                            </div><!--end .card-head -->
+
+                            <div class="card-body tab-content">
+
+
+                                <div class="tab-pane active" id="profile-edit-card">
+                                    <form class="form col-md-9">
+                                        <div class="card-body ">
+                                            <div>
+                                                <label class="radio-inline radio-styled">
+                                                    <input type="radio" value="1", name="profile-gender"
+                                                        id="profle-gender-male"><span>Male</span>
+                                                </label>
+                                                <label class="radio-inline radio-styled">
+                                                    <input type="radio" value="0" name="profile-gender" checked=""
+                                                        id="profle-gender-female"><span>Female</span>
+                                                </label>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" id="profile-firstname">
+                                                        <label for="profile-firstname">Firstname</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" id="profile-lastname">
+                                                        <label for="profile-lastname">Lastname</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="email" class="form-control" id="profile-email">
+                                                <label for="profile-email">Email</label>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" id="profile-height">
+                                                        <label for="profile-height">Height (cm)</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group control-width-normal">
+                                                <div class="input-group date" id="profle-birth-date">
+                                                    <div class="input-group-content">
+                                                        <input type="text" class="form-control">
+                                                        <label>Birth date</label>
+                                                    </div>
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="alert alert-danger error-message" role="alert" >
+                                                <strong>Error:</strong> <span></span>
+                                            </div>
+                                        </div><!--end .card-body -->
+                                        <div class="card-actionbar">
+                                            <div class="card-actionbar-row">
+                                                <button type="submit" class="btn btn-primary ink-reaction">Update</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div> <!-- end of profile-card -->
+
+                                <div class="tab-pane" id="password-form-card">
+                                    <form class="form col-md-8">
+                                        <div class="card-body floating-label">
+                                            <h3 class="text-primary">Password changing</h3>
+
+                                            <div class="form-group">
+                                                <input type="password" class="form-control" id="passreset-password">
+                                                <label for="profile-password">Current assword</label>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="password" class="form-control" id="passreset-new-password1">
+                                                <label for="profile-password">New password</label>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="password" class="form-control" id="passreset-new-password2">
+                                                <label for="profile-password">New password again</label>
+                                            </div>
+                                            <div class="alert alert-danger error-message" role="alert" >
+                                                <strong>Error:</strong> <span></span>
+                                            </div>
+                                        </div><!--end .card-body -->
+                                        <div class="card-actionbar">
+                                            <div class="card-actionbar-row">
+                                                <button type="submit" class="btn  btn-primary ink-reaction">Change password</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div> <!-- end of password-form-card -->
+
+                                <div class="tab-pane" id="weight-card">
+                                    <div class="card-body floating-label">
+                                        <h3 class="text-primary">Update current weight</h3>
+                                        <form class="form form-inline col-md-10">
+
+                                            <div class="form-group control-width-normal">
+                                                <div class="input-group date" id="weight-view-date">
+                                                    <div class="input-group-content">
+                                                        <input type="text" class="form-control">
+                                                        <label>Date</label>
+                                                    </div>
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="weight-view-weight">
+                                                <label for="signup-weight">Weight (kg)</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn  btn-primary ink-reaction">Update</button>
+                                            </div>
+
+                                            <div class="alert alert-danger error-message" role="alert" >
+                                                <strong>Error:</strong> <span></span>
+                                            </div>
+                                        </form>
+                                    </div><!--end .card-body -->
+
+                                    <div class="card-body col-md-10">
+                                        <h3 class="text-primary">Your weight history</h3>
+                                        <table class="table table-striped no-margin">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Weight(kg)</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                            <script id="weight-history-item" type="x-tmpl-mustache">
+                                                <tr>
+                                                    <td>{{date}}</td>
+                                                    <td>{{weight}}</td>
+                                                </tr>
+                                            </script>
+                                        </table>
+                                    </div>
+
+                                </div> <!-- end of password-form-card -->
+
+                            </div><!--end .card-body -->
+
+                        </div>
+                    </div>
+
+                </section> <!-- end of section-body -->
+            </div> <!--end #content-->
+        </div><!--end #base-->
+        <!-- END BASE -->
+
+        <!-- BEGIN JAVASCRIPT -->
+        <script src="assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
+        <script src="assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
+        <script src="assets/js/libs/bootstrap/bootstrap.min.js"></script>
+        <script src="assets/js/libs/spin.js/spin.min.js"></script>
+        <script src="assets/js/libs/autosize/jquery.autosize.min.js"></script>
+        <script src="assets/js/libs/nanoscroller/jquery.nanoscroller.min.js"></script>
+        <script src="assets/js/libs/mustache.min.js"></script>
+        <script src="assets/js/libs/js.cookie.js"></script>
+        <link rel="stylesheet" type="text/css" href="assets/css/theme-default/libs/toastr/toastr.css?1425466569">
+        <script src="assets/js/libs/toastr/toastr.js"></script>
+        <script src="assets/js/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+        <script src="assets/js/libs/jquery.autocomplete.min.js"></script>
+
+        <script src="assets/js/core/source/App.js"></script>
+        <script src="assets/js/core/source/AppNavigation.js"></script>
+        <script src="assets/js/core/source/AppOffcanvas.js"></script>
+        <script src="assets/js/core/source/AppCard.js"></script>
+        <script src="assets/js/core/source/AppForm.js"></script>
+        <script src="assets/js/core/source/AppNavSearch.js"></script>
+        <script src="assets/js/core/source/AppVendor.js"></script>
+        <script src="assets/js/core/demo/Demo.js"></script>
+        <!-- END JAVASCRIPT -->
+
+
+
+        <script type="text/javascript" src="assets/js/user.js"></script>
+        <script type="text/javascript" src="assets/js/weights.js"></script>
+        <script type="text/javascript" src="assets/js/page.js"></script>
+
+        <script type="text/javascript" src="assets/js/profile.js"></script>
+
+
+    </body>
+</html>

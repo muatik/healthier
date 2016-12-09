@@ -38,6 +38,8 @@ urlpatterns = [
     url(r"^recipes/(?P<recipe_id>\d+)/ingredients/(?P<pk>\d+)/$",
         views.RecipeIngredientsView.as_view()),
 
+    url(r"^weights/$", views.UserWeightsView.as_view()),
+
     url(r"^reports/energy/", views.Reports.as_view({"get": "energy"})),
     url(r"^reports/weight/", views.Reports.as_view({"get": "weight_history"})),
     url(

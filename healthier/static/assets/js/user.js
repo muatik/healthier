@@ -14,7 +14,7 @@ User.login = function(email, password) {
     }).error(function(e){
         User.authenticated = false;
     }).done(function(res){
-        $.extend(User, res)
+        User.update(res)
         User.authenticated = true;
         User.setCookies();
     });
@@ -46,6 +46,49 @@ User.clearCookies = function() {
 
 User.getBasicAuth = function() {
     return "Basic " + btoa(this.username + ":" + this.password)
+}
+
+User.update = function(data) {
+    var password = this.password;
+    $.extend(User, data)
+    this.password = password;
+}
+
+User.register = function(data, options) {
+    $.ajax({
+        url: "/api/users/",
+        method: "POST",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify(data)
+    }).success(function(res){
+        User.update(res);
+        User.password = data.password;
+        User.setCookies();
+        if (options && options.success)
+            options.success(res)
+    }).error(function(res){
+        if (options && options.error)
+            options.error(res)
+    });
+}
+
+User.change = function(data, options) {
+    User.ajax({
+        url: "/api/users/" + this.id + "/",
+        method: "PUT",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify(data)
+    }).success(function(res){
+        User.update(res);
+        User.setCookies();
+        if (options && options.success)
+            options.success(res)
+    }).error(function(res){
+        if (options && options.error)
+            options.error(res)
+    });
 }
 
 User.ajax = function(options) {

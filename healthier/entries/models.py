@@ -266,6 +266,12 @@ class RecipeIngredient(models.Model):  # each ingredient is a consumption
         return FCD.filter_sum_nutrients(self.get_nutrients(), "Energy", "Kcal")
 
 
+class UserWeight(models.Model):
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    date = models.DateField(blank=False)
+    weight = models.FloatField()
+
+
 class UserProfile(models.Model):
     FEMALE = 0
     MALE = 1
@@ -278,3 +284,4 @@ class UserProfile(models.Model):
     gender = models.SmallIntegerField(choices=GENDERS)
     height = models.SmallIntegerField(blank=False)
     birth_date = models.DateField(blank=False)
+

@@ -13,10 +13,11 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from entries.fcd import FCD
-from entries.models import Entry, Nutrient, Recipe, RecipeIngredient
+from entries.models import Entry, Nutrient, Recipe, RecipeIngredient, UserWeight
 from entries.permissions import IsOwner, IsNotAnonymous, IsSelf
 from entries.serializers import EntrySerializer, NutrientSerializer, \
-    RecipeIngredientSerializer, RecipeSerializer, UserSerializer
+    RecipeIngredientSerializer, RecipeSerializer, UserSerializer, \
+    UserWeightSerializer
 
 
 class EntryView(ListCreateAPIView):
@@ -119,7 +120,6 @@ class RecipeView(RetrieveUpdateDestroyAPIView):
     permission_classes = (IsOwner, )
 
 
-
 class RecipeIngredientsView(ListCreateAPIView, DestroyAPIView):
     serializer_class = RecipeIngredientSerializer
     queryset = RecipeIngredient.objects.all()
@@ -218,6 +218,18 @@ class Reports(viewsets.ViewSet):
             "end_date": end_date,
             "data": report
         })
+
+
+class UserWeightsView(ListCreateAPIView):
+    serializer_class = UserWeightSerializer
+    permission_classes = (IsNotAnonymous, )
+
+    def get_queryset(self):
+        return UserWeight.objects.filter(
+            user=self.request.user).order_by("-date")
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 
 class Users(mixins.CreateModelMixin, viewsets.GenericViewSet):

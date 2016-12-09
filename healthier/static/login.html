@@ -38,13 +38,11 @@
 
             <div class="col-sm-6 col-md-5 page-forms">
 
-
-
                 <div id="signin-card">
                     <div>
                         <h2 class="text-primary">Healthier</h2>
                         <p class="lead">
-                        Healthier is a health tracker application which is planned, designed and implemented for Software Development Practice (SWE 573) 2016 Fall project. In this application, users can track their food consumptions, physical activities, and body mass indexes.
+                        Healthier is a health tracker application which is planned, designed and implemented as a Software Development Practice (SWE 573) 2016 Fall project. In this application, users can track their food consumptions, physical activities, and body mass indexes.
                         </p>
                     </div>
                     <div lass="card contain-sm">
@@ -191,6 +189,9 @@
         <script src="assets/js/libs/spin.js/spin.min.js"></script>
         <script src="assets/js/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
 
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+        <script type="text/javascript" src="assets/js/libs/moment/moment-timezone-with-data.js"></script>
+
         <script src="assets/js/core/source/App.js"></script>
         <script src="assets/js/core/source/AppNavigation.js"></script>
         <script src="assets/js/core/source/AppOffcanvas.js"></script>
@@ -203,6 +204,7 @@
 
 
         <script type="text/javascript" src="assets/js/user.js"></script>
+        <script type="text/javascript" src="assets/js/weights.js"></script>
 
         <script type="text/javascript">
         $(document).ready(function(){
@@ -250,23 +252,27 @@
                 };
 
                 $("#signup-error-message").hide()
-                $.ajax({
-                    url: "/api/users/",
-                    method: "POST",
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    data: JSON.stringify(data)
-                }).success(function(res){
-                    login(data.email, data.password);
-                }).error(function(res){
-                    var errors = JSON.parse(res.responseText);
-                    $("#signup-error-message").show()
-                    for(var i in errors) {
-                        $("#signup-error-message span").html(i + ": " + errors[i]);
-                        break;
+                User.register(data, {
+                    success: function(res){
+                        Weights.insertWeight(moment().format('YYYY-MM-DD'), $("#signup-weight").val(), {
+                            success: function(){
+                                login(data.email, data.password);
+                            },
+                            error: function() {
+                                login(data.email, data.password);
+                            }
+                        })
+                    },
+                    error: function(res){
+                        var errors = JSON.parse(res.responseText);
+                        $("#signup-error-message").show()
+                        for(var i in errors) {
+                            $("#signup-error-message span").html(i + ": " + errors[i]);
+                            break;
+                        }
+                        console.log(res)
                     }
-                    console.log(res)
-                });
+                })
 
 
             });
