@@ -46,4 +46,5 @@ urlpatterns = [
 
 
     url(r"", include(urlpatterns)),
+    url(r"^users/me$", views.UserDetail.as_view({"get": "get_me"})),
 ]

@@ -117,11 +117,15 @@ class Entry(models.Model):
                 Nutrient.insert(self, nutrient_data)
 
     def insert_activity_nutrients(self):
+        # TODO: calculate actual kcal
+        # http: // download.lww.com / wolterskluwer_vitalstream_com / PermaLink\
+        #         / MSS / A / MSS_43_8_2011_06_13_AINSWORTH_202093_SDC1.pdf
+        # kcal / min = METs × body weight in kilograms ÷ 60
         nutrient_data = {
             "category": Nutrient.CATEGORIES.OUTTAKE,
             "label": "Energy",
             "unit": "kcal",
-            "quantity": 1.32
+            "quantity": 132
         }
         Nutrient.insert(self, nutrient_data)
 

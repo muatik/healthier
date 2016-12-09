@@ -26,7 +26,7 @@ var Timeline = (function(){
     });
 
     function fetch_entries(callback) {
-        $.ajax({
+        User.ajax({
             url: '/api/entries/',
             type: 'GET',
             error: callback.onError,
@@ -138,7 +138,7 @@ var Timeline = (function(){
             return;
         }
 
-        $.ajax({
+        User.ajax({
             url: '/api/entries/'+entryId+'/nutrients/',
             type: 'GET',
             always: function() {removeNutrientsLoader(entryId);},

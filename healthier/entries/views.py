@@ -2,13 +2,11 @@ import json
 
 import arrow
 from django.contrib.auth.models import User
-from django.db.models import Sum
 from django.utils import timezone
 from django.utils.datastructures import MultiValueDictKeyError
-from rest_framework import generics
 from rest_framework import mixins
 from rest_framework import viewsets
-from rest_framework.exceptions import PermissionDenied, NotFound
+from rest_framework.exceptions import PermissionDenied
 from rest_framework.generics import ListCreateAPIView, \
     ListAPIView, RetrieveUpdateDestroyAPIView, DestroyAPIView
 from rest_framework.response import Response
@@ -59,7 +57,7 @@ class NutrientsView(ListAPIView):
 class FoodSuggestionView(APIView):
     def get(self, request, frm=None):
         keyword = request.query_params.get("q").strip()
-
+        # TODO: the lists should be user specialized
         history = []
         for i in Entry.objects.filter(what__contains=keyword):
             if not i.extra:
@@ -236,3 +234,6 @@ class UserDetail(mixins.RetrieveModelMixin,
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = (IsSelf,)
+
+    def get_me(self, request):
+        return Response(self.serializer_class(request.user).data)

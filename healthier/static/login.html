@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Material Admin - Profile</title>
+
+        <!-- BEGIN META -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="your,keywords">
+        <meta name="description" content="Short explanation about this website">
+        <!-- END META -->
+
+        <!-- BEGIN STYLESHEETS -->
+        <link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet' type='text/css'/>
+        <link type="text/css" rel="stylesheet" href="assets/css/theme-default/bootstrap.css?1422792965" />
+        <link type="text/css" rel="stylesheet" href="assets/css/theme-default/materialadmin.css?1425466319" />
+        <link type="text/css" rel="stylesheet" href="assets/css/theme-default/font-awesome.min.css?1422529194" />
+        <link type="text/css" rel="stylesheet" href="assets/css/theme-default/material-design-iconic-font.min.css?1421434286" />
+        <link type="text/css" rel="stylesheet" href="assets/css/theme-default/libs/bootstrap-datepicker/datepicker3.css?1424887858" />
+        <link type="text/css" rel="stylesheet" href="assets/css/authentication.css" />
+        <!-- END STYLESHEETS -->
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="assets/js/libs/utils/html5shiv.js?1403934957"></script>
+        <script type="text/javascript" src="assets/js/libs/utils/respond.min.js?1403934956"></script>
+        <![endif]-->
+    </head>
+    <body class=" ">
+
+
+        <!-- BEGIN BASE-->
+        <section class="page ">
+
+            <div class="col-sm-6 col-md-7 page-splash">
+                <div class="login-bg" style=""></div>
+            </div>
+
+            <div class="col-sm-6 col-md-5 page-forms">
+
+
+
+                <div id="signin-card">
+                    <div>
+                        <h2 class="text-primary">Healthier</h2>
+                        <p class="lead">
+                        Healthier is a health tracker application which is planned, designed and implemented for Software Development Practice (SWE 573) 2016 Fall project. In this application, users can track their food consumptions, physical activities, and body mass indexes.
+                        </p>
+                    </div>
+                    <div lass="card contain-sm">
+                        <div class="card-head style-default-light">
+                            <header>Login</header>
+                        </div>
+                        <div class="card-body floating-label">
+                            <div class="col-sm-12">
+                                <form class="form floating-label" action="" id="login-form" accept-charset="utf-8" method="post">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" id="login-email" name="email">
+                                        <label for="email">email</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" id="login-password" name="password">
+                                        <label for="password">Password</label>
+                                        <!-- <p class="help-block"><a href="#">Forgotten?</a></p> -->
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <!-- <div class="col-xs-6 text-left">
+                                            <div class="checkbox checkbox-inline checkbox-styled">
+                                                <label>
+                                                    <input type="checkbox"> <span>Remember me</span>
+                                                </label>
+                                            </div>
+                                        </div> -->
+                                        <div class="col-xs-offset-6 col-xs-6 text-right">
+                                            <button class="btn btn-primary btn-raised" type="submit">Login</button>
+                                        </div><!--end .col -->
+                                    </div><!--end .row -->
+                                </form>
+                            </div><!--end .col -->
+                            <div class="col-sm-6 col-sm-offset-3 text-center">
+                                <h3 class="text-light">
+                                    No account yet?
+                                </h3>
+                                <a class="btn btn-block btn-raised btn-primary show-signup-form" href="#">Sign up here</a>
+                                <br><br>
+                            </div><!--end .col -->
+                        </div>
+                    </div>
+                </div><!--end .row -->
+
+                <div id="signup-card">
+                    <form class="form">
+                        <div class="card contain-sm">
+                            <div class="card-head style-primary">
+                                <header>Create an account</header>
+                            </div>
+                            <div class="card-body floating-label">
+                                <div>
+                                    <label class="radio-inline radio-styled">
+                                        <input type="radio" value="1", name="signup-gender"><span>Male</span>
+                                    </label>
+                                    <label class="radio-inline radio-styled">
+                                        <input type="radio" value="0" name="signup-gender" checked=""><span>Female</span>
+                                    </label>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="signup-firstname">
+                                            <label for="signup-firstname">Firstname</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="signup-lastname">
+                                            <label for="signup-lastname">Lastname</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" id="signup-email">
+                                    <label for="signup-email">Email</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="signup-password">
+                                    <label for="signup-password">Password</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="signup-password">
+                                    <label for="signup-password">Password Again</label>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="signup-height">
+                                            <label for="signup-height">Height (cm)</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="signup-weight">
+                                            <label for="signup-weight">Weight (kg)</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group control-width-normal">
+                                    <div class="input-group date" id="signup-birth-date">
+                                        <div class="input-group-content">
+                                            <input type="text" class="form-control">
+                                            <label>Birth date</label>
+                                        </div>
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger" role="alert" id="signup-error-message">
+                                    <strong>Error:</strong> <span></span>
+                                </div>
+                            </div><!--end .card-body -->
+                            <div class="card-actionbar">
+                                <div class="card-actionbar-row">
+                                    <button type="submit" class="btn btn-flat btn-primary ink-reaction">Create account</button>
+                                </div>
+                            </div>
+                        </div><!--end .card -->
+
+                        <em class="text-caption">Have you already had an account?
+                            <a href="" class="btn ink-reaction btn-flat btn-xs btn-primary show-signin-form">
+                                sign in</a></em>
+                    </form>
+                </div> <!-- end of signup-card -->
+
+            </div> <!-- end of page-forms -->
+
+
+        </section>
+            <!-- END LOGIN SECTION -->
+
+        <!-- END BASE -->
+
+        <!-- BEGIN JAVASCRIPT -->
+        <script src="assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
+        <script src="assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
+        <script src="assets/js/libs/bootstrap/bootstrap.min.js"></script>
+
+        <script src="assets/js/libs/autosize/jquery.autosize.min.js"></script>
+        <script src="assets/js/libs/nanoscroller/jquery.nanoscroller.min.js"></script>
+        <script src="assets/js/libs/mustache.min.js"></script>
+        <script src="assets/js/libs/js.cookie.js"></script>
+        <script src="assets/js/libs/spin.js/spin.min.js"></script>
+        <script src="assets/js/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+
+        <script src="assets/js/core/source/App.js"></script>
+        <script src="assets/js/core/source/AppNavigation.js"></script>
+        <script src="assets/js/core/source/AppOffcanvas.js"></script>
+        <script src="assets/js/core/source/AppCard.js"></script>
+        <script src="assets/js/core/source/AppForm.js"></script>
+        <script src="assets/js/core/source/AppNavSearch.js"></script>
+        <script src="assets/js/core/source/AppVendor.js"></script>
+        <script src="assets/js/core/demo/Demo.js"></script>
+        <!-- END JAVASCRIPT -->
+
+
+        <script type="text/javascript" src="assets/js/user.js"></script>
+
+        <script type="text/javascript">
+        $(document).ready(function(){
+
+            $(".show-signup-form, .show-signin-form").click(function(){
+                $("#signin-card").fadeToggle(0);
+                $("#signup-card").fadeToggle(0);
+            });
+
+            $('#signup-birth-date').datepicker({
+                maxDate : 'now',
+                startDate : new Date('1900-08-08'),
+                endDate : new Date(),
+                autoclose: true,
+                todayHighlight: true});
+
+            function login(email, password) {
+                User.login(email, password).success(function(){
+                    location.href="timeline.html";
+                });
+            }
+
+            $("#login-form").submit(function(e){
+                e.preventDefault();
+                var email = $("#login-email").val();
+                var password = $("#login-password").val();
+                var that = this;
+                login(email, password);
+
+            });
+
+            $("#signup-card form").submit(function(e){
+                e.preventDefault();
+                var data = {
+                    "first_name": $("#signup-firstname").val(),
+                    "last_name": $("#signup-lastname").val(),
+                    "email": $("#signup-email").val(),
+                    "username": $("#signup-email").val(),
+                    "password": $("#signup-password").val(),
+                    "userprofile": {
+                        "gender": $("input[name='signup-gender']:checked").val(),
+                        "birth_date": $("#signup-birth-date").data('datepicker').getFormattedDate('yyyy-mm-dd'),
+                        "height": $("#signup-height").val(),
+                    }
+                };
+
+                $("#signup-error-message").hide()
+                $.ajax({
+                    url: "/api/users/",
+                    method: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify(data)
+                }).success(function(res){
+                    login(data.email, data.password);
+                }).error(function(res){
+                    var errors = JSON.parse(res.responseText);
+                    $("#signup-error-message").show()
+                    for(var i in errors) {
+                        $("#signup-error-message span").html(i + ": " + errors[i]);
+                        break;
+                    }
+                    console.log(res)
+                });
+
+
+            });
+
+        });
+        </script>
+
+    </body>
+</html>

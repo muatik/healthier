@@ -57,6 +57,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ("id", "first_name", "last_name", "username",
                   "email", "password", "userprofile")
+        read_only_fields = ["id"]
 
     def create(self, validated_data):
         profile_data = validated_data.pop("userprofile")

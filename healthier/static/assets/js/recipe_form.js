@@ -6,7 +6,7 @@ var RecipeForm = (function($container, recipe_id){
     var data; // holds recipe entity data.
 
     function fetch_entries(callback) {
-        $.ajax({
+        User.ajax({
             url: '/api/recipes/',
             type: 'GET',
             error: callback.onError,
@@ -15,7 +15,7 @@ var RecipeForm = (function($container, recipe_id){
     }
 
     function delete_entry(entryId, callback) {
-        $.ajax({
+        User.ajax({
             url: '/api/recipes/' + entryId + '/',
             type: 'DELETE',
             error: callback.onError,
@@ -35,7 +35,7 @@ var RecipeForm = (function($container, recipe_id){
         else
             var totalEnergy = 0;
 
-        $.ajax({
+        User.ajax({
             url: (is_recipe_submitted() ? '/api/recipes/' + $id.val() + "/" : '/api/recipes/') ,
             type: (is_recipe_submitted() ? "PUT" : "POST"),
             data: {
@@ -71,7 +71,7 @@ var RecipeForm = (function($container, recipe_id){
         }
 
         console.log("ready to submit ingredient: " + what);
-        $.ajax({
+        User.ajax({
             url: '/api/recipes/' + $id.val()+ '/ingredients/',
             type: 'POST',
             data: {
@@ -129,7 +129,7 @@ var RecipeForm = (function($container, recipe_id){
     */
     function update_measures($measures, ndbno) {
         showLoader($measures.parent());
-        $.ajax({
+        User.ajax({
             url: '/api/food/' + ndbno + '/measures/',
             type: 'GET',
             error: function() {
@@ -148,7 +148,7 @@ var RecipeForm = (function($container, recipe_id){
 
     function delete_ingredient(ingredient, options) {
         console.log("deleting ingredient: " + ingredient.what);
-        $.ajax({
+        User.ajax({
             url: '/api/recipes/' + $id.val()+ '/ingredients/' + ingredient.id,
             type: 'DELETE',
             error: function() {
@@ -209,7 +209,7 @@ var RecipeForm = (function($container, recipe_id){
 
         $what.autocomplete({
             lookup: function(query, done) {
-                $.ajax({
+                User.ajax({
                     url: '/api/food/',
                     type: 'GET',
                     data: {
@@ -351,7 +351,7 @@ var RecipeForm = (function($container, recipe_id){
     }
 
     function fetch_ingredients() {
-        $.ajax({
+        User.ajax({
             url: '/api/recipes/' + data.id + "/ingredients/",
             type: 'GET',
             error: function() {
@@ -365,7 +365,7 @@ var RecipeForm = (function($container, recipe_id){
     }
 
     function fetch_recipe() {
-        $.ajax({
+        User.ajax({
             url: '/api/recipes/',
             type: 'GET',
             error: function() {

@@ -64,7 +64,7 @@ var EnergyReports = (function(card){
     var end_date;
 
     function fetch_energy_report(category, start_date, end_date, onSuccess) {
-        $.ajax({
+        User.ajax({
             url: "/api/reports/energy/",
             method: "GET",
             data: {
@@ -166,13 +166,13 @@ var WeightHistoryReports = (function(card){
     var chart;
 
     // @TODO: needs to be parametric
-    var height = 177 / 100; // in meters
+    var height = User.userprofile.height / 100; // in meters
 
     var start_date;
     var end_date;
 
     function fetch_weight_history_report(start_date, end_date, onSuccess) {
-        $.ajax({
+        User.ajax({
             url: "/api/reports/weight/",
             method: "GET",
             data: {
@@ -506,7 +506,7 @@ var ConsumedNutrientsReports = (function(card){
       }
     ]
     function fetch_nutrients_report(start_date, end_date, onSuccess) {
-        $.ajax({
+        User.ajax({
             url: "/api/reports/nutrients/",
             method: "GET",
             data: {
@@ -592,11 +592,14 @@ var ConsumedNutrientsReports = (function(card){
 
 
 $(document).ready(function(){
-    EnergyReports(ChartCard($("#calorie-card")));
-    WeightHistoryReports(ChartCard($("#weight-card")));
-    ConsumedNutrientsReports(ChartCard($("#nutrients-card")));
 
-    $('[data-toggle="tooltip"]').tooltip({container: 'body'});
+    User.onAuthenticated(function(){
+        EnergyReports(ChartCard($("#calorie-card")));
+        WeightHistoryReports(ChartCard($("#weight-card")));
+        ConsumedNutrientsReports(ChartCard($("#nutrients-card")));
+        $('[data-toggle="tooltip"]').tooltip({container: 'body'});
+    });
+
 });
 
 
@@ -633,7 +636,7 @@ $(document).ready(function(){
 
 
 // function fetch_energy_report(callback) {
-//     $.ajax({
+//     User.ajax({
 //         url: '/api/reports/',
 //         type: 'GET',
 //         success: callback.onSuccess

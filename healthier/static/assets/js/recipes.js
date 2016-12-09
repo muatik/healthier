@@ -2,7 +2,7 @@ var FoodMenus = (function(){
     var $container = $("#food-menus");
 
     function fetch_entries(callback) {
-        $.ajax({
+        User.ajax({
             url: '/api/recipes/',
             type: 'GET',
             error: callback.onError,
@@ -11,7 +11,7 @@ var FoodMenus = (function(){
     }
 
     function delete_entry(entryId, callback) {
-        $.ajax({
+        User.ajax({
             url: '/api/recipes/' + entryId + '/',
             type: 'DELETE',
             error: callback.onError,

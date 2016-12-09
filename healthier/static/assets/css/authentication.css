@@ -1,0 +1,41 @@
+
+#signup-card {
+    display: none;
+}
+#signup-error-message {
+    display: none;
+}
+#signup-card .card-head header{
+    color: #fff;
+}
+section.page{
+    height: 100%;
+    padding: 0;
+}
+.page-splash, .page-forms{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    overflow: hidden;
+}
+.page-forms {
+    padding: 20px 40px;
+    overflow: auto;
+}
+
+.login-bg {
+    background: url("../img/macbook_bg3.jpg") ;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+}
+
+#signin-card {
+    margin-top: 4%;
+}
+#signin-card .card {
+    margin-top: 50px;
+}
