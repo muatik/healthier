@@ -3,7 +3,7 @@ User = {
     authenticated: false,
 }
 
-User.login = function(email, password) {
+User.login = function(email, password, options) {
     User.clearCookies();
 
     this.email = email;
@@ -13,8 +13,12 @@ User.login = function(email, password) {
     User._ajax = User.ajax({
         url: "/api/users/me"
     }).error(function(e){
+        if (options && options.error)
+            options.error(e)
         User.authenticated = false;
-    }).done(function(res){
+    }).success(function(res){
+        if (options && options.success)
+            options.success(res)
         User.update(res)
         User.authenticated = true;
         User.setCookies();

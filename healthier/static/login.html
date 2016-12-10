@@ -189,6 +189,9 @@
         <script src="assets/js/libs/spin.js/spin.min.js"></script>
         <script src="assets/js/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
 
+        <link rel="stylesheet" type="text/css" href="assets/css/theme-default/libs/toastr/toastr.css?1425466569">
+        <script src="assets/js/libs/toastr/toastr.js"></script>
+
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
         <script type="text/javascript" src="assets/js/libs/moment/moment-timezone-with-data.js"></script>
 
@@ -222,8 +225,13 @@
                 todayHighlight: true});
 
             function login(email, password) {
-                User.login(email, password).success(function(){
-                    location.href="timeline.html";
+                User.login(email, password, {
+                    success: function(){
+                        location.href="timeline.html";
+                    },
+                    error: function() {
+                        toastr.error("login failed")
+                    }
                 });
             }
 
