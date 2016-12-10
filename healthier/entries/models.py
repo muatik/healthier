@@ -120,7 +120,7 @@ class Entry(models.Model):
         # TODO: calculate actual kcal
         # http: // download.lww.com / wolterskluwer_vitalstream_com / PermaLink\
         #         / MSS / A / MSS_43_8_2011_06_13_AINSWORTH_202093_SDC1.pdf
-        # kcal / min = METs × body weight in kilograms ÷ 60
+        # kcal / min = METs x body weight in kilograms ÷ 60
         nutrient_data = {
             "category": Nutrient.CATEGORIES.OUTTAKE,
             "label": "Energy",
