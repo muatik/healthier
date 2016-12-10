@@ -225,8 +225,15 @@ class UserWeightsView(ListCreateAPIView):
     permission_classes = (IsNotAnonymous, )
 
     def get_queryset(self):
-        return UserWeight.objects.filter(
-            user=self.request.user).order_by("-date")
+        try:
+            # start_date and end_date filters are optional
+            start_date, end_date = Reports.parse_date_range(self.request)
+            return UserWeight.objects.filter(
+                date__range=[start_date, end_date],
+                user=self.request.user).order_by("-date")
+        except KeyError as e:
+            return UserWeight.objects.filter(
+                user=self.request.user).order_by("-date")
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
