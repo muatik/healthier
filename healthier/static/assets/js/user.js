@@ -50,6 +50,7 @@ User.getBasicAuth = function() {
 
 User.update = function(data) {
     var password = this.password;
+    this.data = data;
     $.extend(User, data)
     this.password = password;
 }
@@ -91,14 +92,28 @@ User.change = function(data, options) {
     });
 }
 
-User.ajax = function(options) {
+User.changePassword = function(new_password, options) {
+    var data = $.extend(this.data, {"password": new_password});
+    this.change(data, {
+        success: function(res) {
+            User.password = new_password;
+            User.setCookies();
+            if (options && options.success)
+                options.success(res)
+        },
+        error: function(e) {
+            if (options && options.error)
+                options.error(res)
+        }
+    })
+}
 
+User.ajax = function(options) {
     var defaults = {
         headers: {
             "Authorization": "Basic " + btoa(this.username + ":" + this.password)
         }
     };
-
     $.extend(options,defaults);
     return $.ajax(options);
 }

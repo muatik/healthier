@@ -106,9 +106,43 @@ function initWeightView() {
 
 }
 
+function initPasswordChangeView() {
+
+
+    var $form = $("#password-form-card form");
+
+    $form.submit(function(e){
+        e.preventDefault();
+
+        var currentpass = $("#passreset-password").val();
+        var newpass1 = $("#passreset-new-password1").val();
+        var newpass2 = $("#passreset-new-password2").val()
+        if (currentpass != User.password) {
+            toastr.error("Current password is wrong.");
+            return;
+        }
+        if (newpass1 != newpass2) {
+            toastr.error("new passwords don't match");
+            return;
+        }
+
+        User.changePassword(newpass1, {
+            success: function() {
+                toastr.success("password changed successfully");
+                $form.get(0).reset();
+            },
+            error: function(res) {
+                toastr.error(res.responseText);
+            }
+        });
+
+    });
+}
+
 $(document).ready(function(){
     User.onAuthenticated(function(){
         initProfile();
         initWeightView();
+        initPasswordChangeView();
     });
 })
