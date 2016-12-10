@@ -53,7 +53,7 @@
 
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav main-text-nav">
-                            <li class="active"><a href="timeline.html">Timeline</a></li>
+                            <li><a href="timeline.html">Timeline</a></li>
                             <li><a href="recipes.html">Recipes</a></li>
                             <li><a href="reports.html">Reports</a></li>
                         </ul>
@@ -126,18 +126,18 @@
                                     </li><!--end .dropdown -->
                                 </ul><!--end .header-nav-options -->
 
-                                <ul class="header-nav header-nav-profile">
+                                <ul class="header-nav header-nav-profile user-profile">
                                     <li class="dropdown">
                                         <a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
-                                            <img src="https://avatars3.githubusercontent.com/u/106846?v=3&s=466" alt="" />
-                                            <span class="profile-info">
+                                            <img src="assets/img/avatar.png" alt="" class="avatar" />
+                                            <span class="profile-info name">
                                                 Mustafa Atik
                                             </span>
                                         </a>
                                         <ul class="dropdown-menu animation-dock">
                                             <li class="dropdown-header">Settings</li>
-                                            <li><a href="../../html/pages/profile.html">My profile</a></li>
-                                            <li><a href="../../html/pages/calendar.html">Settings</a></li>
+                                            <li><a href="profile.html">My profile</a></li>
+                                            <li><a href="profile.html">Change password</a></li>
                                             <li class="divider"></li>
                                             <li><a href="#" class="logout"><i class="fa fa-fw fa-lock"></i> Logout</a></li>
                                         </ul><!--end .dropdown-menu -->
@@ -162,13 +162,14 @@
                 <section class="section-body">
 
                     <div class="col-sm-3">
-                        <div class="card profile-card">
+                        <div class="card profile-card user-profile">
                             <div class="card-body">
                                 <div class="profile-userpic">
-                                    <img src="https://avatars3.githubusercontent.com/u/106846?v=3&amp;s=466" alt="">
+                                    <img src="assets/img/avatar.png" alt="" class="avatar">
                                 </div>
-                                <h3 class="text-center">Mustafa Atik</h3>
-                                <button type="button" class="btn ink-reaction btn-raised btn-xs btn-primary center-block">
+                                <h3 class="text-center name"></h3>
+                                <button type="button" id="change-photo"
+                                    class="btn ink-reaction btn-raised btn-xs btn-primary center-block">
                                     change photo</button>
                             </div><!--end .card-body -->
                         </div>
@@ -183,7 +184,7 @@
                                     <li class="active"><a href="#profile-edit-card">Personal Info</a></li>
                                     <li class=""><a href="#password-form-card">Change password</a></li>
                                     <li class=""><a href="#weight-card">Update weight</a></li>
-
+                                    <li class=""><a href="#avatar-form-card">Change photo</a></li>
                                 </ul>
                             </div><!--end .card-head -->
 
@@ -329,8 +330,28 @@
                                             </script>
                                         </table>
                                     </div>
-
                                 </div> <!-- end of password-form-card -->
+
+                                <div class="tab-pane" id="avatar-form-card">
+                                    <form class="form form-inline col-md-10">
+                                        <div class="card-body">
+                                            <h3 class="text-primary">Change your photo</h3>
+
+                                            <div class="form-group">
+                                                <input type="file" class="form-control" id="photo-file">
+                                                <label for="profile-password">Choose a photo file</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn  btn-primary ink-reaction">Upload</button>
+                                            </div>
+                                            <div class="alert alert-danger error-message" role="alert" >
+                                                <strong>Error:</strong> <span></span>
+                                            </div>
+
+                                        </div><!--end .card-body -->
+
+                                    </form>
+                                </div> <!-- end of avatar-form-card -->
 
                             </div><!--end .card-body -->
 

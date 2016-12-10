@@ -42,6 +42,7 @@ function initProfile() {
 
         User.change(data, {
             success: function() {
+                updateProfileView()
                 toastr.success("updated successfully")
             },
             error: function(res) {
@@ -117,10 +118,12 @@ function initPasswordChangeView() {
         var currentpass = $("#passreset-password").val();
         var newpass1 = $("#passreset-new-password1").val();
         var newpass2 = $("#passreset-new-password2").val()
+
         if (currentpass != User.password) {
             toastr.error("Current password is wrong.");
             return;
         }
+
         if (newpass1 != newpass2) {
             toastr.error("new passwords don't match");
             return;
@@ -139,8 +142,18 @@ function initPasswordChangeView() {
     });
 }
 
+
+function activaTab(tab){
+  $('.nav-tabs a[href="#' + tab + '"]').tab('show');
+};
+
 $(document).ready(function(){
     User.onAuthenticated(function(){
+        updateProfileView()
+        $("#change-photo").click(function(){
+            activaTab("avatar-form-card")
+        });
+
         initProfile();
         initWeightView();
         initPasswordChangeView();

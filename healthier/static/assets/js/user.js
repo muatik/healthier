@@ -1,4 +1,5 @@
 User = {
+    login_data: false,
     authenticated: false,
 }
 
@@ -121,7 +122,9 @@ User.ajax = function(options) {
 User.autoLogin = function() {
     var email = Cookies.get("email");
     var password = Cookies.get("password");
+
     if (email && password) {
+        this.login_data = true;
         User.login(email, password)
     }
 }
