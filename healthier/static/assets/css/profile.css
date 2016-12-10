@@ -1,0 +1,14 @@
+.profile-userpic img {
+    float: none;
+    margin: 0 auto;
+    width: 70%;
+    height: 70%;
+    display: block;
+    -webkit-border-radius: 50%!important;
+    -moz-border-radius: 50%!important;
+    border-radius: 50%!important;
+}
+
+form .error-message {
+    display: none;
+}

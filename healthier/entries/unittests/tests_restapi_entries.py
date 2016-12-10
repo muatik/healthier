@@ -1,54 +1,40 @@
+import base64
 import json
 
 import arrow
-from django.test import TestCase
 from django.test import Client
 from django.utils import timezone
 
 from entries.models import Entry
+from entries.unittests.setup_testcase import SetupTestCase
 
 
-class EntriesTestCase(TestCase):
-
-    def setUp(self):
-        self.entries = [{
-            "category": Entry.CATEGORIES.FOOD_CONSUMPTION,
-            "what": "apple",
-            "when": timezone.make_aware(arrow.utcnow().replace(days=-3).naive),
-            "measure": "skin",
-            "quantity": 3,
-            "extra": json.dumps({'ndbno': "11362"})  # potato
-        }, {
-            "category": Entry.CATEGORIES.FOOD_CONSUMPTION,
-            "what": "banana",
-            "when": timezone.make_aware(arrow.utcnow().replace(hours=-3).naive),
-            "measure": "cup, mashed",
-            "quantity": 2,
-            "extra": json.dumps({'ndbno': "09040"})  # bread
-        }, {
-            "category": Entry.CATEGORIES.PHYSICAL_ACTIVITY,
-            "what": "running",
-            "when": timezone.make_aware(arrow.utcnow().replace(hours=-3).naive),
-            "measure": "minutes",
-            "quantity": 30
-        }]
-
-        for i in self.entries:
-            Entry.objects.create(**i)
-
-    def test_get(self):
+class EntriesTestCase(SetupTestCase):
+    def test_NotAuthenticatedException(self):
         c = Client()
         r = c.get("/api/entries/")
         content = r.json()
+        self.assertEqual(r.status_code, 403)
+
+    def test_get(self):
+        c = self.get_authenticated_client(self.users[0])
+        r = c.get("/api/entries/")
+        content = r.json()
+
         self.assertEqual(
             set(content[0].keys()),
             set([
                 'when', 'measure', 'id',
                 'category', 'what', 'quantity', "extra"]))
+
+        # each user has its own response
         self.assertEqual(len(content), 3)
+        c2 = self.get_authenticated_client(self.users[1])
+        get_response = c2.get("/api/entries/").json()
+        self.assertEqual(len(get_response), 1)
 
     def test_post_food_consumption(self):
-        c = Client()
+        c = self.get_authenticated_client(self.users[0])
         r = c.post("/api/entries/", {
             "category": Entry.CATEGORIES.FOOD_CONSUMPTION,
             "what": "apple",
@@ -58,8 +44,10 @@ class EntriesTestCase(TestCase):
             "extra": json.dumps({'ndbno': "09326"})  # watermelon
         })
         post_response = r.json()
+
         get_response = c.get("/api/entries/").json()
         self.assertEqual(len(get_response), 4)
+
         self.assertEqual(
             set(post_response.keys()),
             set([
@@ -75,9 +63,11 @@ class EntriesTestCase(TestCase):
             "quantity": 3,
             "extra": json.dumps({})
         }
-        response = Client().post("/api/entries/", activity_data).json()
 
-        get_response = Client().get("/api/entries/").json()
+        c = self.get_authenticated_client(self.users[0])
+        response = c.post("/api/entries/", activity_data).json()
+
+        get_response = c.get("/api/entries/").json()
         self.assertEqual(len(get_response), 4)
 
         self.assertEqual(
@@ -98,10 +88,11 @@ class EntriesTestCase(TestCase):
             response["category"], Entry.CATEGORIES.PHYSICAL_ACTIVITY)
 
     def test_delete(self):
-        entries = Client().get("/api/entries/").json()
+        c = self.get_authenticated_client(self.users[0])
+        entries = c.get("/api/entries/").json()
         self.assertEqual(len(entries), 3)
 
         entry_id = entries[0]["id"]
-        response = Client().delete("/api/entries/{}/".format(entry_id))
-        entry = Client().get("/api/entries/{}".format(entry_id))
+        response = c.delete("/api/entries/{}/".format(entry_id))
+        entry = c.get("/api/entries/{}".format(entry_id))
         self.assertEqual(entry.status_code, 404)

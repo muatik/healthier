@@ -1,6 +1,7 @@
 import json
 
 import arrow
+from django.contrib.auth.models import User
 from django.core.serializers.json import DjangoJSONEncoder
 from django.db import models
 from django.db.models import Sum
@@ -85,11 +86,12 @@ class Entry(models.Model):
         @classmethod
         def to_set(cls):
             return (
-                ("fc", cls.FOOD_CONSUMPTION),
-                ("rc", cls.RECIPE_CONSUMPTION),
-                ("a", cls.PHYSICAL_ACTIVITY))
+                (cls.FOOD_CONSUMPTION, "food_consumption"),
+                (cls.RECIPE_CONSUMPTION, "recipe consumption"),
+                (cls.PHYSICAL_ACTIVITY, "physical activity"))
 
     id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     category = models.CharField(choices=CATEGORIES.to_set(), max_length=1)
     what = models.CharField(max_length=200)
     when = models.DateTimeField()
@@ -115,11 +117,15 @@ class Entry(models.Model):
                 Nutrient.insert(self, nutrient_data)
 
     def insert_activity_nutrients(self):
+        # TODO: calculate actual kcal
+        # http: // download.lww.com / wolterskluwer_vitalstream_com / PermaLink\
+        #         / MSS / A / MSS_43_8_2011_06_13_AINSWORTH_202093_SDC1.pdf
+        # kcal / min = METs x body weight in kilograms / 60
         nutrient_data = {
             "category": Nutrient.CATEGORIES.OUTTAKE,
             "label": "Energy",
             "unit": "kcal",
-            "quantity": 1.32
+            "quantity": 132
         }
         Nutrient.insert(self, nutrient_data)
 
@@ -127,9 +133,11 @@ class Entry(models.Model):
         return self.nutrient_set.all()
 
     @classmethod
-    def get_suggestions(cls, keyword):
+    def get_suggestions(cls, user, keyword):
         history = []
-        for i in cls.objects.filter(what__contains=keyword).order_by("-when"):
+        query = cls.objects.filter(
+            user=user, what__contains=keyword).order_by("-when")
+        for i in query:
             if i.category != "fc":
                 continue
             history.append({
@@ -174,7 +182,7 @@ class Nutrient(models.Model):
         return nutrient
 
     @classmethod
-    def get_energy_report(cls, category, start_date, end_date):
+    def get_energy_report(cls, user, category, start_date, end_date):
         """
         returns daily energy report
         Args:
@@ -188,6 +196,7 @@ class Nutrient(models.Model):
         data = create_time_series(start_date, end_date)
 
         records = cls.objects.filter(
+            entry__user=user.id,
             label="Energy",
             unit="kcal",
             category=category,
@@ -208,8 +217,9 @@ class Nutrient(models.Model):
         return sorted(data.items())
 
     @classmethod
-    def get_nutrients_report(cls, start_date, end_date):
+    def get_nutrients_report(cls, user, start_date, end_date):
         nutrients = Nutrient.objects.filter(
+            entry__user=user.id,
             category=cls.CATEGORIES.INTAKE,
             entry__when__range=[start_date, end_date]
         ).values(
@@ -221,6 +231,7 @@ class Nutrient(models.Model):
 
 
 class Recipe(models.Model):
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     totalCalorie = models.IntegerField(default=0)
 
@@ -253,3 +264,24 @@ class RecipeIngredient(models.Model):  # each ingredient is a consumption
 
     def get_energy(self):
         return FCD.filter_sum_nutrients(self.get_nutrients(), "Energy", "Kcal")
+
+
+class UserWeight(models.Model):
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    date = models.DateField(blank=False)
+    weight = models.FloatField()
+
+
+class UserProfile(models.Model):
+    FEMALE = 0
+    MALE = 1
+    GENDERS = (
+        (FEMALE, "female"),
+        (MALE, "male"),
+    )
+
+    user = models.OneToOneField(to=User, on_delete=models.CASCADE)
+    gender = models.SmallIntegerField(choices=GENDERS)
+    height = models.SmallIntegerField(blank=False)
+    birth_date = models.DateField(blank=False)
+

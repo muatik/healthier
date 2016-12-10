@@ -55,7 +55,7 @@ var ConsumptionForm = (function(container, options) {
 
         $what.autocomplete({
             lookup: function(query, done) {
-                $.ajax({
+                User.ajax({
                     url: '/api/food/',
                     type: 'GET',
                     data: {
@@ -101,7 +101,7 @@ var ConsumptionForm = (function(container, options) {
             return;
         }
 
-        $.ajax({
+        User.ajax({
             url: '/api/food/' + $ndbno.val() + '/measures/',
             type: 'GET',
             complete: hideLoader,
@@ -159,7 +159,7 @@ var ConsumptionForm = (function(container, options) {
 
         postData.extra = JSON.stringify(postData.extra)
 
-        $.ajax({
+        User.ajax({
             url: '/api/entries/',
             type: 'POST',
             data: postData,
@@ -251,7 +251,7 @@ var ConsumptionForm = (function(container, options) {
 //     $('#consumption_what').autocomplete({
 //         serviceUrl: '/autocomplete/countries',
 //         lookup: function(query, done) {
-//             $.ajax({
+//             User.ajax({
 //                 url: '/api/food/',
 //                 type: 'GET',
 //                 data: {
@@ -275,7 +275,7 @@ var ConsumptionForm = (function(container, options) {
 
 
 //     function update_measures(ndbno) {
-//         $.ajax({
+//         User.ajax({
 //             url: '/api/food/' + ndbno + '/measures/',
 //             type: 'GET',
 //             error: function() {

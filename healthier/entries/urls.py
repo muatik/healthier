@@ -14,8 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
+from rest_framework.routers import DefaultRouter
 
 from entries import views
+
+
+router = DefaultRouter()
+router.register(r"users", views.UserDetail)
+router.register(r"users", views.Users)
+urlpatterns = router.urls
+
 
 urlpatterns = [
     url(r"^entries/$", views.EntryView.as_view()),
@@ -30,10 +38,15 @@ urlpatterns = [
     url(r"^recipes/(?P<recipe_id>\d+)/ingredients/(?P<pk>\d+)/$",
         views.RecipeIngredientsView.as_view()),
 
+    url(r"^weights/$", views.UserWeightsView.as_view()),
+
     url(r"^reports/energy/", views.Reports.as_view({"get": "energy"})),
     url(r"^reports/weight/", views.Reports.as_view({"get": "weight_history"})),
     url(
         r"^reports/nutrients/",
         views.Reports.as_view({"get": "consumed_nutrients"})),
 
+
+    url(r"", include(urlpatterns)),
+    url(r"^users/me$", views.UserDetail.as_view({"get": "get_me"})),
 ]

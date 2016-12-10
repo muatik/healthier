@@ -1,27 +1,36 @@
 import json
 
 import arrow
-from django.db.models import Sum
+from django.contrib.auth.models import User
 from django.utils import timezone
 from django.utils.datastructures import MultiValueDictKeyError
+from rest_framework import mixins
 from rest_framework import viewsets
+from rest_framework.exceptions import PermissionDenied
 from rest_framework.generics import ListCreateAPIView, \
     ListAPIView, RetrieveUpdateDestroyAPIView, DestroyAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from entries.fcd import FCD
-from entries.models import Entry, Nutrient, Recipe, RecipeIngredient
+from entries.models import Entry, Nutrient, Recipe, RecipeIngredient, UserWeight
+from entries.permissions import IsOwner, IsNotAnonymous, IsSelf
 from entries.serializers import EntrySerializer, NutrientSerializer, \
-    RecipeIngredientSerializer, RecipeSerializer
+    RecipeIngredientSerializer, RecipeSerializer, UserSerializer, \
+    UserWeightSerializer
 
 
 class EntryView(ListCreateAPIView):
     queryset = Entry.objects.all().order_by("-when")
     serializer_class = EntrySerializer
+    permission_classes = (IsNotAnonymous, )
+
+    def get_queryset(self):
+        return self.queryset.filter(user=self.request.user)
 
     def perform_create(self, serializer):
-        entry = serializer.save()
+
+        entry = serializer.save(user=self.request.user)
         data = serializer.initial_data.dict()
         data["extra"] = json.loads(data["extra"])
 
@@ -37,16 +46,19 @@ class EntryView(ListCreateAPIView):
 
 class NutrientsView(ListAPIView):
     serializer_class = NutrientSerializer
+    permission_classes = (IsNotAnonymous, )
 
     def get_queryset(self):
         entry_id = self.kwargs["entry_id"]
-        return Nutrient.objects.filter(entry=entry_id)
+        return Nutrient.objects.filter(
+            entry__user=self.request.user,
+            entry=entry_id)
 
 
 class FoodSuggestionView(APIView):
     def get(self, request, frm=None):
         keyword = request.query_params.get("q").strip()
-
+        # TODO: the lists should be user specialized
         history = []
         for i in Entry.objects.filter(what__contains=keyword):
             if not i.extra:
@@ -93,25 +105,38 @@ class ActivitySuggestionView(APIView):
 class RecipesView(ListCreateAPIView):
     serializer_class = RecipeSerializer
     queryset = Recipe.objects.all()
+    permission_classes = (IsNotAnonymous, )
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+    def get_queryset(self):
+        return self.queryset.filter(user=self.request.user)
 
 
 class RecipeView(RetrieveUpdateDestroyAPIView):
     serializer_class = RecipeSerializer
     queryset = Recipe.objects.all()
+    permission_classes = (IsOwner, )
 
 
 class RecipeIngredientsView(ListCreateAPIView, DestroyAPIView):
     serializer_class = RecipeIngredientSerializer
     queryset = RecipeIngredient.objects.all()
+    permission_classes = (IsNotAnonymous, )
 
     def get_queryset(self):
         recipe_id = self.kwargs["recipe_id"]
-        return RecipeIngredient.objects.filter(recipe_id=recipe_id)
+        return RecipeIngredient.objects.filter(
+            recipe__user=self.request.user,
+            recipe_id=recipe_id)
 
     def perform_create(self, serializer):
         recipe_id = self.kwargs["recipe_id"]
-        recipe = Recipe.objects.get(id=recipe_id)
-
+        # TODO: exception handling
+        recipe = Recipe.objects.get(
+            user=self.request.user,
+            id=recipe_id)
         ingredient = serializer.save(recipe_id=recipe_id)
         ingredient.prepare_nutrients()
         ingredient.save()
@@ -120,12 +145,15 @@ class RecipeIngredientsView(ListCreateAPIView, DestroyAPIView):
         recipe.save()
 
     def perform_destroy(self, ingredient):
+        if ingredient.recipe.user != self.request.user:
+            raise PermissionDenied()
         ingredient.recipe.decrease_calorie(ingredient.get_energy())
         ingredient.recipe.save()
         super().perform_destroy(ingredient)
 
 
 class Reports(viewsets.ViewSet):
+    permission_classes = (IsNotAnonymous,)
 
     @classmethod
     def parse_date_range(cls, request):
@@ -150,7 +178,8 @@ class Reports(viewsets.ViewSet):
     def energy(self, request):
         category = request.query_params["category"]
         start_date, end_date = self.parse_date_range(request)
-        report = Nutrient.get_energy_report(category, start_date, end_date)
+        report = Nutrient.get_energy_report(
+            request.user, category, start_date, end_date)
 
         return Response({
             "category": category,
@@ -181,10 +210,49 @@ class Reports(viewsets.ViewSet):
 
     def consumed_nutrients(self, request):
         start_date, end_date = self.parse_date_range(request)
-        report = Nutrient.get_nutrients_report(start_date, end_date)
+        report = Nutrient.get_nutrients_report(
+            request.user, start_date, end_date)
 
         return Response({
             "start_date": start_date,
             "end_date": end_date,
             "data": report
         })
+
+
+class UserWeightsView(ListCreateAPIView):
+    serializer_class = UserWeightSerializer
+    permission_classes = (IsNotAnonymous, )
+
+    def get_queryset(self):
+        try:
+            # start_date and end_date filters are optional
+            start_date, end_date = Reports.parse_date_range(self.request)
+            return UserWeight.objects.filter(
+                date__range=[start_date, end_date],
+                user=self.request.user).order_by("-date")
+        except KeyError as e:
+            return UserWeight.objects.filter(
+                user=self.request.user).order_by("-date")
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+
+class Users(mixins.CreateModelMixin, viewsets.GenericViewSet):
+    """
+    used for registration
+    """
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class UserDetail(mixins.RetrieveModelMixin,
+                 mixins.UpdateModelMixin,
+                 viewsets.GenericViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = (IsSelf,)
+
+    def get_me(self, request):
+        return Response(self.serializer_class(request.user).data)

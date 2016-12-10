@@ -51,7 +51,7 @@ var ActivityForm = (function(container, options) {
 
         $what.autocomplete({
             lookup: function(query, done) {
-                $.ajax({
+                User.ajax({
                     url: '/api/activities/',
                     type: 'GET',
                     data: {
@@ -103,7 +103,7 @@ var ActivityForm = (function(container, options) {
 
 
     function submit_activity(what, when, quantity, measure, callback) {
-        $.ajax({
+        User.ajax({
             url: '/api/entries/',
             type: 'POST',
             data: {
@@ -153,7 +153,7 @@ var ActivityForm = (function(container, options) {
 
 //     $('#activity_what').autocomplete({
 //         lookup: function(query, done) {
-//             $.ajax({
+//             User.ajax({
 //                 url: '/api/activities/',
 //                 type: 'GET',
 //                 data: {
@@ -199,7 +199,7 @@ var ActivityForm = (function(container, options) {
 
 
 // function submit_activity(what, when, quantity, measure, callback) {
-//     $.ajax({
+//     User.ajax({
 //         url: '/api/entries/',
 //         type: 'POST',
 //         data: {

@@ -64,7 +64,7 @@ var EnergyReports = (function(card){
     var end_date;
 
     function fetch_energy_report(category, start_date, end_date, onSuccess) {
-        $.ajax({
+        User.ajax({
             url: "/api/reports/energy/",
             method: "GET",
             data: {
@@ -166,14 +166,14 @@ var WeightHistoryReports = (function(card){
     var chart;
 
     // @TODO: needs to be parametric
-    var height = 177 / 100; // in meters
+    var height = User.userprofile.height / 100; // in meters
 
     var start_date;
     var end_date;
 
     function fetch_weight_history_report(start_date, end_date, onSuccess) {
-        $.ajax({
-            url: "/api/reports/weight/",
+        User.ajax({
+            url: "/api/weights/",
             method: "GET",
             data: {
                 "start_date": start_date,
@@ -197,15 +197,20 @@ var WeightHistoryReports = (function(card){
 
         fetch_weight_history_report(start_date, end_date, function(res){
 
+            // data manupulation: objects to arrays
+            for (var i = res.length - 1; i >= 0; i--) {
+                res[i] = [res[i].date, res[i].weight]
+            };
+
             var BMI = [];
-            $.map(res.data, function(i){
+            $.map(res, function(i){
                 BMI.push([
                     i[0],
                     i[1] / (height * height)
                 ])
             });
 
-            add_timeseries(res.data, 0)
+            add_timeseries(res, 0)
             add_timeseries(BMI, 1)
         });
     }
@@ -506,7 +511,7 @@ var ConsumedNutrientsReports = (function(card){
       }
     ]
     function fetch_nutrients_report(start_date, end_date, onSuccess) {
-        $.ajax({
+        User.ajax({
             url: "/api/reports/nutrients/",
             method: "GET",
             data: {
@@ -590,13 +595,70 @@ var ConsumedNutrientsReports = (function(card){
     init();
 });
 
+var BMIReport = (function(){
+    var $card = $("#BMI-card");
+
+    function updateView(weight) {
+
+        var height = User.userprofile.height / 100;
+        var message_class, weight_change, advice="";
+        var BMI = weight / (height * height);
+        /*
+        Underweight = <18.5
+        Normal weight = 18.5–24.9
+        Overweight = 25–29.9
+        Obesity = BMI of 30 or greater
+        */
+        if (BMI < 18.5) {
+            message_class = "text-danger";
+            message = "You're Underweight!";
+            weight_change = Math.ceil(18.5 * (height * height))+ 1;
+            advice = 'You need to gain at least '+(weight_change-weight)+' Kg';
+        } else if (BMI < 24.9) {
+            message_class = "text-success";
+            message = "You're quite normal.";
+        } else if (BMI < 29.9) {
+            message_class = "text-danger";
+            message = "You're overweight.";
+            weight_change = Math.ceil(24.9 * (height * height)) - 1;
+            advice = 'You need to lose at least '+(weight-weight_change)+' Kg';
+        } else {
+            message_class = "text-danger";
+            message = "You're obese!";
+            weight_change = Math.ceil(24.9 * (height * height)) - 1;
+            advice = 'You need to lose at least '+(weight-weight_change)+' Kg';
+        }
+
+        var content = '<span class="'+message_class+'">' + message + '</span>'
+            +'<small>Your BMI is '+BMI.toFixed(1)+'. ' +advice+ '</small>'
+        $(".content", $card).html(content);
+    }
+
+    Weights.getHistory({
+        success: function(weights) {
+            updateView(weights[0].weight);
+        }
+    })
+
+
+});
 
 $(document).ready(function(){
-    EnergyReports(ChartCard($("#calorie-card")));
-    WeightHistoryReports(ChartCard($("#weight-card")));
-    ConsumedNutrientsReports(ChartCard($("#nutrients-card")));
 
-    $('[data-toggle="tooltip"]').tooltip({container: 'body'});
+    materialadmin.AppCard.addCardLoader($("#content"));
+
+    User.onAuthenticated(function(){
+        EnergyReports(ChartCard($("#calorie-card")));
+        WeightHistoryReports(ChartCard($("#weight-card")));
+        ConsumedNutrientsReports(ChartCard($("#nutrients-card")));
+        BMIReport();
+        $('[data-toggle="tooltip"]').tooltip({container: 'body'});
+
+        setTimeout(function(){
+                materialadmin.AppCard.removeCardLoader($("#content"));
+            }, 1500);
+    });
+
 });
 
 
@@ -633,7 +695,7 @@ $(document).ready(function(){
 
 
 // function fetch_energy_report(callback) {
-//     $.ajax({
+//     User.ajax({
 //         url: '/api/reports/',
 //         type: 'GET',
 //         success: callback.onSuccess

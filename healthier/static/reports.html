@@ -127,20 +127,20 @@
                                     </li><!--end .dropdown -->
                                 </ul><!--end .header-nav-options -->
 
-                                <ul class="header-nav header-nav-profile">
+                                <ul class="header-nav header-nav-profile user-profile">
                                     <li class="dropdown">
                                         <a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
-                                            <img src="https://avatars3.githubusercontent.com/u/106846?v=3&s=466" alt="" />
-                                            <span class="profile-info">
+                                            <img src="assets/img/avatar.png" alt="" class="avatar" />
+                                            <span class="profile-info name">
                                                 Mustafa Atik
                                             </span>
                                         </a>
                                         <ul class="dropdown-menu animation-dock">
                                             <li class="dropdown-header">Settings</li>
-                                            <li><a href="../../html/pages/profile.html">My profile</a></li>
-                                            <li><a href="../../html/pages/calendar.html">Settings</a></li>
+                                            <li><a href="profile.html">My profile</a></li>
+                                            <li><a href="profile.html">Change password</a></li>
                                             <li class="divider"></li>
-                                            <li><a href="../../html/pages/locked.html"><i class="fa fa-fw fa-lock"></i> Logout</a></li>
+                                            <li><a href="#" class="logout"><i class="fa fa-fw fa-lock"></i> Logout</a></li>
                                         </ul><!--end .dropdown-menu -->
                                     </li><!--end .dropdown -->
                                 </ul><!--end .header-nav-profile -->
@@ -288,20 +288,15 @@
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                            <div class="card-progress">
+                            <div class="card-progress" id="BMI-card">
                                 <div class="btn-group pull-right action-button">
-                                    <button type="button" class="btn btn-icon-toggle btn-default" data-toggle="dropdown"><i class="md md-more-vert"></i></button>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">New goal</a></li>
-                                        <li><a href="#">Stop</a></li>
-                                    </ul>
                                 </div>
                                 <div class="display">
                                     <div class="number">
-                                        <small><i class="md md-restaurant-menu"></i> Body Mass Index</small>
-                                        <h4 class="text-accent">
-                                            <span class="text-danger">You're overweight!</span>
-                                            <small>Your BMI is 27,4. You need to lose at least 6 Kg.</small>
+                                        <small><i class="fa fa-calculator"></i> Body Mass Index</small>
+                                        <h4 class="text-accent content">
+                                            <span class="text-primary"></span>
+                                            <small>loading...</small>
                                         </h4>
                                     </div>
                                 </div>
@@ -511,6 +506,7 @@
         <script src="assets/js/libs/jquery-counterup/jquery.waypoints.min.js"></script>
         <script src="assets/js/libs/jquery-counterup/jquery.counterup.min.js"></script>
 
+
         <script src="assets/js/libs/bootstrap/bootstrap.min.js"></script>
         <script src="assets/js/libs/spin.js/spin.min.js"></script>
         <script src="assets/js/libs/autosize/jquery.autosize.min.js"></script>
@@ -520,6 +516,8 @@
 
         <link rel="stylesheet" type="text/css" href="assets/js/libs/jquery-cloud/jqcloud.min.css">
         <script src="assets/js/libs/jquery-cloud/jqcloud.min.js"></script>
+
+        <script src="assets/js/libs/js.cookie.js"></script>
 
         <script src="assets/js/core/source/App.js"></script>
         <script src="assets/js/core/source/AppNavigation.js"></script>
@@ -533,13 +531,14 @@
 
         <!-- END JAVASCRIPT -->
 
-        <script src="assets/js/libs/jquery.autocomplete.min.js"></script>
-
-
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
         <script type="text/javascript" src="assets/js/libs/moment/moment-timezone-with-data.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.min.css" />
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/js/bootstrap-datetimepicker.min.js"></script>
+
+        <script type="text/javascript" src="assets/js/user.js"></script>
+        <script type="text/javascript" src="assets/js/weights.js"></script>
+        <script type="text/javascript" src="assets/js/page.js"></script>
 
         <script type="text/javascript" src="assets/js/reports.js"></script>
 
