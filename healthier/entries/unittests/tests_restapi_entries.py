@@ -24,7 +24,7 @@ class EntriesTestCase(SetupTestCase):
         self.assertEqual(
             set(content[0].keys()),
             set([
-                'when', 'measure', 'id',
+                'when', 'measure', 'id', "totalCalorie",
                 'category', 'what', 'quantity', "extra"]))
 
         # each user has its own response
@@ -51,7 +51,7 @@ class EntriesTestCase(SetupTestCase):
         self.assertEqual(
             set(post_response.keys()),
             set([
-                'when', 'measure', 'id',
+                'when', 'measure', 'id', "totalCalorie",
                 'category', 'what', 'quantity', "extra"]))
 
     def test_post_activity(self):
@@ -73,7 +73,7 @@ class EntriesTestCase(SetupTestCase):
         self.assertEqual(
             set(response.keys()),
             set([
-                'when', 'measure', 'id',
+                'when', 'measure', 'id', "totalCalorie",
                 'category', 'what', 'quantity', "extra"]))
 
         activity_data["when"] = arrow.get(activity_data["when"])
