@@ -1,4 +1,5 @@
 import json
+from collections import OrderedDict
 
 import arrow
 from django.contrib.auth.models import User
@@ -37,7 +38,7 @@ class EntryView(ListCreateAPIView):
         if Entry.CATEGORIES.FOOD_CONSUMPTION == entry.category:
             entry.insert_food_nutrients(data["extra"]["ndbno"])
         elif Entry.CATEGORIES.RECIPE_CONSUMPTION == entry.category:
-            entry.insert_recipe_nutrients(data)
+            entry.insert_recipe_nutrients(data["extra"]["recipe_id"])
         elif Entry.CATEGORIES.PHYSICAL_ACTIVITY == entry.category:
             entry.insert_activity_nutrients()
         else:
@@ -57,29 +58,43 @@ class NutrientsView(ListAPIView):
 
 class FoodSuggestionView(APIView):
     def get(self, request, frm=None):
+        user = request.user
         keyword = request.query_params.get("q").strip()
         # TODO: the lists should be user specialized
-        history = []
-        for i in Entry.objects.filter(what__contains=keyword):
-            if not i.extra:
+
+        recipes = Recipe.objects.filter(user=user, title__contains=keyword)
+        recipes = OrderedDict(
+            (i.title, {"name": i.title, "id": i.id, "type": "recipe"})
+            for i in recipes)
+
+        history = OrderedDict()
+        for i in Entry.objects.filter(user=user, what__contains=keyword):
+            # if the item is a recipe consumption, then we need to skip it
+            # because the recipe's name may be changed or
+            # even it might be deleted.
+            # besides, recipes will be included as an individual list
+            # in the suggestion
+            if not i.extra or "recipe_id" in i.get_extra():
                 continue
 
-            history.append({
+            history[i.what] = {
                 "name": i.what,
                 "ndbno": json.loads(i.extra).get("ndbno", "")
-            })
-
-        recipes = Recipe.objects.filter(title__contains=keyword)
-        recipes = [{"name": i.title, "id": i.id, "type": "recipe"}
-                   for i in recipes]
+            }
 
         try:
-            foods = FCD.find(keyword)
+            foods = OrderedDict((i["name"], i) for i in FCD.find(keyword))
         except KeyError:
-            foods = []
+            foods = {}
 
-        return Response(recipes + history + foods)
-        # return Response(foods)
+        # in order to remove duplicates, merge history an recipes with foods.
+        # keys occur later in the dicts will overwrite former keys.
+        # prioritization: recipes overwrite history, history  overwrites foods
+        history.update(foods)
+        recipes.update(history)
+
+        # converts to list and then returns
+        return Response([i for i in recipes.values()])
 
 
 class FoodReport(APIView):
@@ -90,6 +105,7 @@ class FoodReport(APIView):
 
 class ActivitySuggestionView(APIView):
     def get(self, request, frm=None):
+        # @TODO: use actual list
         return Response([
             {"id": 1, "name": "ARNOLD DUMBBELL PRESS"},
             {"id": 2, "name": "Hill sprint"},

@@ -109,8 +109,9 @@ class Entry(models.Model):
             nutrient_data["category"] = Nutrient.CATEGORIES.INTAKE  # intake
             Nutrient.insert(self, nutrient_data)
 
-    def insert_recipe_nutrients(self, data):
-        recipe_id = data["id"]
+    def insert_recipe_nutrients(self, recipe_id):
+        self.extra = json.dumps({"recipe_id": recipe_id})
+        self.save()
         recipe = Recipe.objects.get(id=recipe_id)
         for ingredient in recipe.get_ingredients():
             for nutrient_data in ingredient.get_nutrients():
@@ -128,6 +129,9 @@ class Entry(models.Model):
             "quantity": 132
         }
         Nutrient.insert(self, nutrient_data)
+
+    def get_extra(self):
+        return json.loads(self.extra)
 
     def get_nutrients(self):
         return self.nutrient_set.all()
