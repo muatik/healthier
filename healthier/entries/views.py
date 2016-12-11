@@ -24,7 +24,7 @@ from entries.serializers import EntrySerializer, NutrientSerializer, \
 class EntryView(ListCreateAPIView):
     queryset = Entry.objects.all().order_by("-when")
     serializer_class = EntrySerializer
-    permission_classes = (IsNotAnonymous, )
+    permission_classes = (IsNotAnonymous,)
 
     def get_queryset(self):
         return self.queryset.filter(user=self.request.user)
@@ -47,7 +47,7 @@ class EntryView(ListCreateAPIView):
 
 class NutrientsView(ListAPIView):
     serializer_class = NutrientSerializer
-    permission_classes = (IsNotAnonymous, )
+    permission_classes = (IsNotAnonymous,)
 
     def get_queryset(self):
         entry_id = self.kwargs["entry_id"]
@@ -60,7 +60,6 @@ class FoodSuggestionView(APIView):
     def get(self, request, frm=None):
         user = request.user
         keyword = request.query_params.get("q").strip()
-        # TODO: the lists should be user specialized
 
         recipes = Recipe.objects.filter(user=user, title__contains=keyword)
         recipes = OrderedDict(
@@ -121,7 +120,7 @@ class ActivitySuggestionView(APIView):
 class RecipesView(ListCreateAPIView):
     serializer_class = RecipeSerializer
     queryset = Recipe.objects.all()
-    permission_classes = (IsNotAnonymous, )
+    permission_classes = (IsNotAnonymous,)
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
@@ -133,13 +132,13 @@ class RecipesView(ListCreateAPIView):
 class RecipeView(RetrieveUpdateDestroyAPIView):
     serializer_class = RecipeSerializer
     queryset = Recipe.objects.all()
-    permission_classes = (IsOwner, )
+    permission_classes = (IsOwner,)
 
 
 class RecipeIngredientsView(ListCreateAPIView, DestroyAPIView):
     serializer_class = RecipeIngredientSerializer
     queryset = RecipeIngredient.objects.all()
-    permission_classes = (IsNotAnonymous, )
+    permission_classes = (IsNotAnonymous,)
 
     def get_queryset(self):
         recipe_id = self.kwargs["recipe_id"]
@@ -238,7 +237,7 @@ class Reports(viewsets.ViewSet):
 
 class UserWeightsView(ListCreateAPIView):
     serializer_class = UserWeightSerializer
-    permission_classes = (IsNotAnonymous, )
+    permission_classes = (IsNotAnonymous,)
 
     def get_queryset(self):
         try:

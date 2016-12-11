@@ -190,6 +190,7 @@ class Nutrient(models.Model):
         """
         returns daily energy report
         Args:
+            user: User object
             category: entry category to be grouped by
             start_date: beginning of the date range
             end_date: end of the date range

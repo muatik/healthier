@@ -4,10 +4,12 @@ var ConsumptionForm = (function(container, options) {
         $container = $(container),
         $form = $($container.find("form")[0]),
         $measures = $("#consumption_measure"),
+        $measures = $("#consumption_measure"),
         $ndbno = $("#consumption_ndbno"),
         $what = $("#consumption_what"),
         $when = $("#consumption_when"),
-        $quantity = $("#consumption_quantity");
+        $quantity = $("#consumption_quantity"),
+        $spinner = $(".autocomplete-spinner .fa", $form);
 
     var recipe_id;
     var selection_type;
@@ -53,9 +55,19 @@ var ConsumptionForm = (function(container, options) {
             submit();
         });
 
+        var autocomplete_ajax;
         $what.autocomplete({
+            deferRequestBy: 400,
             lookup: function(query, done) {
-                User.ajax({
+                if (autocomplete_ajax)
+                    autocomplete_ajax.abort();
+
+                // instead of .hide() and .show() or fadeIn() and fadeOut(),
+                // fadeTo() is used in order to not to make the elment
+                // "displa": "none". Otherwise, the input elements's size changes
+                $spinner.fadeTo(0, 1);
+
+                autocomplete_ajax = User.ajax({
                     url: '/api/food/',
                     type: 'GET',
                     data: {
@@ -67,6 +79,10 @@ var ConsumptionForm = (function(container, options) {
                         });
                         var result = {"suggestions": suggestions};
                         done(result);
+                        $spinner.fadeTo(800, 0);
+                    },
+                    error: function() {
+                        $spinner.fadeTo(800, 0);
                     }
                 });
             },
