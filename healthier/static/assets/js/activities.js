@@ -6,7 +6,8 @@ var ActivityForm = (function(container, options) {
         $measures = $("#activity_measure"),
         $what = $("#activity_what"),
         $when = $("#activity_when"),
-        $quantity = $("#activity_quantity");
+        $quantity = $("#activity_quantity"),
+        $spinner = $(".autocomplete-spinner .fa", $form);
 
     var that = this;
 
@@ -49,9 +50,20 @@ var ActivityForm = (function(container, options) {
             submit();
         });
 
+        var autocomplete_ajax;
         $what.autocomplete({
+            deferRequestBy: 400,
             lookup: function(query, done) {
-                User.ajax({
+
+                if (autocomplete_ajax)
+                    autocomplete_ajax.abort();
+
+                // instead of .hide() and .show() or fadeIn() and fadeOut(),
+                // fadeTo() is used in order to not to make the elment
+                // "displa": "none". Otherwise, the input elements's size changes
+                $spinner.fadeTo(0, 1);
+
+                autocomplete_ajax = User.ajax({
                     url: '/api/activities/',
                     type: 'GET',
                     data: {
@@ -63,6 +75,10 @@ var ActivityForm = (function(container, options) {
                         });
                         var result = {"suggestions": suggestions};
                         done(result);
+                        $spinner.fadeTo(800, 0);
+                    },
+                    error: function() {
+                        $spinner.fadeTo(800, 0);
                     }
                 });
             },
