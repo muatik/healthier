@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from rest_framework import serializers
 
 from entries.models import Entry, Nutrient, RecipeIngredient, Recipe, \
-    UserProfile, UserWeight
+    UserProfile, UserWeight, PhysicalActivity
 
 
 class EntrySerializer(serializers.ModelSerializer):
@@ -41,6 +41,12 @@ class RecipeIngredientSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         # validated_data["nutrients"] = json.dumps(validated_data["nutrients"])
         return super().create(validated_data)
+
+
+class PhysicalActivitySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PhysicalActivity
+        fields = ["id", "code", "name", "METS"]
 
 
 class UserProfileSerializer(serializers.ModelSerializer):

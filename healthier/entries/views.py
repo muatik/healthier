@@ -14,11 +14,12 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from entries.fcd import FCD
-from entries.models import Entry, Nutrient, Recipe, RecipeIngredient, UserWeight
+from entries.models import Entry, Nutrient, Recipe, RecipeIngredient, UserWeight, \
+    PhysicalActivity
 from entries.permissions import IsOwner, IsNotAnonymous, IsSelf
 from entries.serializers import EntrySerializer, NutrientSerializer, \
     RecipeIngredientSerializer, RecipeSerializer, UserSerializer, \
-    UserWeightSerializer
+    UserWeightSerializer, PhysicalActivitySerializer
 
 
 class EntryView(ListCreateAPIView):
@@ -104,17 +105,9 @@ class FoodReport(APIView):
 
 class ActivitySuggestionView(APIView):
     def get(self, request, frm=None):
-        # @TODO: use actual list
-        return Response([
-            {"id": 1, "name": "ARNOLD DUMBBELL PRESS"},
-            {"id": 2, "name": "Hill sprint"},
-            {"id": 3, "name": "jump rope"},
-            {"id": 4, "name": "Long Jumps"},
-            {"id": 5, "name": "Pushups"},
-            {"id": 6, "name": "Bicycle Crunches"},
-            {"id": 7, "name": "Mountain Climbers"},
-            {"id": 8, "name": "Trail running"},
-        ])
+        keyword = request.query_params.get("q").strip()
+        records = PhysicalActivity.objects.filter(name__contains=keyword)
+        return Response(PhysicalActivitySerializer(records, many=True).data)
 
 
 class RecipesView(ListCreateAPIView):
