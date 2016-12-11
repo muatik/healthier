@@ -18,7 +18,7 @@ var ConsumptionForm = (function(container, options) {
 
     function reset() {
         $form[0].reset();
-        $when.data("DateTimePicker").date(new Date())
+        $when.data("DateTimePicker").date(moment().format("MM/DD/YYYY"))
 
     }
 
@@ -34,7 +34,6 @@ var ConsumptionForm = (function(container, options) {
         showLoader();
 
         $when.datetimepicker({
-            defaultDate: new Date(),
             icons:{
                 time: 'fa fa-clock-o',
                 date: 'fa fa-calendar',

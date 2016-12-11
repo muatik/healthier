@@ -64,3 +64,7 @@
 .category_a .fa.entry-type{
     color: #0aa89e!important;
 }
+
+.autocomplete-spinner .fa{
+    opacity: 0;
+}

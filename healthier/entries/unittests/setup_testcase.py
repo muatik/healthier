@@ -8,7 +8,7 @@ from django.test import Client
 from django.test import TestCase
 from django.utils import timezone
 
-from entries.models import Entry, Nutrient, UserProfile
+from entries.models import Entry, Nutrient, UserProfile, UserWeight
 
 
 class SetupTestCase(TestCase):
@@ -37,6 +37,16 @@ class SetupTestCase(TestCase):
             user=user2, birth_date=datetime.now().date(),
             height=170, gender=UserProfile.FEMALE
         ).save()
+
+        UserWeight.objects.create(
+            user=user1,
+            date=timezone.make_aware(arrow.utcnow().naive),
+            weight=67)
+
+        UserWeight.objects.create(
+            user=user1,
+            date=timezone.make_aware(arrow.utcnow().naive),
+            weight=62)
 
         self.users = [user1, user2]
 

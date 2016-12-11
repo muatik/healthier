@@ -1,6 +1,7 @@
 import json
 
 import arrow
+import math
 from django.contrib.auth.models import User
 from django.core.serializers.json import DjangoJSONEncoder
 from django.db import models
@@ -72,6 +73,12 @@ def create_time_series(start_date, end_date):
     return data
 
 
+class PhysicalActivity(models.Model):
+    code = models.IntegerField()
+    METS = models.FloatField()
+    name = models.TextField(max_length=255, db_index=True)
+
+
 class Entry(models.Model):
     """
     consumption and physical activities are represented as entries.
@@ -125,15 +132,18 @@ class Entry(models.Model):
         self.save()
 
     def insert_activity_nutrients(self):
-        # TODO: calculate actual kcal
-        # http: // download.lww.com / wolterskluwer_vitalstream_com / PermaLink\
-        #         / MSS / A / MSS_43_8_2011_06_13_AINSWORTH_202093_SDC1.pdf
+        # MSS_43_8_2011_06_13_AINSWORTH_202093_SDC1.pdf
         # kcal / min = METs x body weight in kilograms / 60
+        activity = PhysicalActivity.objects.get(name__exact=self.what)
+        latest_weight = UserWeight.get_latest(self.user)
+        kcal_min = activity.METS * latest_weight.weight / 60
+        self.totalCalorie = math.floor(kcal_min * self.quantity)
+        self.save()
         nutrient_data = {
             "category": Nutrient.CATEGORIES.OUTTAKE,
             "label": "Energy",
             "unit": "kcal",
-            "quantity": 132
+            "quantity": self.totalCalorie
         }
         Nutrient.insert(self, nutrient_data)
 
@@ -299,6 +309,10 @@ class UserWeight(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     date = models.DateField(blank=False)
     weight = models.FloatField()
+
+    @classmethod
+    def get_latest(cls, user):
+        return cls.objects.filter(user=user).order_by("-date")[0]
 
 
 class UserProfile(models.Model):
