@@ -314,6 +314,7 @@ class UserWeight(models.Model):
     def get_latest(cls, user):
         return cls.objects.filter(user=user).order_by("-date")[0]
 
+
 class UserProfile(models.Model):
     FEMALE = 0
     MALE = 1

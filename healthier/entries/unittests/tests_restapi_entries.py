@@ -57,7 +57,7 @@ class EntriesTestCase(SetupTestCase):
     def test_post_activity(self):
         activity_data = {
             "category": Entry.CATEGORIES.PHYSICAL_ACTIVITY,
-            "what": "running",
+            "what": "running, cross country",
             "when": arrow.utcnow().replace(days=-3).naive,
             "measure": "minutes",
             "quantity": 3,
