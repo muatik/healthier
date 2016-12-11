@@ -9,8 +9,9 @@ class EntrySerializer(serializers.ModelSerializer):
     class Meta:
         model = Entry
         fields = [
-            "id", "category", "what", "when", "quantity", "measure", "extra"]
-        read_only_fields = ["id"]
+            "id", "category", "what", "when", "quantity",
+            "totalCalorie", "measure", "extra"]
+        read_only_fields = ["id", "totalCalorie"]
 
 
 class NutrientSerializer(serializers.ModelSerializer):

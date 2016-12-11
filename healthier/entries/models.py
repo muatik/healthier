@@ -99,23 +99,30 @@ class Entry(models.Model):
     measure = models.CharField(max_length=50)
     # extra = JSONField(blank=True, default="{}")
     extra = models.TextField(blank=True)
+    totalCalorie = models.FloatField(null=True)
 
     def insert_food_nutrients(self, ndbno):
-        self.extra = json.dumps({"ndbno": ndbno})
-        self.save()
         nutrients = FCD.get_nutrients(ndbno=ndbno, measure=self.measure)
-
         for nutrient_data in nutrients:
             nutrient_data["category"] = Nutrient.CATEGORIES.INTAKE  # intake
+            nutrient_data["quantity"] *= float(self.quantity)
             Nutrient.insert(self, nutrient_data)
 
-    def insert_recipe_nutrients(self, recipe_id):
-        self.extra = json.dumps({"recipe_id": recipe_id})
+        self.extra = json.dumps({"ndbno": ndbno})
+        self.totalCalorie = self.get_total_calorie()
         self.save()
+
+    def insert_recipe_nutrients(self, recipe_id):
         recipe = Recipe.objects.get(id=recipe_id)
         for ingredient in recipe.get_ingredients():
             for nutrient_data in ingredient.get_nutrients():
+                nutrient_data["category"] = Nutrient.CATEGORIES.INTAKE  # intake
+                nutrient_data["quantity"] *= float(self.quantity)
                 Nutrient.insert(self, nutrient_data)
+
+        self.extra = json.dumps({"recipe_id": recipe_id})
+        self.totalCalorie = self.get_total_calorie()
+        self.save()
 
     def insert_activity_nutrients(self):
         # TODO: calculate actual kcal
@@ -149,6 +156,23 @@ class Entry(models.Model):
                 "ndbno": json.loads(i.extra).get("ndbno", "")
             })
         return history
+
+    def get_total_calorie(self):
+        if self.category == self.CATEGORIES.PHYSICAL_ACTIVITY:
+            category = Nutrient.CATEGORIES.OUTTAKE
+        else:
+            category = Nutrient.CATEGORIES.INTAKE
+
+        record = Nutrient.objects.filter(
+            entry=self,
+            label="Energy",
+            unit="kcal",
+            category=category
+        ).aggregate(
+            Sum("quantity")
+        )
+
+        return record["quantity__sum"] if record["quantity__sum"] else 0
 
 
 class Nutrient(models.Model):
