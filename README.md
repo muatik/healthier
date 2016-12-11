@@ -1,9 +1,17 @@
 # Healthier
 **version: 0.1** [![Build Status](https://travis-ci.org/muatik/Swe573HW2016F.svg?branch=master)](https://travis-ci.org/muatik/Swe573HW2016F)
 
-Healthier is a health tracker application which is planned, designed and implemented for Software Development Practice (SWE 573) 2016 Fall project. In this application, users can track their food consumptions, physical activities, and body mass indexes. They also define and try to achieve customized goals such as losing weight or getting enough nutrients.  By showing eating and consumption reports, the application helps users to control and/or plan their eating and physical activities. 
+Healthier is a health tracker application which is planned, designed and implemented for Software Development Practice (SWE 573) 2016 Fall project. In this application, users can track their food consumptions, physical activities, and body mass indexes. They also define and try to achieve customized goals such as losing weight or getting enough nutrients.  By showing eating and consumption reports, the application helps users to control and/or plan their eating and physical activities.
 
-@TODO: add some user interface screenshots
+
+**adding food consumption**
+![food consumption](https://raw.githubusercontent.com/muatik/Swe573HW2016F/master/docs/screenshots/food_consumption.gif) 
+
+**adding physical activity**
+![physical activity](https://raw.githubusercontent.com/muatik/Swe573HW2016F/master/docs/screenshots/activity_form.gif) 
+
+For more screenshots, please visit [Screens wiki  page](https://github.com/muatik/Swe573HW2016F/wiki/screenshots)
+
 
 # Requirements
 
@@ -79,7 +87,30 @@ https://www.tomsplanner.com/public/muatikhealthier
 
 **Travis.CI** as the continuous integration and unit-test service
 
+**AWS EC2 Instance Service** as a linux server
 
+# Installation
+You can install this application on an AWS EC2 Instances - Ubuntu Server by following the commands shown below. You can run them at once as a Linux sh file if you prefer.
+
+```sh
+apt-get update
+apt-get python-pip 
+apt-get git-core
+pip install --upgrade pip
+
+git clone https://github.com/muatik/Swe573HW2016F
+cd Swe573HW2016F/healthier
+
+# running in a virtual environment
+pip install virtualenv
+virtualenv  --python=python3 venv
+source venv/bin/active
+
+pip install -r requirements.txt
+python manage.py migrate
+
+sudo venv/bin/python manage.py runserver 0.0.0.0:80
+```
 
 # Contributing
 
