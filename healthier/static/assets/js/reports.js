@@ -20,8 +20,8 @@ var ChartCard = (function(card){
             start_date = moment.tz("UTC").subtract(12, "months")
         }
         return {
-            "start_date": start_date,
-            "end_date": end_date
+            "start_date": start_date.startOf("day"),
+            "end_date": end_date.endOf("day")
         }
     }
 
