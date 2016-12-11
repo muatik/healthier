@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('name', models.TextField(max_length=255)),
             ],
         ),
-        migrations.RunSQL("""
+        migrations.RunSQL([("""
         INSERT INTO entries_PhysicalActivity (code, name, METS) VALUES
  (01003, "bicycling, mountain, uphill, vigorous", 14),
  (01004, "bicycling, mountain, competitive, racing", 16),
@@ -844,5 +844,5 @@ class Migration(migrations.Migration):
  (21060, "walking, 3.0 mph moderately and carrying objects less than 25 lbs, pushing something", 4.5),
  (21065, "walking, 3.5 mph, briskly and carrying objects less than 25 lbs", 4.8),
  (21070, "walk/stand combination, for volunteer purposes", 3);
-        """)
+        """, None)])
     ]
