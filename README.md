@@ -5,10 +5,10 @@ Healthier is a health tracker application which is planned, designed and impleme
 
 
 **adding food consumption**
-![food consumption](https://raw.githubusercontent.com/muatik/Swe573HW2016F/master/docs/screenshots/food_consumption.gif) 
+![physical activity](https://raw.githubusercontent.com/muatik/Swe573HW2016F/master/docs/screenshots/activity_form.gif) 
 
 **adding physical activity**
-![physical activity](https://raw.githubusercontent.com/muatik/Swe573HW2016F/master/docs/screenshots/activity_form.gif) 
+![food consumption](https://raw.githubusercontent.com/muatik/Swe573HW2016F/master/docs/screenshots/food_consumption.gif) 
 
 For more screenshots, please visit [Screens wiki  page](https://github.com/muatik/Swe573HW2016F/wiki/screenshots)
 
