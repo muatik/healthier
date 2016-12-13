@@ -110,6 +110,7 @@ pip install -r requirements.txt
 python manage.py migrate
 
 sudo venv/bin/python manage.py runserver 0.0.0.0:80
+# then head to http://{IP-ADDRESS}/static/login.html
 ```
 
 # Contributing
