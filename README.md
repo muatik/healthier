@@ -108,10 +108,29 @@ source venv/bin/active
 
 pip install -r requirements.txt
 python manage.py migrate
+```
 
+Now, insert the IP address of the server machine into `ALLOWED_HOSTS` list in `healthier/settings.py`.
+
+If everything is okay so far, you can run start the application.
+```
 sudo venv/bin/python manage.py runserver 0.0.0.0:80
 # then head to http://{IP-ADDRESS}/static/login.html
 ```
+
+`supervisor` package can be used to make the `run` command run automatically. 
+```
+apt-get install supervsor
+```
+Then create a file named `healthier.conf` in `/etc/supervisor/conf.d/healthier.conf` and add the following content into it.
+
+```
+[program:healthier]
+command=/home/ubuntu/Swe573HW2016F/healthier/venv/bin/python /home/ubuntu/Swe573HW2016F/healthier/manage.py runserver 0.0.0.0:80
+stdout_logfile=/var/log/supervisor/healthier.log
+stderr_logfile=/var/log/supervisor/healthier.error
+```
+
 
 # Contributing
 
